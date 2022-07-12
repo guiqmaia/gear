@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
                     ),
                   );
                 },
-                child: Text('Registro de Caixa'),
+                child: const Text('Registro de Caixa'),
               ),
             ),
             Container(
@@ -50,7 +50,7 @@ class HomePage extends StatelessWidget {
                     ),
                   );
                 },
-                child: Text('Cadastro de Produto'),
+                child: const Text('Cadastro de Produto'),
               ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
