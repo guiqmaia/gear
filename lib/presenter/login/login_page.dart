@@ -29,17 +29,32 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text('Seja Bem Vindo'),
-            ],
+      body:  Center(
+      child: Column(
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(top: 50, bottom: 50),
+            child: Text('Seja Bem Vindo'),
           ),
-          
-        ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            margin: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+            decoration: BoxDecoration(
+              color: Colors.grey.shade100,
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: TextField(
+              textAlign: TextAlign.center,
+              controller: LoginController,
+              decoration: const InputDecoration(
+                hintText: 'Entre com seu email',
+                border: InputBorder.none,
+              ),
+            ),
+          ),
+          ],
+          ),
+      
       ),
     );
   }
