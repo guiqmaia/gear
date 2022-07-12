@@ -1,0 +1,18 @@
+Arquivo para anotar o que desejamos fazer nessa página
+
+O primeiro ponto é o sistema entender qual a situaçao atual do caixa, no caso, se ele está aberto ou fechado.
+
+Caso ele esteja fechado e o usuario clicar 
+deve-se abrir o caixa apresentando algumas informações iniciais para que o usuario preencha.
+
+Pensando em pequenos negócios, é provavel que tenho uma quantidade de troco em dinheiro que o user poderá definir.
+
+Além disso, a pagina deve apresentar um widget para registrar uma venda.
+
+Esse widget devera buscar o produto que o user registrou no banco de dados já com o seu preço,
+tendo que informar apenas a quantidade, a forma de pagamento e se teve algum desconto.
+
+Ao finalizar a venda, ela deve ser adicionada a uma base de dados que contem os registros e que ira diminuir a quantidade em estoque
+dos produtos que foram vendidos.
+
+O usuario deve ter uma opcao para fechar o caixa que deve apresentar um relatorio sobre as vendas do dia.

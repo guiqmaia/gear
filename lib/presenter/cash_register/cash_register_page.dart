@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/body_cash_register.dart';
+
 class CashRegisterPage extends StatefulWidget {
   const CashRegisterPage({Key? key}) : super(key: key);
 
@@ -10,11 +12,9 @@ class CashRegisterPage extends StatefulWidget {
 class _CashRegisterPageState extends State<CashRegisterPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(''),
-      ),
-      body: Container(),
+    return const Scaffold(
+      backgroundColor: Colors.blue,
+      body: BodyCashRegister(),
     );
   }
 }

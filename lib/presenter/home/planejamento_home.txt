@@ -1,0 +1,9 @@
+Ideia para pagina home
+
+3 Containers que levam para as principais areas do aplicativo
+
+Caixa, Estoque e Cadastro
+
+Uma BottomToolBar que leva para uma página de resultados ou registro geral sobre a situação da loja seria interessante também.
+
+Essa página é mais simples, mas objetiva e importante.
