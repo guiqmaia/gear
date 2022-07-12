@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/product_signup/product_signup_page.dart';
 
 import '../cash_register/cash_register_page.dart';
 
@@ -28,7 +29,7 @@ class HomePage extends StatelessWidget {
                     ),
                   );
                 },
-                child: const Text('Caixa'),
+                child: Text('Registro de Caixa'),
               ),
             ),
             Container(
@@ -41,7 +42,16 @@ class HomePage extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.85,
               height: MediaQuery.of(context).size.height * 0.25,
               color: Colors.blue,
-              child: const Text('Cadastro de Produto'),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const ProductSignupPage(),
+                    ),
+                  );
+                },
+                child: Text('Cadastro de Produto'),
+              ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
           ],
