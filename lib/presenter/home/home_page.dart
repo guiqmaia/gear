@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
                     ),
                   );
                 },
-                child: Text('Caixa'),
+                child: Text('Registro de Caixa'),
               ),
             ),
             Container(
