@@ -38,13 +38,14 @@ class SalesPage extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => CashRegisterPage(),
+                          builder: (context) => const CashRegisterPage(),
                         ),
                       );
                     },
                     icon: const Icon(
-                      Icons.arrow_back_ios_new_rounded,
+                      Icons.arrow_back_rounded,
                       color: Colors.white,
+                      size: 30,
                     ),
                   ),
                   const Text(
