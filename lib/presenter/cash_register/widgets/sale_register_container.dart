@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
 class SaleRegisterContainer extends StatelessWidget {
+  final String price;
+  final dynamic quantity;
+  final String product;
+
   const SaleRegisterContainer({
     Key? key,
+    required this.price,
+    required this.quantity,
+    required this.product,
   }) : super(key: key);
 
   @override
@@ -25,15 +32,15 @@ class SaleRegisterContainer extends StatelessWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
+            children: [
               Text(
-                'R\$ 150,00',
-                style: TextStyle(
+                price,
+                style: const TextStyle(
                   color: Colors.green,
                   fontSize: 17,
                 ),
               ),
-              Icon(
+              const Icon(
                 Icons.credit_card,
                 color: Colors.black,
               ),
@@ -44,15 +51,15 @@ class SaleRegisterContainer extends StatelessWidget {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
+            children: [
               Text(
-                '1x Tênis',
-                style: TextStyle(
+                '$quantity x $product',
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 17,
                 ),
               ),
-              Icon(
+              const Icon(
                 Icons.shopping_bag_outlined,
                 color: Colors.black,
               ),

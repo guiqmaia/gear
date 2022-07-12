@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:gear/presenter/cash_register/cash_register_page.dart';
+import 'package:gear/presenter/cash_register/widgets/body_cash_register.dart';
+import 'package:gear/presenter/cash_register/widgets/sale_register_container.dart';
 
 import 'widgets/input_sale_items.dart';
 
@@ -36,13 +38,14 @@ class SalesPage extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => CashRegisterPage(),
+                          builder: (context) => const CashRegisterPage(),
                         ),
                       );
                     },
                     icon: const Icon(
-                      Icons.arrow_back_ios_new_rounded,
+                      Icons.arrow_back_rounded,
                       color: Colors.white,
+                      size: 30,
                     ),
                   ),
                   const Text(
@@ -114,7 +117,9 @@ class SalesPage extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                createSale();
+              },
               child: const Text(
                 'Finalizar venda',
                 style: TextStyle(
@@ -170,6 +175,14 @@ class SalesPage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  void createSale(){
+    SaleRegisterContainer(
+      price: totalController.text,
+      quantity: quantityController.value,
+      product: descriptionController.text,      
     );
   }
 }
