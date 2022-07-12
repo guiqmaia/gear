@@ -20,11 +20,25 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 2)).then((value) => {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const HomePage()),
+    Future.delayed(const Duration(milliseconds: 600)).then(
+      (value) => {
+        setState(
+          () {
+            _myFirs = false;
+          },
+        )
+      },
+    );
+    super.initState();
+    Future.delayed(const Duration(seconds: 2)).then(
+      (value) => {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const HomePage(),
           ),
-        });
+        ),
+      },
+    );
     super.initState();
   }
 
@@ -37,12 +51,18 @@ class _SplashPageState extends State<SplashPage> {
             height: 120,
             child: AnimatedDefaultTextStyle(
               duration: const Duration(milliseconds: 300),
-              style: TextStyle(
-                fontSize: _myFontSize,
-                color: _myColor,
-                fontWeight: _myFontWeight,
-              ),
-              child: const Text("GEAR"),              
+              style: _myFirs
+                  ? TextStyle(
+                      fontSize: _myFontSize,
+                      color: _myColor,
+                      fontWeight: _myFontWeight,
+                    )
+                  : TextStyle(
+                      fontSize: 50,
+                      color: Colors.black,
+                      fontWeight: _myFontWeight,
+                    ),
+              child: const Text("GEAR"),
             ),
           ),
         ]),
