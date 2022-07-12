@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/sales/sales_page.dart';
 
 class AddingNewSales extends StatelessWidget {
   const AddingNewSales({
@@ -13,12 +14,19 @@ class AddingNewSales extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       margin: EdgeInsets.symmetric(
-        vertical: MediaQuery.of(context).size.height * 0.045,
+        vertical: MediaQuery.of(context).size.height * 0.04,
       ),
-      height: MediaQuery.of(context).size.height * 0.1,
+      height: MediaQuery.of(context).size.height * 0.09,
       width: MediaQuery.of(context).size.width * 0.85,
-      child: const Center(
-        child: Text(
+      child: TextButton(
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => SalesPage(),
+            ),
+          );
+        },
+        child: const Text(
           'Adicionar Venda',
           style: TextStyle(
             color: Colors.blue,

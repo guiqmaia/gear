@@ -15,7 +15,7 @@ class RecentSalesContainer extends StatelessWidget {
       margin: EdgeInsets.symmetric(
         vertical: MediaQuery.of(context).size.height * 0.03,
       ),
-      height: MediaQuery.of(context).size.height * 0.1,
+      height: MediaQuery.of(context).size.height * 0.085,
       width: MediaQuery.of(context).size.width * 0.85,
       child: const Center(
         child: Text(
