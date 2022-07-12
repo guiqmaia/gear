@@ -12,8 +12,9 @@ class CashRegisterPage extends StatefulWidget {
 class _CashRegisterPageState extends State<CashRegisterPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.blue,
+      appBar: AppBar(),
       body: BodyCashRegister(),
     );
   }
