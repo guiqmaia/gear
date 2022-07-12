@@ -1,9 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
-import '../home/home_page.dart';
 import '../login/login_page.dart';
+import 'widgets/animation.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -15,9 +13,9 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   bool _myFirs = true;
 
-  double _myFontSize = 60;
-  Color _myColor = Colors.blue;
-  FontWeight _myFontWeight = FontWeight.bold;
+  final double _myFontSize = 60;
+  final Color _myColor = Colors.blue;
+  final FontWeight _myFontWeight = FontWeight.bold;
 
   @override
   void initState() {
@@ -47,26 +45,17 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(mainAxisSize: MainAxisSize.min, children: [
-          Container(
-            height: 120,
-            child: AnimatedDefaultTextStyle(
-              duration: const Duration(milliseconds: 300),
-              style: _myFirs
-                  ? TextStyle(
-                      fontSize: _myFontSize,
-                      color: _myColor,
-                      fontWeight: _myFontWeight,
-                    )
-                  : TextStyle(
-                      fontSize: 50,
-                      color: Colors.black,
-                      fontWeight: _myFontWeight,
-                    ),
-              child: const Text("GEAR"),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AnimationSplash(
+              myFirs: _myFirs,
+              myFontSize: _myFontSize,
+              myColor: _myColor,
+              myFontWeight: _myFontWeight,
             ),
-          ),
-        ]),
+          ],
+        ),
       ),
     );
   }
