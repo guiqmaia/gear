@@ -29,9 +29,16 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
-      body: Center(
-        child: Column(
-          children: [],
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Text('Seja Bem Vindo'),
+            ],
+          ),
+          
         ),
       ),
     );
