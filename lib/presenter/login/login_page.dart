@@ -49,6 +49,7 @@ class _LoginPageState extends State<LoginPage> {
               decoration: const InputDecoration(
                 hintText: 'Entre com seu email',
                 border: InputBorder.none,
+                hintStyle: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
               ),
             ),
           ),
