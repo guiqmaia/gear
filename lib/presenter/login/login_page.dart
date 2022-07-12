@@ -29,33 +29,80 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
-      body:  Center(
-      child: Column(
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(top: 50, bottom: 50),
-            child: Text('Seja Bem Vindo'),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            margin: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-            decoration: BoxDecoration(
-              color: Colors.grey.shade100,
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: TextField(
-              textAlign: TextAlign.center,
-              controller: LoginController,
-              decoration: const InputDecoration(
-                hintText: 'Entre com seu email',
-                border: InputBorder.none,
-                hintStyle: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(left: 50, bottom: 20),
+              child: const Text(
+                'Seja bem vindo',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
               ),
             ),
-          ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: TextField(
+                textAlign: TextAlign.start,
+                controller: LoginController,
+                decoration: const InputDecoration(
+                  labelText: 'Email',
+                  hintText: 'Entre com seu email',
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(width: 3, color: Colors.black),
+                  ),
+                  hintStyle:
+                      TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: TextField(
+                textAlign: TextAlign.start,
+                controller: PasswordController,
+                decoration: const InputDecoration(
+                  labelText: 'Senha',
+                  hintText: 'Entre com sua senha',
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(width: 3, color: Colors.black)),
+                  hintStyle:
+                      TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Row(
+                  children: const  [
+                    Icon(
+                      Icons.abc_outlined,
+                      color: Colors.black,
+                    ),
+                    SizedBox(width: 10,),
+                    Text('Lembre-se de mim'),
+                  ],
+                ),
+                Text('Esqueceu a senha?')
+              ],
+            ),
           ],
-          ),
-      
+        ),
       ),
     );
   }
