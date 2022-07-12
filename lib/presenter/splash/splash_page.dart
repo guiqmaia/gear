@@ -32,15 +32,7 @@ class _SplashPageState extends State<SplashPage> {
     );
     super.initState();
 
-    Future.delayed(const Duration(milliseconds: 700)).then(
-      (value) => {
-        () {
-          setState(() => opacityLevel = opacityLevel == 0 ? 1.0 : 0.0);
-        }
-      },
-    );
-
-    Future.delayed(const Duration(seconds: 3)).then(
+    Future.delayed(const Duration(seconds: 2)).then(
       (value) => {
         Navigator.of(context).push(
           MaterialPageRoute(
