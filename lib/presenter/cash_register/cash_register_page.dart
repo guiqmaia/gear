@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gear/presenter/home/home_page.dart';
+import 'package:gear/presenter/shared/widgets/top_bar_app.dart';
 
+import 'widgets/adding_new_sales.dart';
 import 'widgets/body_cash_register.dart';
 
 class CashRegisterPage extends StatefulWidget {
@@ -14,23 +16,16 @@ class _CashRegisterPageState extends State<CashRegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const HomePage(),
-              ),
-            );
-          },
-          icon: const Icon(
-            Icons.arrow_back_rounded,
-            size: 30,
+      backgroundColor: Colors.blue.shade200,
+      body: Column(
+        children: const [
+          TopBarApp(
+            title: 'Caixa registradora',
           ),
-        ),
+          BodyCashRegister(),
+        ],
       ),
-      body: const BodyCashRegister(),
+      bottomNavigationBar: const AddingNewSales(),
     );
   }
 }

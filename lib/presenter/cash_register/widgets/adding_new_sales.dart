@@ -13,13 +13,13 @@ class AddingNewSales extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
       ),
-      height: MediaQuery.of(context).size.height * 0.09,
-      width: MediaQuery.of(context).size.width * 0.85,
+      margin: const EdgeInsets.all(10),
+      width: MediaQuery.of(context).size.width,
       child: TextButton(
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => SalesPage(),
+              builder: (context) => const SalesPage(),
             ),
           );
         },

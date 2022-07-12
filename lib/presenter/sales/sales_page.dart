@@ -3,7 +3,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import 'widgets/bottom_btn_sales.dart';
-import 'widgets/top_bar_sale.dart';
+import '../shared/widgets/top_bar_app.dart';
 import 'widgets/wrap_textfield_sale.dart';
 
 class SalesPage extends StatefulWidget {
@@ -28,7 +28,9 @@ class _SalesPageState extends State<SalesPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const TopBarSale(),
+            const TopBarApp(
+              title: 'Adicionar venda',
+            ),
             WrapTextFieldSale(
               codeController: codeController,
               descountController: descountController,
