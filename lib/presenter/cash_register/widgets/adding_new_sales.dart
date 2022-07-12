@@ -14,9 +14,9 @@ class AddingNewSales extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       margin: EdgeInsets.symmetric(
-        vertical: MediaQuery.of(context).size.height * 0.045,
+        vertical: MediaQuery.of(context).size.height * 0.04,
       ),
-      height: MediaQuery.of(context).size.height * 0.1,
+      height: MediaQuery.of(context).size.height * 0.09,
       width: MediaQuery.of(context).size.width * 0.85,
       child: TextButton(
         onPressed: () {
