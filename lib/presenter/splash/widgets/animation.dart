@@ -32,7 +32,7 @@ class AnimationSplash extends StatelessWidget {
               )
             : TextStyle(
                 fontSize: 50,
-                color: Colors.black,
+                color: Colors.grey,
                 fontWeight: _myFontWeight,
               ),
         child: const Text("GEAR"),
