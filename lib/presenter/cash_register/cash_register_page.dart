@@ -24,7 +24,10 @@ class _CashRegisterPageState extends State<CashRegisterPage> {
               ),
             );
           },
-          icon: const Icon(Icons.arrow_back_rounded),
+          icon: const Icon(
+            Icons.arrow_back_rounded,
+            size: 30,
+          ),
         ),
       ),
       body: const BodyCashRegister(),
