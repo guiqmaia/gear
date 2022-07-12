@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import '../home/home_page.dart';
+import '../login/login_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -34,7 +35,7 @@ class _SplashPageState extends State<SplashPage> {
       (value) => {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => const HomePage(),
+            builder: (context) => const LoginPage(),
           ),
         ),
       },
