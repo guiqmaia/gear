@@ -51,7 +51,7 @@ class BottomBtnSales extends StatelessWidget {
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
               colors: [
-                Colors.blue,
+                Colors.purple.shade300,
                 Colors.blue.shade700,
               ],
             ),

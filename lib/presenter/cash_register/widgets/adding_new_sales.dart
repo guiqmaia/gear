@@ -13,13 +13,16 @@ class AddingNewSales extends StatelessWidget {
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
           colors: [
-            Colors.blue,
+            Colors.purple.shade300,
             Colors.blue.shade800,
           ],
         ),
       ),
       margin: const EdgeInsets.all(15),
       width: MediaQuery.of(context).size.width,
+      padding: const EdgeInsets.symmetric(
+        vertical: 3,
+      ),
       child: TextButton(
         onPressed: () {
           Navigator.of(context).push(

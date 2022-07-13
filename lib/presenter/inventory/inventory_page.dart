@@ -50,7 +50,7 @@ class InventoryPage extends StatelessWidget {
         margin: const EdgeInsets.all(15),
         padding: const EdgeInsets.symmetric(
           horizontal: 15,
-          vertical: 5,
+          vertical: 3,
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -58,7 +58,7 @@ class InventoryPage extends StatelessWidget {
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
             colors: [
-              Colors.blue,
+              Colors.purple.shade300,
               Colors.blue.shade700,
             ],
           ),
@@ -75,7 +75,7 @@ class InventoryPage extends StatelessWidget {
             'Novo Produto',
             style: TextStyle(
               color: Colors.white,
-              fontSize: 17,
+              fontSize: 19,
               fontWeight: FontWeight.w500,
             ),
           ),
