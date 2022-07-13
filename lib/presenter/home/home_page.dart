@@ -4,7 +4,7 @@ import 'package:gear/presenter/results/results_page.dart';
 
 import '../cash_register/cash_register_page.dart';
 import '../inventory/inventory_page.dart';
-
+import '../profile/profile.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -73,7 +73,17 @@ class HomePage extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.home)),
+            IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const HomePage();
+                      },
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.home)),
             IconButton(
                 onPressed: () {
                   Navigator.of(context).push(
@@ -83,7 +93,15 @@ class HomePage extends StatelessWidget {
                   );
                 },
                 icon: const Icon(Icons.bar_chart)),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.person)),
+            IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: ((context) => const Profile()),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.person)),
           ],
         ),
       ),
