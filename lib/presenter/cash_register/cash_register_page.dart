@@ -21,6 +21,7 @@ class _CashRegisterPageState extends State<CashRegisterPage> {
           TopBarApp(
             title: 'Caixa',
             pageRoute: HomePage(),
+            isProfile: true,
           ),
           BodyCashRegister(),
         ],

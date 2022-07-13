@@ -33,6 +33,7 @@ class _SalesPageState extends State<SalesPage> {
             const TopBarApp(
               title: 'Adicionar venda',
               pageRoute: CashRegisterPage(),
+              isProfile: true,
             ),
             WrapTextFieldSale(
               codeController: codeController,

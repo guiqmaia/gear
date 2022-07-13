@@ -18,6 +18,7 @@ class InventoryPage extends StatelessWidget {
             const TopBarApp(
               title: 'Estoque',
               pageRoute: HomePage(),
+              isProfile: true,
             ),
             Container(
               margin: const EdgeInsets.symmetric(
