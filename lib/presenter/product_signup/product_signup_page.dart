@@ -17,6 +17,7 @@ class ProductSignupPage extends StatelessWidget {
           const TopBarApp(
             title: 'Cadastrar Produto',
             pageRoute: HomePage(),
+            isProfile: true,
           ),
           Expanded(
             child: Stack(
