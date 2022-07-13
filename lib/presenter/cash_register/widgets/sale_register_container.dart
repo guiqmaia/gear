@@ -24,7 +24,7 @@ class SaleRegisterContainer extends StatelessWidget {
         vertical: MediaQuery.of(context).size.height * 0.02,
       ),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.blue.withOpacity(0.2),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
@@ -55,7 +55,7 @@ class SaleRegisterContainer extends StatelessWidget {
                   Text(
                     'Débito',
                     style: TextStyle(
-                      color: Colors.grey.shade500,
+                      color: Colors.grey.shade700,
                       fontSize: 13,
                     ),
                   ),

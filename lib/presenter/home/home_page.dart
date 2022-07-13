@@ -3,6 +3,8 @@ import 'package:gear/presenter/product_signup/product_signup_page.dart';
 import 'package:gear/presenter/results/results_page.dart';
 
 import '../cash_register/cash_register_page.dart';
+import '../inventory/inventory_page.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -41,7 +43,7 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => const ProductSignupPage(),
+                      builder: (context) => const InventoryPage(),
                     ),
                   );
                 },

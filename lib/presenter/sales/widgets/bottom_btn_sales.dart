@@ -46,13 +46,18 @@ class BottomBtnSales extends StatelessWidget {
             horizontal: 20,
           ),
           decoration: BoxDecoration(
-            color: Colors.blue,
             borderRadius: BorderRadius.circular(10),
+            gradient: LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: [
+                Colors.blue,
+                Colors.blue.shade700,
+              ],
+            ),
           ),
           child: TextButton(
-            onPressed: () {
-              //createSale();
-            },
+            onPressed: () {},
             child: const Text(
               'Finalizar venda',
               style: TextStyle(

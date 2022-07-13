@@ -15,9 +15,13 @@ class TopBarApp extends StatelessWidget {
     return Container(
       width: double.maxFinite,
       margin: const EdgeInsets.only(bottom: 5),
-      padding: const EdgeInsets.only(bottom: 5, top: 20, right: 30, left: 10),
-      decoration: const BoxDecoration(
-        color: Colors.blue,
+      padding: const EdgeInsets.only(bottom: 10, top: 20, right: 30, left: 10),
+      decoration: BoxDecoration(
+        color: Colors.blue.withOpacity(0.7),
+        borderRadius: const BorderRadius.only(
+          bottomLeft: Radius.circular(30),
+          bottomRight: Radius.circular(30),
+        ),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -40,9 +44,13 @@ class TopBarApp extends StatelessWidget {
             title,
             style: const TextStyle(
               color: Colors.white,
-              fontSize: 20,
+              fontSize: 22,
               fontWeight: FontWeight.w500,
             ),
+          ),
+          const CircleAvatar(
+            radius: 26,
+            child: Icon(Icons.person),
           ),
         ],
       ),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:gear/presenter/cash_register/cash_register_page.dart';
 
-import 'widgets/bottom_btn_sales.dart';
+import '../cash_register/cash_register_page.dart';
 import '../shared/widgets/top_bar_app.dart';
+import 'widgets/bottom_btn_sales.dart';
 import 'widgets/wrap_textfield_sale.dart';
 
 class SalesPage extends StatefulWidget {
@@ -26,7 +26,6 @@ class _SalesPageState extends State<SalesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue.shade100,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -37,8 +36,9 @@ class _SalesPageState extends State<SalesPage> {
             ),
             WrapTextFieldSale(
               codeController: codeController,
-              descountController: descountController,
+              descriptionController: descriptionController,
               priceController: priceController,
+              descountController: descountController,
               quantityController: quantityController,
               payController: payController,
               totalController: totalController,
@@ -58,5 +58,3 @@ class _SalesPageState extends State<SalesPage> {
     );
   }
 }
-
-
