@@ -36,7 +36,17 @@ class HomePage extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.85,
               height: MediaQuery.of(context).size.height * 0.25,
               color: Colors.blue,
-              child: const Text('Gerenciamento de Estoque'),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const ProductSignupPage(),
+                    ),
+                  );
+                },
+                child: const Text('Gerenciamento de Estoque'),
+              ),
+              
             ),
             Container(
               width: MediaQuery.of(context).size.width * 0.85,

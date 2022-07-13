@@ -10,10 +10,18 @@ class AddingNewSales extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        
         borderRadius: BorderRadius.circular(10),
+        gradient: LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [
+            Colors.blue,
+            Colors.blue.shade800,
+          ],
+        ),
       ),
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(15),
       width: MediaQuery.of(context).size.width,
       child: TextButton(
         onPressed: () {
@@ -26,7 +34,7 @@ class AddingNewSales extends StatelessWidget {
         child: const Text(
           'Adicionar Venda',
           style: TextStyle(
-            color: Colors.blue,
+            color: Colors.white,
             fontSize: 18,
           ),
         ),

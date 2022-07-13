@@ -18,16 +18,6 @@ class BodyCashRegister extends StatelessWidget {
               quantity: 1,
               product: 'Tênis',
             ),
-            SaleRegisterContainer(
-              price: 'R\$ 500,00',
-              quantity: 2,
-              product: 'Bolsa',
-            ),
-            SaleRegisterContainer(
-              price: 'R\$ 1000,00',
-              quantity: 10,
-              product: 'Camiseta',
-            ),
           ],
         ),
       ],

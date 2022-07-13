@@ -12,6 +12,7 @@ class BottomBtnSales extends StatelessWidget {
     required this.priceController,
     required this.descountController,
     required this.quantityController,
+    required this.payController,
     required this.totalController,
   }) : super(key: key);
 
@@ -20,6 +21,7 @@ class BottomBtnSales extends StatelessWidget {
   final TextEditingController priceController;
   final TextEditingController descountController;
   final TextEditingController quantityController;
+  final TextEditingController payController;
   final TextEditingController totalController;
 
   void createSale() {

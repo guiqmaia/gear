@@ -20,6 +20,7 @@ class _SalesPageState extends State<SalesPage> {
   final priceController = TextEditingController();
   final descountController = TextEditingController();
   final quantityController = TextEditingController();
+  final payController = TextEditingController();
   final totalController = TextEditingController();
 
   @override
@@ -39,6 +40,7 @@ class _SalesPageState extends State<SalesPage> {
               descountController: descountController,
               priceController: priceController,
               quantityController: quantityController,
+              payController: payController,
               totalController: totalController,
             ),
           ],
@@ -50,6 +52,7 @@ class _SalesPageState extends State<SalesPage> {
         priceController: priceController,
         descountController: descountController,
         quantityController: quantityController,
+        payController: payController,
         totalController: totalController,
       ),
     );

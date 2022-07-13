@@ -20,7 +20,7 @@ class SaleRegisterContainer extends StatelessWidget {
         vertical: MediaQuery.of(context).size.height * 0.01,
       ),
       padding: EdgeInsets.symmetric(
-        horizontal: MediaQuery.of(context).size.width * 0.06,
+        horizontal: MediaQuery.of(context).size.width * 0.04,
         vertical: MediaQuery.of(context).size.height * 0.02,
       ),
       decoration: BoxDecoration(
@@ -30,8 +30,41 @@ class SaleRegisterContainer extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          Row(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.asset(
+                  'assets/images/sneakers.png',
+                  height: 60,
+                ),
+              ),
+              const SizedBox(width: 15),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    'Débito',
+                    style: TextStyle(
+                      color: Colors.grey.shade500,
+                      fontSize: 13,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Container(
                 padding: const EdgeInsets.symmetric(
@@ -53,6 +86,13 @@ class SaleRegisterContainer extends StatelessWidget {
               const SizedBox(height: 12),
               Row(
                 children: [
+                  Text(
+                    quantity > 1 ? 'unidades: ' : 'unidade: ',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 15,
+                    ),
+                  ),
                   Container(
                     margin: const EdgeInsets.only(right: 8),
                     padding: const EdgeInsets.symmetric(
@@ -71,44 +111,7 @@ class SaleRegisterContainer extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Text(
-                    quantity > 1 ? 'unidades' : 'unidade',
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 17,
-                    ),
-                  ),
                 ],
-              ),
-            ],
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 15,
-              vertical: 5,
-            ),
-            decoration: BoxDecoration(
-              color: Colors.blue.shade50,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Text(
-              product,
-              style: TextStyle(
-                color: Colors.blue.shade600,
-                fontSize: 25,
-              ),
-            ),
-          ),
-          Column(
-            children: const [
-              Icon(
-                Icons.credit_card,
-                color: Colors.black,
-              ),
-              SizedBox(height: 15),
-              Icon(
-                Icons.shopping_bag_outlined,
-                color: Colors.black,
               ),
             ],
           ),

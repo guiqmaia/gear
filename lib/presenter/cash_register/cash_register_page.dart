@@ -20,7 +20,7 @@ class _CashRegisterPageState extends State<CashRegisterPage> {
       body: Column(
         children: const [
           TopBarApp(
-            title: 'Caixa registradora',
+            title: 'Caixa',
             pageRoute: HomePage(),
           ),
           BodyCashRegister(),
