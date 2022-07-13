@@ -55,7 +55,7 @@ class BottomBtnSales extends StatelessWidget {
               'Finalizar venda',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 15,
+                fontSize: 16,
               ),
             ),
           ),
@@ -83,7 +83,7 @@ class BottomBtnSales extends StatelessWidget {
               padding: const EdgeInsets.only(right: 15),
               child: CircleAvatar(
                 radius: 25,
-                backgroundColor: Colors.blue,
+                backgroundColor: Colors.white,
                 child: IconButton(
                   tooltip: 'Limpar',
                   onPressed: () {
@@ -94,9 +94,9 @@ class BottomBtnSales extends StatelessWidget {
                     quantityController.clear();
                     totalController.clear();
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.clear_all_rounded,
-                    color: Colors.white.withOpacity(0.8),
+                    color: Colors.blue,
                     size: 30,
                   ),
                 ),

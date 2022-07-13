@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:gear/presenter/cash_register/cash_register_page.dart';
 
 import 'widgets/bottom_btn_sales.dart';
 import '../shared/widgets/top_bar_app.dart';
@@ -24,12 +25,14 @@ class _SalesPageState extends State<SalesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue.shade100,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             const TopBarApp(
               title: 'Adicionar venda',
+              pageRoute: CashRegisterPage(),
             ),
             WrapTextFieldSale(
               codeController: codeController,

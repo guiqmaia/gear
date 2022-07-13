@@ -11,18 +11,24 @@ class BodyCashRegister extends StatelessWidget {
     return Column(
       children: [
         const RecentSalesContainer(),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.4,
-          child: ListView(
-            scrollDirection: Axis.vertical,
-            children: const [
-              SaleRegisterContainer(
-                price: 'R\$150,00',
-                quantity: 1,
-                product: 'Tênis',
-              ),
-            ],
-          ),
+        Wrap(
+          children: const [
+            SaleRegisterContainer(
+              price: 'R\$ 150,00',
+              quantity: 1,
+              product: 'Tênis',
+            ),
+            SaleRegisterContainer(
+              price: 'R\$ 500,00',
+              quantity: 2,
+              product: 'Bolsa',
+            ),
+            SaleRegisterContainer(
+              price: 'R\$ 1000,00',
+              quantity: 10,
+              product: 'Camiseta',
+            ),
+          ],
         ),
       ],
     );

@@ -50,7 +50,7 @@ class WrapTextFieldSale extends StatelessWidget {
         const Divider(
           indent: 15,
           endIndent: 15,
-          color: Colors.grey,
+          color: Colors.black,
         ),
         InputSaleItems(
           labelItem: 'Total',

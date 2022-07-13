@@ -16,11 +16,12 @@ class _CashRegisterPageState extends State<CashRegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue.shade200,
+      backgroundColor: Colors.blue.shade100,
       body: Column(
         children: const [
           TopBarApp(
             title: 'Caixa registradora',
+            pageRoute: HomePage(),
           ),
           BodyCashRegister(),
         ],

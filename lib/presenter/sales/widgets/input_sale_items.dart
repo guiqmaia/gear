@@ -23,7 +23,7 @@ class InputSaleItems extends StatelessWidget {
         horizontal: 16,
       ),
       decoration: BoxDecoration(
-        color: const Color.fromRGBO(0, 102, 204, 0.1),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextField(
@@ -41,3 +41,5 @@ class InputSaleItems extends StatelessWidget {
     );
   }
 }
+
+// const Color.fromRGBO(0, 102, 204, 0.1)

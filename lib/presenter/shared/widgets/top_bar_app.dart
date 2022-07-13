@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../../cash_register/cash_register_page.dart';
-
 class TopBarApp extends StatelessWidget {
   final String title;
+  final dynamic pageRoute;
 
   const TopBarApp({
     Key? key,
     required this.title,
+    required this.pageRoute,
   }) : super(key: key);
 
   @override
@@ -15,7 +15,7 @@ class TopBarApp extends StatelessWidget {
     return Container(
       width: double.maxFinite,
       margin: const EdgeInsets.only(bottom: 5),
-      padding: const EdgeInsets.only(bottom: 10, top: 20, right: 30, left: 10),
+      padding: const EdgeInsets.only(bottom: 5, top: 20, right: 30, left: 10),
       decoration: const BoxDecoration(
         color: Colors.blue,
       ),
@@ -26,7 +26,7 @@ class TopBarApp extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => const CashRegisterPage(),
+                  builder: (context) => pageRoute,
                 ),
               );
             },
