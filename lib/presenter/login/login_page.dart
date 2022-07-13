@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gear/presenter/home/home_page.dart';
 
+import 'package:gear/presenter/login/widgets/my_checked_box.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -11,6 +13,9 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final LoginController = TextEditingController();
   final PasswordController = TextEditingController();
+  
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              margin: const EdgeInsets.only(left: 50, bottom: 20),
+              margin: const EdgeInsets.only(left: 45, bottom: 20),
               child: const Text(
                 'Seja bem vindo',
                 textAlign: TextAlign.center,
@@ -47,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
@@ -67,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
@@ -85,21 +90,24 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Row(
-                  children: const  [
-                    Icon(
-                      Icons.abc_outlined,
-                      color: Colors.black,
-                    ),
-                    SizedBox(width: 10,),
-                    Text('Lembre-se de mim'),
-                  ],
-                ),
-                Text('Esqueceu a senha?')
-              ],
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 2),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: const  [
+                      MyCheckedBox(),
+                      SizedBox(width: 2),
+                      Text('Lembrar', style: TextStyle(fontSize: 12),),
+                    ],
+                  ),
+                  const SizedBox(width: 1),
+                  const Text('Esqueceu a senha?', style: TextStyle(fontSize: 12),),
+                ],
+              ),
             ),
           ],
         ),
