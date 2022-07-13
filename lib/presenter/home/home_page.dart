@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gear/presenter/product_signup/product_signup_page.dart';
+import 'package:gear/presenter/results/results_page.dart';
 
 import '../cash_register/cash_register_page.dart';
 
@@ -46,7 +47,6 @@ class HomePage extends StatelessWidget {
                 },
                 child: const Text('Gerenciamento de Estoque'),
               ),
-              
             ),
             Container(
               width: MediaQuery.of(context).size.width * 0.85,
@@ -64,6 +64,24 @@ class HomePage extends StatelessWidget {
               ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(onPressed: () {}, icon: const Icon(Icons.home)),
+            IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: ((context) => const ResultsPage()),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.bar_chart)),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.person)),
           ],
         ),
       ),
