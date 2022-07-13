@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../profile/profile.dart';
+
 class TopBarApp extends StatelessWidget {
   final String title;
   final dynamic pageRoute;
@@ -48,9 +50,18 @@ class TopBarApp extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           ),
-          const CircleAvatar(
-            radius: 26,
-            child: Icon(Icons.person),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const Profile(),
+                ),
+              );
+            },
+            child: const CircleAvatar(
+              radius: 26,
+              child: Icon(Icons.person),
+            ),
           ),
         ],
       ),
