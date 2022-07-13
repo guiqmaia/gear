@@ -7,6 +7,7 @@ class WrapTextFieldSale extends StatefulWidget {
   const WrapTextFieldSale({
     Key? key,
     required this.codeController,
+    required this.descriptionController,
     required this.descountController,
     required this.priceController,
     required this.quantityController,
@@ -15,6 +16,7 @@ class WrapTextFieldSale extends StatefulWidget {
   }) : super(key: key);
 
   final TextEditingController codeController;
+  final TextEditingController descriptionController;
   final TextEditingController descountController;
   final TextEditingController priceController;
   final TextEditingController quantityController;
@@ -38,7 +40,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
         InputSaleItems(
           labelItem: 'Descrição do produto',
           iconInput: Icons.description_rounded,
-          typeController: widget.descountController,
+          typeController: widget.descriptionController,
         ),
         InputSaleItems(
           labelItem: 'Preço do produto',

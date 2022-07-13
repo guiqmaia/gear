@@ -42,7 +42,7 @@ class _DropDownInputSaleState extends State<DropDownInputSale> {
             borderRadius: BorderRadius.circular(10),
           ),
           filled: true,
-          fillColor: Colors.white,
+          fillColor: Colors.blue.withOpacity(0.3),
         ),
         //value: selectedValue,
         onChanged: (String? newValue) {
