@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gear/presenter/results/results_page.dart';
 
 import '../profile/profile_page.dart';
-import 'widget/body_home_page.dart';
+import 'widgets/body_home_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
