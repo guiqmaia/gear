@@ -1,5 +1,26 @@
 import 'package:flutter/material.dart';
 
+class RecentSalesList extends StatefulWidget {
+  List sales;
+
+  RecentSalesList({
+    Key? key,
+    required this.sales,
+  }) : super(key: key);
+
+  @override
+  State<RecentSalesList> createState() => _RecentSalesListState();
+}
+
+class _RecentSalesListState extends State<RecentSalesList> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [],
+    );
+  }
+}
+
 class SaleRegisterContainer extends StatelessWidget {
   final String price;
   final dynamic quantity;
