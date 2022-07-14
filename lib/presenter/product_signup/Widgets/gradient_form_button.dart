@@ -8,6 +8,7 @@ class GradientFormButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(2),
         boxShadow: const [
