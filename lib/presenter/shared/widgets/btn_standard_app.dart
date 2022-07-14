@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:gear/presenter/sales/sales_page.dart';
 
-class AddingNewSales extends StatelessWidget {
+class BtnStandardApp extends StatelessWidget {
   final String title;
   final dynamic pageRoute;
   final dynamic widthBtn;
 
-  const AddingNewSales({
+  const BtnStandardApp({
     Key? key,
     required this.title,
     required this.pageRoute,

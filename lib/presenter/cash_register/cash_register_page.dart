@@ -3,7 +3,7 @@ import 'package:gear/presenter/home/home_page.dart';
 import 'package:gear/presenter/sales/sales_page.dart';
 import 'package:gear/presenter/shared/widgets/top_bar_app.dart';
 
-import 'widgets/adding_new_sales.dart';
+import '../shared/widgets/btn_standard_app.dart';
 import 'widgets/body_cash_register.dart';
 
 class CashRegisterPage extends StatefulWidget {
@@ -27,7 +27,7 @@ class _CashRegisterPageState extends State<CashRegisterPage> {
           BodyCashRegister(),
         ],
       ),
-      bottomNavigationBar: AddingNewSales(
+      bottomNavigationBar: BtnStandardApp(
         title: 'Adicionar venda',
         pageRoute: const SalesPage(),
         widthBtn: MediaQuery.of(context).size.width,
