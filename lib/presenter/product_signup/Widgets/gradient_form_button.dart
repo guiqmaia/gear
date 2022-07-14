@@ -23,7 +23,7 @@ class GradientFormButton extends StatelessWidget {
           end: Alignment.bottomRight,
           colors: [
             Colors.purple.shade300,
-            Colors.blue.shade700,
+            Colors.blue.shade800,
           ],
         ),
       ),
