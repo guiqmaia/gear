@@ -26,6 +26,7 @@ class BodyLoginPage extends StatelessWidget {
           ContainerTextFieldLogin(loginController: loginController, textLabel: 'Email', textHint: 'Entre com seu email',),
           ContainerTextFieldPassword(passwordController: passwordController, textLabel: 'Senha', textHint: 'Entre com sua senha',),
           const ContainerUserOptions(),
+          
         ],
       ),
     );
