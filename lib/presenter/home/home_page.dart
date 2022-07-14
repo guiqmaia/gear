@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gear/presenter/product_signup/product_signup_page.dart';
-import 'package:gear/presenter/profile/profile.dart';
 import 'package:gear/presenter/results/results_page.dart';
-import 'package:gear/presenter/shared/widgets/top_bar_app.dart';
 
 import '../cash_register/cash_register_page.dart';
 import '../inventory/inventory_page.dart';
+import '../profile/profile_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

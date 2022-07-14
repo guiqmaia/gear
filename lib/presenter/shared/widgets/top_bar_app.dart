@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../profile/profile.dart';
+import '../../profile/profile_page.dart';
 
 class TopBarApp extends StatelessWidget {
   final String title;
@@ -58,7 +58,7 @@ class TopBarApp extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => const Profile(),
+                    builder: (context) => const ProfilePge(),
                   ),
                 );
               },
