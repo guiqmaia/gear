@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gear/presenter/home/home_page.dart';
+import 'package:gear/presenter/sales/sales_page.dart';
 import 'package:gear/presenter/shared/widgets/top_bar_app.dart';
 
 import 'widgets/adding_new_sales.dart';
@@ -26,7 +27,11 @@ class _CashRegisterPageState extends State<CashRegisterPage> {
           BodyCashRegister(),
         ],
       ),
-      bottomNavigationBar: const AddingNewSales(),
+      bottomNavigationBar: AddingNewSales(
+        title: 'Adicionar venda',
+        pageRoute: const SalesPage(),
+        widthBtn: MediaQuery.of(context).size.width,
+      ),
     );
   }
 }

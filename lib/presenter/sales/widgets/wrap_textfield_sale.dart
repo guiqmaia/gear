@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gear/presenter/sales/widgets/dropdown_input_sales.dart';
 
-import 'input_sale_items.dart';
+import '../../shared/widgets/text_field_app.dart';
 
 class WrapTextFieldSale extends StatefulWidget {
   const WrapTextFieldSale({
@@ -32,27 +32,27 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
   Widget build(BuildContext context) {
     return Wrap(
       children: [
-        InputSaleItems(
+        TextFieldApp(
           labelItem: 'Código do produto',
           iconInput: Icons.code_rounded,
           typeController: widget.codeController,
         ),
-        InputSaleItems(
+        TextFieldApp(
           labelItem: 'Descrição do produto',
           iconInput: Icons.description_rounded,
           typeController: widget.descriptionController,
         ),
-        InputSaleItems(
+        TextFieldApp(
           labelItem: 'Preço do produto',
           iconInput: Icons.price_check_rounded,
           typeController: widget.priceController,
         ),
-        InputSaleItems(
+        TextFieldApp(
           labelItem: 'Desconto',
           iconInput: Icons.price_change_rounded,
           typeController: widget.descountController,
         ),
-        InputSaleItems(
+        TextFieldApp(
           labelItem: 'Quantidade',
           iconInput: Icons.production_quantity_limits_rounded,
           typeController: widget.quantityController,
@@ -63,7 +63,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           endIndent: 15,
           color: Colors.black,
         ),
-        InputSaleItems(
+        TextFieldApp(
           labelItem: 'Total',
           iconInput: Icons.attach_money_rounded,
           typeController: widget.totalController,

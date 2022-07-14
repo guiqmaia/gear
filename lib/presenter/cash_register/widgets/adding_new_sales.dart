@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
+
 import 'package:gear/presenter/sales/sales_page.dart';
 
 class AddingNewSales extends StatelessWidget {
-  const AddingNewSales({Key? key}) : super(key: key);
+  final String title;
+  final dynamic pageRoute;
+  final dynamic widthBtn;
+
+  const AddingNewSales({
+    Key? key,
+    required this.title,
+    required this.pageRoute,
+    required this.widthBtn,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +29,7 @@ class AddingNewSales extends StatelessWidget {
         ),
       ),
       margin: const EdgeInsets.all(15),
-      width: MediaQuery.of(context).size.width,
+      width: widthBtn,
       padding: const EdgeInsets.symmetric(
         vertical: 3,
       ),
@@ -27,13 +37,13 @@ class AddingNewSales extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => const SalesPage(),
+              builder: (context) => pageRoute,
             ),
           );
         },
-        child: const Text(
-          'Adicionar Venda',
-          style: TextStyle(
+        child: Text(
+          title,
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 18,
           ),

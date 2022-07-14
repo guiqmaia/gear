@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class InputSaleItems extends StatelessWidget {
+class TextFieldApp extends StatelessWidget {
   final String labelItem;
   final IconData iconInput;
   final dynamic typeController;
 
-  const InputSaleItems({
+  const TextFieldApp({
     Key? key,
     required this.labelItem,
     required this.iconInput,
