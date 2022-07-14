@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../profile/profile.dart';
+import '../../profile/profile_page.dart';
 import '../../results/results_page.dart';
 import '../home_page.dart';
 
@@ -34,7 +34,7 @@ BottomAppBar BarNavegation(BuildContext context) {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: ((context) => const Profile()),
+                  builder: ((context) => const ProfilePge()),
                 ),
               );
             },

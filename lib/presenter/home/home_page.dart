@@ -4,7 +4,7 @@ import 'package:gear/presenter/results/results_page.dart';
 
 import '../cash_register/cash_register_page.dart';
 import '../inventory/inventory_page.dart';
-import '../profile/profile.dart';
+import '../profile/profile_page.dart';
 import 'widget/barNavegation.dart';
 
 class HomePage extends StatelessWidget {
