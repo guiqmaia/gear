@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/login/widgets/reset_password.dart';
 
 import 'my_checked_box.dart';
 
@@ -32,9 +33,10 @@ class _ContainerUserOptionsState extends State<ContainerUserOptions> {
             ],
           ),
           const SizedBox(width: 1),
-          const Text(
-            'Esqueceu a senha?',
-            style: TextStyle(fontSize: 12),
+          TextButton(
+            onPressed: () {Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const NewPassword()));},
+            child: const Text('Esqueci minha senha'),
           ),
         ],
       ),

@@ -4,12 +4,11 @@ class ContainerTextFieldPassword extends StatelessWidget {
   String textLabel;
   String textHint;
 
-   ContainerTextFieldPassword({
+  ContainerTextFieldPassword({
     Key? key,
     required this.passwordController,
     required this.textLabel,
     required this.textHint,
-
   }) : super(key: key);
 
   final TextEditingController passwordController;
@@ -29,11 +28,10 @@ class ContainerTextFieldPassword extends StatelessWidget {
         decoration: InputDecoration(
           labelText: textLabel,
           hintText: textHint,
-          border: const OutlineInputBorder (
+          border: const OutlineInputBorder(
             borderSide: BorderSide(width: 3, color: Colors.black),
           ),
-          hintStyle:
-              const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+          hintStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
         ),
       ),
     );
