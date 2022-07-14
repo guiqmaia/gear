@@ -1,15 +1,38 @@
 import 'package:flutter/material.dart';
 
+class RecentSalesList extends StatefulWidget {
+  List sales;
+
+  RecentSalesList({
+    Key? key,
+    required this.sales,
+  }) : super(key: key);
+
+  @override
+  State<RecentSalesList> createState() => _RecentSalesListState();
+}
+
+class _RecentSalesListState extends State<RecentSalesList> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [],
+    );
+  }
+}
+
 class SaleRegisterContainer extends StatelessWidget {
   final String price;
   final dynamic quantity;
   final String product;
+  final dynamic productImg;
 
   const SaleRegisterContainer({
     Key? key,
     required this.price,
     required this.quantity,
     required this.product,
+    required this.productImg,
   }) : super(key: key);
 
   @override
@@ -24,8 +47,16 @@ class SaleRegisterContainer extends StatelessWidget {
         vertical: MediaQuery.of(context).size.height * 0.02,
       ),
       decoration: BoxDecoration(
-        color: Colors.blue.withOpacity(0.2),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            offset: const Offset(8, 8),
+            blurRadius: 10,
+            spreadRadius: 0,
+            color: Colors.grey.withOpacity(0.3),
+          ),
+        ],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -35,7 +66,7 @@ class SaleRegisterContainer extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Image.asset(
-                  'assets/images/sneakers.png',
+                  productImg,
                   height: 60,
                 ),
               ),
@@ -56,7 +87,7 @@ class SaleRegisterContainer extends StatelessWidget {
                     'Débito',
                     style: TextStyle(
                       color: Colors.grey.shade700,
-                      fontSize: 13,
+                      fontSize: 14,
                     ),
                   ),
                 ],

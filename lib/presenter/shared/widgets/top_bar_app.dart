@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../profile/profile.dart';
+import '../../profile/profile_page.dart';
 
 class TopBarApp extends StatelessWidget {
   final String title;
@@ -32,11 +32,7 @@ class TopBarApp extends StatelessWidget {
         children: [
           IconButton(
             onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => pageRoute,
-                ),
-              );
+              Navigator.of(context).pop(context);
             },
             icon: const Icon(
               Icons.arrow_back_rounded,
@@ -58,7 +54,7 @@ class TopBarApp extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => const Profile(),
+                    builder: (context) => const ProfilePge(),
                   ),
                 );
               },

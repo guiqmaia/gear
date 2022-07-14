@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:gear/presenter/home/home_page.dart';
-import 'package:gear/presenter/shared/widgets/top_bar_app.dart';
 
 import '../product_signup/product_signup_page.dart';
+import '../shared/widgets/btn_standard_app.dart';
+import 'widgets/body_inventory_page.dart';
 
 class InventoryPage extends StatelessWidget {
   const InventoryPage({Key? key}) : super(key: key);
@@ -12,76 +12,15 @@ class InventoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const TopBarApp(
-              title: 'Estoque',
-              pageRoute: HomePage(),
-              isProfile: true,
-            ),
-            Container(
-              margin: const EdgeInsets.symmetric(
-                horizontal: 15,
-                vertical: 10,
-              ),
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-              ),
-              decoration: BoxDecoration(
-                color: Colors.blue.withOpacity(0.3),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: const TextField(
-                keyboardType: TextInputType.name,
-                decoration: InputDecoration(
-                  labelText: 'Pesquisar',
-                  prefixIcon: Icon(
-                    Icons.search_rounded,
-                    color: Colors.black,
-                  ),
-                  border: InputBorder.none,
-                ),
-              ),
-            ),
-          ],
-        ),
+      body: const SingleChildScrollView(
+        child: BodyInventoryPage(),
       ),
-      bottomNavigationBar: Container(
-        margin: const EdgeInsets.all(15),
-        padding: const EdgeInsets.symmetric(
-          horizontal: 15,
-          vertical: 3,
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          gradient: LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-            colors: [
-              Colors.purple.shade300,
-              Colors.blue.shade700,
-            ],
-          ),
-        ),
-        child: TextButton(
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const ProductSignupPage(),
-              ),
-            );
-          },
-          child: const Text(
-            'Novo Produto',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 19,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ),
+      bottomNavigationBar: BtnStandardApp(
+        title: 'Novo produto',
+        pageRoute: const ProductSignupPage(),
+        widthBtn: MediaQuery.of(context).size.width,
       ),
     );
   }
 }
+
