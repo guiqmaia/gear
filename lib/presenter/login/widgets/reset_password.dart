@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/login/login_page.dart';
 
-class NewPassword extends StatelessWidget {
-  const NewPassword({Key? key}) : super(key: key);
+class ResetPassword extends StatelessWidget {
+  const ResetPassword({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +41,7 @@ class NewPassword extends StatelessWidget {
               textAlign: TextAlign.center,
               ),
             ),
+            
           ],
         ),
       ),

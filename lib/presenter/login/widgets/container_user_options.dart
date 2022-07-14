@@ -35,7 +35,7 @@ class _ContainerUserOptionsState extends State<ContainerUserOptions> {
           const SizedBox(width: 1),
           TextButton(
             onPressed: () {Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const NewPassword()));},
+                MaterialPageRoute(builder: (context) => const ResetPassword()));},
             child: const Text('Esqueci minha senha'),
           ),
         ],
