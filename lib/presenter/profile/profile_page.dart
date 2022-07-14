@@ -12,9 +12,8 @@ class ProfilePge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blue.shade600,
-      body: const BodyProfilePage(),
+    return const Scaffold(
+      body: BodyProfilePage(),
     );
   }
 }
@@ -47,7 +46,7 @@ class BodyProfilePage extends StatelessWidget {
           const Text(
             "Roberto Silva dos Santos",
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
               fontSize: 25,
             ),
           ),
@@ -55,7 +54,10 @@ class BodyProfilePage extends StatelessWidget {
           Container(
             width: 390,
             height: 500,
-            color: Colors.white60,
+            decoration: BoxDecoration(
+              color: Colors.grey.shade200,
+              borderRadius: BorderRadius.circular(15),
+            ),
             child: Column(
               children: [
                 Column(
@@ -70,7 +72,7 @@ class BodyProfilePage extends StatelessWidget {
                         "Empresa:",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 15,
+                          fontSize: 20,
                         ),
                       ),
                     ),
@@ -78,11 +80,14 @@ class BodyProfilePage extends StatelessWidget {
                       margin: const EdgeInsets.symmetric(horizontal: 12),
                       height: 50,
                       width: double.infinity,
-                      decoration: const BoxDecoration(color: Colors.white30),
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade300,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       child: const Center(
                         child: Text(
                           "Loja dos Lojistas",
-                          style: TextStyle(                          
+                          style: TextStyle(
                             fontSize: 25,
                           ),
                         ),
