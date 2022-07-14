@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/home/home_page.dart';
-import 'package:gear/presenter/shared/widgets/btn_standard_app.dart';
+import '../home/home_page.dart';
+import '../shared/widgets/btn_standard_app.dart';
 
 import 'Widgets/product_signup_body.dart';
 
