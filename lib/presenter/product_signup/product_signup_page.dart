@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/home/home_page.dart';
-import 'package:gear/presenter/shared/widgets/top_bar_app.dart';
+import '../home/home_page.dart';
+import '../shared/widgets/top_bar_app.dart';
 
 import 'Widgets/gradient_form_button.dart';
 import 'Widgets/text_form_signup.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/product_signup/product_signup_page.dart';
-import 'package:gear/presenter/results/results_page.dart';
+import '../product_signup/product_signup_page.dart';
+import '../results/results_page.dart';
 
 import '../cash_register/cash_register_page.dart';
 import '../inventory/inventory_page.dart';

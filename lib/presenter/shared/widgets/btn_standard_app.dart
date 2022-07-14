@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:gear/presenter/sales/sales_page.dart';
+import '../../sales/sales_page.dart';
 
 class BtnStandardApp extends StatelessWidget {
   final String title;
