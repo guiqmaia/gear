@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -28,6 +30,22 @@ class ProfilePge extends StatelessWidget {
               borderRadius: BorderRadius.circular(100),
             ),
           ),
+          const SizedBox(
+            height: 5,
+          ),
+          const Text(
+            "Roberto Silva dos Santos",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 25,
+            ),
+          ),
+          const SizedBox(height: 10),
+          Container(
+            width: 390,
+            height: 100,
+            color: Colors.white60,
+          )
         ],
       ),
     );
