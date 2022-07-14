@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
-import 'dropdown_input_sales.dart';
 
 import '../../shared/widgets/text_field_app.dart';
-import '../../shared/widgets/text_field_app.dart';
+import 'dropdown_input_sales.dart';
 
 class WrapTextFieldSale extends StatefulWidget {
   const WrapTextFieldSale({
     Key? key,
+    required this.categoryController,
     required this.codeController,
-    required this.descriptionController,
-    required this.descountController,
+    required this.productController,
     required this.priceController,
+    required this.descountController,
     required this.quantityController,
     required this.payController,
     required this.totalController,
   }) : super(key: key);
 
+  final TextEditingController categoryController;
   final TextEditingController codeController;
-  final TextEditingController descriptionController;
-  final TextEditingController descountController;
+  final TextEditingController productController;
   final TextEditingController priceController;
+  final TextEditingController descountController;
   final TextEditingController quantityController;
   final TextEditingController payController;
   final TextEditingController totalController;
@@ -33,15 +34,28 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
   Widget build(BuildContext context) {
     return Wrap(
       children: [
+        const DropDownInputSale(
+          dropdownList: [
+            DropdownMenuItem(value: 'Tênis', child: Text('Tênis')),
+            DropdownMenuItem(value: 'Camiseta', child: Text('Camiseta')),
+            DropdownMenuItem(value: 'Casaco', child: Text('Casaco')),
+            DropdownMenuItem(value: 'Calça', child: Text('Calça')),
+          ],
+          labelDropdown: 'Categoria',
+          iconDropdown: Icons.sell_rounded,
+        ),
+        const DropDownInputSale(
+          dropdownList: [
+            DropdownMenuItem(value: 'Produto', child: Text('Produto')),
+            DropdownMenuItem(value: 'Produto2', child: Text('Produto2')),
+          ],
+          labelDropdown: 'Produto',
+          iconDropdown: Icons.description_rounded,
+        ),
         TextFieldApp(
           labelItem: 'Código do produto',
           iconInput: Icons.code_rounded,
           typeController: widget.codeController,
-        ),
-        TextFieldApp(
-          labelItem: 'Descrição do produto',
-          iconInput: Icons.description_rounded,
-          typeController: widget.descriptionController,
         ),
         TextFieldApp(
           labelItem: 'Preço do produto',
@@ -58,7 +72,16 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           iconInput: Icons.production_quantity_limits_rounded,
           typeController: widget.quantityController,
         ),
-        const DropDownInputSale(),
+        const DropDownInputSale(
+          dropdownList: [
+            DropdownMenuItem(value: 'Crédito', child: Text('Crédito')),
+            DropdownMenuItem(value: 'Débito', child: Text('Débito')),
+            DropdownMenuItem(value: 'Dinheiro', child: Text('Dinheiro')),
+            DropdownMenuItem(value: 'PIX', child: Text('PIX')),
+          ],
+          labelDropdown: 'Modo de pagamento',
+          iconDropdown: Icons.credit_card_rounded,
+        ),
         const Divider(
           indent: 15,
           endIndent: 15,

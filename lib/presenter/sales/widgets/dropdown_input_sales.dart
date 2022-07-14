@@ -3,21 +3,22 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class DropDownInputSale extends StatefulWidget {
-  const DropDownInputSale({Key? key}) : super(key: key);
+  final List<DropdownMenuItem<String>> dropdownList;
+  final String labelDropdown;
+  final IconData iconDropdown;
+
+  const DropDownInputSale({
+    Key? key,
+    required this.dropdownList,
+    required this.labelDropdown,
+    required this.iconDropdown,
+  }) : super(key: key);
 
   @override
   State<DropDownInputSale> createState() => _DropDownInputSaleState();
 }
 
 class _DropDownInputSaleState extends State<DropDownInputSale> {
-  
-  List<DropdownMenuItem<String>> dropdownItems = const [
-    DropdownMenuItem(value: 'Crédito', child: Text('Crédito')),
-    DropdownMenuItem(value: 'Débito', child: Text('Débito')),
-    DropdownMenuItem(value: 'Dinheiro', child: Text('Dinheiro')),
-    DropdownMenuItem(value: 'PIX', child: Text('PIX')),
-  ];
-
   String selectedValue = 'Modo de pagamento';
 
   @override
@@ -32,9 +33,9 @@ class _DropDownInputSaleState extends State<DropDownInputSale> {
       ),
       child: DropdownButtonFormField(
         decoration: InputDecoration(
-          labelText: 'Modo de pagamento',
-          prefixIcon: const Icon(
-            Icons.credit_score_rounded,
+          labelText: widget.labelDropdown,
+          prefixIcon: Icon(
+            widget.iconDropdown,
             color: Colors.black,
           ),
           border: OutlineInputBorder(
@@ -50,7 +51,7 @@ class _DropDownInputSaleState extends State<DropDownInputSale> {
             selectedValue = newValue!;
           });
         },
-        items: dropdownItems,
+        items: widget.dropdownList,
       ),
     );
   }

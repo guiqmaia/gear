@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import '../home/home_page.dart';
-import '../sales/sales_page.dart';
-import '../shared/widgets/top_bar_app.dart';
 
+import '../sales/sales_page.dart';
 import '../shared/widgets/btn_standard_app.dart';
 import 'widgets/body_cash_register.dart';
 
@@ -17,16 +15,7 @@ class _CashRegisterPageState extends State<CashRegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: const [
-          TopBarApp(
-            title: 'Caixa',
-            pageRoute: HomePage(),
-            isProfile: true,
-          ),
-          BodyCashRegister(),
-        ],
-      ),
+      body: const BodyCashRegister(),
       bottomNavigationBar: BtnStandardApp(
         title: 'Adicionar venda',
         pageRoute: const SalesPage(),

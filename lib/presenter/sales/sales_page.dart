@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-import '../cash_register/cash_register_page.dart';
-import '../shared/widgets/top_bar_app.dart';
+import 'widgets/body_sales_page.dart';
 import 'widgets/bottom_btn_sales.dart';
-import 'widgets/wrap_textfield_sale.dart';
 
 class SalesPage extends StatefulWidget {
   const SalesPage({Key? key}) : super(key: key);
@@ -15,8 +13,9 @@ class SalesPage extends StatefulWidget {
 }
 
 class _SalesPageState extends State<SalesPage> {
+  final categoryController = TextEditingController();
+  final productController = TextEditingController();
   final codeController = TextEditingController();
-  final descriptionController = TextEditingController();
   final priceController = TextEditingController();
   final descountController = TextEditingController();
   final quantityController = TextEditingController();
@@ -27,29 +26,21 @@ class _SalesPageState extends State<SalesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            const TopBarApp(
-              title: 'Adicionar venda',
-              pageRoute: CashRegisterPage(),
-              isProfile: true,
-            ),
-            WrapTextFieldSale(
-              codeController: codeController,
-              descriptionController: descriptionController,
-              priceController: priceController,
-              descountController: descountController,
-              quantityController: quantityController,
-              payController: payController,
-              totalController: totalController,
-            ),
-          ],
+        child: BodySalesPage(
+          categoryController: categoryController,
+          productController: productController,
+          codeController: codeController,
+          priceController: priceController,
+          descountController: descountController,
+          quantityController: quantityController,
+          payController: payController,
+          totalController: totalController,
         ),
       ),
       bottomNavigationBar: BottomBtnSales(
+        categoryController: categoryController,
+        productController: productController,
         codeController: codeController,
-        descriptionController: descriptionController,
         priceController: priceController,
         descountController: descountController,
         quantityController: quantityController,

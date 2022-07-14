@@ -34,17 +34,15 @@ class BodyProfilePage extends StatelessWidget {
             pageRoute: HomePage(),
             isProfile: false,
           ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 30),
-            height: 200,
-            width: 200,
-            decoration: BoxDecoration(
-              color: Colors.black,
-              borderRadius: BorderRadius.circular(100),
-            ),
+          CircleAvatar(
+            radius: 85,
+            backgroundImage: Image.asset(
+              "assets/images/empresario.jpeg",
+              fit: BoxFit.cover,
+            ).image,
           ),
           const SizedBox(
-            height: 5,
+            height: 50,
           ),
           const Text(
             "Roberto Silva dos Santos",
@@ -56,9 +54,46 @@ class BodyProfilePage extends StatelessWidget {
           const SizedBox(height: 10),
           Container(
             width: 390,
-            height: 100,
+            height: 500,
             color: Colors.white60,
+            child: Column(
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 15,
+                        vertical: 10,
+                      ),
+                      alignment: Alignment.centerLeft,
+                      child: const Text(
+                        "Empresa:",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 12),
+                      height: 50,
+                      width: double.infinity,
+                      decoration: const BoxDecoration(color: Colors.white30),
+                      child: const Center(
+                        child: Text(
+                          "Loja dos Lojistas",
+                          style: TextStyle(                          
+                            fontSize: 25,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
+          const SizedBox(height: 30)
         ],
       ),
     );
