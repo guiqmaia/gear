@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../product/product_page.dart';
+import '../../category/category_page.dart';
 
 class ContainerCategoryInventory extends StatelessWidget {
   final String categoryTitle;
@@ -19,7 +19,10 @@ class ContainerCategoryInventory extends StatelessWidget {
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => const ProductPage(),
+            builder: (context) => CategoryPage(
+              categoryTitle: categoryTitle,
+              categoryImg: categoryImg,
+            ),
           ),
         );
       },

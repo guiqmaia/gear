@@ -31,6 +31,7 @@ class BottomBtnSales extends StatelessWidget {
       price: totalController.text,
       quantity: quantityController.value,
       product: descriptionController.text,
+      productImg: null,
     );
   }
 
