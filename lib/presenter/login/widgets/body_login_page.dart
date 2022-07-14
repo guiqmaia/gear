@@ -26,6 +26,15 @@ class BodyLoginPage extends StatelessWidget {
           ContainerTextFieldLogin(loginController: loginController, textLabel: 'Email', textHint: 'Entre com seu email',),
           ContainerTextFieldPassword(passwordController: passwordController, textLabel: 'Senha', textHint: 'Entre com sua senha',),
           const ContainerUserOptions(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const CircleAvatar(
+                backgroundColor: Colors.red,
+                radius: 25,
+              ),
+            ],
+          ),
         ],
       ),
     );
