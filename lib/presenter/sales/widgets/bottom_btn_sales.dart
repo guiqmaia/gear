@@ -24,13 +24,6 @@ class BottomBtnSales extends StatelessWidget {
   final TextEditingController payController;
   final TextEditingController totalController;
 
-  void createSale() {
-    SaleRegisterContainer(
-      price: totalController.text,
-      quantity: quantityController.value,
-      product: descriptionController.text,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {

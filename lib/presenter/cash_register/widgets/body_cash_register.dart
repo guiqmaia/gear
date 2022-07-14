@@ -11,14 +11,17 @@ class BodyCashRegister extends StatelessWidget {
     return Column(
       children: [
         const RecentSalesContainer(),
-        Wrap(
-          children: const [
-            SaleRegisterContainer(
-              price: 'R\$ 150,00',
-              quantity: 1,
-              product: 'Tênis',
-            ),
-          ],
+        SaleRegisterContainer(
+          price: 'R\$ 150,00',
+          quantity: 1,
+          product: 'Tênis',
+          date: DateTime.now(),
+        ),
+        SaleRegisterContainer(
+          price: 'R\$ 250,00',
+          quantity: 2,
+          product: 'Tênis',
+          date: DateTime.now(),
         ),
       ],
     );
