@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import '../../cash_register/cash_register_page.dart';
 
-import 'package:gear/presenter/sales/widgets/wrap_textfield_sale.dart';
+import 'wrap_textfield_sale.dart';
+import '../../shared/widgets/btn_standard_app.dart';
 
 import '../../cash_register/widgets/sale_register_container.dart';
 
@@ -30,35 +32,10 @@ class BottomBtnSales extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Container(
-          margin: const EdgeInsets.symmetric(
-            horizontal: 15,
-            vertical: 20,
-          ),
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20,
-          ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              colors: [
-                Colors.purple.shade300,
-                Colors.blue.shade700,
-              ],
-            ),
-          ),
-          child: TextButton(
-            onPressed: () {},
-            child: const Text(
-              'Finalizar venda',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-              ),
-            ),
-          ),
+        BtnStandardApp(
+          title: 'Finalizar venda',
+          pageRoute: const CashRegisterPage(),
+          widthBtn: MediaQuery.of(context).size.width * 0.45,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -67,13 +44,13 @@ class BottomBtnSales extends StatelessWidget {
               padding: const EdgeInsets.only(right: 15),
               child: CircleAvatar(
                 radius: 25,
-                backgroundColor: Colors.blue,
+                backgroundColor: Colors.blue.shade700,
                 child: IconButton(
                   tooltip: 'Adicione',
                   onPressed: () {},
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.add,
-                    color: Colors.white.withOpacity(0.8),
+                    color: Colors.white,
                     size: 30,
                   ),
                 ),
@@ -94,9 +71,9 @@ class BottomBtnSales extends StatelessWidget {
                     quantityController.clear();
                     totalController.clear();
                   },
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.clear_all_rounded,
-                    color: Colors.blue,
+                    color: Colors.blue.shade700,
                     size: 30,
                   ),
                 ),

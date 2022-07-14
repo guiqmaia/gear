@@ -24,26 +24,22 @@ class SignupPageBody extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             child: ListView(
               physics: const BouncingScrollPhysics(),
-              children: [
-                const TextFieldApp(
+              children: const [
+                TextFieldApp(
                   labelItem: 'Nome',
                   iconInput: Icons.arrow_forward_ios,
                   typeController: null,
                 ),
-                const TextFieldApp(
+                TextFieldApp(
                   labelItem: 'Preço',
                   iconInput: Icons.arrow_forward_ios,
                   typeController: null,
                 ),
-                const TextFieldApp(
+                TextFieldApp(
                   labelItem: 'Categoria',
                   iconInput: Icons.arrow_forward_ios,
                   typeController: null,
                 ),
-                BtnStandardApp(
-                    title: 'Concluir',
-                    pageRoute: const HomePage(),
-                    widthBtn: MediaQuery.of(context).size.width * 0.8)
               ],
             ),
           ),

@@ -32,11 +32,7 @@ class TopBarApp extends StatelessWidget {
         children: [
           IconButton(
             onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => pageRoute,
-                ),
-              );
+              Navigator.of(context).pop(context);
             },
             icon: const Icon(
               Icons.arrow_back_rounded,
