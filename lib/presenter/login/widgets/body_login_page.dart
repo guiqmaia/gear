@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/cash_register/widgets/adding_new_sales.dart';
+import 'package:gear/presenter/home/home_page.dart';
 
 import 'container_text.dart';
 import 'container_text_field_login.dart';
@@ -28,13 +30,23 @@ class BodyLoginPage extends StatelessWidget {
           const ContainerUserOptions(),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const CircleAvatar(
+            children: const [
+              CircleAvatar(
                 backgroundColor: Colors.red,
+                radius: 25,
+              ),
+              CircleAvatar(
+                backgroundColor: Colors.blue,
                 radius: 25,
               ),
             ],
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AddingNewSales(title: 'Entrar', pageRoute: HomePage(), widthBtn: MediaQuery.of(context).size.width * 0.5),
+            ],
+          )
         ],
       ),
     );
