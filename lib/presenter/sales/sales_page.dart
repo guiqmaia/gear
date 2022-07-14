@@ -15,8 +15,9 @@ class SalesPage extends StatefulWidget {
 }
 
 class _SalesPageState extends State<SalesPage> {
+  final categoryController = TextEditingController();
+  final productController = TextEditingController();
   final codeController = TextEditingController();
-  final descriptionController = TextEditingController();
   final priceController = TextEditingController();
   final descountController = TextEditingController();
   final quantityController = TextEditingController();
@@ -36,8 +37,9 @@ class _SalesPageState extends State<SalesPage> {
               isProfile: true,
             ),
             WrapTextFieldSale(
+              categoryController: categoryController,
+              productController: productController,
               codeController: codeController,
-              descriptionController: descriptionController,
               priceController: priceController,
               descountController: descountController,
               quantityController: quantityController,
@@ -48,8 +50,9 @@ class _SalesPageState extends State<SalesPage> {
         ),
       ),
       bottomNavigationBar: BottomBtnSales(
+        categoryController: categoryController,
+        productController: productController,
         codeController: codeController,
-        descriptionController: descriptionController,
         priceController: priceController,
         descountController: descountController,
         quantityController: quantityController,

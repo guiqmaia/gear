@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
+
 import '../../cash_register/cash_register_page.dart';
-
-import 'wrap_textfield_sale.dart';
 import '../../shared/widgets/btn_standard_app.dart';
-
-import '../../cash_register/widgets/sale_register_container.dart';
 
 class BottomBtnSales extends StatelessWidget {
   const BottomBtnSales({
     Key? key,
+    required this.categoryController,
     required this.codeController,
-    required this.descriptionController,
+    required this.productController,
     required this.priceController,
     required this.descountController,
     required this.quantityController,
@@ -18,8 +16,9 @@ class BottomBtnSales extends StatelessWidget {
     required this.totalController,
   }) : super(key: key);
 
+  final TextEditingController categoryController;
   final TextEditingController codeController;
-  final TextEditingController descriptionController;
+  final TextEditingController productController;
   final TextEditingController priceController;
   final TextEditingController descountController;
   final TextEditingController quantityController;
@@ -63,8 +62,9 @@ class BottomBtnSales extends StatelessWidget {
                 child: IconButton(
                   tooltip: 'Limpar',
                   onPressed: () {
+                    categoryController.clear();
                     codeController.clear();
-                    descriptionController.clear();
+                    productController.clear();
                     priceController.clear();
                     descountController.clear();
                     quantityController.clear();
