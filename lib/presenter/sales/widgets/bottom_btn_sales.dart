@@ -42,13 +42,13 @@ class BottomBtnSales extends StatelessWidget {
               padding: const EdgeInsets.only(right: 15),
               child: CircleAvatar(
                 radius: 25,
-                backgroundColor: Colors.blue.shade700,
+                backgroundColor: Colors.black,
                 child: IconButton(
                   tooltip: 'Adicione',
                   onPressed: () {},
                   icon: const Icon(
                     Icons.add,
-                    color: Colors.white,
+                    color: Color.fromRGBO(202, 254, 72, 1),
                     size: 30,
                   ),
                 ),
@@ -58,7 +58,7 @@ class BottomBtnSales extends StatelessWidget {
               padding: const EdgeInsets.only(right: 15),
               child: CircleAvatar(
                 radius: 25,
-                backgroundColor: Colors.white,
+                backgroundColor: Color.fromRGBO(202, 254, 72, 1),
                 child: IconButton(
                   tooltip: 'Limpar',
                   onPressed: () {
@@ -72,7 +72,7 @@ class BottomBtnSales extends StatelessWidget {
                   },
                   icon: Icon(
                     Icons.clear_all_rounded,
-                    color: Colors.blue.shade700,
+                    color: Colors.black,
                     size: 30,
                   ),
                 ),
