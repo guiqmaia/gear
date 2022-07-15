@@ -50,17 +50,17 @@ class _SignupPageBodyState extends State<SignupPageBody> {
             child: ListView(
               physics: const BouncingScrollPhysics(),
               children: [
-                const TextFieldApp(
+                TextFieldApp(
                   labelItem: 'Nome',
                   iconInput: Icons.format_color_text_sharp,
                   typeController: null,
                 ),
-                const TextFieldApp(
+                TextFieldApp(
                   labelItem: 'Preço',
                   iconInput: Icons.attach_money,
                   typeController: null,
                 ),
-                const TextFieldApp(
+                TextFieldApp(
                   labelItem: 'Categoria',
                   iconInput: Icons.tag,
                   typeController: null,

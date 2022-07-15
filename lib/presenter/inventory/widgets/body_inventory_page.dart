@@ -11,8 +11,8 @@ class BodyInventoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: const [
-        TopBarApp(
+      children: [
+        const TopBarApp(
           title: 'Estoque',
           pageRoute: HomePage(),
           isProfile: true,
@@ -21,12 +21,10 @@ class BodyInventoryPage extends StatelessWidget {
           labelItem: 'Pesquisar',
           iconInput: Icons.search,
           typeController: null,
-          isObscured: false,
         ),
-        SizedBox(height: 10),
-        WrapContainerCategory(),
+        const SizedBox(height: 10),
+        const WrapContainerCategory(),
       ],
     );
   }
 }
-
