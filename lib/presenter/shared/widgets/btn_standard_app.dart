@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../sales/sales_page.dart';
-
 class BtnStandardApp extends StatelessWidget {
   final String title;
   final dynamic pageRoute;

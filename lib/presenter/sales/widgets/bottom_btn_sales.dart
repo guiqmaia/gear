@@ -58,7 +58,7 @@ class BottomBtnSales extends StatelessWidget {
               padding: const EdgeInsets.only(right: 15),
               child: CircleAvatar(
                 radius: 25,
-                backgroundColor: Color.fromRGBO(202, 254, 72, 1),
+                backgroundColor: const Color.fromRGBO(202, 254, 72, 1),
                 child: IconButton(
                   tooltip: 'Limpar',
                   onPressed: () {
@@ -70,7 +70,7 @@ class BottomBtnSales extends StatelessWidget {
                     quantityController.clear();
                     totalController.clear();
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.clear_all_rounded,
                     color: Colors.black,
                     size: 30,

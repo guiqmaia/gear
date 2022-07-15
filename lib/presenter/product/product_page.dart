@@ -1,8 +1,6 @@
-import 'dart:typed_data';
+
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 import '../../core/app_assets.dart';
 import '../../infra/models/product_model.dart';
@@ -11,6 +9,7 @@ import '../shared/widgets/text_field_app.dart';
 import '../shared/widgets/top_bar_app.dart';
 import 'widgets/container_product_category.dart';
 
+// ignore: must_be_immutable
 class ProductPage extends StatelessWidget {
   final String categoryTitle;
   final dynamic categoryImg;

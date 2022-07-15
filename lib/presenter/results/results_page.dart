@@ -1,4 +1,4 @@
-import 'dart:math';
+
 
 import 'package:flutter/material.dart';
 
@@ -212,10 +212,10 @@ class BarChartSample1State extends State<BarChartSample1> {
       barRods: [
         BarChartRodData(
           toY: isTouched ? y + 1 : y,
-          color: isTouched ? Color.fromRGBO(202, 254, 72, 1) : barColor,
+          color: isTouched ? const Color.fromRGBO(202, 254, 72, 1) : barColor,
           width: width,
           borderSide: isTouched
-              ? BorderSide(color: Color.fromRGBO(202, 254, 72, 0.85), width: 1)
+              ? const BorderSide(color: Color.fromRGBO(202, 254, 72, 0.85), width: 1)
               : const BorderSide(color: Colors.white, width: 0),
           backDrawRodData: BackgroundBarChartRodData(
             show: true,

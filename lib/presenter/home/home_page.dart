@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../results/results_page.dart';
 
 import '../profile/profile_page.dart';
+import '../results/results_page.dart';
 import 'widgets/body_home_page.dart';
 
 class HomePage extends StatefulWidget {

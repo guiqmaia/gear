@@ -20,9 +20,9 @@ class TopBarApp extends StatelessWidget {
       width: double.maxFinite,
       margin: const EdgeInsets.only(bottom: 5),
       padding: const EdgeInsets.only(bottom: 10, top: 28, right: 40, left: 20),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.black,
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(30),
           bottomRight: Radius.circular(30),
         ),

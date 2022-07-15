@@ -15,7 +15,7 @@ class _CashRegisterPageState extends State<CashRegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(240, 239, 244, 1),
+      backgroundColor: const Color.fromRGBO(240, 239, 244, 1),
       body: const BodyCashRegister(),
       bottomNavigationBar: BtnStandardApp(
         title: 'Adicionar venda',

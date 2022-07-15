@@ -3,9 +3,10 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
+
 import '../../home/home_page.dart';
 import '../../shared/widgets/text_field_app.dart';
-import 'package:image_picker/image_picker.dart';
 import '../../shared/widgets/top_bar_app.dart';
 import 'default_image_container.dart';
 
