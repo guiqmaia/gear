@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -23,7 +25,7 @@ class ProductPage extends StatelessWidget {
     'Refrigerante': [
       ProductModel(
         productTitle: 'Coca Cola',
-        productImg: imgCocaCola,
+        productImg: Uint8List(1),
         productCode: 1001,
         productQuantity: 10,
         productPrice: 4.5,
