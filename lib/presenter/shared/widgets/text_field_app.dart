@@ -11,7 +11,7 @@ class TextFieldApp extends StatelessWidget {
     required this.labelItem,
     required this.iconInput,
     required this.typeController,
-    this.isObscured,
+    this.isObscured = false,
   }) : super(key: key);
 
   @override
