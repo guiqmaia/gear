@@ -19,26 +19,29 @@ class BodyLoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const ContainerText(),
-          TextFieldApp(
-            labelItem: 'Email',
-            iconInput: Icons.email,
-            typeController: loginController,
-            isObscured: false,
-          ),
-          TextFieldApp(
-            labelItem: 'Senha',
-            iconInput: Icons.key,
-            typeController: passwordController,
-            isObscured: true,
-          ),
-          const ContainerUserOptions(),
-          const ColumnUserLoginWith(),
-        ],
+      child: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ContainerText(),
+            TextFieldApp(
+              labelItem: 'Email',
+              iconInput: Icons.email,
+              typeController: loginController,
+              isObscured: false,
+            ),
+            TextFieldApp(
+              labelItem: 'Senha',
+              iconInput: Icons.key,
+              typeController: passwordController,
+              isObscured: true,
+            ),
+            const ContainerUserOptions(),
+            const ColumnUserLoginWith(),
+          ],
+        ),
       ),
     );
   }
