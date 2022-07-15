@@ -25,6 +25,7 @@ class _SignupPageBodyState extends State<SignupPageBody> {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image == null) return;
       final imageTemp = File(image.path);
+      print(image);
       setState(() => this.image = imageTemp);
     } on PlatformException catch (e) {
       print('Failed to pick image: $e');
@@ -50,19 +51,16 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                   labelItem: 'Nome',
                   iconInput: Icons.format_color_text_sharp,
                   typeController: null,
-                  isObscured: false,
                 ),
                 const TextFieldApp(
                   labelItem: 'Preço',
                   iconInput: Icons.attach_money,
                   typeController: null,
-                  isObscured: false,
                 ),
                 const TextFieldApp(
                   labelItem: 'Categoria',
                   iconInput: Icons.tag,
                   typeController: null,
-                  isObscured: false,
                 ),
                 Container(
                   decoration: BoxDecoration(
