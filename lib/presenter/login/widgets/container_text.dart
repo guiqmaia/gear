@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/shared/widgets/big_text_app.dart';
+import '../../shared/widgets/big_text_app.dart';
 
 class ContainerText extends StatelessWidget {
   ContainerText({

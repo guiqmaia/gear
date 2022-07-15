@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gear/core/app_assets.dart';
 
+import '../../../core/app_assets.dart';
 import '../../home/home_page.dart';
 import '../../shared/widgets/top_bar_app.dart';
 import 'recent_sales_container.dart';

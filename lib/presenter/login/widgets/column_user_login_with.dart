@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/signup/signup.dart';
+import '../../signup/signup.dart';
 
 import '../../home/home_page.dart';
 import '../../shared/widgets/btn_standard_app.dart';

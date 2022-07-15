@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/results/results_page.dart';
+import '../results/results_page.dart';
 
 import '../profile/profile_page.dart';
 import 'widgets/body_home_page.dart';

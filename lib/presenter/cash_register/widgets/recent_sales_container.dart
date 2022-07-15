@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gear/core/app_assets.dart';
+import '../../../core/app_assets.dart';
 
 class RecentSalesContainer extends StatelessWidget {
   const RecentSalesContainer({Key? key}) : super(key: key);

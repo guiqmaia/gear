@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/home/home_page.dart';
+import '../../home/home_page.dart';
 
 import '../../login/login_page.dart';
 import 'info_profile.dart';
