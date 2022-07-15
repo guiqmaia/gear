@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gear/core/app_assets.dart';
 
-import '../../login/widgets/body_reset_password.dart';
+import 'body_reset_password.dart';
 
 
 
@@ -17,8 +18,10 @@ class _ResetPasswordState extends State<ResetPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundGrey,
       appBar: AppBar(
         centerTitle: true,
+        backgroundColor: Colors.black,
         leading: GestureDetector(
           onTap: () => Navigator.pop(context, false),
           child: const Icon(

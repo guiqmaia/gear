@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/core/app_assets.dart';
 import '../home/home_page.dart';
 
 import 'widgets/body_login_page.dart';
@@ -17,9 +18,11 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundGrey,
       appBar: AppBar(
         title: const Text('Gear'),
         centerTitle: true,
+        backgroundColor: Colors.black,
         leading: GestureDetector(
           onTap: () {
             Navigator.of(context).push(
