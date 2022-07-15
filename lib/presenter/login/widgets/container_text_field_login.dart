@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 
-class ContainerTextFieldLogin extends StatefulWidget {
-  String textLabel;
-  String textHint;
+class ContainerTextField extends StatefulWidget {
+  final String textLabel;
+  final String textHint;
+  final dynamic controller;
 
-  ContainerTextFieldLogin({
+  ContainerTextField({
     Key? key,
     required this.textLabel,
     required this.textHint,
-    required this.loginController,
+    required this.controller,
   }) : super(key: key);
 
-  final TextEditingController loginController;
-
   @override
-  State<ContainerTextFieldLogin> createState() => _ContainerTextFieldLoginState();
+  State<ContainerTextField> createState() => _ContainerTextFieldState();
 }
 
-class _ContainerTextFieldLoginState extends State<ContainerTextFieldLogin> {
+class _ContainerTextFieldState extends State<ContainerTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,15 +27,14 @@ class _ContainerTextFieldLoginState extends State<ContainerTextFieldLogin> {
       ),
       child: TextField(
         textAlign: TextAlign.start,
-        controller: widget.loginController,
+        controller: widget.controller,
         decoration: InputDecoration(
           labelText: widget.textLabel,
           hintText: widget.textHint,
-          border: const OutlineInputBorder (
+          border: const OutlineInputBorder(
             borderSide: BorderSide(width: 3, color: Colors.black),
           ),
-          hintStyle:
-              const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+          hintStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
         ),
       ),
     );
