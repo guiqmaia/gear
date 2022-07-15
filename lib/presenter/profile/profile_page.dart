@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -33,67 +34,110 @@ class BodyProfilePage extends StatelessWidget {
             pageRoute: HomePage(),
             isProfile: false,
           ),
-          CircleAvatar(
-            radius: 85,
-            backgroundImage: Image.asset(
-              "assets/images/empresario.jpeg",
-              fit: BoxFit.cover,
-            ).image,
-          ),
-          const SizedBox(
-            height: 50,
-          ),
-          const Text(
-            "Roberto Silva dos Santos",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 25,
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 15),
+            child: Column(
+              children: [
+                CircleAvatar(
+                  radius: 60,
+                  backgroundImage: Image.asset(
+                    "assets/images/empresario.jpeg",
+                    fit: BoxFit.cover,
+                  ).image,
+                ),
+                SizedBox(height: 30,),
+                const Text(
+                  "Roberto Silva dos Santos",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
+              ],
             ),
           ),
           const SizedBox(height: 10),
-          Container(
+          Container(            
             width: 390,
-            height: 500,
+            height: 400 ,
             decoration: BoxDecoration(
-              color: Colors.grey.shade200,
+              color: Colors.blue,
               borderRadius: BorderRadius.circular(15),
             ),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Column(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.symmetric(
-                        horizontal: 15,
-                        vertical: 10,
+                MaterialButton(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 40, vertical: 35),
+                  onPressed: () {},
+                  child: Row(
+                    children: const [
+                      Icon(
+                        CupertinoIcons.building_2_fill,
+                        size: 30,
+                        color: Colors.white,
                       ),
-                      alignment: Alignment.centerLeft,
-                      child: const Text(
-                        "Empresa:",
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text(
+                        "Empresa",
                         style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
+                          fontSize: 25,
+                          color: Colors.white,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                MaterialButton(
+                  padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 35),
+                  onPressed: () {},
+                  child: Row(
+                    children: const [
+                      Icon(
+                        CupertinoIcons.graph_square,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text(
+                        "Balanço",
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                MaterialButton(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 40, vertical: 35),
+                  onPressed: () {},
+                  child: Row(
+                    children: const [
+                      Icon(
+                        CupertinoIcons.settings,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text(
+                        "Ajustes",
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white,
                         ),
                       ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 12),
-                      height: 50,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          "Loja dos Lojistas",
-                          style: TextStyle(
-                            fontSize: 25,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),

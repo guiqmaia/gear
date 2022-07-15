@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/shared/widgets/text_field_app.dart';
 
 import 'column_user_login_with.dart';
 import 'container_text.dart';
 import 'container_text_field_login.dart';
-import 'container_text_field_password.dart';
 import 'container_user_options.dart';
 
 class BodyLoginPage extends StatelessWidget {
@@ -24,15 +24,17 @@ class BodyLoginPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const ContainerText(),
-          ContainerTextFieldLogin(
-            loginController: loginController,
-            textLabel: 'Email',
-            textHint: 'Entre com seu email',
+          TextFieldApp(
+            labelItem: 'Email',
+            iconInput: Icons.email,
+            typeController: loginController,
+            isObscured: false,
           ),
-          ContainerTextFieldPassword(
-            passwordController: passwordController,
-            textLabel: 'Senha',
-            textHint: 'Entre com sua senha',
+          TextFieldApp(
+            labelItem: 'Senha',
+            iconInput: Icons.key,
+            typeController: passwordController,
+            isObscured: true,
           ),
           const ContainerUserOptions(),
           const ColumnUserLoginWith(),

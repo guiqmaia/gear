@@ -21,6 +21,7 @@ class BodyInventoryPage extends StatelessWidget {
           labelItem: 'Pesquisar',
           iconInput: Icons.search,
           typeController: null,
+          isObscured: false,
         ),
         SizedBox(height: 10),
         WrapContainerCategory(),

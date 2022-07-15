@@ -56,21 +56,25 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           labelItem: 'Código do produto',
           iconInput: Icons.code_rounded,
           typeController: widget.codeController,
+          isObscured: false,
         ),
         TextFieldApp(
           labelItem: 'Preço do produto',
           iconInput: Icons.price_check_rounded,
           typeController: widget.priceController,
+          isObscured: false,
         ),
         TextFieldApp(
           labelItem: 'Desconto',
           iconInput: Icons.price_change_rounded,
           typeController: widget.descountController,
+          isObscured: false,
         ),
         TextFieldApp(
           labelItem: 'Quantidade',
           iconInput: Icons.production_quantity_limits_rounded,
           typeController: widget.quantityController,
+          isObscured: false,
         ),
         const DropDownInputSale(
           dropdownList: [
@@ -91,6 +95,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           labelItem: 'Total',
           iconInput: Icons.attach_money_rounded,
           typeController: widget.totalController,
+          isObscured: false,
         ),
       ],
     );

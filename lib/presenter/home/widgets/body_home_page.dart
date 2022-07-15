@@ -5,9 +5,7 @@ import '../../inventory/inventory_page.dart';
 import '../../product_signup/product_signup_page.dart';
 
 class BodyHomePage extends StatelessWidget {
-  const BodyHomePage({
-    Key? key,
-  }) : super(key: key);
+  const BodyHomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
