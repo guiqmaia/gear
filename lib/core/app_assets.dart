@@ -1,4 +1,3 @@
-
 // imagens
 import 'package:flutter/material.dart';
 
@@ -17,5 +16,5 @@ String imgSprite = 'assets/images/sprite.png';
 String imgPepsi = 'assets/images/pepsi.png';
 
 // cores
-Color greenNeon = Color.fromRGBO(202, 254, 72, 1);
-Color backgroundGrey = Color.fromRGBO(240, 239, 244, 1);
+Color greenNeon = const Color.fromRGBO(202, 254, 72, 1);
+Color backgroundGrey = const Color.fromRGBO(240, 239, 244, 1);
