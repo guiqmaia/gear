@@ -24,7 +24,7 @@ class SignupPageBody extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             child: ListView(
               physics: const BouncingScrollPhysics(),
-              children: const [
+              children: [
                 TextFieldApp(
                   labelItem: 'Nome',
                   iconInput: Icons.format_color_text_sharp,

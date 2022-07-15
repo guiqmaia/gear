@@ -4,14 +4,14 @@ class TextFieldApp extends StatelessWidget {
   final String labelItem;
   final IconData iconInput;
   final dynamic typeController;
-  final bool? isObscured;
+  bool? isObscured;
 
-  const TextFieldApp({
+  TextFieldApp({
     Key? key,
     required this.labelItem,
     required this.iconInput,
     required this.typeController,
-    this.isObscured,
+    this.isObscured = false,
   }) : super(key: key);
 
   @override
