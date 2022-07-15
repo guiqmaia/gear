@@ -27,6 +27,7 @@ class _SignupPageBodyState extends State<SignupPageBody> {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image == null) return;
       final imageTemp = File(image.path);
+      print(imageTemp.readAsBytesSync());
       setState(() {
         this.image = imageTemp;
         photo = imageTemp.readAsBytesSync();

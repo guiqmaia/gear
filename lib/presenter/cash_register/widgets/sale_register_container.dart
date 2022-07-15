@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/core/app_assets.dart';
 
 class RecentSalesList extends StatefulWidget {
   List sales;
@@ -103,12 +104,12 @@ class SaleRegisterContainer extends StatelessWidget {
                   vertical: 5,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade50,
+                  color: backgroundGrey,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
                   price,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 17,
                   ),
@@ -131,7 +132,7 @@ class SaleRegisterContainer extends StatelessWidget {
                       vertical: 5,
                     ),
                     decoration: BoxDecoration(
-                      color: Colors.grey.shade50,
+                      color: backgroundGrey,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(

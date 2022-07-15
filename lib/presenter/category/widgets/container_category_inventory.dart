@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/core/app_assets.dart';
 
 import '../../product/product_page.dart';
 
@@ -63,9 +64,9 @@ class ContainerCategoryInventory extends StatelessWidget {
               child: Text(
                 categoryTitle,
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 15,
                   fontWeight: FontWeight.w500,
-                  color: Colors.black.withOpacity(0.8),
+                  color: backgroundGrey,
                 ),
               ),
             ),

@@ -23,10 +23,10 @@ class ProductPage extends StatelessWidget {
     'Refrigerante': [
       ProductModel(
         productTitle: 'Coca Cola',
-        productImg: imgCocaCola,
+        productImg: cocaImg.readAsBytesSync(),
         productCode: 1001,
         productQuantity: 10,
-        productPrice: 4.5,
+        productPrice: 4.50,
       ),
     ],
   };
@@ -34,6 +34,7 @@ class ProductPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundGrey,
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,

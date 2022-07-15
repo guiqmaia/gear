@@ -25,23 +25,23 @@ class ContainerProductCategory extends StatelessWidget {
         vertical: 10,
       ),
       padding: const EdgeInsets.symmetric(
-        horizontal: 15,
+        horizontal: 10,
         vertical: 10,
       ),
       decoration: const BoxDecoration(
-        color: Colors.transparent,
+        color: Colors.white,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
-            child: Image.asset(
+            child: Image.memory(
               productImg,
-              height: MediaQuery.of(context).size.height * 0.15,
+              height: MediaQuery.of(context).size.height * 0.12,
             ),
           ),
-          const SizedBox(width: 10),
+          const SizedBox(width: 5),
           Expanded(
             child: Column(
               children: [
@@ -65,7 +65,7 @@ class ContainerProductCategory extends StatelessWidget {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Text(
-                        productPrice,
+                        'R\$ $productPrice',
                         style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w500,

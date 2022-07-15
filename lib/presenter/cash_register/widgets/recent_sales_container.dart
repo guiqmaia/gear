@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/core/app_assets.dart';
 
 class RecentSalesContainer extends StatelessWidget {
   const RecentSalesContainer({Key? key}) : super(key: key);
@@ -6,7 +7,6 @@ class RecentSalesContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-
       width: MediaQuery.of(context).size.width * 0.9,
       margin: const EdgeInsets.only(
         top: 20,
@@ -14,13 +14,13 @@ class RecentSalesContainer extends StatelessWidget {
       ),
       padding: const EdgeInsets.symmetric(
         horizontal: 30,
-        vertical: 10,
+        vertical: 12,
       ),
       decoration: BoxDecoration(
-        color: Color.fromRGBO(202, 254, 72, 1),
+        color: greenNeon,
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Text(
+      child: const Text(
         'Vendas Recentes',
         textAlign: TextAlign.center,
         style: TextStyle(

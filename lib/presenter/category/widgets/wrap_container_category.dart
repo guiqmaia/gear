@@ -18,6 +18,26 @@ class WrapContainerCategory extends StatelessWidget {
           categoryImg: imgSodas,
           categoryTitle: 'Refrigerante',
         ),
+        ContainerCategoryInventory(
+          categoryImg: imgSodas,
+          categoryTitle: 'Cerveja',
+        ),
+        ContainerCategoryInventory(
+          categoryImg: imgSodas,
+          categoryTitle: 'Vinho',
+        ),
+        ContainerCategoryInventory(
+          categoryImg: imgSodas,
+          categoryTitle: 'Destilado',
+        ),
+        ContainerCategoryInventory(
+          categoryImg: imgSodas,
+          categoryTitle: 'Energético',
+        ),
+        ContainerCategoryInventory(
+          categoryImg: imgSodas,
+          categoryTitle: 'Água',
+        ),
       ],
     );
   }
