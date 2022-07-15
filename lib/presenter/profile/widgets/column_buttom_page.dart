@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/home/home_page.dart';
+
+import '../../login/login_page.dart';
 
 class ColumnButtom extends StatelessWidget {
   const ColumnButtom({
@@ -8,9 +11,9 @@ class ColumnButtom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(            
+    return Container(
       width: 390,
-      height: 400 ,
+      height: 400,
       decoration: BoxDecoration(
         color: Colors.blue,
         borderRadius: BorderRadius.circular(15),
@@ -19,8 +22,7 @@ class ColumnButtom extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           MaterialButton(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 40, vertical: 35),
+            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 35),
             onPressed: () {},
             child: Row(
               children: const [
@@ -44,7 +46,11 @@ class ColumnButtom extends StatelessWidget {
           ),
           MaterialButton(
             padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 35),
-            onPressed: () {},
+            onPressed: () {
+              MaterialPageRoute(
+                builder: (context) => const HomePage(),
+              );
+            },
             child: Row(
               children: const [
                 Icon(
@@ -66,8 +72,7 @@ class ColumnButtom extends StatelessWidget {
             ),
           ),
           MaterialButton(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 40, vertical: 35),
+            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 35),
             onPressed: () {},
             child: Row(
               children: const [
@@ -94,4 +99,3 @@ class ColumnButtom extends StatelessWidget {
     );
   }
 }
-
