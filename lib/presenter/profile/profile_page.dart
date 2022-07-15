@@ -45,4 +45,3 @@ class BodyProfilePage extends StatelessWidget {
     );
   }
 }
-

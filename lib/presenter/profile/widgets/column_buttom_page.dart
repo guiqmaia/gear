@@ -15,81 +15,117 @@ class ColumnButtom extends StatelessWidget {
       width: 390,
       height: 400,
       decoration: BoxDecoration(
-        color: Colors.blue,
-        borderRadius: BorderRadius.circular(15),
+        color: Colors.blue.shade500,
+        boxShadow: const [
+          BoxShadow(        
+            color: Colors.blueGrey,                       
+            blurRadius: 20,
+            offset: Offset(1,2)
+          ),
+        ],
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          MaterialButton(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 35),
-            onPressed: () {},
-            child: Row(
-              children: const [
-                Icon(
-                  CupertinoIcons.building_2_fill,
-                  size: 30,
-                  color: Colors.white,
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                Text(
-                  "Empresa",
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Empresa:",
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 20,
                     color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
-                )
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: const [
+                    Icon(
+                      Icons.business,
+                      color: Colors.white,
+                      size: 40,
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      "Centro de Lavagem LTDA",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
-          MaterialButton(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 35),
-            onPressed: () {
-              MaterialPageRoute(
-                builder: (context) => const HomePage(),
-              );
-            },
-            child: Row(
-              children: const [
-                Icon(
-                  CupertinoIcons.graph_square,
-                  color: Colors.white,
-                  size: 30,
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                Text(
-                  "Balanço",
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Cpnj:",
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 20,
                     color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
-                )
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: const [
+                    Icon(
+                      Icons.account_tree_outlined,
+                      color: Colors.white,
+                      size: 40,
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      "755.355.046/0001.06",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
-          MaterialButton(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 35),
-            onPressed: () {},
-            child: Row(
-              children: const [
-                Icon(
-                  CupertinoIcons.settings,
-                  color: Colors.white,
-                  size: 30,
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                Text(
-                  "Ajustes",
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Categoria:",
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 20,
                     color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: const [
+                    Icon(
+                      Icons.cases_outlined,
+                      color: Colors.white,
+                      size: 40,
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      "Lavagem de dinheiro",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                  ],
                 ),
               ],
             ),
