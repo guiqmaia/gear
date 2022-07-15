@@ -27,17 +27,17 @@ class SignupPageBody extends StatelessWidget {
               children: const [
                 TextFieldApp(
                   labelItem: 'Nome',
-                  iconInput: Icons.arrow_forward_ios,
+                  iconInput: Icons.format_color_text_sharp,
                   typeController: null,
                 ),
                 TextFieldApp(
                   labelItem: 'Preço',
-                  iconInput: Icons.arrow_forward_ios,
+                  iconInput: Icons.attach_money,
                   typeController: null,
                 ),
                 TextFieldApp(
                   labelItem: 'Categoria',
-                  iconInput: Icons.arrow_forward_ios,
+                  iconInput: Icons.tag,
                   typeController: null,
                 ),
               ],

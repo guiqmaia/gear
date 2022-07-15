@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 
-class ResetPassword extends StatelessWidget {
+import 'body_reset_password.dart';
+
+
+class ResetPassword extends StatefulWidget {
   const ResetPassword({Key? key}) : super(key: key);
+
+  @override
+  State<ResetPassword> createState() => _ResetPasswordState();
+}
+
+class _ResetPasswordState extends State<ResetPassword> {
+  final emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -15,36 +25,7 @@ class ResetPassword extends StatelessWidget {
           ),
         ),
       ),
-      body: Container(
-        padding: const EdgeInsets.only(top: 60, left: 40, right: 40),
-        color: Colors.white,
-        child: ListView(
-          children: [
-            SizedBox(
-              width: 200,
-              height: 200,
-              child: Image.asset('assets/icons/google.png'),
-            ),
-            const SizedBox(height: 50),
-            const Center(
-              child: Text(
-                'Esqueceu sua senha?',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            const Center(
-              child: Text('Por favor informe o email associado a sua conta e lhe enviaremos um email para a criação de uma nova senha',
-              textAlign: TextAlign.center,
-              ),
-            ),
-            
-          ],
-        ),
-      ),
+      body: BodyResetPassword(emailController: emailController),
     );
   }
 }
