@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gear/core/app_assets.dart';
 
 import 'package:gear/presenter/login/login_page.dart';
 import 'package:gear/presenter/shared/widgets/btn_standard_app.dart';
@@ -28,9 +29,11 @@ class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundGrey,
       appBar: AppBar(
         title: const Text('Gear'),
         centerTitle: true,
+        backgroundColor: Colors.black,
         leading: GestureDetector(
           onTap: () {
             Navigator.of(context).push(
@@ -62,19 +65,19 @@ class _SignupState extends State<Signup> {
             ),
             TextFieldApp(
               labelItem: 'Data de Nascimento',
-              iconInput: Icons.person,
+              iconInput: Icons.date_range,
               typeController: bithdayDateController,
               isObscured: false,
             ),
             TextFieldApp(
               labelItem: 'Nome do Negócio',
-              iconInput: Icons.person,
+              iconInput: Icons.text_fields_outlined,
               typeController: bussinessNameController,
               isObscured: false,
             ),
             TextFieldApp(
               labelItem: 'CNPJ',
-              iconInput: Icons.person,
+              iconInput: Icons.numbers_sharp,
               typeController: cnpjController,
               isObscured: false,
             ),
@@ -86,7 +89,7 @@ class _SignupState extends State<Signup> {
             ),
             TextFieldApp(
               labelItem: 'Celular',
-              iconInput: Icons.person,
+              iconInput: Icons.cell_wifi,
               typeController: cellphoneController,
               isObscured: false,
             ),
