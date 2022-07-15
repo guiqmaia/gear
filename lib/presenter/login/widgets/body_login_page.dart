@@ -24,8 +24,18 @@ class BodyLoginPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const ContainerText(),
-          TextFieldApp(labelItem: 'Email', iconInput: Icons.email, typeController: loginController,),
-          TextFieldApp(labelItem: 'Senha', iconInput: Icons.key, typeController: passwordController,),
+          TextFieldApp(
+            labelItem: 'Email',
+            iconInput: Icons.email,
+            typeController: loginController,
+            isObscured: false,
+          ),
+          TextFieldApp(
+            labelItem: 'Senha',
+            iconInput: Icons.key,
+            typeController: passwordController,
+            isObscured: true,
+          ),
           const ContainerUserOptions(),
           const ColumnUserLoginWith(),
         ],
