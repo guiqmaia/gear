@@ -11,8 +11,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final LoginController = TextEditingController();
-  final PasswordController = TextEditingController();
+  final loginController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +32,8 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
       body: BodyLoginPage(
-          loginController: LoginController,
-          passwordController: PasswordController),
+          loginController: loginController,
+          passwordController: passwordController),
     );
   }
 }
