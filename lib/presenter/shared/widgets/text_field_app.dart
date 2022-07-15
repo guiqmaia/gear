@@ -4,12 +4,14 @@ class TextFieldApp extends StatelessWidget {
   final String labelItem;
   final IconData iconInput;
   final dynamic typeController;
+  final bool isObscured;
 
   const TextFieldApp({
     Key? key,
     required this.labelItem,
     required this.iconInput,
     required this.typeController,
+    required this.isObscured,
   }) : super(key: key);
 
   @override
@@ -28,6 +30,8 @@ class TextFieldApp extends StatelessWidget {
       ),
       child: TextField(
         controller: typeController,
+        obscureText: isObscured ? true : false,
+        obscuringCharacter: '•',
         keyboardType: TextInputType.name,
         decoration: InputDecoration(
           labelText: labelItem,
