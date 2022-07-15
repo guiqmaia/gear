@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/app_assets.dart';
 
+// ignore: must_be_immutable
 class RecentSalesList extends StatefulWidget {
   List sales;
 

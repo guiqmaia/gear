@@ -8,7 +8,7 @@ import '../../shared/widgets/text_field_app.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../shared/widgets/top_bar_app.dart';
 import 'default_image_container.dart';
-import 'package:intl/intl.dart';
+
 
 class SignupPageBody extends StatefulWidget {
   const SignupPageBody({

@@ -1,8 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../home/home_page.dart';
 
-import '../../login/login_page.dart';
 import 'info_profile.dart';
 
 class ContainerInfo extends StatelessWidget {
