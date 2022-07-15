@@ -12,19 +12,24 @@ class NamePhotoProfile extends StatelessWidget {
       child: Column(
         children: [
           CircleAvatar(
-            radius: 60,
+            radius: 80,
             backgroundImage: Image.asset(
-              "assets/images/empresario.jpeg",
+              "assets/images/fotoConveniencia.png",
               fit: BoxFit.cover,
             ).image,
           ),
           const SizedBox(
-            height: 30,
+            height: 10,
           ),
           const Text(
-            "Roberto Silva dos Santos",
+            "Distribuidora Bebidinhas",
             style: TextStyle(
                 color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold),
+          ),
+          const Text(
+            "27.042.017/0001-22",
+            style: TextStyle(
+                color: Colors.black, fontSize: 10, fontWeight: FontWeight.bold),
           ),
         ],
       ),
