@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/app_assets.dart';
+
+
 class InfoContainerProfile extends StatelessWidget {
   final String titleInfo;
   final String info;
@@ -27,7 +30,7 @@ class InfoContainerProfile extends StatelessWidget {
             titleInfo,
             style: const TextStyle(
               fontSize: 20,
-              color: Colors.black,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -37,14 +40,14 @@ class InfoContainerProfile extends StatelessWidget {
           Row(
             children: [
                Icon(iconInfo,                
-                color: Color.fromARGB(202,254,56,1),
+                color: greenNeon,
                 size: 40,
               ),
               const SizedBox(width: 10),
               Text(
                 info,
                 style: const TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: 20,
                 ),
               ),

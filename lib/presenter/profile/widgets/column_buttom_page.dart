@@ -16,12 +16,12 @@ class ContainerInfo extends StatelessWidget {
       width: 390,
       height: 450,
       decoration: BoxDecoration(
-        color: Colors.black54,
+        color: Colors.black87,
         boxShadow: [
           BoxShadow(
               color: Colors.blueGrey.shade50,
               blurRadius: 20,
-              offset: Offset(6, 6)),
+              offset: const Offset(6, 6)),
         ],
         borderRadius: BorderRadius.circular(10),
       ),

@@ -23,13 +23,13 @@ class ProductPage extends StatelessWidget {
 
   Map<String, List<ProductModel>> products = {
     'Refrigerante': [
-      ProductModel(
-        productTitle: 'Coca Cola',
-        productImg: cocaImg.readAsBytesSync(),
-        productCode: 1001,
-        productQuantity: 10,
-        productPrice: 4.50,
-      ),
+      // ProductModel(
+      //   productTitle: 'Coca Cola',
+      //   productImg: cocaImg.readAsBytesSync(),
+      //   productCode: 1001,
+      //   productQuantity: 10,
+      //   productPrice: 4.50,
+      // ),
     ],
   };
 
