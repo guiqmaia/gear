@@ -37,8 +37,8 @@ class BodyProfilePage extends StatelessWidget {
             isProfile: false,
           ),
           NamePhotoProfile(),
-          SizedBox(height: 10),
-          ColumnButtom(),
+          SizedBox(height: 15),
+          ContainerInfo(),
           SizedBox(height: 30)
         ],
       ),
