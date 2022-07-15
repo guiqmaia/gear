@@ -103,13 +103,13 @@ class SaleRegisterContainer extends StatelessWidget {
                   vertical: 5,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.green.shade50,
+                  color: Colors.grey.shade50,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
                   price,
                   style: TextStyle(
-                    color: Colors.green.shade600,
+                    color: Colors.black,
                     fontSize: 17,
                   ),
                 ),
@@ -131,13 +131,13 @@ class SaleRegisterContainer extends StatelessWidget {
                       vertical: 5,
                     ),
                     decoration: BoxDecoration(
-                      color: Colors.red.shade50,
+                      color: Colors.grey.shade50,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(
                       '$quantity',
                       style: const TextStyle(
-                        color: Colors.red,
+                        color: Colors.black,
                         fontSize: 17,
                       ),
                     ),

@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:gear/presenter/home/home_page.dart';
 
 import '../../login/login_page.dart';
+import 'info_profile.dart';
 
-class ColumnButtom extends StatelessWidget {
-  const ColumnButtom({
+class ContainerInfo extends StatelessWidget {
+  const ContainerInfo({
     Key? key,
   }) : super(key: key);
 
@@ -13,122 +14,41 @@ class ColumnButtom extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 390,
-      height: 400,
+      height: 450,
       decoration: BoxDecoration(
-        color: Colors.blue.shade500,
-        boxShadow: const [
-          BoxShadow(        
-            color: Colors.blueGrey,                       
-            blurRadius: 20,
-            offset: Offset(1,2)
-          ),
+        color: Colors.black54,
+        boxShadow: [
+          BoxShadow(
+              color: Colors.blueGrey.shade50,
+              blurRadius: 20,
+              offset: Offset(6, 6)),
         ],
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Empresa:",
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  children: const [
-                    Icon(
-                      Icons.business,
-                      color: Colors.white,
-                      size: 40,
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      "Centro de Lavagem LTDA",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+        children: const [
+          InfoContainerProfile(
+            titleInfo: "Telefone:",
+            info: "(47) 3732 - 0010",
+            iconInfo: Icons.local_phone_outlined,
           ),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Cpnj:",
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  children: const [
-                    Icon(
-                      Icons.account_tree_outlined,
-                      color: Colors.white,
-                      size: 40,
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      "755.355.046/0001.06",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+          InfoContainerProfile(
+            titleInfo: "CEP:",
+            info: "90035-190",
+            iconInfo: Icons.location_searching,
           ),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Categoria:",
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  children: const [
-                    Icon(
-                      Icons.cases_outlined,
-                      color: Colors.white,
-                      size: 40,
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      "Lavagem de dinheiro",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+          InfoContainerProfile(
+            titleInfo: "Endereço:",
+            info: "Av. Osvaldo Aranha, 720 ",
+            iconInfo: Icons.location_on_outlined,
+          ),
+          InfoContainerProfile(
+              titleInfo: "Email:",
+              info: "bebidinhas@gmail.com.br",
+              iconInfo: Icons.email_outlined),
+          SizedBox(
+            height: 20,
           ),
         ],
       ),

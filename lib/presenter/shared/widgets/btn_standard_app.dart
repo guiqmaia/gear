@@ -19,14 +19,15 @@ class BtnStandardApp extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        gradient: LinearGradient(
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-          colors: [
-            Colors.purple.shade300,
-            Colors.blue.shade800,
-          ],
-        ),
+        // gradient: LinearGradient(
+        //   begin: Alignment.centerLeft,
+        //   end: Alignment.centerRight,
+        //   colors: [
+        //     Colors.purple.shade300,
+        //     Colors.blue.shade800,
+        //   ],
+        // ),
+        color: Color.fromRGBO(202, 254, 72, 1),
       ),
       margin: const EdgeInsets.all(15),
       width: widthBtn,
@@ -44,8 +45,9 @@ class BtnStandardApp extends StatelessWidget {
         child: Text(
           title,
           style: const TextStyle(
-            color: Colors.white,
+            color: Colors.black,
             fontSize: 18,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),

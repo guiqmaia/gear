@@ -20,7 +20,7 @@ class ContainerCategoryInventory extends StatelessWidget {
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => CategoryPage(
+            builder: (context) => ProductPage(
               categoryTitle: categoryTitle,
               categoryImg: categoryImg,
             ),
@@ -57,7 +57,7 @@ class ContainerCategoryInventory extends StatelessWidget {
                 vertical: 8,
               ),
               decoration: BoxDecoration(
-                color: Colors.blue.withOpacity(0.4),
+                color: Colors.black,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Text(

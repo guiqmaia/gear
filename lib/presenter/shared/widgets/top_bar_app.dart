@@ -21,7 +21,7 @@ class TopBarApp extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 5),
       padding: const EdgeInsets.only(bottom: 10, top: 28, right: 40, left: 20),
       decoration: BoxDecoration(
-        color: Colors.blue.withOpacity(0.7),
+        color: Colors.black,
         borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(30),
           bottomRight: Radius.circular(30),
@@ -60,7 +60,8 @@ class TopBarApp extends StatelessWidget {
               },
               child: const CircleAvatar(
                 radius: 26,
-                child: Icon(Icons.person),
+                backgroundColor: Colors.white,
+                child: Icon(Icons.person, color: Colors.black, size: 35,),
               ),
             ),
           ),

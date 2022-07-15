@@ -6,6 +6,7 @@ class RecentSalesContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+
       width: MediaQuery.of(context).size.width * 0.9,
       margin: const EdgeInsets.only(
         top: 20,
@@ -16,18 +17,14 @@ class RecentSalesContainer extends StatelessWidget {
         vertical: 10,
       ),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.3),
-        border: Border.all(
-          color: Colors.blue.shade600,
-          width: 1,
-        ),
+        color: Color.fromRGBO(202, 254, 72, 1),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
         'Vendas Recentes',
         textAlign: TextAlign.center,
         style: TextStyle(
-          color: Colors.blue.shade600,
+          color: Colors.black,
           fontSize: 18,
         ),
       ),

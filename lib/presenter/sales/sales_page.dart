@@ -25,6 +25,7 @@ class _SalesPageState extends State<SalesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(240, 239, 244, 1),
       body: SingleChildScrollView(
         child: BodySalesPage(
           categoryController: categoryController,

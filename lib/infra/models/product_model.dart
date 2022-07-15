@@ -2,15 +2,15 @@ import 'dart:convert';
 
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class ProductModel {
-  String title;
-  String imgPath;
+  String productTitle;
+  String productImg;
   int productCode;
   int productQuantity;
   double productPrice;
 
   ProductModel({
-    required this.title,
-    required this.imgPath,
+    required this.productTitle,
+    required this.productImg,
     required this.productCode,
     required this.productQuantity,
     required this.productPrice,
@@ -18,8 +18,8 @@ class ProductModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'title': title,
-      'imgPath': imgPath,
+      'title': productTitle,
+      'imgPath': productImg,
       'productCode': productCode,
       'productQuantity': productQuantity,
       'productPrice': productPrice,
@@ -28,8 +28,8 @@ class ProductModel {
 
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
-      title: map['title'] as String,
-      imgPath: map['imgPath'] as String,
+      productTitle: map['title'] as String,
+      productImg: map['imgPath'] as String,
       productCode: map['productCode'] as int,
       productQuantity: map['productQuantity'] as int,
       productPrice: map['productPrice'] as double,

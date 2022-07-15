@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../cash_register/cash_register_page.dart';
-import '../../inventory/inventory_page.dart';
+import '../../category/category_page.dart';
 import '../../product_signup/product_signup_page.dart';
 
 class BodyHomePage extends StatelessWidget {
@@ -59,7 +59,7 @@ class BodyHomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => const InventoryPage(),
+                    builder: (context) => const CategoryPage(),
                   ),
                 );
               },

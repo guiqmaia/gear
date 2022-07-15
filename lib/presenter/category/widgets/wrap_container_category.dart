@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:gear/core/app_assets.dart';
 
@@ -16,20 +15,8 @@ class WrapContainerCategory extends StatelessWidget {
       runSpacing: 20,
       children: [
         ContainerCategoryInventory(
-          categoryImg: imgSneakers,
-          categoryTitle: 'Tênis',
-        ),
-        ContainerCategoryInventory(
-          categoryImg: imgTshirt,
-          categoryTitle: 'Camiseta',
-        ),
-        ContainerCategoryInventory(
-          categoryImg: imgCoat,
-          categoryTitle: 'Casaco',
-        ),
-        ContainerCategoryInventory(
-          categoryImg: imgPants,
-          categoryTitle: 'Calça',
+          categoryImg: imgSodas,
+          categoryTitle: 'Refrigerante',
         ),
       ],
     );

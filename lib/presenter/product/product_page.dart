@@ -1,58 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:gear/infra/models/product_model.dart';
 
 import '../../core/app_assets.dart';
-import '../inventory/inventory_page.dart';
+import '../../infra/models/product_model.dart';
+import '../category/category_page.dart';
 import '../shared/widgets/text_field_app.dart';
 import '../shared/widgets/top_bar_app.dart';
 import 'widgets/container_product_category.dart';
 
-class CategoryPage extends StatelessWidget {
+class ProductPage extends StatelessWidget {
   final String categoryTitle;
   final dynamic categoryImg;
 
-  CategoryPage({
+  ProductPage({
     Key? key,
     required this.categoryTitle,
     required this.categoryImg,
   }) : super(key: key);
 
   Map<String, List<ProductModel>> products = {
-    'Tênis': [
+    'Refrigerante': [
       ProductModel(
-        title: 'Tênis branco',
-        imgPath: imgWhiteSneakers,
-        productCode: 123,
-        productQuantity: 12,
-        productPrice: 10.5,
-      ),
-      ProductModel(
-        title: 'Tênis branco',
-        imgPath: imgWhiteSneakers,
-        productCode: 123,
-        productQuantity: 12,
-        productPrice: 10.5,
-      ),
-    ],
-    'Camiseta': <ProductModel>[
-      ProductModel(
-        title: 'Camisas',
-        imgPath: imgWhiteSneakers,
-        productCode: 123,
-        productQuantity: 12,
-        productPrice: 10.5,
-      ),
-      ProductModel(
-        title: 'Camisas',
-        imgPath: imgWhiteSneakers,
-        productCode: 123,
-        productQuantity: 12,
-        productPrice: 10.5,
+        productTitle: 'Coca Cola',
+        productImg: imgCocaCola,
+        productCode: 1001,
+        productQuantity: 10,
+        productPrice: 4.5,
       ),
     ],
   };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +40,7 @@ class CategoryPage extends StatelessWidget {
           children: [
             TopBarApp(
               title: categoryTitle,
-              pageRoute: const InventoryPage(),
+              pageRoute: const CategoryPage(),
               isProfile: true,
             ),
             TextFieldApp(
@@ -76,11 +54,11 @@ class CategoryPage extends StatelessWidget {
               itemBuilder: (context, index) {
                 ProductModel product = products[categoryTitle]![index];
                 return ContainerProductCategory(
-                  productName: product.title,
+                  productName: product.productTitle,
                   productPrice: product.productPrice.toString(),
                   productQuantity: product.productQuantity,
                   productCode: product.productCode,
-                  productImg: product.imgPath,
+                  productImg: product.productImg,
                 );
               },
             ),

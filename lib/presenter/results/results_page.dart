@@ -31,28 +31,93 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Center(
-            child: BarChartSample1(),
-            // child: Container(
-            //   width: MediaQuery.of(context).size.width * 0.8,
-            //   height: MediaQuery.of(context).size.height * 0.3,
-            //   decoration: BoxDecoration(
-            //       color: Colors.white, borderRadius: BorderRadius.circular(5)),
-            //   child: const Text(
-            //     'Container com graficos',
-            //     textAlign: TextAlign.center,
-            //   ),
-            // ),
+          Container(
+            margin: const EdgeInsets.symmetric(
+              vertical: 10,
+              horizontal: 10,
+            ),
+            child: const BarChartSample1(),
           ),
           Center(
             child: Container(
+              margin: const EdgeInsets.symmetric(
+                vertical: 10,
+                horizontal: 10,
+              ),
               width: MediaQuery.of(context).size.width * 0.8,
               height: MediaQuery.of(context).size.height * 0.3,
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(5)),
-              child: const Text(
-                'Container Com Produtos Mais Vendidos (Em quantidade)',
-                textAlign: TextAlign.center,
+              child: Column(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 20,
+                    ),
+                    child: Text(
+                      'Líderes de Venda',
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.2,
+                    child: ListView(
+                      scrollDirection: Axis.vertical,
+                      children: const [
+                        ListTile(
+                          leading: Text('Quantidade Vendida'),
+                          title: Text('Nome do Produto'),
+                          trailing: Text('Faturamento Gerado'),
+                        ),
+                        ListTile(
+                          leading: Text('Quantidade Vendida'),
+                          title: Text('Nome do Produto'),
+                          trailing: Text('Faturamento Gerado'),
+                        ),
+                        ListTile(
+                          leading: Text('Quantidade Vendida'),
+                          title: Text('Nome do Produto'),
+                          trailing: Text('Faturamento Gerado'),
+                        ),
+                        ListTile(
+                          leading: Text('Quantidade Vendida'),
+                          title: Text('Nome do Produto'),
+                          trailing: Text('Faturamento Gerado'),
+                        ),
+                        ListTile(
+                          leading: Text('Quantidade Vendida'),
+                          title: Text('Nome do Produto'),
+                          trailing: Text('Faturamento Gerado'),
+                        ),
+                        ListTile(
+                          leading: Text('Quantidade Vendida'),
+                          title: Text('Nome do Produto'),
+                          trailing: Text('Faturamento Gerado'),
+                        ),
+                        ListTile(
+                          leading: Text('Quantidade Vendida'),
+                          title: Text('Nome do Produto'),
+                          trailing: Text('Faturamento Gerado'),
+                        ),
+                        ListTile(
+                          leading: Text('Quantidade Vendida'),
+                          title: Text('Nome do Produto'),
+                          trailing: Text('Faturamento Gerado'),
+                        ),
+                        ListTile(
+                          leading: Text('Quantidade Vendida'),
+                          title: Text('Nome do Produto'),
+                          trailing: Text('Faturamento Gerado'),
+                        ),
+                        ListTile(
+                          leading: Text('Quantidade Vendida'),
+                          title: Text('Nome do Produto'),
+                          trailing: Text('Faturamento Gerado'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -63,7 +128,7 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(5)),
               child: const Text(
-                'Container Com Produtos Mais Vendidos (Em Faturamento)',
+                'Líderes de Faturamento',
                 textAlign: TextAlign.center,
               ),
             ),
@@ -104,7 +169,7 @@ class BarChartSample1State extends State<BarChartSample1> {
       aspectRatio: 1,
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-        color: const Color(0xff81e5cd),
+        color: Colors.black54,
         child: Stack(
           children: <Widget>[
             Padding(
@@ -117,7 +182,7 @@ class BarChartSample1State extends State<BarChartSample1> {
                   const Text(
                     'Balanço Semanal',
                     style: TextStyle(
-                        color: Color(0xff0f4a3c),
+                        color: Color.fromRGBO(240, 239, 244, 1),
                         fontSize: 24,
                         fontWeight: FontWeight.bold),
                   ),
@@ -127,7 +192,7 @@ class BarChartSample1State extends State<BarChartSample1> {
                   const Text(
                     'Loja do Seu Zé',
                     style: TextStyle(
-                        color: Color(0xff379982),
+                        color: Color.fromRGBO(240, 239, 244, 1),
                         fontSize: 18,
                         fontWeight: FontWeight.bold),
                   ),
@@ -156,7 +221,7 @@ class BarChartSample1State extends State<BarChartSample1> {
     int x,
     double y, {
     bool isTouched = false,
-    Color barColor = Colors.white,
+    Color barColor = const Color.fromRGBO(202, 254, 72, 0.8),
     double width = 22,
     List<int> showTooltips = const [],
   }) {
@@ -165,10 +230,10 @@ class BarChartSample1State extends State<BarChartSample1> {
       barRods: [
         BarChartRodData(
           toY: isTouched ? y + 1 : y,
-          color: isTouched ? Colors.yellow : barColor,
+          color: isTouched ? Color.fromRGBO(202, 254, 72, 1) : barColor,
           width: width,
           borderSide: isTouched
-              ? BorderSide(color: Colors.yellow, width: 1)
+              ? BorderSide(color: Color.fromRGBO(202, 254, 72, 0.85), width: 1)
               : const BorderSide(color: Colors.white, width: 0),
           backDrawRodData: BackgroundBarChartRodData(
             show: true,
