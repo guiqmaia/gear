@@ -1,11 +1,11 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gear/presenter/home/home_page.dart';
 import 'package:gear/presenter/shared/widgets/text_field_app.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../../shared/widgets/top_bar_app.dart';
 import 'default_image_container.dart';
 
@@ -20,13 +20,16 @@ class SignupPageBody extends StatefulWidget {
 
 class _SignupPageBodyState extends State<SignupPageBody> {
   File? image;
+  Uint8List? photo;
   Future pickImage() async {
     try {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image == null) return;
       final imageTemp = File(image.path);
-      print(image);
-      setState(() => this.image = imageTemp);
+      setState(() {
+        this.image = imageTemp;
+        photo = imageTemp.readAsBytesSync();
+      });
     } on PlatformException catch (e) {
       print('Failed to pick image: $e');
     }
@@ -94,10 +97,7 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                   margin: const EdgeInsets.symmetric(horizontal: 30),
                   width: MediaQuery.of(context).size.width,
                   child: image != null
-                      ? Image.file(
-                          image!,
-                          height: 200,
-                        )
+                      ? Image.memory(photo!)
                       : const DefaulImageContainer(),
                 ),
               ],
