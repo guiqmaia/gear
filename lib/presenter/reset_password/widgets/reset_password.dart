@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'body_reset_password.dart';
+import '../../login/widgets/body_reset_password.dart';
+
 
 
 class ResetPassword extends StatefulWidget {

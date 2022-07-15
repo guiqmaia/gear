@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/signup/signup.dart';
 
 import '../../home/home_page.dart';
 import '../../shared/widgets/btn_standard_app.dart';
@@ -58,7 +59,9 @@ class ColumnUserLoginWith extends StatelessWidget {
                 widthBtn: MediaQuery.of(context).size.width * 0.9),
           ],
         ),
-        TextButton(onPressed: () {}, child: const Text('Cadastre-se'))
+        TextButton(onPressed: () {Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) =>  Signup()),
+            );}, child: const Text('Cadastre-se'))
       ],
     );
   }
