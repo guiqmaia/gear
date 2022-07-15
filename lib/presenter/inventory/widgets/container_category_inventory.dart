@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../category/category_page.dart';
+import '../../product/product_page.dart';
+
 
 class ContainerCategoryInventory extends StatelessWidget {
   final String categoryTitle;
