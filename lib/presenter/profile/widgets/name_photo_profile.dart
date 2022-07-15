@@ -29,7 +29,9 @@ class NamePhotoProfile extends StatelessWidget {
           const Text(
             "27.042.017/0001-22",
             style: TextStyle(
-                color: Colors.black, fontSize: 10, fontWeight: FontWeight.bold),
+              color: Colors.black,
+              fontSize: 17.5,
+            ),
           ),
         ],
       ),

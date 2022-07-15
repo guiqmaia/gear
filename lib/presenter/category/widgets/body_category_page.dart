@@ -5,8 +5,8 @@ import '../../shared/widgets/text_field_app.dart';
 import '../../shared/widgets/top_bar_app.dart';
 import 'wrap_container_category.dart';
 
-class BodyInventoryPage extends StatelessWidget {
-  const BodyInventoryPage({Key? key}) : super(key: key);
+class BodyCategoryPage extends StatelessWidget {
+  const BodyCategoryPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

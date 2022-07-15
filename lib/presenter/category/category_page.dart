@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:gear/core/app_assets.dart';
 
 import '../product_signup/product_signup_page.dart';
 import '../shared/widgets/btn_standard_app.dart';
-import 'widgets/body_inventory_page.dart';
+import 'widgets/body_category_page.dart';
 
-class InventoryPage extends StatelessWidget {
-  const InventoryPage({Key? key}) : super(key: key);
+class CategoryPage extends StatelessWidget {
+  const CategoryPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundGrey,
       body: const SingleChildScrollView(
-        child: BodyInventoryPage(),
+        child: BodyCategoryPage(),
       ),
       bottomNavigationBar: BtnStandardApp(
         title: 'Novo produto',
