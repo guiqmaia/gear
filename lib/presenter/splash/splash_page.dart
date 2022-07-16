@@ -14,6 +14,19 @@ class _SplashPageState extends State<SplashPage> {
   double opacityLevel = 0.5;
 
   @override
+  void initState() {
+    Future.delayed(const Duration(seconds: 2)).then(
+      (value) => {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const LoginPage(),
+          ),
+        ),
+      },
+    );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
