@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/core/app_assets.dart';
 
 import '../profile/profile_page.dart';
 import '../results/results_page.dart';
@@ -29,29 +30,32 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(      
+    return Scaffold(
+      backgroundColor: backgroundGrey,
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
-            backgroundColor: Colors.purple,
+            backgroundColor: Colors.white,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.bar_chart),
             label: 'Resultados',
-            backgroundColor: Colors.purple,
+            backgroundColor: Colors.white,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Perfil',
-            backgroundColor: Colors.purple,
+            backgroundColor: Colors.white,
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.purple[800],
+        selectedItemColor: greenNeon,
+        unselectedItemColor: Colors.white,
         onTap: _onItemTapped,
+        backgroundColor: Colors.black,
       ),
     );
   }

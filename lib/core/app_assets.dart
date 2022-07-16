@@ -17,4 +17,4 @@ String imgPepsi = 'assets/images/pepsi.png';
 
 // cores
 Color greenNeon = const Color.fromRGBO(202, 254, 72, 1);
-Color backgroundGrey = const Color.fromRGBO(240, 239, 244, 1);
+Color backgroundGrey = const Color.fromARGB(255, 224, 221, 221);
