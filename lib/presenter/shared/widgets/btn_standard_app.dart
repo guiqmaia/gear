@@ -25,7 +25,7 @@ class BtnStandardApp extends StatelessWidget {
         //     Colors.blue.shade800,
         //   ],
         // ),
-        color: Color.fromRGBO(202, 254, 72, 1),
+        color: const Color.fromRGBO(202, 254, 72, 1),
       ),
       margin: const EdgeInsets.all(15),
       width: widthBtn,

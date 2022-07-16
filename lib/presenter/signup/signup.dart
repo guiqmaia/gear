@@ -9,6 +9,8 @@ import '../shared/widgets/big_text_app.dart';
 import '../shared/widgets/text_field_app.dart';
 
 class Signup extends StatefulWidget {
+  const Signup({Key? key}) : super(key: key);
+
   @override
   State<Signup> createState() => _SignupState();
 }

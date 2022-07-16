@@ -18,7 +18,7 @@ class _RecentSalesListState extends State<RecentSalesList> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [],
+      children: const [],
     );
   }
 }

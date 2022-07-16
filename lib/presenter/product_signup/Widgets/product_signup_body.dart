@@ -28,12 +28,14 @@ class _SignupPageBodyState extends State<SignupPageBody> {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image == null) return;
       final imageTemp = File(image.path);
+      // ignore: avoid_print
       print(imageTemp.readAsBytesSync());
       setState(() {
         this.image = imageTemp;
         photo = imageTemp.readAsBytesSync();
       });
     } on PlatformException catch (e) {
+      // ignore: avoid_print
       print('Failed to pick image: $e');
     }
   }
