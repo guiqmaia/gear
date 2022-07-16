@@ -51,12 +51,16 @@ class _SplashPageState extends State<SplashPage> {
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: [
-            AnimationSplash(
-              myFirs: _myFirs,
-              myFontSize: _myFontSize,
-              myColor: _myColor,
-              myFontWeight: _myFontWeight,
+          children: const [
+            AnimationSplash(),
+            Center(
+              child: Text(
+                "TENHAM UM OTIMO FINAL DE SEMANA",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                ),
+              ),
             ),
           ],
         ),
