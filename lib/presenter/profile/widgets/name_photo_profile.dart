@@ -24,7 +24,10 @@ class NamePhotoProfile extends StatelessWidget {
           const Text(
             "Distribuidora Bebidinhas",
             style: TextStyle(
-                color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold),
+              color: Colors.black,
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           const Text(
             "27.042.017/0001-22",

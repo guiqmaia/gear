@@ -31,9 +31,9 @@ class InfoContainerProfile extends StatelessWidget {
           boxShadow: const [
             BoxShadow(
                 color: Colors.black38,
-                spreadRadius: 6,
+                spreadRadius: 2,
                 blurRadius: 10,
-                offset: Offset(3, 5)),
+                offset: Offset(5, 5)),
           ],
         ),
         child: Column(
