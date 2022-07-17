@@ -48,17 +48,17 @@ class BodyHomePage extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.all(5),
                 children: [
-                  Container(
+                  Container(                    
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
                         color: Colors.black,
                       ),
-                      width: 340),
+                      width: 302),
                   const SizedBox(
                     width: 20,
                   ),
                   Container(
-                    width: 340,
+                    width: 302,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       color: Colors.blue,
