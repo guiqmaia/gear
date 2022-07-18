@@ -22,13 +22,34 @@ class ProductPage extends StatelessWidget {
 
   Map<String, List<ProductModel>> products = {
     'Refrigerante': [
-      // ProductModel(
-      //   productTitle: 'Coca Cola',
-      //   productImg: cocaImg.readAsBytesSync(),
-      //   productCode: 1001,
-      //   productQuantity: 10,
-      //   productPrice: 4.50,
-      // ),
+      ProductModel(
+        productTitle: 'Coca Cola',
+        productImg: imgCocaCola,
+        productCode: 1001,
+        productQuantity: 20,
+        productPrice: 4.50,
+      ),
+      ProductModel(
+        productTitle: 'Pepsi',
+        productImg: imgPepsi,
+        productCode: 1002,
+        productQuantity: 10,
+        productPrice: 3.50,
+      ),
+      ProductModel(
+        productTitle: 'Guaraná',
+        productImg: imgGuarana,
+        productCode: 1003,
+        productQuantity: 18,
+        productPrice: 4.70,
+      ),
+      ProductModel(
+        productTitle: 'Sprite',
+        productImg: imgSprite,
+        productCode: 1004,
+        productQuantity: 8,
+        productPrice: 4.00,
+      ),
     ],
   };
 
@@ -52,6 +73,7 @@ class ProductPage extends StatelessWidget {
             ),
             ListView.builder(
               shrinkWrap: true,
+              scrollDirection: Axis.vertical,
               itemCount: products[categoryTitle]!.length,
               itemBuilder: (context, index) {
                 ProductModel product = products[categoryTitle]![index];

@@ -4,7 +4,7 @@ import 'dart:typed_data';
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class ProductModel {
   String productTitle;
-  Uint8List productImg;
+  dynamic productImg;
   int productCode;
   int productQuantity;
   double productPrice;
@@ -30,7 +30,7 @@ class ProductModel {
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
       productTitle: map['title'] as String,
-      productImg: map['imgPath'] as Uint8List,
+      productImg: map['imgPath'] as dynamic,
       productCode: map['productCode'] as int,
       productQuantity: map['productQuantity'] as int,
       productPrice: map['productPrice'] as double,
