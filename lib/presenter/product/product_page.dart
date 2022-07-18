@@ -1,5 +1,6 @@
 // import 'package:flutter/material.dart';
 
+<<<<<<< HEAD
 // import '../../core/app_assets.dart';
 // import '../../infra/models/product_model.dart';
 // import '../product_signup/product_signup_page.dart';
@@ -197,3 +198,36 @@
 //     );
 //   }
 // }
+=======
+import '../../core/app_assets.dart';
+import '../product_signup/product_signup_page.dart';
+import '../shared/widgets/btn_standard_app.dart';
+import 'widgets/body_product_page.dart';
+
+// ignore: must_be_immutable
+class ProductPage extends StatelessWidget {
+  final String categoryTitle;
+
+  const ProductPage({
+    Key? key,
+    required this.categoryTitle,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: backgroundGrey,
+      body: SingleChildScrollView(
+        child: BodyProductPage(
+          categoryTitle: categoryTitle,
+        ),
+      ),
+      bottomNavigationBar: BtnStandardApp(
+        title: 'Novo produto',
+        pageRoute: const ProductSignupPage(),
+        widthBtn: MediaQuery.of(context).size.width * 0.8,
+      ),
+    );
+  }
+}
+>>>>>>> ce029372f278184a084f65ab213653aee75e1c7e
