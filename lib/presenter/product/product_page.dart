@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../core/app_assets.dart';
 import '../../infra/models/product_model.dart';
-import '../category/category_page.dart';
 import '../product_signup/product_signup_page.dart';
 import '../shared/widgets/btn_standard_app.dart';
-import '../shared/widgets/text_field_app.dart';
-import '../shared/widgets/top_bar_app.dart';
-import 'widgets/container_product_category.dart';
+import 'widgets/body_product_page.dart';
 
 // ignore: must_be_immutable
 class ProductPage extends StatelessWidget {
@@ -20,7 +17,7 @@ class ProductPage extends StatelessWidget {
     required this.categoryImg,
   }) : super(key: key);
 
-  Map<String, List<ProductModel>> products = {
+  Map<String, List<ProductModel>> productsList = {
     'Refrigerante': [
       ProductModel(
         productTitle: 'Coca Cola',
@@ -187,36 +184,9 @@ class ProductPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: backgroundGrey,
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            TopBarApp(
-              title: categoryTitle,
-              pageRoute: const CategoryPage(),
-              isProfile: true,
-            ),
-            const SizedBox(height: 10),
-            TextFieldApp(
-              labelItem: 'Pesquisar',
-              iconInput: Icons.search,
-              typeController: null,
-            ),
-            ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: products[categoryTitle]!.length,
-              itemBuilder: (context, index) {
-                ProductModel product = products[categoryTitle]![index];
-                return ContainerProductCategory(
-                  productName: product.productTitle,
-                  productPrice: product.productPrice.toString(),
-                  productQuantity: product.productQuantity,
-                  productCode: product.productCode,
-                  productImg: product.productImg,
-                );
-              },
-            ),
-          ],
+        child: BodyProductPage(
+          categoryTitle: categoryTitle,
+          productsList: productsList,
         ),
       ),
       bottomNavigationBar: BtnStandardApp(

@@ -10,11 +10,15 @@ class DefaulImageContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return DottedBorder(
       color: Colors.grey,
-      strokeWidth: 5,
+      strokeWidth: 3,
       dashPattern: const [15, 8],
+      padding: const EdgeInsets.all(0),
       child: Container(
-        height: 200,
         width: MediaQuery.of(context).size.width,
+        padding: const EdgeInsets.symmetric(
+          horizontal: 40,
+          vertical: 80,
+        ),
         decoration: BoxDecoration(
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(20),

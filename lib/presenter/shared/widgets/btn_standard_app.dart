@@ -20,7 +20,10 @@ class BtnStandardApp extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         color: greenNeon,
       ),
-      margin: const EdgeInsets.all(15),
+      margin: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 10,
+      ),
       width: widthBtn,
       padding: const EdgeInsets.symmetric(
         vertical: 3,
