@@ -3,7 +3,6 @@ import '../../../core/app_assets.dart';
 
 import '../../product/product_page.dart';
 
-
 class ContainerCategoryInventory extends StatelessWidget {
   final String categoryTitle;
   final dynamic categoryImg;
@@ -23,7 +22,6 @@ class ContainerCategoryInventory extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) => ProductPage(
               categoryTitle: categoryTitle,
-              categoryImg: categoryImg,
             ),
           ),
         );

@@ -40,10 +40,9 @@ class BodyProfilePage extends StatelessWidget {
             const NamePhotoProfile(),
             const SizedBox(height: 15),
             const ContainerInfo(),
-            const SizedBox(height: 10),
             BtnStandardApp(
               title: "Sair",
-              widthBtn: MediaQuery.of(context).size.width * 0.8,
+              widthBtn: MediaQuery.of(context).size.width * 0.9,
             ),
           ],
         ),

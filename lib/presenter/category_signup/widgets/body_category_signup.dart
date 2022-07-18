@@ -43,54 +43,56 @@ class _BodyCategorySignupState extends State<BodyCategorySignup> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const TopBarApp(
-          title: 'Cadastrar categoria',
-          pageRoute: CategoryPage(),
-          isProfile: true,
-        ),
-        const SizedBox(height: 20),
-        TextFieldApp(
-          labelItem: 'Nome',
-          iconInput: Icons.tag_rounded,
-          typeController: null,
-        ),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: greenNeon,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          const TopBarApp(
+            title: 'Cadastrar categoria',
+            pageRoute: CategoryPage(),
+            isProfile: true,
           ),
-          margin: const EdgeInsets.symmetric(
-            horizontal: 15,
-            vertical: 30,
+          const SizedBox(height: 20),
+          TextFieldApp(
+            labelItem: 'Nome',
+            iconInput: Icons.tag_rounded,
+            typeController: null,
           ),
-          width: MediaQuery.of(context).size.width,
-          padding: const EdgeInsets.symmetric(
-            vertical: 3,
-          ),
-          child: TextButton(
-            onPressed: () {
-              pickImage();
-            },
-            child: const Text(
-              'Selecionar imagem',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: greenNeon,
+            ),
+            margin: const EdgeInsets.symmetric(
+              horizontal: 15,
+              vertical: 30,
+            ),
+            width: MediaQuery.of(context).size.width,
+            padding: const EdgeInsets.symmetric(
+              vertical: 3,
+            ),
+            child: TextButton(
+              onPressed: () {
+                pickImage();
+              },
+              child: const Text(
+                'Selecionar imagem',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
-        ),
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20),
-          width: MediaQuery.of(context).size.width,
-          child: fileImg != null
-              ? Image.memory(imgCategory!)
-              : const DefaulImageContainer(),
-        ),
-      ],
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            width: MediaQuery.of(context).size.width,
+            child: fileImg != null
+                ? Image.memory(imgCategory!)
+                : const DefaulImageContainer(),
+          ),
+        ],
+      ),
     );
   }
 }
