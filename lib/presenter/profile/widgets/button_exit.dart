@@ -26,6 +26,6 @@ class ButtonExit extends StatelessWidget {
           fontSize: 20,
         ),
       ),
-    );
+    );    
   }
 }
