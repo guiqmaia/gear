@@ -1,38 +1,43 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class ProductModel {
-  String productTitle;
-  String productImg;
-  int productCode;
-  int productQuantity;
-  double productPrice;
+  int? id;
+  String name;
+  double price;
+  String category;
+  int quantity;
+  Uint8List image;
 
   ProductModel({
-    required this.productTitle,
-    required this.productImg,
-    required this.productCode,
-    required this.productQuantity,
-    required this.productPrice,
+    this.id,
+    required this.name,
+    required this.price,
+    required this.category,
+    required this.quantity,
+    required this.image,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'title': productTitle,
-      'imgPath': productImg,
-      'productCode': productCode,
-      'productQuantity': productQuantity,
-      'productPrice': productPrice,
+      'id': id,
+      'name': name,
+      'price': price,
+      'category': category,
+      'quantity': quantity,
+      'image': image,
     };
   }
 
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
-      productTitle: map['title'] as String,
-      productImg: map['imgPath'] as String,
-      productCode: map['productCode'] as int,
-      productQuantity: map['productQuantity'] as int,
-      productPrice: map['productPrice'] as double,
+      id: map['id'] as int,
+      name: map['name'] as String,
+      price: map['price'] as double,
+      category: map['category'] as String,
+      quantity: map['quantity'] as int,
+      image: map['image'] as Uint8List,
     );
   }
 

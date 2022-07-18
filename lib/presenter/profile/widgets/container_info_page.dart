@@ -53,11 +53,15 @@ class ContainerInfo extends StatelessWidget {
               ),
               InfoContainerProfile(
                   titleInfo: "Email:",
+<<<<<<< HEAD
                   email: "bebidinhas@gmail.com.br",
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15,
                   ),
+=======
+                  info: "bebidinhas@gmail.com",
+>>>>>>> 7a457388ac9ee308c1b1c32b74ba6504153e5c38
                   iconInfo: Icons.email_outlined),
             ],
           ),

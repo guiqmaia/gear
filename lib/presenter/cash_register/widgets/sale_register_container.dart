@@ -49,6 +49,7 @@ class SaleRegisterContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: MediaQuery.of(context).size.width * 0.9,
       margin: EdgeInsets.symmetric(
         horizontal: MediaQuery.of(context).size.width * 0.05,
         vertical: MediaQuery.of(context).size.height * 0.01,

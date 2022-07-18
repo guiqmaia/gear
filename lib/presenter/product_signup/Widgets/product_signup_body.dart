@@ -1,9 +1,12 @@
+import 'dart:ffi';
 import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gear/core/app_assets.dart';
+import 'package:gear/infra/database/gear_database.dart';
+import 'package:gear/infra/models/product_model.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../home/home_page.dart';
@@ -21,8 +24,14 @@ class SignupPageBody extends StatefulWidget {
 }
 
 class _SignupPageBodyState extends State<SignupPageBody> {
-  File? image;
+  TextEditingController nameController = TextEditingController();
+  TextEditingController priceController = TextEditingController();
+  TextEditingController categoryController = TextEditingController();
+  TextEditingController quantityController = TextEditingController();
   Uint8List? photo;
+  final gearDatabase = GearDatabase();
+
+  File? image;
   Future pickImage() async {
     try {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -58,17 +67,22 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                 TextFieldApp(
                   labelItem: 'Nome',
                   iconInput: Icons.format_color_text_sharp,
-                  typeController: null,
+                  typeController: nameController,
                 ),
                 TextFieldApp(
                   labelItem: 'Preço',
                   iconInput: Icons.attach_money,
-                  typeController: null,
+                  typeController: priceController,
                 ),
                 TextFieldApp(
                   labelItem: 'Categoria',
                   iconInput: Icons.tag,
-                  typeController: null,
+                  typeController: categoryController,
+                ),
+                TextFieldApp(
+                  labelItem: 'Quantidade',
+                  iconInput: Icons.numbers,
+                  typeController: quantityController,
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -97,6 +111,40 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                   child: image != null
                       ? Image.memory(photo!)
                       : const DefaulImageContainer(),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: greenNeon,
+                  ),
+                  margin: const EdgeInsets.all(15),
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 3,
+                  ),
+                  child: TextButton(
+                    onPressed: () {
+                      ProductModel productModel = ProductModel(
+                        name: nameController.text,
+                        price: double.parse(priceController.text),
+                        category: categoryController.text,
+                        quantity: int.parse(quantityController.text),
+                        image: photo!,
+                      );
+                      gearDatabase.init();
+                      gearDatabase.insert(productModel);
+                      gearDatabase.select();
+                      Navigator.of(context).pop(context);
+                    },
+                    child: const Text(
+                      'Concluir',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),

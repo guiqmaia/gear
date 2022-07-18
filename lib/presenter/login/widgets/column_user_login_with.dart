@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gear/core/app_assets.dart';
 
+import '../../../core/app_assets.dart';
 import '../../home/home_page.dart';
 import '../../shared/widgets/btn_standard_app.dart';
 import '../../signup/signup.dart';
