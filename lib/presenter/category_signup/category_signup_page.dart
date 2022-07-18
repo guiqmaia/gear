@@ -19,6 +19,7 @@ class CategorySignupPage extends StatelessWidget {
         title: 'Cadastrar',
         pageRoute: const CategoryPage(),
         widthBtn: MediaQuery.of(context).size.width,
+        onPressed: (){},
       ),
     );
   }
