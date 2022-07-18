@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:gear/core/app_assets.dart';
-import 'package:gear/presenter/shared/widgets/text_field_app.dart';
-=======
+import '../../../core/app_assets.dart';
 import '../../shared/widgets/text_field_app.dart';
->>>>>>> 228d8eea38839e12aeff5468e8e9fbbfe2e64afe
 
 import '../../shared/widgets/btn_standard_app.dart';
 import '../../login/login_page.dart';
