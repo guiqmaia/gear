@@ -10,7 +10,7 @@ class GearDatabase {
     init();
   }
 
-  void init() async {
+  Future<void> init() async {
     var databasesPath = await getDatabasesPath();
     String path = '${databasesPath}demo.db';
 
@@ -20,7 +20,7 @@ class GearDatabase {
       onCreate: (Database db, int version) async {
         // When creating the db, create the table
         await db.execute(
-          'CREATE TABLE IF NOT EXISTS product (id INTEGER PRIMARY KEY AUTO_INCREMENT, name VACHAR(45) NOT NULL, price DOUBLE NOT NULL, category VACHAR(45) NOT NULL, quantity INT NOT NULL, image BLOB NULL)',
+          'CREATE TABLE IF NOT EXISTS product (id INTEGER PRIMARY KEY AUTOINCREMENT, name VACHAR(45) NOT NULL, price DOUBLE NOT NULL, category VACHAR(45) NOT NULL, quantity INT NOT NULL, image BLOB NULL)',
         );
       },
     );
@@ -37,9 +37,20 @@ class GearDatabase {
     );
   }
 
-  void select() async {
+  Future<List<ProductModel>> select() async {
     List<Map> list = await database.rawQuery('SELECT * FROM product');
-    print(list);
+    List<ProductModel> listProducts = [];
+
+    for (int i = 0; i < list.length; i++) {
+      listProducts.add(ProductModel(
+          id: list[i]['id'],
+          name: list[i]['name'],
+          price: list[i]['price'],
+          category: list[i]['category'],
+          quantity: list[i]['quantity'],
+          image: list[i]['image']));
+    }
+    return listProducts;
   }
 
   // void delete() async {
