@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/core/app_assets.dart';
 
 import '../../login/login_page.dart';
 
@@ -17,6 +18,7 @@ class ButtonExit extends StatelessWidget {
           ),
         );
       },
+      color: greenNeon,
       child: const Text(
         "Sair",
         style: TextStyle(
