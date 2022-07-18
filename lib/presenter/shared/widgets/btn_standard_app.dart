@@ -5,12 +5,14 @@ class BtnStandardApp extends StatelessWidget {
   final String title;
   final dynamic pageRoute;
   final dynamic widthBtn;
+  Function? onPressed;
 
-  const BtnStandardApp({
+  BtnStandardApp({
     Key? key,
     required this.title,
     this.pageRoute,
     required this.widthBtn,
+    this.onPressed,
   }) : super(key: key);
 
   @override
@@ -20,7 +22,10 @@ class BtnStandardApp extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         color: greenNeon,
       ),
-      margin: const EdgeInsets.all(15),
+      margin: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 10,
+      ),
       width: widthBtn,
       padding: const EdgeInsets.symmetric(
         vertical: 3,

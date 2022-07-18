@@ -33,7 +33,7 @@ class GearDatabase {
     Uint8List image,
   ) async {
     await database.rawInsert(
-      'INSERT INTO product(name, price, catefory, quantity, image) VALUES("$name", $price, "$category", $quantity, $image)',
+      'INSERT INTO product(name, price, category, quantity, image) VALUES("$name", $price, "$category", $quantity, $image)',
     );
   }
 
