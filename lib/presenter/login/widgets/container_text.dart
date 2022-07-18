@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/shared/widgets/big_text_app.dart';
 
+import '../../shared/widgets/big_text_app.dart';
+
+// ignore: must_be_immutable
 class ContainerText extends StatelessWidget {
   ContainerText({
     Key? key,

@@ -1,8 +1,7 @@
-import 'dart:math';
 
-import 'package:flutter/material.dart';
 
 import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/material.dart';
 
 class ResultsPage extends StatelessWidget {
   const ResultsPage({Key? key}) : super(key: key);
@@ -28,6 +27,7 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -44,10 +44,10 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                 vertical: 10,
                 horizontal: 10,
               ),
-              width: MediaQuery.of(context).size.width * 0.8,
+              width: double.maxFinite,
               height: MediaQuery.of(context).size.height * 0.3,
               decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(5)),
+                  color: Colors.black45, borderRadius: BorderRadius.circular(5)),
               child: Column(
                 children: [
                   const Padding(
@@ -56,6 +56,7 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                     ),
                     child: Text(
                       'Líderes de Venda',
+                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -65,54 +66,34 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                       scrollDirection: Axis.vertical,
                       children: const [
                         ListTile(
-                          leading: Text('Quantidade Vendida'),
-                          title: Text('Nome do Produto'),
-                          trailing: Text('Faturamento Gerado'),
+                          leading: Text('45', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                          title: Text('Tênis', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                          trailing: Text('R\$ 45,00', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                         ),
                         ListTile(
-                          leading: Text('Quantidade Vendida'),
-                          title: Text('Nome do Produto'),
-                          trailing: Text('Faturamento Gerado'),
+                          leading: Text('45', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                          title: Text('Tênis', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                          trailing: Text('R\$ 45,00', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                         ),
                         ListTile(
-                          leading: Text('Quantidade Vendida'),
-                          title: Text('Nome do Produto'),
-                          trailing: Text('Faturamento Gerado'),
+                          leading: Text('45'),
+                          title: Text('Tênis'),
+                          trailing: Text('R\$ 45,00'),
                         ),
                         ListTile(
-                          leading: Text('Quantidade Vendida'),
-                          title: Text('Nome do Produto'),
-                          trailing: Text('Faturamento Gerado'),
+                          leading: Text('45'),
+                          title: Text('Tênis'),
+                          trailing: Text('R\$ 45,00'),
                         ),
                         ListTile(
-                          leading: Text('Quantidade Vendida'),
-                          title: Text('Nome do Produto'),
-                          trailing: Text('Faturamento Gerado'),
+                          leading: Text('45'),
+                          title: Text('Tênis'),
+                          trailing: Text('R\$ 45,00'),
                         ),
                         ListTile(
-                          leading: Text('Quantidade Vendida'),
-                          title: Text('Nome do Produto'),
-                          trailing: Text('Faturamento Gerado'),
-                        ),
-                        ListTile(
-                          leading: Text('Quantidade Vendida'),
-                          title: Text('Nome do Produto'),
-                          trailing: Text('Faturamento Gerado'),
-                        ),
-                        ListTile(
-                          leading: Text('Quantidade Vendida'),
-                          title: Text('Nome do Produto'),
-                          trailing: Text('Faturamento Gerado'),
-                        ),
-                        ListTile(
-                          leading: Text('Quantidade Vendida'),
-                          title: Text('Nome do Produto'),
-                          trailing: Text('Faturamento Gerado'),
-                        ),
-                        ListTile(
-                          leading: Text('Quantidade Vendida'),
-                          title: Text('Nome do Produto'),
-                          trailing: Text('Faturamento Gerado'),
+                          leading: Text('45'),
+                          title: Text('Tênis'),
+                          trailing: Text('R\$ 45,00'),
                         ),
                       ],
                     ),
@@ -230,10 +211,10 @@ class BarChartSample1State extends State<BarChartSample1> {
       barRods: [
         BarChartRodData(
           toY: isTouched ? y + 1 : y,
-          color: isTouched ? Color.fromRGBO(202, 254, 72, 1) : barColor,
+          color: isTouched ? const Color.fromRGBO(202, 254, 72, 1) : barColor,
           width: width,
           borderSide: isTouched
-              ? BorderSide(color: Color.fromRGBO(202, 254, 72, 0.85), width: 1)
+              ? const BorderSide(color: Color.fromRGBO(202, 254, 72, 0.85), width: 1)
               : const BorderSide(color: Colors.white, width: 0),
           backDrawRodData: BackgroundBarChartRodData(
             show: true,

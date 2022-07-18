@@ -1,6 +1,6 @@
-// imagens
 import 'package:flutter/material.dart';
 
+// imagens
 String imgBusinessMan = 'assets/images/empresario.jpeg';
 
 // icons

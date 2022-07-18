@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:gear/core/app_assets.dart';
 
-import 'package:gear/presenter/login/login_page.dart';
-import 'package:gear/presenter/shared/widgets/btn_standard_app.dart';
-
+import '../../core/app_assets.dart';
+import '../login/login_page.dart';
 import '../shared/widgets/big_text_app.dart';
+import '../shared/widgets/btn_standard_app.dart';
 import '../shared/widgets/text_field_app.dart';
 
 class Signup extends StatefulWidget {
+  const Signup({Key? key}) : super(key: key);
+
   @override
   State<Signup> createState() => _SignupState();
 }

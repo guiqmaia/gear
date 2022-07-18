@@ -20,9 +20,9 @@ class TopBarApp extends StatelessWidget {
       width: double.maxFinite,
       margin: const EdgeInsets.only(bottom: 5),
       padding: const EdgeInsets.only(bottom: 10, top: 28, right: 40, left: 20),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.black,
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(30),
           bottomRight: Radius.circular(30),
         ),
@@ -54,14 +54,18 @@ class TopBarApp extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => const ProfilePge(),
+                    builder: (context) => const ProfilePage(),
                   ),
                 );
               },
               child: const CircleAvatar(
                 radius: 26,
                 backgroundColor: Colors.white,
-                child: Icon(Icons.person, color: Colors.black, size: 35,),
+                child: Icon(
+                  Icons.person,
+                  color: Colors.black,
+                  size: 35,
+                ),
               ),
             ),
           ),

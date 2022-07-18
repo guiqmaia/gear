@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../../core/app_assets.dart';
 
+// ignore: must_be_immutable
 class RecentSalesList extends StatefulWidget {
   List sales;
 
@@ -16,7 +18,7 @@ class _RecentSalesListState extends State<RecentSalesList> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [],
+      children: const [],
     );
   }
 }
@@ -103,12 +105,12 @@ class SaleRegisterContainer extends StatelessWidget {
                   vertical: 5,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade50,
+                  color: backgroundGrey,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
                   price,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 17,
                   ),
@@ -131,7 +133,7 @@ class SaleRegisterContainer extends StatelessWidget {
                       vertical: 5,
                     ),
                     decoration: BoxDecoration(
-                      color: Colors.grey.shade50,
+                      color: backgroundGrey,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(

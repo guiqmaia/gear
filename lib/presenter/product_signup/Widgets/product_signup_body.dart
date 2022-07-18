@@ -3,12 +3,13 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gear/presenter/home/home_page.dart';
-import 'package:gear/presenter/shared/widgets/text_field_app.dart';
 import 'package:image_picker/image_picker.dart';
+
+import '../../home/home_page.dart';
+import '../../shared/widgets/text_field_app.dart';
 import '../../shared/widgets/top_bar_app.dart';
 import 'default_image_container.dart';
-import 'package:intl/intl.dart';
+
 
 class SignupPageBody extends StatefulWidget {
   const SignupPageBody({
@@ -27,11 +28,14 @@ class _SignupPageBodyState extends State<SignupPageBody> {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image == null) return;
       final imageTemp = File(image.path);
+      // ignore: avoid_print
+      print(imageTemp.readAsBytesSync());
       setState(() {
         this.image = imageTemp;
         photo = imageTemp.readAsBytesSync();
       });
     } on PlatformException catch (e) {
+      // ignore: avoid_print
       print('Failed to pick image: $e');
     }
   }

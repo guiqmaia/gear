@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../sales/sales_page.dart';
+import '../../../core/app_assets.dart';
 
 class BtnStandardApp extends StatelessWidget {
   final String title;
@@ -27,7 +26,7 @@ class BtnStandardApp extends StatelessWidget {
         //     Colors.blue.shade800,
         //   ],
         // ),
-        color: Color.fromRGBO(202, 254, 72, 1),
+        color: greenNeon,
       ),
       margin: const EdgeInsets.all(15),
       width: widthBtn,

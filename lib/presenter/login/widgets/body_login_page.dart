@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/shared/widgets/text_field_app.dart';
 
+import '../../shared/widgets/text_field_app.dart';
 import 'column_user_login_with.dart';
 import 'container_text.dart';
-import 'container_text_field_login.dart';
 import 'container_user_options.dart';
 
 class BodyLoginPage extends StatelessWidget {
@@ -20,7 +19,7 @@ class BodyLoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,

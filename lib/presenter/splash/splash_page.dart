@@ -13,25 +13,8 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   double opacityLevel = 0.5;
 
-  bool _myFirs = true;
-
-  final double _myFontSize = 60;
-  final Color _myColor = Colors.blue;
-  final FontWeight _myFontWeight = FontWeight.bold;
-
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 2)).then(
-      (value) => {
-        setState(
-          () {
-            _myFirs = false;
-          },
-        )
-      },
-    );
-    super.initState();
-
     Future.delayed(const Duration(seconds: 2)).then(
       (value) => {
         Navigator.of(context).push(
@@ -47,16 +30,12 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: [
-            AnimationSplash(
-              myFirs: _myFirs,
-              myFontSize: _myFontSize,
-              myColor: _myColor,
-              myFontWeight: _myFontWeight,
-            ),
+          children: const [
+            AnimationSplash(),           
           ],
         ),
       ),
