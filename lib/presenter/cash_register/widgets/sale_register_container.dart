@@ -23,6 +23,15 @@ class _RecentSalesListState extends State<RecentSalesList> {
   }
 }
 
+List<SaleRegisterContainer> salesList = [
+  SaleRegisterContainer(
+      price: 'R\$ 25,00', quantity: 5, product: 'Soda', productImg: imgSodas),
+];
+
+List get getLista {
+  return salesList;
+}
+
 class SaleRegisterContainer extends StatelessWidget {
   final String price;
   final dynamic quantity;
@@ -40,6 +49,7 @@ class SaleRegisterContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: MediaQuery.of(context).size.width * 0.9,
       margin: EdgeInsets.symmetric(
         horizontal: MediaQuery.of(context).size.width * 0.05,
         vertical: MediaQuery.of(context).size.height * 0.01,
@@ -84,7 +94,7 @@ class SaleRegisterContainer extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 15),
                   Text(
                     'Débito',
                     style: TextStyle(
@@ -116,7 +126,7 @@ class SaleRegisterContainer extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 15),
               Row(
                 children: [
                   Text(
@@ -127,7 +137,6 @@ class SaleRegisterContainer extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(right: 8),
                     padding: const EdgeInsets.symmetric(
                       horizontal: 10,
                       vertical: 5,

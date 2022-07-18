@@ -3,13 +3,14 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gear/core/app_assets.dart';
+import 'package:gear/infra/database/gear_database.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../home/home_page.dart';
 import '../../shared/widgets/text_field_app.dart';
 import '../../shared/widgets/top_bar_app.dart';
 import 'default_image_container.dart';
-
 
 class SignupPageBody extends StatefulWidget {
   const SignupPageBody({
@@ -21,15 +22,19 @@ class SignupPageBody extends StatefulWidget {
 }
 
 class _SignupPageBodyState extends State<SignupPageBody> {
-  File? image;
+  TextEditingController nameController = TextEditingController();
+  TextEditingController priceController = TextEditingController();
+  TextEditingController categoryController = TextEditingController();
+  TextEditingController quantityController = TextEditingController();
   Uint8List? photo;
+  final gearDatabase = GearDatabase();
+
+  File? image;
   Future pickImage() async {
     try {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image == null) return;
       final imageTemp = File(image.path);
-      // ignore: avoid_print
-      print(imageTemp.readAsBytesSync());
       setState(() {
         this.image = imageTemp;
         photo = imageTemp.readAsBytesSync();
@@ -58,29 +63,27 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                 TextFieldApp(
                   labelItem: 'Nome',
                   iconInput: Icons.format_color_text_sharp,
-                  typeController: null,
+                  typeController: nameController,
                 ),
                 TextFieldApp(
                   labelItem: 'Preço',
                   iconInput: Icons.attach_money,
-                  typeController: null,
+                  typeController: priceController,
                 ),
                 TextFieldApp(
                   labelItem: 'Categoria',
                   iconInput: Icons.tag,
-                  typeController: null,
+                  typeController: categoryController,
+                ),
+                TextFieldApp(
+                  labelItem: 'Quantidade',
+                  iconInput: Icons.numbers,
+                  typeController: quantityController,
                 ),
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    gradient: LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [
-                        Colors.purple.shade300,
-                        Colors.blue.shade800,
-                      ],
-                    ),
+                    color: greenNeon,
                   ),
                   margin: const EdgeInsets.all(15),
                   padding: const EdgeInsets.symmetric(
@@ -92,7 +95,7 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                     child: const Text(
                       'Selecionar Imagem',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 18,
                       ),
                     ),
@@ -104,6 +107,39 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                   child: image != null
                       ? Image.memory(photo!)
                       : const DefaulImageContainer(),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: greenNeon,
+                  ),
+                  margin: const EdgeInsets.all(15),
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 3,
+                  ),
+                  child: TextButton(
+                    onPressed: () {
+                      gearDatabase.init();
+                      gearDatabase.insert(
+                        nameController.text,
+                        double.parse(priceController.text),
+                        categoryController.text,
+                        int.parse(quantityController.text),
+                        photo!,
+                      );
+                      gearDatabase.select();
+                      Navigator.of(context).pop(context);
+                    },
+                    child: const Text(
+                      'Concluir',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),

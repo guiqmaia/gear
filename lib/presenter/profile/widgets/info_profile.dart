@@ -56,7 +56,7 @@ class InfoContainerProfile extends StatelessWidget {
                 Icon(
                   iconInfo,
                   color: greenNeon,
-                  size: 35,
+                  size: 32,
                 ),
                 const SizedBox(width: 10),
                 Text(

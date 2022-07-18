@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/login/login_page.dart';
 
 import '../../core/app_assets.dart';
 import '../home/home_page.dart';
+import '../shared/widgets/btn_standard_app.dart';
 import '../shared/widgets/top_bar_app.dart';
 import 'widgets/button_exit.dart';
 import 'widgets/container_info_page.dart';
@@ -29,23 +31,22 @@ class BodyProfilePage extends StatelessWidget {
       backgroundColor: backgroundGrey,
       body: SingleChildScrollView(
         child: Column(
-          children: const [
-            TopBarApp(
+          children: [
+            const TopBarApp(
               title: "Perfil",
               pageRoute: HomePage(),
               isProfile: false,
             ),
-            NamePhotoProfile(),
-            SizedBox(height: 15),
-            ContainerInfo(),
-            SizedBox(height: 10),
-            ButtonExit(),
-            SizedBox(height: 10)
+            const NamePhotoProfile(),
+            const SizedBox(height: 15),
+            const ContainerInfo(),
+            BtnStandardApp(
+              title: "Sair",
+              widthBtn: MediaQuery.of(context).size.width * 0.9,
+            ),
           ],
         ),
       ),
     );
   }
 }
-
-

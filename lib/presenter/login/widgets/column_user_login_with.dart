@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/core/app_assets.dart';
 
 import '../../../core/app_assets.dart';
 import '../../home/home_page.dart';
@@ -60,9 +61,13 @@ class ColumnUserLoginWith extends StatelessWidget {
                 widthBtn: MediaQuery.of(context).size.width * 0.9),
           ],
         ),
-        TextButton(onPressed: () {Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) =>  const Signup()),
-            );}, child: const Text('Cadastre-se'))
+        TextButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const Signup()),
+              );
+            },
+            child: const Text('Cadastre-se'))
       ],
     );
   }
