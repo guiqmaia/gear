@@ -38,11 +38,8 @@ class InfoContainerProfile extends StatelessWidget {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 30,
-            ),
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [            
             Text(
               titleInfo,
               style: const TextStyle(
@@ -70,7 +67,7 @@ class InfoContainerProfile extends StatelessWidget {
                   ),
                 ),
               ],
-            ),
+            ),            
           ],
         ),
       ),
