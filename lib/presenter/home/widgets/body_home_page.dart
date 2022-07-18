@@ -35,13 +35,33 @@ class _BodyHomePageState extends State<BodyHomePage> {
                 fit: BoxFit.cover,
               ).image,
             ),
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Texto',
-                style: pageInfoStyle,
-                textAlign: TextAlign.left,
-              ),
+            Column(
+              children: const [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Texto',
+                    style: pageInfoStyle,
+                    // textAlign: TextAlign.left,
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Texto',
+                    style: pageInfoStyle,
+                    // textAlign: TextAlign.left,
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Texto',
+                    style: pageInfoStyle,
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+              ],
             ),
           ],
         ),

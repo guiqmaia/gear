@@ -11,11 +11,11 @@ class ContainerInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
           margin: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 20,
+            horizontal: 20,            
           ),
           width: 390,
           height: 530,
