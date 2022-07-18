@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/core/app_assets.dart';
 import 'package:gear/presenter/signup/signup.dart';
 
 import '../../home/home_page.dart';
@@ -25,7 +26,7 @@ class ColumnUserLoginWith extends StatelessWidget {
                 backgroundColor: Colors.white,
                 radius: 30,
                 child: Image.asset(
-                  'assets/icons/google.png',
+                  iconGoogle,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -39,7 +40,7 @@ class ColumnUserLoginWith extends StatelessWidget {
                 backgroundColor: Colors.white,
                 radius: 30,
                 child: Image.asset(
-                  'assets/icons/facebook.png',
+                  iconFacebook,
                   fit: BoxFit.cover,
                 ),
               ),

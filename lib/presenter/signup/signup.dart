@@ -95,13 +95,13 @@ class _SignupState extends State<Signup> {
             ),
             TextFieldApp(
               labelItem: 'CEP',
-              iconInput: Icons.person,
+              iconInput: Icons.numbers,
               typeController: cepController,
               isObscured: false,
             ),
             TextFieldApp(
               labelItem: 'Endereço',
-              iconInput: Icons.person,
+              iconInput: Icons.home,
               typeController: adressController,
               isObscured: false,
             ),
@@ -112,13 +112,13 @@ class _SignupState extends State<Signup> {
             ),
             TextFieldApp(
               labelItem: 'Email',
-              iconInput: Icons.person,
+              iconInput: Icons.email,
               typeController: loginController,
               isObscured: false,
             ),
             TextFieldApp(
               labelItem: 'Senha',
-              iconInput: Icons.person,
+              iconInput: Icons.key,
               typeController: passwordController,
               isObscured: false,
             ),
