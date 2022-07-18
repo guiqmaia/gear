@@ -9,7 +9,7 @@ class BtnStandardApp extends StatelessWidget {
   const BtnStandardApp({
     Key? key,
     required this.title,
-    required this.pageRoute,
+    this.pageRoute,
     required this.widthBtn,
   }) : super(key: key);
 
@@ -27,11 +27,15 @@ class BtnStandardApp extends StatelessWidget {
       ),
       child: TextButton(
         onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => pageRoute,
-            ),
-          );
+          if (pageRoute == null) {
+            Navigator.of(context).pop(context);
+          } else {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => pageRoute,
+              ),
+            );
+          }
         },
         child: Text(
           title,

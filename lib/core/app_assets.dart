@@ -6,7 +6,7 @@ String imgBusinessMan = 'assets/images/empresario.jpeg';
 // icons
 String iconFacebook = 'assets/icons/facebook.png';
 String iconGoogle = 'assets/icons/google.png';
-String iconEmail = 'assets/icons/email.png';
+
 
 // sodas
 String imgSodas = 'assets/images/soda.png';
@@ -47,6 +47,11 @@ String imgBaly = 'assets/images/baly.jpeg';
 String imgWaterBottle = 'assets/images/water_bottle.jpg';
 String imgWater = 'assets/images/water.webp';
 String imgSparklingWater = 'assets/images/sparkling_water.jpg';
+
+
+//Ilustrações
+String imgEmail = 'assets/images/email.png';
+
 
 // colors
 Color greenNeon = const Color.fromRGBO(202, 254, 72, 1);
