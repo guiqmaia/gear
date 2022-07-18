@@ -19,23 +19,23 @@ class WrapContainerCategory extends StatelessWidget {
           categoryTitle: 'Refrigerante',
         ),
         ContainerCategoryInventory(
-          categoryImg: imgSodas,
+          categoryImg: imgBeer,
           categoryTitle: 'Cerveja',
         ),
         ContainerCategoryInventory(
-          categoryImg: imgSodas,
+          categoryImg: imgWines,
           categoryTitle: 'Vinho',
         ),
         ContainerCategoryInventory(
-          categoryImg: imgSodas,
+          categoryImg: imgDistilled,
           categoryTitle: 'Destilado',
         ),
         ContainerCategoryInventory(
-          categoryImg: imgSodas,
+          categoryImg: imgEnergyDrink,
           categoryTitle: 'Energético',
         ),
         ContainerCategoryInventory(
-          categoryImg: imgSodas,
+          categoryImg: imgWaterBottle,
           categoryTitle: 'Água',
         ),
       ],

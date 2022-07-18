@@ -84,7 +84,7 @@ class SaleRegisterContainer extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 15),
                   Text(
                     'Débito',
                     style: TextStyle(
@@ -116,7 +116,7 @@ class SaleRegisterContainer extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 15),
               Row(
                 children: [
                   Text(
@@ -127,7 +127,6 @@ class SaleRegisterContainer extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(right: 8),
                     padding: const EdgeInsets.symmetric(
                       horizontal: 10,
                       vertical: 5,
