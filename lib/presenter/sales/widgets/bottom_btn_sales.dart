@@ -54,7 +54,7 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
           title: 'Finalizar venda',
           pageRoute: const CashRegisterPage(),
           widthBtn: MediaQuery.of(context).size.width * 0.45,
-          onPressed: salesAdd(),
+          onPressed: (){},
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -66,7 +66,7 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
                 backgroundColor: Colors.black,
                 child: IconButton(
                   tooltip: 'Adicione',
-                  onPressed: salesAdd(),
+                  onPressed: (){},
                   icon: const Icon(
                     Icons.add,
                     color: Color.fromRGBO(202, 254, 72, 1),
