@@ -19,16 +19,6 @@ class _ResetPasswordState extends State<ResetPassword> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundGrey,
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.black,
-        leading: GestureDetector(
-          onTap: () => Navigator.pop(context, false),
-          child: const Icon(
-            Icons.menu,
-          ),
-        ),
-      ),
       body: BodyResetPassword(emailController: emailController),
     );
   }
