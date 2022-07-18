@@ -5,12 +5,14 @@ class BtnStandardApp extends StatelessWidget {
   final String title;
   final dynamic pageRoute;
   final dynamic widthBtn;
+  Function? onPressed;
 
-  const BtnStandardApp({
+  BtnStandardApp({
     Key? key,
     required this.title,
     this.pageRoute,
     required this.widthBtn,
+    this.onPressed,
   }) : super(key: key);
 
   @override
