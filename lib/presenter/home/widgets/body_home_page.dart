@@ -1,11 +1,85 @@
 import 'package:flutter/material.dart';
 import 'package:gear/core/app_assets.dart';
+import 'package:onboarding/onboarding.dart';
 
 import '../../cash_register/cash_register_page.dart';
 import '../../category/category_page.dart';
 
-class BodyHomePage extends StatelessWidget {
+class BodyHomePage extends StatefulWidget {
   const BodyHomePage({Key? key}) : super(key: key);
+
+  @override
+  State<BodyHomePage> createState() => _BodyHomePageState();
+}
+
+class _BodyHomePageState extends State<BodyHomePage> {
+  late Material materialButton;
+  late int index;
+  final onboardingPagesList = [
+    PageModel(
+      widget: DecoratedBox(
+        decoration: BoxDecoration(
+          color: background,
+          border: Border.all(
+            width: 0.0,
+            color: background,
+          ),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            CircleAvatar(
+              radius: 50,
+              backgroundImage: Image.asset(
+                "assets/images/fotoConveniencia.png",
+                fit: BoxFit.cover,
+              ).image,
+            ),
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Texto',
+                style: pageInfoStyle,
+                textAlign: TextAlign.left,
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+    PageModel(
+      widget: DecoratedBox(
+        decoration: BoxDecoration(
+          color: background,
+          border: Border.all(
+            width: 0.0,
+            color: background,
+          ),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: const [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'R\$1000',
+                style: pageInfoStyle,
+                textAlign: TextAlign.left,
+              ),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Valor Faturado na Semana',
+                style: pageInfoStyle,
+                textAlign: TextAlign.left,
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -42,35 +116,59 @@ class BodyHomePage extends StatelessWidget {
             ),
             // ignore: sized_box_for_whitespace
             Container(
-              height: 200,
-              width: MediaQuery.of(context).size.width * 0.85,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.all(5),
-                children: [
-                  Container(                    
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
+              width: double.infinity,
+              height: 300,
+              child: Onboarding(
+                pages: onboardingPagesList,
+                onPageChange: (int pageIndex) {
+                  index = pageIndex;
+                },
+                startPageIndex: 0,
+                footerBuilder: (context, dragDistance, pagesLength, setIndex) {
+                  return DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      border: Border.all(
+                        width: 0,
                         color: Colors.black,
                       ),
-                      width: 302),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Container(
-                    width: 302,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.blue,
                     ),
-                  ),
-                ],
+                    child: ColoredBox(
+                      color: Colors.black,
+                      child: Padding(
+                        padding: const EdgeInsets.all(25.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CustomIndicator(
+                              netDragPercent: dragDistance,
+                              pagesLength: pagesLength,
+                              indicator: Indicator(
+                                activeIndicator: const ActiveIndicator(
+                                  color: Colors.white,
+                                  borderWidth: 1.5,
+                                ),
+                                closedIndicator:
+                                    ClosedIndicator(color: greenNeon),
+                                indicatorDesign: IndicatorDesign.polygon(
+                                  polygonDesign: PolygonDesign(
+                                    polygon: DesignType.polygon_circle,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
             const SizedBox(
-              height: 50,
+              height: 30,
             ),
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width * 0.85,
               height: 50,
               child: ElevatedButton(
