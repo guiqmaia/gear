@@ -32,21 +32,21 @@ class BodyProductPage extends StatelessWidget {
           iconInput: Icons.search,
           typeController: null,
         ),
-        ListView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemCount: productsList[categoryTitle]!.length,
-          itemBuilder: (context, index) {
-            ProductModel product = productsList[categoryTitle]![index];
-            return ContainerProductCategory(
-              productName: product.productTitle,
-              productPrice: product.productPrice.toString(),
-              productQuantity: product.productQuantity,
-              productCode: product.productCode,
-              productImg: product.productImg,
-            );
-          },
-        ),
+        // ListView.builder(
+        //   physics: const NeverScrollableScrollPhysics(),
+        //   shrinkWrap: true,
+        //   itemCount: productsList[categoryTitle]!.length,
+        //   itemBuilder: (context, index) {
+        //     ProductModel product = productsList[categoryTitle]![index];
+        //     return ContainerProductCategory(
+        //       productName: product.productTitle,
+        //       productPrice: product.productPrice.toString(),
+        //       productQuantity: product.productQuantity,
+        //       productCode: product.productCode,
+        //       productImg: product.productImg,
+        //     );
+        //   },
+        // ),
       ],
     );
   }

@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -5,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gear/core/app_assets.dart';
 import 'package:gear/infra/database/gear_database.dart';
+import 'package:gear/infra/models/product_model.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../home/home_page.dart';
@@ -35,6 +37,8 @@ class _SignupPageBodyState extends State<SignupPageBody> {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image == null) return;
       final imageTemp = File(image.path);
+      // ignore: avoid_print
+      print(imageTemp.readAsBytesSync());
       setState(() {
         this.image = imageTemp;
         photo = imageTemp.readAsBytesSync();
@@ -120,14 +124,15 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                   ),
                   child: TextButton(
                     onPressed: () {
-                      gearDatabase.init();
-                      gearDatabase.insert(
-                        nameController.text,
-                        double.parse(priceController.text),
-                        categoryController.text,
-                        int.parse(quantityController.text),
-                        photo!,
+                      ProductModel productModel = ProductModel(
+                        name: nameController.text,
+                        price: double.parse(priceController.text),
+                        category: categoryController.text,
+                        quantity: int.parse(quantityController.text),
+                        image: photo!,
                       );
+                      gearDatabase.init();
+                      gearDatabase.insert(productModel);
                       gearDatabase.select();
                       Navigator.of(context).pop(context);
                     },
