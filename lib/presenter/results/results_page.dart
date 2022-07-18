@@ -1,5 +1,3 @@
-
-
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -45,55 +43,102 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                 horizontal: 10,
               ),
               width: double.maxFinite,
-              height: MediaQuery.of(context).size.height * 0.3,
+              height: MediaQuery.of(context).size.height * 0.4,
               decoration: BoxDecoration(
-                  color: Colors.black45, borderRadius: BorderRadius.circular(5)),
+                  color: Colors.grey.shade900,
+                  borderRadius: BorderRadius.circular(20)),
               child: Column(
                 children: [
                   const Padding(
                     padding: EdgeInsets.symmetric(
-                      vertical: 20,
+                      vertical: 15,
                     ),
                     child: Text(
                       'Líderes de Venda',
-                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.2,
+                    height: MediaQuery.of(context).size.height * 0.3,
                     child: ListView(
                       scrollDirection: Axis.vertical,
-                      children: const [
-                        ListTile(
-                          leading: Text('45', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
-                          title: Text('Tênis', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
-                          trailing: Text('R\$ 45,00', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: const [
+                            Text(
+                              'Quantidade',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            Text(
+                              'Produto',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            Text(
+                              'Faturamento',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
                         ),
-                        ListTile(
-                          leading: Text('45', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
-                          title: Text('Tênis', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
-                          trailing: Text('R\$ 45,00', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                        const SizedBox(
+                          height: 15,
                         ),
-                        ListTile(
-                          leading: Text('45'),
-                          title: Text('Tênis'),
-                          trailing: Text('R\$ 45,00'),
-                        ),
-                        ListTile(
-                          leading: Text('45'),
-                          title: Text('Tênis'),
-                          trailing: Text('R\$ 45,00'),
-                        ),
-                        ListTile(
-                          leading: Text('45'),
-                          title: Text('Tênis'),
-                          trailing: Text('R\$ 45,00'),
-                        ),
-                        ListTile(
-                          leading: Text('45'),
-                          title: Text('Tênis'),
-                          trailing: Text('R\$ 45,00'),
+                        Wrap(
+                          runSpacing: 15,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: const [
+                                Text(
+                                  '45',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                                Text(
+                                  'Tênis',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                                Text(
+                                  '4500,00',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -150,7 +195,7 @@ class BarChartSample1State extends State<BarChartSample1> {
       aspectRatio: 1,
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-        color: Colors.black54,
+        color: Colors.grey.shade900,
         child: Stack(
           children: <Widget>[
             Padding(
@@ -171,7 +216,7 @@ class BarChartSample1State extends State<BarChartSample1> {
                     height: 4,
                   ),
                   const Text(
-                    'Loja do Seu Zé',
+                    'Distribuidora Bebidinhas',
                     style: TextStyle(
                         color: Color.fromRGBO(240, 239, 244, 1),
                         fontSize: 18,
@@ -202,7 +247,7 @@ class BarChartSample1State extends State<BarChartSample1> {
     int x,
     double y, {
     bool isTouched = false,
-    Color barColor = const Color.fromRGBO(202, 254, 72, 0.8),
+    Color barColor = const Color.fromRGBO(202, 254, 72, 1),
     double width = 22,
     List<int> showTooltips = const [],
   }) {
@@ -214,7 +259,8 @@ class BarChartSample1State extends State<BarChartSample1> {
           color: isTouched ? const Color.fromRGBO(202, 254, 72, 1) : barColor,
           width: width,
           borderSide: isTouched
-              ? const BorderSide(color: Color.fromRGBO(202, 254, 72, 0.85), width: 1)
+              ? const BorderSide(
+                  color: Color.fromRGBO(202, 254, 72, 0.85), width: 1)
               : const BorderSide(color: Colors.white, width: 0),
           backDrawRodData: BackgroundBarChartRodData(
             show: true,
