@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../../core/app_assets.dart';
 
+<<<<<<< HEAD
+// import '../../product/product_page.dart';
+=======
 import '../../product/product_page.dart';
+>>>>>>> ce029372f278184a084f65ab213653aee75e1c7e
 
 class ContainerCategoryInventory extends StatelessWidget {
   final String categoryTitle;
@@ -18,6 +22,16 @@ class ContainerCategoryInventory extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(20),
       onTap: () {
+<<<<<<< HEAD
+        // Navigator.of(context).push(
+        //   MaterialPageRoute(
+        //     builder: (context) => ProductPage(
+        //       categoryTitle: categoryTitle,
+        //       categoryImg: categoryImg,
+        //     ),
+        //   ),
+        // );
+=======
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => ProductPage(
@@ -25,6 +39,7 @@ class ContainerCategoryInventory extends StatelessWidget {
             ),
           ),
         );
+>>>>>>> ce029372f278184a084f65ab213653aee75e1c7e
       },
       child: Container(
         width: MediaQuery.of(context).size.width * 0.4,

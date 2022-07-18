@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:gear/infra/models/product_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 class GearDatabase {
@@ -19,22 +20,14 @@ class GearDatabase {
       onCreate: (Database db, int version) async {
         // When creating the db, create the table
         await db.execute(
-          'CREATE TABLE IF NOT EXISTS product (id INTEGER PRIMARY KEY, name VACHAR(45) NOT NULL, price DOUBLE NOT NULL, category VACHAR(45) NOT NULL, quantity INT NOT NULL, image BLOB NULL)',
+          'CREATE TABLE IF NOT EXISTS product (id INTEGER PRIMARY KEY AUTO_INCREMENT, name VACHAR(45) NOT NULL, price DOUBLE NOT NULL, category VACHAR(45) NOT NULL, quantity INT NOT NULL, image BLOB NULL)',
         );
       },
     );
   }
 
-  void insert(
-    String name,
-    double price,
-    String category,
-    int quantity,
-    Uint8List image,
-  ) async {
-    await database.rawInsert(
-      'INSERT INTO product(name, price, category, quantity, image) VALUES("$name", $price, "$category", $quantity, $image)',
-    );
+  void insert(ProductModel productModel) async {
+    await database.insert("product", productModel.toMap());
   }
 
   void update() async {
