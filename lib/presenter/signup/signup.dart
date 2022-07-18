@@ -30,28 +30,13 @@ class _SignupState extends State<Signup> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundGrey,
-      appBar: AppBar(
-        title: const Text('Gear'),
-        centerTitle: true,
-        backgroundColor: Colors.black,
-        leading: GestureDetector(
-          onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => const LoginPage()),
-            );
-          },
-          child: const Icon(
-            Icons.menu,
-          ),
-        ),
-      ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             Center(
               child: Padding(
-                padding: const EdgeInsets.only(top: 20, bottom: 20),
+                padding: const EdgeInsets.only(top: 100, bottom: 20),
                 child: BigTextApp(
                   text: 'Cadastre-se',
                 ),
