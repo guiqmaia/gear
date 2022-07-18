@@ -23,6 +23,15 @@ class _RecentSalesListState extends State<RecentSalesList> {
   }
 }
 
+List<SaleRegisterContainer> salesList = [
+  SaleRegisterContainer(
+      price: 'R\$ 25,00', quantity: 5, product: 'Soda', productImg: imgSodas),
+];
+
+List get getLista {
+  return salesList;
+}
+
 class SaleRegisterContainer extends StatelessWidget {
   final String price;
   final dynamic quantity;
