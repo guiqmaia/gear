@@ -1,16 +1,29 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 import '../../../core/app_assets.dart';
 
 class InfoContainerProfile extends StatelessWidget {
   final String titleInfo;
-  final String info;
+  String? telefone;
+  String? cep;
+  String? email;
+  String? name_propietery;
+  String? rua;
+  String? birthData;
+  String? cpf;
   final IconData iconInfo;
-  const InfoContainerProfile({
+  InfoContainerProfile({
     Key? key,
     required this.titleInfo,
-    required this.info,
-    required this.iconInfo,
+    this.telefone,
+    this.cep,
+    this.email,
+    this.name_propietery,
+    this.rua,
+    this.birthData,
+    this.cpf,
+    required this.iconInfo, required TextStyle style,
   }) : super(key: key);
 
   @override
@@ -39,7 +52,7 @@ class InfoContainerProfile extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [            
+          children: [
             Text(
               titleInfo,
               style: const TextStyle(
@@ -60,14 +73,14 @@ class InfoContainerProfile extends StatelessWidget {
                 ),
                 const SizedBox(width: 10),
                 Text(
-                  info,
+                  telefone ?? 'Desconhecido',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15,
                   ),
                 ),
               ],
-            ),            
+            ),
           ],
         ),
       ),

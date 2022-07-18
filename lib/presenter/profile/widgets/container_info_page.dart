@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 
-
-import 'info_profile.dart';
+import 'info_container_profile.dart';
 
 class ContainerInfo extends StatelessWidget {
-  const ContainerInfo({
-    Key? key,
-  }) : super(key: key);
+  const ContainerInfo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +12,7 @@ class ContainerInfo extends StatelessWidget {
       children: [
         Container(
           margin: const EdgeInsets.symmetric(
-            horizontal: 20,            
+            horizontal: 20,
           ),
           width: 390,
           height: 530,
@@ -26,25 +23,41 @@ class ContainerInfo extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               InfoContainerProfile(
                 titleInfo: "Telefone:",
-                info: "(47) 3732 - 0010",
+                telefone: "(47) 3732 - 0010",
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                ),
                 iconInfo: Icons.local_phone_outlined,
               ),
               InfoContainerProfile(
                 titleInfo: "CEP:",
-                info: "90035-190",
+                telefone: "90035-190",
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                ),
                 iconInfo: Icons.location_searching,
               ),
               InfoContainerProfile(
                 titleInfo: "Endereço:",
-                info: "Av. Osvaldo Aranha, 720 ",
+                rua: "Av. Osvaldo Aranha, 720 ",
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                ),
                 iconInfo: Icons.location_on_outlined,
               ),
               InfoContainerProfile(
                   titleInfo: "Email:",
-                  info: "bebidinhas@gmail.com.br",
+                  email: "bebidinhas@gmail.com.br",
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                  ),
                   iconInfo: Icons.email_outlined),
             ],
           ),
@@ -63,19 +76,31 @@ class ContainerInfo extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               InfoContainerProfile(
                   titleInfo: "Nome:",
-                  info: "Douglas Costa da Silva",
+                  name_propietery: "Douglas Costa da Silva",
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                  ),
                   iconInfo: Icons.person_outline),
               InfoContainerProfile(
                 titleInfo: "Data de Nascimento:",
-                info: "27/04/2017",
+                birthData: "27/04/2017",
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                ),
                 iconInfo: Icons.location_searching,
               ),
               InfoContainerProfile(
                 titleInfo: "CPF:",
-                info: "109.504.364-60",
+                cpf: "109.504.364-60",
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                ),
                 iconInfo: Icons.location_on_outlined,
               ),
             ],
