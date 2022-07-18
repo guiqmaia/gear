@@ -3,13 +3,13 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gear/core/app_assets.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../home/home_page.dart';
 import '../../shared/widgets/text_field_app.dart';
 import '../../shared/widgets/top_bar_app.dart';
 import 'default_image_container.dart';
-
 
 class SignupPageBody extends StatefulWidget {
   const SignupPageBody({
@@ -73,14 +73,7 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    gradient: LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [
-                        Colors.purple.shade300,
-                        Colors.blue.shade800,
-                      ],
-                    ),
+                    color: greenNeon,
                   ),
                   margin: const EdgeInsets.all(15),
                   padding: const EdgeInsets.symmetric(
@@ -92,7 +85,7 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                     child: const Text(
                       'Selecionar Imagem',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 18,
                       ),
                     ),

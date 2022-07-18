@@ -31,23 +31,20 @@ class BodyProfilePage extends StatelessWidget {
       backgroundColor: backgroundGrey,
       body: SingleChildScrollView(
         child: Column(
-          children: const [
-            TopBarApp(
+          children: [
+            const TopBarApp(
               title: "Perfil",
               pageRoute: HomePage(),
               isProfile: false,
             ),
-            NamePhotoProfile(),
-            SizedBox(height: 15),
-            ContainerInfo(),
-            SizedBox(height: 10),
-            ButtonExit(),
-            SizedBox(height: 10)
-      bottomNavigationBar: BtnStandardApp(
-        title: "Sair",
-        pageRoute: LoginPage(),
-        widthBtn: MediaQuery.of(context).size.width * 0.8,
-      ),
+            const NamePhotoProfile(),
+            const SizedBox(height: 15),
+            const ContainerInfo(),
+            const SizedBox(height: 10),
+            BtnStandardApp(
+              title: "Sair",
+              widthBtn: MediaQuery.of(context).size.width * 0.8,
+            ),
           ],
         ),
       ),
