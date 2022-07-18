@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../core/app_assets.dart';
-
 import '../login/login_page.dart';
-import '../shared/widgets/btn_standard_app.dart';
-
 import '../shared/widgets/big_text_app.dart';
+import '../shared/widgets/btn_standard_app.dart';
 import '../shared/widgets/text_field_app.dart';
 
 class Signup extends StatefulWidget {

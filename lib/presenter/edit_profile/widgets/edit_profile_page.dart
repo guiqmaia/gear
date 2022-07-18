@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/profile/profile_page.dart';
+import '../../profile/profile_page.dart';
 
 import '../../shared/widgets/top_bar_app.dart';
 

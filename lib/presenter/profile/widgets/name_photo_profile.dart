@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../edit_profile/widgets/edit_profile_page.dart';
@@ -56,7 +55,7 @@ class NamePhotoProfile extends StatelessWidget {
               color: Colors.black,
               fontSize: 17.5,
             ),
-          ),
+          ),          
         ],
       ),
     );

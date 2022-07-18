@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gear/core/app_assets.dart';
+import '../../../core/app_assets.dart';
 import 'package:onboarding/onboarding.dart';
 
 import '../../cash_register/cash_register_page.dart';
