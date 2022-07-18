@@ -54,14 +54,18 @@ class TopBarApp extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => const ProfilePge(),
+                    builder: (context) => const ProfilePage(),
                   ),
                 );
               },
               child: const CircleAvatar(
                 radius: 26,
                 backgroundColor: Colors.white,
-                child: Icon(Icons.person, color: Colors.black, size: 35,),
+                child: Icon(
+                  Icons.person,
+                  color: Colors.black,
+                  size: 35,
+                ),
               ),
             ),
           ),

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../edit_profile/widgets/edit_profile_page.dart';
+
 class NamePhotoProfile extends StatelessWidget {
   const NamePhotoProfile({
     Key? key,
@@ -24,8 +26,16 @@ class NamePhotoProfile extends StatelessWidget {
                 ).image,
               ),
               IconButton(
-                icon: const Icon(Icons.create_sharp),
-                onPressed: () {},
+                icon: const Icon(
+                  Icons.create_sharp,
+                ),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const EditProfilePage(),
+                    ),
+                  );
+                },
               ),
             ],
           ),

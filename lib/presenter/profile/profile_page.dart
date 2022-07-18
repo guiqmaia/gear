@@ -1,7 +1,4 @@
-
-
 import 'package:flutter/material.dart';
-
 
 import '../../core/app_assets.dart';
 import '../home/home_page.dart';
@@ -9,8 +6,8 @@ import '../shared/widgets/top_bar_app.dart';
 import 'widgets/container_info_page.dart';
 import 'widgets/name_photo_profile.dart';
 
-class ProfilePge extends StatelessWidget {
-  const ProfilePge({Key? key}) : super(key: key);
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
