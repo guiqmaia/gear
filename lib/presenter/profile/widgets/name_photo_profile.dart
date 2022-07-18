@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NamePhotoProfile extends StatelessWidget {
@@ -11,12 +12,22 @@ class NamePhotoProfile extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 15),
       child: Column(
         children: [
-          CircleAvatar(
-            radius: 80,
-            backgroundImage: Image.asset(
-              "assets/images/fotoConveniencia.png",
-              fit: BoxFit.cover,
-            ).image,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              CircleAvatar(
+                radius: 80,
+                backgroundImage: Image.asset(
+                  "assets/images/fotoConveniencia.png",
+                  fit: BoxFit.cover,
+                ).image,
+              ),
+              IconButton(
+                icon: const Icon(Icons.create_sharp),
+                onPressed: () {},
+              ),
+            ],
           ),
           const SizedBox(
             height: 10,
