@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../core/app_assets.dart';
 import '../../shared/widgets/text_field_app.dart';
 
 import '../../shared/widgets/btn_standard_app.dart';
@@ -17,13 +18,14 @@ class BodyResetPassword extends StatelessWidget {
     return SingleChildScrollView(
       child: Container(
         padding: const EdgeInsets.only(top: 60, left: 40, right: 40),
-        color: Colors.white,
+        color: backgroundGrey,
         child: Column(
           children: [
             SizedBox(
               width: 200,
               height: 200,
-              child: Image.asset('assets/icons/email.png'),
+              child: Image.asset(imgEmail),
+
             ),
             const SizedBox(height: 50),
             const Center(
