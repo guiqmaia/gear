@@ -1,5 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/home/home_page.dart';
+import 'package:gear/presenter/shared/widgets/top_bar_app.dart';
 
 class ResultsPage extends StatelessWidget {
   const ResultsPage({Key? key}) : super(key: key);
@@ -25,10 +27,11 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
+      // physics: const BouncingScrollPhysics(),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
+          const TopBarApp(title: 'Resultados', pageRoute: HomePage(), isProfile: false),
           Container(
             margin: const EdgeInsets.symmetric(
               vertical: 10,

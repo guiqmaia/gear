@@ -7,11 +7,13 @@ class TopBarApp extends StatelessWidget {
   final dynamic pageRoute;
   final bool isProfile;
 
+
   const TopBarApp({
     Key? key,
     required this.title,
     required this.pageRoute,
-    required this.isProfile,
+    required this.isProfile, 
+   
   }) : super(key: key);
 
   @override
