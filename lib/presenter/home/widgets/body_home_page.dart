@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:gear/presenter/shared/widgets/big_text_app.dart';
 import 'package:gear/presenter/shared/widgets/btn_standard_app.dart';
@@ -46,25 +48,36 @@ class _BodyHomePageState extends State<BodyHomePage> {
             const SizedBox(
               height: 15,
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 10, bottom: 25),
-                  child: BigTextApp(text: 'Drinks and Company'),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const [
-                    Icon(Icons.phone),
-                    Text(
-                      '27.042.017/00001-22',
-                      style: TextStyle(fontSize: 15),
+            Container(
+              padding: const EdgeInsets.only(top: 10, bottom: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+              width: double.maxFinite,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25),
+                color: Colors.black,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Padding(
+                    padding: EdgeInsets.only(top: 5, bottom: 5),
+                    child: Text(
+                      'Drinks && Company',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ],
-                ),
-                Text('Douglas Costa da Silva'),
-              ],
+                  ),
+                  Text(
+                    '27.042.017/00001-22',
+                    style: TextStyle(color: Colors.white, fontSize: 15),
+                  ),
+                  Text('Douglas Costa da Silva',
+                      style: TextStyle(color: Colors.white, fontSize: 15)),
+                ],
+              ),
             ),
           ],
         ),
@@ -84,9 +97,10 @@ class _BodyHomePageState extends State<BodyHomePage> {
           children: [
             Container(
               margin: const EdgeInsets.symmetric(
-                vertical: 10,
-                horizontal: 10,
+                vertical: 20,
+                horizontal: 20,
               ),
+              // padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: const BarChartSample1(),
             ),
           ],
@@ -132,11 +146,7 @@ class _BodyHomePageState extends State<BodyHomePage> {
                   alignment: Alignment.center,
                   color: Colors.grey.shade400,
                   width: double.infinity,
-                  height: 500,
-                  // decoration: BoxDecoration(
-                  //   borderRadius: BorderRadius.circular(15),
-                  //   color: backgroundGrey,
-                  // ),
+                  height: 350,
                   child: Onboarding(
                     pages: onboardingPagesList,
                     onPageChange: (int pageIndex) {
@@ -171,16 +181,16 @@ class _BodyHomePageState extends State<BodyHomePage> {
                   height: 30,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     BtnStandardApp(
                       title: "Caixa",
-                      widthBtn: MediaQuery.of(context).size.width * 0.4,
+                      widthBtn: MediaQuery.of(context).size.width * 0.3,
                       pageRoute: const CashRegisterPage(),
                     ),
                     BtnStandardApp(
                       title: "Estoque",
-                      widthBtn: MediaQuery.of(context).size.width * 0.4,
+                      widthBtn: MediaQuery.of(context).size.width * 0.3,
                       pageRoute: const CategoryPage(),
                     ),
                   ],

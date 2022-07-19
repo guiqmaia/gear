@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/shared/widgets/text_field_app.dart';
 
 import '../../shared/widgets/btn_standard_app.dart';
 import '../login_page.dart';
-import 'container_reset_password.dart';
+
 
 class BodyResetPassword extends StatelessWidget {
   const BodyResetPassword({
@@ -40,7 +41,7 @@ class BodyResetPassword extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 15),
-          ContainerResetPassword(emailController: emailController),
+          TextFieldApp(labelItem: 'Email', iconInput: Icons.email, typeController: emailController),
           BtnStandardApp(
             title: 'Enviar',
             pageRoute: const LoginPage(),
