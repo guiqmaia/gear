@@ -21,10 +21,7 @@ class GearDatabase {
     return await openDatabase(
       path,
       version: 1,
-      onCreate: (
-        Database db,
-        int version,
-      ) async {
+      onCreate: (Database db, int version) async {
         await db.execute(
           'CREATE TABLE IF NOT EXISTS product (id INTEGER PRIMARY KEY AUTOINCREMENT, name VACHAR(45) NOT NULL, price DOUBLE NOT NULL, category VACHAR(45) NOT NULL, quantity INT NOT NULL, image BLOB NULL)',
         );
@@ -38,12 +35,12 @@ class GearDatabase {
     return productModel;
   }
 
-  void update() async {
-    await _database!.rawUpdate(
-      'UPDATE Test SET name = ?, value = ? WHERE name = ?',
-      ['updated name', '9876', 'some name'],
-    );
-  }
+  // void update() async {
+  //   await _database!.rawUpdate(
+  //     'UPDATE Test SET name = ?, value = ? WHERE name = ?',
+  //     ['updated name', '9876', 'some name'],
+  //   );
+  // }
 
   Future<List<ProductModel>> select() async {
     final db = await instance.database;
