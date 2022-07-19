@@ -1,4 +1,5 @@
 import 'package:gear/infra/models/product_model.dart';
+import 'package:gear/infra/models/user_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 class GearDatabase {
@@ -16,8 +17,8 @@ class GearDatabase {
 
   Future<Database> _initDB() async {
     var databasesPath = await getDatabasesPath();
-    String path = '${databasesPath}gear.db';
-
+    String path = '${databasesPath}new.db';
+    print(path);
     return await openDatabase(
       path,
       version: 1,
@@ -29,7 +30,19 @@ class GearDatabase {
               price DOUBLE NOT NULL, 
               category VACHAR(45) NOT NULL, 
               quantity INT NOT NULL, 
-              image BLOB NULL)''',
+              image BLOB NULL);
+              CREATE TABLE IF NOT EXISTS user (
+              id INTEGER PRIMARY KEY AUTOINCREMENT, 
+              name VACHAR(70) NOT NULL, 
+              birthday VARCHAR(14) NOT NULL, 
+              company VACHAR(45) NOT NULL, 
+              CNPJ VARCHAR(45) NOT NULL, 
+              telephone VARCHAR(45) NULL
+              cellPhone VACHAR(45) NOT NULL, 
+              CEP VACHAR(45) NOT NULL, 
+              adress VACHAR(70) NOT NULL,
+              login VARCHAR(70) NOT NULL,
+              password VARCHAR(40) NOT NULL)''',
         );
       },
     );
@@ -41,6 +54,11 @@ class GearDatabase {
     return productModel;
   }
 
+  Future<UserModel> insertUser(UserModel user) async {
+    final db = await instance.database;
+    db.insert("user", user.toMap());
+    return user;
+  }
   // void update() async {
   //   await _database!.rawUpdate(
   //     'UPDATE Test SET name = ?, value = ? WHERE name = ?',
@@ -50,7 +68,8 @@ class GearDatabase {
 
   Future<List<ProductModel>> select(category) async {
     final db = await instance.database;
-    List<Map> list = await db.rawQuery('${'SELECT * FROM product WHERE category = "' + category}"');
+    List<Map> list = await db
+        .rawQuery('${'SELECT * FROM product WHERE category = "' + category}"');
     List<ProductModel> listProducts = [];
 
     for (int i = 0; i < list.length; i++) {
