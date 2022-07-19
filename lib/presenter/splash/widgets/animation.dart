@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:animated_text_kit/animated_text_kit.dart';
 import '../../../core/app_assets.dart';
 
 class AnimationSplash extends StatelessWidget {
@@ -10,15 +10,16 @@ class AnimationSplash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 120,
-      child: AnimatedDefaultTextStyle(
-        duration: const Duration(milliseconds: 300),
-        style: TextStyle(
-          fontSize: 60,
-          color: greenNeon,
-          fontWeight: FontWeight.bold,
+      width: 250.0,
+      child: TextLiquidFill(
+        text: 'Gear',
+        waveColor: greenNeon,
+        boxBackgroundColor: Colors.black,
+        textStyle: const TextStyle(
+          fontSize: 80.0,
+          fontWeight: FontWeight.bold,          
         ),
-        child: const Text("GEAR"),
+        boxHeight: 300.0,
       ),
     );
   }

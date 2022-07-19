@@ -84,12 +84,12 @@ class GearDatabase {
     return listProducts;
   }
 
-  // void delete() async {
-  //   await database.rawDelete(
-  //     'DELETE FROM Test WHERE name = ?',
-  //     ['another name'],
-  //   );
-  // }
+  Future<void> delete() async {
+    final db = await instance.database;
+    await db.rawDelete(
+      'DELETE FROM product',
+    );
+  }
 
   Future closeDatabase() async {
     final db = await instance.database;

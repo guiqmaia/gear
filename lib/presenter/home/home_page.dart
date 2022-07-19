@@ -36,17 +36,26 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(
+              Icons.home,
+              size: 28,
+            ),
             label: 'Home',
             backgroundColor: Colors.white,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart),
+            icon: Icon(
+              Icons.bar_chart,
+              size: 30,
+            ),
             label: 'Resultados',
             backgroundColor: Colors.white,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(
+              Icons.person,
+              size: 30,
+            ),
             label: 'Perfil',
             backgroundColor: Colors.white,
           ),
