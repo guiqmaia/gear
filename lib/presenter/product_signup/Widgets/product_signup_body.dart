@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gear/presenter/shared/widgets/dropdown_input.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
@@ -28,6 +29,15 @@ class _SignupPageBodyState extends State<SignupPageBody> {
   TextEditingController categoryController = TextEditingController();
   TextEditingController quantityController = TextEditingController();
   Uint8List? photo;
+
+  List<DropdownMenuItem<String>> list = const [
+    DropdownMenuItem(value: 'Refrigerante', child: Text('Refrigerante')),
+    DropdownMenuItem(value: 'Cerveja', child: Text('Cerveja')),
+    DropdownMenuItem(value: 'Vinho', child: Text('Vinho')),
+    DropdownMenuItem(value: 'Destilado', child: Text('Destilado')),
+    DropdownMenuItem(value: 'Energético', child: Text('Energético')),
+    DropdownMenuItem(value: 'Água', child: Text('Água')),
+  ];
 
   File? image;
   Future pickImage() async {
@@ -70,10 +80,10 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                   iconInput: Icons.attach_money,
                   typeController: priceController,
                 ),
-                TextFieldApp(
-                  labelItem: 'Categoria',
-                  iconInput: Icons.tag,
-                  typeController: categoryController,
+                DropDownInput(
+                  dropdownList: list,
+                  labelDropdown: 'Escolha a Categoria',
+                  iconDropdown: Icons.tag,
                 ),
                 TextFieldApp(
                   labelItem: 'Quantidade',
@@ -129,8 +139,7 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                       );
                       await GearDatabase.instance.insert(productModel);
                       //await GearDatabase.instance.select();
-                      if (!mounted) return;
-                      Navigator.of(context).pop(context);
+                      Navigator.of(context).pop();
                     },
                     child: const Text(
                       'Concluir',

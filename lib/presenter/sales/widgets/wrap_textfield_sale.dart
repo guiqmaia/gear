@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../shared/widgets/text_field_app.dart';
-import 'dropdown_input_sales.dart';
+import '../../shared/widgets/dropdown_input.dart';
 
 class WrapTextFieldSale extends StatefulWidget {
   const WrapTextFieldSale({
@@ -34,7 +34,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
   Widget build(BuildContext context) {
     return Wrap(
       children: [
-        const DropDownInputSale(
+        DropDownInput(
           dropdownList: [
             DropdownMenuItem(value: 'Tênis', child: Text('Tênis')),
             DropdownMenuItem(value: 'Camiseta', child: Text('Camiseta')),
@@ -44,7 +44,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           labelDropdown: 'Categoria',
           iconDropdown: Icons.sell_rounded,
         ),
-        const DropDownInputSale(
+        DropDownInput(
           dropdownList: [
             DropdownMenuItem(value: 'Produto', child: Text('Produto')),
             DropdownMenuItem(value: 'Produto2', child: Text('Produto2')),
@@ -72,7 +72,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           iconInput: Icons.production_quantity_limits_rounded,
           typeController: widget.quantityController,
         ),
-        const DropDownInputSale(
+        DropDownInput(
           dropdownList: [
             DropdownMenuItem(value: 'Crédito', child: Text('Crédito')),
             DropdownMenuItem(value: 'Débito', child: Text('Débito')),
