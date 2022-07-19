@@ -21,12 +21,15 @@ class GearDatabase {
     return await openDatabase(
       path,
       version: 1,
-      onCreate: (
-        Database db,
-        int version,
-      ) async {
+      onCreate: (Database db, int version) async {
         await db.execute(
-          'CREATE TABLE IF NOT EXISTS product (id INTEGER PRIMARY KEY AUTOINCREMENT, name VACHAR(45) NOT NULL, price DOUBLE NOT NULL, category VACHAR(45) NOT NULL, quantity INT NOT NULL, image BLOB NULL)',
+          '''CREATE TABLE IF NOT EXISTS product (
+              id INTEGER PRIMARY KEY AUTOINCREMENT, 
+              name VACHAR(45) NOT NULL, 
+              price DOUBLE NOT NULL, 
+              category VACHAR(45) NOT NULL, 
+              quantity INT NOT NULL, 
+              image BLOB NULL)''',
         );
       },
     );
@@ -38,16 +41,16 @@ class GearDatabase {
     return productModel;
   }
 
-  void update() async {
-    await _database!.rawUpdate(
-      'UPDATE Test SET name = ?, value = ? WHERE name = ?',
-      ['updated name', '9876', 'some name'],
-    );
-  }
+  // void update() async {
+  //   await _database!.rawUpdate(
+  //     'UPDATE Test SET name = ?, value = ? WHERE name = ?',
+  //     ['updated name', '9876', 'some name'],
+  //   );
+  // }
 
-  Future<List<ProductModel>> select() async {
+  Future<List<ProductModel>> select(category) async {
     final db = await instance.database;
-    List<Map> list = await db.rawQuery('SELECT * FROM product');
+    List<Map> list = await db.rawQuery('${'SELECT * FROM product WHERE category = "' + category}"');
     List<ProductModel> listProducts = [];
 
     for (int i = 0; i < list.length; i++) {
@@ -62,12 +65,12 @@ class GearDatabase {
     return listProducts;
   }
 
-  // void delete() async {
-  //   await database.rawDelete(
-  //     'DELETE FROM Test WHERE name = ?',
-  //     ['another name'],
-  //   );
-  // }
+  Future<void> delete() async {
+    final db = await instance.database;
+    await db.rawDelete(
+      'DELETE FROM product',
+    );
+  }
 
   Future closeDatabase() async {
     final db = await instance.database;

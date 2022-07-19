@@ -110,12 +110,12 @@ class _BodyHomePageState extends State<BodyHomePage> {
           children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [                
+              children: [
                 Container(
                   width: double.maxFinite,
                   margin: const EdgeInsets.only(bottom: 5),
                   padding: const EdgeInsets.only(
-                      bottom: 20, top: 15, right: 30, left: 10),
+                      bottom: 20, top: 20, right: 30, left: 10),
                   decoration: const BoxDecoration(
                     color: Colors.black,
                     borderRadius: BorderRadius.only(
@@ -133,7 +133,7 @@ class _BodyHomePageState extends State<BodyHomePage> {
                       ),
                     ),
                   ),
-                ),                            
+                ),
                 Container(
                   alignment: Alignment.center,
                   color: Colors.grey.shade400,
@@ -157,8 +157,7 @@ class _BodyHomePageState extends State<BodyHomePage> {
                               color: Colors.black,
                               borderWidth: 1.5,
                             ),
-                            closedIndicator:
-                                ClosedIndicator(color: greenNeon),
+                            closedIndicator: ClosedIndicator(color: greenNeon),
                             indicatorDesign: IndicatorDesign.polygon(
                               polygonDesign: PolygonDesign(
                                 polygon: DesignType.polygon_circle,
@@ -173,39 +172,21 @@ class _BodyHomePageState extends State<BodyHomePage> {
                 const SizedBox(
                   height: 30,
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 40),
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.shade500,
-                        blurRadius: 5,
-                        spreadRadius: 5,
-                        offset: Offset(3, 3),
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  child: Column(
-                    children: [
-                      BtnStandardApp(
-                        title: "Registro de Caixa",
-                        widthBtn: MediaQuery.of(context).size.width * 0.8,
-                        pageRoute: const CashRegisterPage(),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      BtnStandardApp(
-                        title: "Gerenciamento de Estoque",
-                        widthBtn: MediaQuery.of(context).size.width * 0.8,
-                        pageRoute: const CategoryPage(),
-                      ),
-                    ],
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    BtnStandardApp(
+                      title: "Caixa",
+                      widthBtn: MediaQuery.of(context).size.width * 0.4,
+                      pageRoute: const CashRegisterPage(),
+                    ),
+                    BtnStandardApp(
+                      title: "Estoque",
+                      widthBtn: MediaQuery.of(context).size.width * 0.4,
+                      pageRoute: const CategoryPage(),
+                    ),
+                  ],
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               ],
             ),
           ],
