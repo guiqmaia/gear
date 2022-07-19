@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class DropDownInputSale extends StatefulWidget {
+class DropDownInput extends StatefulWidget {
   final List<DropdownMenuItem<String>> dropdownList;
   final String labelDropdown;
   final IconData iconDropdown;
 
-  const DropDownInputSale({
+  const DropDownInput({
     Key? key,
     required this.dropdownList,
     required this.labelDropdown,
@@ -13,10 +13,10 @@ class DropDownInputSale extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<DropDownInputSale> createState() => _DropDownInputSaleState();
+  State<DropDownInput> createState() => _DropDownInputState();
 }
 
-class _DropDownInputSaleState extends State<DropDownInputSale> {
+class _DropDownInputState extends State<DropDownInput> {
   String selectedValue = 'Modo de pagamento';
 
   @override
@@ -26,7 +26,7 @@ class _DropDownInputSaleState extends State<DropDownInputSale> {
       margin: const EdgeInsets.symmetric(
         vertical: 10,
       ),
-      padding: const EdgeInsets.symmetric(
+      padding:  EdgeInsets.symmetric(
         horizontal: 16,
       ),
       child: DropdownButtonFormField(
