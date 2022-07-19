@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gear/infra/database/gear_database.dart';
-import 'package:sqflite/sqflite.dart';
 
 import '../../../infra/models/product_model.dart';
 import '../../category/category_page.dart';
@@ -21,6 +20,7 @@ class BodyProductPage extends StatefulWidget {
 class _BodyProductPageState extends State<BodyProductPage> {
   List<ProductModel> products = [];
   bool isLoading = false;
+
   @override
   void initState() {
     super.initState();
@@ -49,21 +49,23 @@ class _BodyProductPageState extends State<BodyProductPage> {
           iconInput: Icons.search,
           typeController: null,
         ),
-        ListView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemCount: products.length,
-          itemBuilder: (context, index) {
-            ProductModel product = products[index];
-            return ContainerProductCategory(
-              productName: product.name,
-              productPrice: product.price.toString(),
-              productQuantity: product.quantity,
-              productCode: product.id!,
-              productImg: product.image,
-            );
-          },
-        ),
+        isLoading
+            ? const CircularProgressIndicator()
+            : ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: products.length,
+                itemBuilder: (context, index) {
+                  ProductModel product = products[index];
+                  return ContainerProductCategory(
+                    productName: product.name,
+                    productPrice: product.price.toString(),
+                    productQuantity: product.quantity,
+                    productCode: product.id!,
+                    productImg: product.image,
+                  );
+                },
+              ),
       ],
     );
   }
