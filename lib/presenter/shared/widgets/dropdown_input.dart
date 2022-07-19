@@ -4,12 +4,14 @@ class DropDownInput extends StatefulWidget {
   final List<DropdownMenuItem<String>> dropdownList;
   final String labelDropdown;
   final IconData iconDropdown;
+  String? dropdownValue;
 
-  const DropDownInput({
+  DropDownInput({
     Key? key,
     required this.dropdownList,
     required this.labelDropdown,
     required this.iconDropdown,
+    this.dropdownValue,
   }) : super(key: key);
 
   @override
@@ -17,7 +19,6 @@ class DropDownInput extends StatefulWidget {
 }
 
 class _DropDownInputState extends State<DropDownInput> {
-  String selectedValue = 'Modo de pagamento';
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +47,7 @@ class _DropDownInputState extends State<DropDownInput> {
         //value: selectedValue,
         onChanged: (String? newValue) {
           setState(() {
-            selectedValue = newValue!;
+            widget.dropdownValue = newValue!;
           });
         },
         items: widget.dropdownList,
