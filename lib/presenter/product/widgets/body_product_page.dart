@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gear/infra/database/gear_database.dart';
-import 'package:sqflite/sqflite.dart';
 
+import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/product_model.dart';
 import '../../category/category_page.dart';
 import '../../shared/widgets/text_field_app.dart';
@@ -11,8 +10,10 @@ import 'container_product_category.dart';
 class BodyProductPage extends StatefulWidget {
   final String categoryTitle;
 
-  const BodyProductPage({Key? key, required this.categoryTitle})
-      : super(key: key);
+  const BodyProductPage({
+    Key? key,
+    required this.categoryTitle,
+  }) : super(key: key);
 
   @override
   State<BodyProductPage> createState() => _BodyProductPageState();
@@ -22,10 +23,9 @@ class _BodyProductPageState extends State<BodyProductPage> {
   List<ProductModel> products = [];
 
   @override
-  void didChangeDependencies() {
+  void initState() {
     refreshProducts();
-    // Provider.of<>(context)
-    super.didChangeDependencies();
+    super.initState();
   }
 
   Future refreshProducts() async {

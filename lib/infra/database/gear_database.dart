@@ -26,7 +26,13 @@ class GearDatabase {
         int version,
       ) async {
         await db.execute(
-          'CREATE TABLE IF NOT EXISTS product (id INTEGER PRIMARY KEY AUTOINCREMENT, name VACHAR(45) NOT NULL, price DOUBLE NOT NULL, category VACHAR(45) NOT NULL, quantity INT NOT NULL, image BLOB NULL)',
+          '''CREATE TABLE IF NOT EXISTS product (
+              id INTEGER PRIMARY KEY AUTOINCREMENT, 
+              name VACHAR(45) NOT NULL, 
+              price DOUBLE NOT NULL, 
+              category VACHAR(45) NOT NULL, 
+              quantity INT NOT NULL, 
+              image BLOB NULL)''',
         );
       },
     );

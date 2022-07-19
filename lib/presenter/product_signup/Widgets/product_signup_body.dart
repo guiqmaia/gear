@@ -3,12 +3,11 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gear/core/app_assets.dart';
-import 'package:gear/infra/database/gear_database.dart';
-import 'package:gear/infra/models/product_model.dart';
-import 'package:gear/presenter/product/product_page.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../core/app_assets.dart';
+import '../../../infra/database/gear_database.dart';
+import '../../../infra/models/product_model.dart';
 import '../../home/home_page.dart';
 import '../../shared/widgets/text_field_app.dart';
 import '../../shared/widgets/top_bar_app.dart';
@@ -129,6 +128,7 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                         image: photo!,
                       );
                       await GearDatabase.instance.insert(productModel);
+                      await GearDatabase.instance.select();
                       Navigator.of(context).pop();
                     },
                     child: const Text(
