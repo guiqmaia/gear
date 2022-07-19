@@ -5,25 +5,14 @@ import '../../../core/app_assets.dart';
 
 class InfoContainerProfile extends StatelessWidget {
   final String titleInfo;
-  String? telefone;
-  String? cep;
-  String? email;
-  String? name_propietery;
-  String? rua;
-  String? birthData;
-  String? cpf;
+  final String info;
   final IconData iconInfo;
-  InfoContainerProfile({
+  const InfoContainerProfile({
     Key? key,
+    required TextStyle style,
     required this.titleInfo,
-    this.telefone,
-    this.cep,
-    this.email,
-    this.name_propietery,
-    this.rua,
-    this.birthData,
-    this.cpf,
-    required this.iconInfo, required TextStyle style,
+    required this.info,
+    required this.iconInfo,
   }) : super(key: key);
 
   @override
@@ -73,7 +62,7 @@ class InfoContainerProfile extends StatelessWidget {
                 ),
                 const SizedBox(width: 10),
                 Text(
-                  telefone ?? 'Desconhecido',
+                  info,
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15,

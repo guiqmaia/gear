@@ -26,7 +26,7 @@ class ContainerInfo extends StatelessWidget {
             children: [
               InfoContainerProfile(
                 titleInfo: "Telefone:",
-                telefone: "(47) 3732 - 0010",
+                info: "(47) 3732 - 0010",
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 15,
@@ -35,7 +35,7 @@ class ContainerInfo extends StatelessWidget {
               ),
               InfoContainerProfile(
                 titleInfo: "CEP:",
-                telefone: "90035-190",
+                info: "90035-190",
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 15,
@@ -44,7 +44,7 @@ class ContainerInfo extends StatelessWidget {
               ),
               InfoContainerProfile(
                 titleInfo: "Endereço:",
-                rua: "Av. Osvaldo Aranha, 720 ",
+                info: "Av. Osvaldo Aranha, 720 ",
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 15,
@@ -53,15 +53,11 @@ class ContainerInfo extends StatelessWidget {
               ),
               InfoContainerProfile(
                   titleInfo: "Email:",
-<<<<<<< HEAD
-                  email: "bebidinhas@gmail.com.br",
+                  info: "bebidinhas@gmail.com.br",
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15,
                   ),
-=======
-                  info: "bebidinhas@gmail.com",
->>>>>>> 7a457388ac9ee308c1b1c32b74ba6504153e5c38
                   iconInfo: Icons.email_outlined),
             ],
           ),
@@ -80,19 +76,19 @@ class ContainerInfo extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            children: const [
               InfoContainerProfile(
                   titleInfo: "Nome:",
-                  name_propietery: "Douglas Costa da Silva",
-                  style: const TextStyle(
+                  info: "Douglas Costa da Silva",
+                  style: TextStyle(
                     color: Colors.white,
                     fontSize: 15,
                   ),
                   iconInfo: Icons.person_outline),
               InfoContainerProfile(
                 titleInfo: "Data de Nascimento:",
-                birthData: "27/04/2017",
-                style: const TextStyle(
+                info: "27/04/2017",
+                style: TextStyle(
                   color: Colors.white,
                   fontSize: 15,
                 ),
@@ -100,8 +96,8 @@ class ContainerInfo extends StatelessWidget {
               ),
               InfoContainerProfile(
                 titleInfo: "CPF:",
-                cpf: "109.504.364-60",
-                style: const TextStyle(
+                info: "109.504.364-60",
+                style: TextStyle(
                   color: Colors.white,
                   fontSize: 15,
                 ),
