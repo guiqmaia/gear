@@ -23,7 +23,13 @@ class GearDatabase {
       version: 1,
       onCreate: (Database db, int version) async {
         await db.execute(
-          'CREATE TABLE IF NOT EXISTS product (id INTEGER PRIMARY KEY AUTOINCREMENT, name VACHAR(45) NOT NULL, price DOUBLE NOT NULL, category VACHAR(45) NOT NULL, quantity INT NOT NULL, image BLOB NULL)',
+          '''CREATE TABLE IF NOT EXISTS product (
+              id INTEGER PRIMARY KEY AUTOINCREMENT, 
+              name VACHAR(45) NOT NULL, 
+              price DOUBLE NOT NULL, 
+              category VACHAR(45) NOT NULL, 
+              quantity INT NOT NULL, 
+              image BLOB NULL)''',
         );
       },
     );
@@ -42,9 +48,9 @@ class GearDatabase {
   //   );
   // }
 
-  Future<List<ProductModel>> select() async {
+  Future<List<ProductModel>> select(category) async {
     final db = await instance.database;
-    List<Map> list = await db.rawQuery('SELECT * FROM product');
+    List<Map> list = await db.rawQuery('${'SELECT * FROM product WHERE category = "' + category}"');
     List<ProductModel> listProducts = [];
 
     for (int i = 0; i < list.length; i++) {
