@@ -17,8 +17,9 @@ class AnimationSplash extends StatelessWidget {
         boxBackgroundColor: Colors.black,
         textStyle: const TextStyle(
           fontSize: 80.0,
-          fontWeight: FontWeight.bold,          
+          fontWeight: FontWeight.bold,
         ),
+        loadDuration:const Duration(seconds: 2),
         boxHeight: 300.0,
       ),
     );
