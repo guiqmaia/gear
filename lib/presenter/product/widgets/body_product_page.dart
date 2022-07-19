@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gear/infra/database/gear_database.dart';
+import 'package:sqflite/sqflite.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../infra/models/product_model.dart';
@@ -9,7 +10,7 @@ import '../../shared/widgets/top_bar_app.dart';
 import 'container_product_category.dart';
 
 class BodyProductPage extends StatefulWidget {
-  BodyProductPage({
+  const BodyProductPage({
     Key? key,
     required this.categoryTitle,
   }) : super(key: key);
@@ -21,25 +22,22 @@ class BodyProductPage extends StatefulWidget {
 }
 
 class _BodyProductPageState extends State<BodyProductPage> {
+  
   Map<String, List<ProductModel>> productsList = {};
 
   @override
-  void didChangeDependencies() {
-    GearDatabase gearDatabase = GearDatabase();
-  
-    List<ProductModel> products = [];
-    gearDatabase.select().then((value) => productsList);
+  void didChangeDependencies() async {
+    
+    // List<ProductModel> products = [];
 
-    productsList.addAll({
-      'Refrigerante': products,
-    });
+    // select().then((value) => productsList);
+
+    // productsList.addAll({
+    //   widget.categoryTitle : products,
+    // });
+
     // Provider.of<>(context)
     super.didChangeDependencies();
-  }
-
-  @override
-  void initState() {
-    super.initState();
   }
 
   @override
@@ -61,9 +59,9 @@ class _BodyProductPageState extends State<BodyProductPage> {
         ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          itemCount: productsList['Refrigerante']!.length,
+          itemCount: productsList[widget.categoryTitle]!.length,
           itemBuilder: (context, index) {
-            ProductModel product = productsList['Refrigerante']![index];
+            ProductModel product = productsList[widget.categoryTitle]![index];
             return ContainerProductCategory(
               productName: product.name,
               productPrice: product.price.toString(),
