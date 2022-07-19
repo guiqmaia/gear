@@ -45,7 +45,7 @@ class ContainerProductCategory extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
-            child: Image.asset(
+            child: Image.memory(
               productImg,
               height: MediaQuery.of(context).size.height * 0.12,
             ),

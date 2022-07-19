@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gear/infra/database/gear_database.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../../../core/app_assets.dart';
 import '../../../infra/models/product_model.dart';
 import '../../category/category_page.dart';
 import '../../shared/widgets/text_field_app.dart';
@@ -10,34 +9,29 @@ import '../../shared/widgets/top_bar_app.dart';
 import 'container_product_category.dart';
 
 class BodyProductPage extends StatefulWidget {
-  const BodyProductPage({
-    Key? key,
-    required this.categoryTitle,
-  }) : super(key: key);
-
   final String categoryTitle;
+
+  const BodyProductPage({Key? key, required this.categoryTitle})
+      : super(key: key);
 
   @override
   State<BodyProductPage> createState() => _BodyProductPageState();
 }
 
 class _BodyProductPageState extends State<BodyProductPage> {
-  
-  Map<String, List<ProductModel>> productsList = {};
+  List<ProductModel> products = [];
 
   @override
-  void didChangeDependencies() async {
-    
-    // List<ProductModel> products = [];
-
-    // select().then((value) => productsList);
-
-    // productsList.addAll({
-    //   widget.categoryTitle : products,
-    // });
-
+  void didChangeDependencies() {
+    refreshProducts();
     // Provider.of<>(context)
     super.didChangeDependencies();
+  }
+
+  Future refreshProducts() async {
+    setState(() async {
+      products = await GearDatabase.instance.select();
+    });
   }
 
   @override
@@ -59,9 +53,9 @@ class _BodyProductPageState extends State<BodyProductPage> {
         ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          itemCount: productsList[widget.categoryTitle]!.length,
+          itemCount: products.length,
           itemBuilder: (context, index) {
-            ProductModel product = productsList[widget.categoryTitle]![index];
+            ProductModel product = products[index];
             return ContainerProductCategory(
               productName: product.name,
               productPrice: product.price.toString(),
