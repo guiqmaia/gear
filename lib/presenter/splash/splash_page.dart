@@ -11,11 +11,10 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  double opacityLevel = 0.5;
 
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 5)).then(
+    Future.delayed(const Duration(seconds: 3)).then(
       (value) => {
         Navigator.of(context).push(
           MaterialPageRoute(
