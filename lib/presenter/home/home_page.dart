@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.bar_chart,
-              size: 30,
+              size: 35,
             ),
             label: 'Resultados',
             backgroundColor: Colors.white,
