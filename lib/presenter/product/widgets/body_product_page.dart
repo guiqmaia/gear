@@ -21,17 +21,17 @@ class BodyProductPage extends StatefulWidget {
 
 class _BodyProductPageState extends State<BodyProductPage> {
   List<ProductModel> products = [];
-
+  bool isLoading = false;
   @override
   void initState() {
-    refreshProducts();
     super.initState();
+    refreshProducts();
   }
 
   Future refreshProducts() async {
-    setState(() async {
-      products = await GearDatabase.instance.select();
-    });
+    setState(() => isLoading = true);
+    products = await GearDatabase.instance.select();
+    setState(() => isLoading = false);
   }
 
   @override
