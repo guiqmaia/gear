@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gear/infra/database/gear_database.dart';
+import 'package:sqflite/sqflite.dart';
 
 import '../../../infra/models/product_model.dart';
 import '../../category/category_page.dart';
