@@ -23,12 +23,12 @@ class _BodyHomePageState extends State<BodyHomePage> {
         decoration: BoxDecoration(
           color: backgroundGrey,
           border: Border.all(
-            width: 0.0,
+            width: 0,
             color: backgroundGrey,
           ),
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             CircleAvatar(
               radius: 70,
@@ -110,12 +110,12 @@ class _BodyHomePageState extends State<BodyHomePage> {
           children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: [                
                 Container(
                   width: double.maxFinite,
                   margin: const EdgeInsets.only(bottom: 5),
                   padding: const EdgeInsets.only(
-                      bottom: 30, top: 30, right: 30, left: 10),
+                      bottom: 20, top: 15, right: 30, left: 10),
                   decoration: const BoxDecoration(
                     color: Colors.black,
                     borderRadius: BorderRadius.only(
@@ -128,17 +128,15 @@ class _BodyHomePageState extends State<BodyHomePage> {
                       'Gear',
                       style: TextStyle(
                         color: Color.fromRGBO(202, 254, 72, 1),
-                        fontSize: 22,
+                        fontSize: 29,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                // ignore: sized_box_for_whitespace
+                ),                            
                 Container(
+                  alignment: Alignment.center,
+                  color: Colors.grey.shade400,
                   width: double.infinity,
                   height: 300,
                   child: Onboarding(
@@ -147,39 +145,24 @@ class _BodyHomePageState extends State<BodyHomePage> {
                       index = pageIndex;
                     },
                     startPageIndex: 0,
-                    footerBuilder: (context, dragDistance, pagesLength, setIndex) {
-                      return DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: backgroundGrey,
-                          border: Border.all(
-                            width: 0,
-                            color: backgroundGrey,
-                          ),
-                        ),
-                        child: ColoredBox(
-                          color: backgroundGrey,
-                          child: Padding(
-                            padding: const EdgeInsets.all(25.0),
-                            child: Row(                                                                                                 
-                              children: [
-                                CustomIndicator(
-                                  netDragPercent: dragDistance,
-                                  pagesLength: pagesLength,
-                                  indicator: Indicator(
-                                    activeIndicator: const ActiveIndicator(
-                                      color: Colors.black,
-                                      borderWidth: 2,
-                                    ),
-                                    closedIndicator:
-                                        ClosedIndicator(color: greenNeon),
-                                    indicatorDesign: IndicatorDesign.polygon(
-                                      polygonDesign: PolygonDesign(
-                                        polygon: DesignType.polygon_circle,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
+                    footerBuilder:
+                        (context, dragDistance, pagesLength, setIndex) {
+                      return Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 35, 0),
+                        child: CustomIndicator(
+                          netDragPercent: dragDistance,
+                          pagesLength: pagesLength,
+                          indicator: Indicator(
+                            activeIndicator: const ActiveIndicator(
+                              color: Colors.black,
+                              borderWidth: 1.5,
+                            ),
+                            closedIndicator:
+                                ClosedIndicator(color: greenNeon),
+                            indicatorDesign: IndicatorDesign.polygon(
+                              polygonDesign: PolygonDesign(
+                                polygon: DesignType.polygon_circle,
+                              ),
                             ),
                           ),
                         ),
@@ -190,18 +173,37 @@ class _BodyHomePageState extends State<BodyHomePage> {
                 const SizedBox(
                   height: 30,
                 ),
-                BtnStandardApp(
-                  title: "Registro de Caixa",
-                  widthBtn: MediaQuery.of(context).size.width * 0.8,
-                  pageRoute: const CashRegisterPage(),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                BtnStandardApp(
-                  title: "Gerenciamento de Estoque",
-                  widthBtn: MediaQuery.of(context).size.width * 0.8,
-                  pageRoute: const CategoryPage(),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 40),
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.shade500,
+                        blurRadius: 5,
+                        spreadRadius: 5,
+                        offset: Offset(3, 3),
+                      ),
+                    ],
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Column(
+                    children: [
+                      BtnStandardApp(
+                        title: "Registro de Caixa",
+                        widthBtn: MediaQuery.of(context).size.width * 0.8,
+                        pageRoute: const CashRegisterPage(),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      BtnStandardApp(
+                        title: "Gerenciamento de Estoque",
+                        widthBtn: MediaQuery.of(context).size.width * 0.8,
+                        pageRoute: const CategoryPage(),
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               ],
