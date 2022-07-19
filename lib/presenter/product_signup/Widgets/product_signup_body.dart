@@ -128,7 +128,7 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                         image: photo!,
                       );
                       await GearDatabase.instance.insert(productModel);
-                      await GearDatabase.instance.select();
+                      //await GearDatabase.instance.select();
                       Navigator.of(context).pop();
                     },
                     child: const Text(

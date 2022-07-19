@@ -48,9 +48,9 @@ class GearDatabase {
   //   );
   // }
 
-  Future<List<ProductModel>> select() async {
+  Future<List<ProductModel>> select(category) async {
     final db = await instance.database;
-    List<Map> list = await db.rawQuery('SELECT * FROM product');
+    List<Map> list = await db.rawQuery('${'SELECT * FROM product WHERE category = "' + category}"');
     List<ProductModel> listProducts = [];
 
     for (int i = 0; i < list.length; i++) {

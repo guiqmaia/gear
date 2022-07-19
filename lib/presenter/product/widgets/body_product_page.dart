@@ -30,7 +30,7 @@ class _BodyProductPageState extends State<BodyProductPage> {
 
   Future refreshProducts() async {
     setState(() => isLoading = true);
-    products = await GearDatabase.instance.select();
+    products = await GearDatabase.instance.select(widget.categoryTitle);
     setState(() => isLoading = false);
   }
 
