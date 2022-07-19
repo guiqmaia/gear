@@ -1,24 +1,30 @@
-import 'dart:typed_data';
-
 import 'package:gear/infra/models/product_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 class GearDatabase {
-  late Database database;
+  static final GearDatabase instance = GearDatabase._init();
+  static Database? _database;
 
-  GearDatabase() {
-    init();
+  GearDatabase._init();
+
+  Future<Database> get database async {
+    if (_database != null) return _database!;
+
+    _database = await _initDB();
+    return _database!;
   }
 
-  Future<void> init() async {
+  Future<Database> _initDB() async {
     var databasesPath = await getDatabasesPath();
-    String path = '${databasesPath}demo.db';
+    String path = '${databasesPath}gear.db';
 
-    database = await openDatabase(
+    return await openDatabase(
       path,
       version: 1,
-      onCreate: (Database db, int version) async {
-        // When creating the db, create the table
+      onCreate: (
+        Database db,
+        int version,
+      ) async {
         await db.execute(
           'CREATE TABLE IF NOT EXISTS product (id INTEGER PRIMARY KEY AUTOINCREMENT, name VACHAR(45) NOT NULL, price DOUBLE NOT NULL, category VACHAR(45) NOT NULL, quantity INT NOT NULL, image BLOB NULL)',
         );
@@ -26,19 +32,22 @@ class GearDatabase {
     );
   }
 
-  void insert(ProductModel productModel) async {
-    await database.insert("product", productModel.toMap());
+  Future<ProductModel> insert(ProductModel productModel) async {
+    final db = await instance.database;
+    db.insert("product", productModel.toMap());
+    return productModel;
   }
 
   void update() async {
-    await database.rawUpdate(
+    await _database!.rawUpdate(
       'UPDATE Test SET name = ?, value = ? WHERE name = ?',
       ['updated name', '9876', 'some name'],
     );
   }
 
   Future<List<ProductModel>> select() async {
-    List<Map> list = await database.rawQuery('SELECT * FROM product');
+    final db = await instance.database;
+    List<Map> list = await db.rawQuery('SELECT * FROM product');
     List<ProductModel> listProducts = [];
 
     for (int i = 0; i < list.length; i++) {
@@ -60,7 +69,8 @@ class GearDatabase {
   //   );
   // }
 
-  void closeDatabase() async {
-    await database.close();
+  Future closeDatabase() async {
+    final db = await instance.database;
+    db.close();
   }
 }

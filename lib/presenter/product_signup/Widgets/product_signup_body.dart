@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -7,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:gear/core/app_assets.dart';
 import 'package:gear/infra/database/gear_database.dart';
 import 'package:gear/infra/models/product_model.dart';
+import 'package:gear/presenter/product/product_page.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../home/home_page.dart';
@@ -29,7 +29,6 @@ class _SignupPageBodyState extends State<SignupPageBody> {
   TextEditingController categoryController = TextEditingController();
   TextEditingController quantityController = TextEditingController();
   Uint8List? photo;
-  final gearDatabase = GearDatabase();
 
   File? image;
   Future pickImage() async {
@@ -37,8 +36,6 @@ class _SignupPageBodyState extends State<SignupPageBody> {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image == null) return;
       final imageTemp = File(image.path);
-      // ignore: avoid_print
-      print(imageTemp.readAsBytesSync());
       setState(() {
         this.image = imageTemp;
         photo = imageTemp.readAsBytesSync();
@@ -123,7 +120,7 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                     vertical: 3,
                   ),
                   child: TextButton(
-                    onPressed: () {
+                    onPressed: () async {
                       ProductModel productModel = ProductModel(
                         name: nameController.text,
                         price: double.parse(priceController.text),
@@ -131,10 +128,8 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                         quantity: int.parse(quantityController.text),
                         image: photo!,
                       );
-                      gearDatabase.init();
-                      gearDatabase.insert(productModel);
-                      gearDatabase.select();
-                      Navigator.of(context).pop(context);
+                      await GearDatabase.instance.insert(productModel);
+                      Navigator.of(context).pop();
                     },
                     child: const Text(
                       'Concluir',
