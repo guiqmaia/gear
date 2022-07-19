@@ -47,7 +47,7 @@ class _ContainerProductCategoryState extends State<ContainerProductCategory> {
         ),
         padding: const EdgeInsets.symmetric(
           horizontal: 10,
-          vertical: 10,
+          vertical: 11,
         ),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -74,11 +74,12 @@ class _ContainerProductCategoryState extends State<ContainerProductCategory> {
                 deleteProduct();
               },
             ),
+            const SizedBox(width: 5),
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Image.memory(
                 widget.productImg,
-                height: MediaQuery.of(context).size.height * 0.12,
+                height: MediaQuery.of(context).size.height * 0.13,
               ),
             ),
             const SizedBox(width: 10),

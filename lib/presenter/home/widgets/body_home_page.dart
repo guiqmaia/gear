@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:gear/presenter/shared/widgets/big_text_app.dart';
 import 'package:gear/presenter/shared/widgets/btn_standard_app.dart';

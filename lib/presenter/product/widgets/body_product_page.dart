@@ -64,7 +64,7 @@ class _BodyProductPageState extends State<BodyProductPage> {
                     productPrice: product.price.toString(),
                     productQuantity: product.quantity,
                     productCode: product.id!,
-                    productImg: product.image, 
+                    productImg: product.image,
                     products: products,
                   );
                 },

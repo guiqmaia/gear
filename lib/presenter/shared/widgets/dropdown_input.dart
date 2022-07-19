@@ -27,7 +27,7 @@ class _DropDownInputState extends State<DropDownInput> {
       margin: const EdgeInsets.symmetric(
         vertical: 10,
       ),
-      padding:  EdgeInsets.symmetric(
+      padding: EdgeInsets.symmetric(
         horizontal: 16,
       ),
       child: DropdownButtonFormField(

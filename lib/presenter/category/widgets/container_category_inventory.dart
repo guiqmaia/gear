@@ -30,7 +30,7 @@ class _ContainerCategoryInventoryState
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => ProductPage(
-              categoryTitle: widget.categoryTitle,
+              categoryTitle: widget.categoryTitle
             ),
           ),
         );
