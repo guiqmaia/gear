@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/shared/widgets/big_text_app.dart';
 import 'package:gear/presenter/shared/widgets/btn_standard_app.dart';
 import '../../../core/app_assets.dart';
 import 'package:onboarding/onboarding.dart';
@@ -28,42 +27,49 @@ class _BodyHomePageState extends State<BodyHomePage> {
             color: backgroundGrey,
           ),
         ),
-        child: Column(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const SizedBox(height: 40),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CircleAvatar(
-                  radius: 80,
-                  backgroundImage: Image.asset(
-                    imgStore,
-                    fit: BoxFit.cover,
-                  ).image,
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 15,
+            CircleAvatar(
+              radius: 70,
+              backgroundImage: Image.asset(
+                "assets/images/fotoConveniencia.png",
+                fit: BoxFit.cover,
+              ).image,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 10, bottom: 25),
-                  child: BigTextApp(text: 'Drinks and Company'),
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: const [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Destribuidora Bebidinhas',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const [
-                    Icon(Icons.phone),
-                    Text(
-                      '27.042.017/00001-22',
-                      style: TextStyle(fontSize: 15),
-                    ),
-                  ],
+                SizedBox(height: 10),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    '27.042.017/00001-22',
+                    style: TextStyle(fontSize: 16, color: Colors.black),
+                  ),
                 ),
-                Text('Douglas Costa da Silva'),
+                SizedBox(height: 25),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Douglas Costa da Silva',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                ),
               ],
             ),
           ],
@@ -132,11 +138,7 @@ class _BodyHomePageState extends State<BodyHomePage> {
                   alignment: Alignment.center,
                   color: Colors.grey.shade400,
                   width: double.infinity,
-                  height: 500,
-                  // decoration: BoxDecoration(
-                  //   borderRadius: BorderRadius.circular(15),
-                  //   color: backgroundGrey,
-                  // ),
+                  height: 300,
                   child: Onboarding(
                     pages: onboardingPagesList,
                     onPageChange: (int pageIndex) {
