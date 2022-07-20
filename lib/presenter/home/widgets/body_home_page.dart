@@ -60,7 +60,7 @@ class _BodyHomePageState extends State<BodyHomePage> {
                   Padding(
                     padding: EdgeInsets.only(top: 5, bottom: 5),
                     child: Text(
-                      'Drinks && Company',
+                      'Distribuidora Bebidinhas',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -178,17 +178,17 @@ class _BodyHomePageState extends State<BodyHomePage> {
                 const SizedBox(
                   height: 30,
                 ),
-                Row(
+                Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     BtnStandardApp(
                       title: "Caixa",
-                      widthBtn: MediaQuery.of(context).size.width * 0.3,
+                      widthBtn: MediaQuery.of(context).size.width * 0.7,
                       pageRoute: const CashRegisterPage(),
                     ),
                     BtnStandardApp(
                       title: "Estoque",
-                      widthBtn: MediaQuery.of(context).size.width * 0.3,
+                      widthBtn: MediaQuery.of(context).size.width * 0.7,
                       pageRoute: const CategoryPage(),
                     ),
                   ],
