@@ -23,11 +23,11 @@ class ContainerInfo extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            children: const [
               InfoContainerProfile(
                 titleInfo: "Telefone:",
                 info: "(47) 3732 - 0010",
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.white,
                   fontSize: 15,
                 ),
@@ -36,7 +36,7 @@ class ContainerInfo extends StatelessWidget {
               InfoContainerProfile(
                 titleInfo: "CEP:",
                 info: "90035-190",
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.white,
                   fontSize: 15,
                 ),
@@ -45,7 +45,7 @@ class ContainerInfo extends StatelessWidget {
               InfoContainerProfile(
                 titleInfo: "Endereço:",
                 info: "Av. Osvaldo Aranha, 720 ",
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.white,
                   fontSize: 15,
                 ),
@@ -54,7 +54,7 @@ class ContainerInfo extends StatelessWidget {
               InfoContainerProfile(
                   titleInfo: "Email:",
                   info: "bebidinhas@gmail.com.br",
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: Colors.white,
                     fontSize: 15,
                   ),

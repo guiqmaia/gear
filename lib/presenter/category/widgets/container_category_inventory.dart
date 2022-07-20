@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:gear/infra/database/gear_database.dart';
-import 'package:gear/presenter/product/widgets/body_product_page.dart';
-import '../../../core/app_assets.dart';
 
+import 'package:gear/infra/database/create_database_products.dart';
+import 'package:gear/infra/database/gear_database.dart';
+
+
+
+import '../../../core/app_assets.dart';
 import '../../product/product_page.dart';
 
 class ContainerCategoryInventory extends StatefulWidget {
@@ -22,6 +25,7 @@ class ContainerCategoryInventory extends StatefulWidget {
 
 class _ContainerCategoryInventoryState
     extends State<ContainerCategoryInventory> {
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -29,9 +33,8 @@ class _ContainerCategoryInventoryState
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => ProductPage(
-              categoryTitle: widget.categoryTitle
-            ),
+            builder: (context) =>
+                ProductPage(categoryTitle: widget.categoryTitle),
           ),
         );
       },

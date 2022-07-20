@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../reset_password/widgets/reset_password.dart';
+import '../../reset_password/reset_password.dart';
 import 'my_checked_box.dart';
 
 class ContainerUserOptions extends StatefulWidget {

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../cash_register/cash_register_page.dart';
