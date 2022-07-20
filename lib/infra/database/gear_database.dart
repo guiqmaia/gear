@@ -1,6 +1,8 @@
+import 'package:sqflite/sqflite.dart';
+
 import '../models/product_model.dart';
 import '../models/user_model.dart';
-import 'package:sqflite/sqflite.dart';
+import 'create_database_products.dart';
 
 class GearDatabase {
   static final GearDatabase instance = GearDatabase._init();
@@ -17,7 +19,7 @@ class GearDatabase {
 
   Future<Database> _initDB() async {
     var databasesPath = await getDatabasesPath();
-    String path = '${databasesPath}new.db';
+    String path = '${databasesPath}newdata.db';
     print(path);
     return await openDatabase(
       path,
@@ -31,6 +33,7 @@ class GearDatabase {
               category VACHAR(45) NOT NULL, 
               quantity INT NOT NULL, 
               image BLOB NULL);
+
               CREATE TABLE IF NOT EXISTS user (
               id INTEGER PRIMARY KEY AUTOINCREMENT, 
               name VACHAR(70) NOT NULL, 
@@ -59,6 +62,7 @@ class GearDatabase {
     db.insert("user", user.toMap());
     return user;
   }
+
   // void update() async {
   //   await _database!.rawUpdate(
   //     'UPDATE Test SET name = ?, value = ? WHERE name = ?',
@@ -86,8 +90,7 @@ class GearDatabase {
 
   Future delete(int code) async {
     final db = await instance.database;
-    await db.rawDelete(
-      'DELETE FROM product WHERE id = $code');
+    await db.rawDelete('DELETE FROM product WHERE id = $code');
   }
 
   Future closeDatabase() async {

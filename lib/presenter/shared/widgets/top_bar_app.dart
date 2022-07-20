@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/core/app_assets.dart';
 
 import '../../profile/profile_page.dart';
 
@@ -7,13 +8,11 @@ class TopBarApp extends StatelessWidget {
   final dynamic pageRoute;
   final bool isProfile;
 
-
   const TopBarApp({
     Key? key,
     required this.title,
     required this.pageRoute,
-    required this.isProfile, 
-   
+    required this.isProfile,
   }) : super(key: key);
 
   @override
@@ -60,14 +59,10 @@ class TopBarApp extends StatelessWidget {
                   ),
                 );
               },
-              child: const CircleAvatar(
+              child: CircleAvatar(
                 radius: 26,
                 backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.person,
-                  color: Colors.black,
-                  size: 35,
-                ),
+                backgroundImage: Image.asset(imgStore).image,
               ),
             ),
           ),
