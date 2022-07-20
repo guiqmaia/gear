@@ -57,8 +57,8 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
               ],
             ),
             child: Column(
-              children: const [
-                Text(
+              children: [
+                const Text(
                   'Produto Líderes',
                   style: TextStyle(
                     color: Colors.black,
@@ -67,50 +67,53 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                ProductLeader(
-                  amount: "45",
-                  product: "Cerveja Warren",
+                const ProductLeader(
+                  product: "1. Cerveja Warren",
                   value: "R\$4198,41",
                 ),
-                SizedBox(
-                  height: 10,
+                Divider(
+                  height: 20,
+                  color: Colors.grey.shade300,
+                  thickness: 1,
+                  indent: 40,
+                  endIndent: 40,
                 ),
-                ProductLeader(
-                  amount: "89",
-                  product: "Coca-Cola",
+                const ProductLeader(
+                  product: "2. Coca-Cola",
                   value: "R\$5704,55",
+                ),Divider(
+                  height: 20,
+                  color: Colors.grey.shade300,
+                  thickness: 1,
+                  indent: 40,
+                  endIndent: 40,
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                ProductLeader(
-                  amount: "68",
-                  product: "Pepsi",
+                const ProductLeader(
+                  product: "3. Pepsi",
                   value: "R\$1567,00",
+                ),Divider(
+                  height: 20,
+                  color: Colors.grey.shade300,
+                  thickness: 1,
+                  indent: 40,
+                  endIndent: 40,
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                ProductLeader(
-                  amount: "45",
-                  product: "Água Voss",
+                const ProductLeader(
+                  product: "4. Água Voss",
                   value: "R\$10015,31",
+                ),Divider(
+                  height: 20,
+                  color: Colors.grey.shade300,
+                  thickness: 1,
+                  indent: 40,
+                  endIndent: 40,
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                ProductLeader(
-                  amount: "45",
-                  product: "Kaiser",
+                const ProductLeader(
+                  product: "5. Kaiser",
                   value: "R\$1651,45",
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                ProductLeader(
-                  amount: "58",
-                  product: "Vinho Tinto",
-                  value: "R\$1871,54",
+                const SizedBox(
+                  height: 20,
                 ),
               ],
             ),
@@ -145,58 +148,59 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                   ),
                 ),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const ValueDay(value: "R\$2493,05", day: "Segunda"),
+                    const ValueDay(value: "R\$ 2493,05", day: "Segunda"),
                     Divider(
-                      height: 10,
+                      height: 20,
                       color: Colors.grey.shade300,
-                      thickness: 2,
-                      indent: 60,
-                      endIndent: 60,
+                      thickness: 1,
+                      indent: 40,
+                      endIndent: 40,
                     ),
-                    const ValueDay(value: "R\$2493,05", day: "Terça"),
+                    const ValueDay(value: "R\$ 2493,05", day: "Terça"),
                     Divider(
-                      height: 10,
+                      height: 20,
                       color: Colors.grey.shade300,
-                      thickness: 2,
-                      indent: 60,
-                      endIndent: 60,
+                      thickness: 1,
+                      indent: 40,
+                      endIndent: 40,
                     ),
-                    const ValueDay(value: "R\$2493,05", day: "Quarta"),
+                    const ValueDay(value: "R\$ 2493,05", day: "Quarta"),
                     Divider(
-                      height: 10,
+                      height: 20,
                       color: Colors.grey.shade300,
-                      thickness: 2,
-                      indent: 60,
-                      endIndent: 60,
+                      thickness: 1,
+                      indent: 40,
+                      endIndent: 40,
                     ),
-                    const ValueDay(value: "R\$2493,05", day: "Quinta"),
+                    const ValueDay(value: "R\$ 2493,05", day: "Quinta"),
                     Divider(
-                      height: 10,
+                      height: 20,
                       color: Colors.grey.shade300,
-                      thickness: 2,
-                      indent: 60,
-                      endIndent: 60,
+                      thickness: 1,
+                      indent: 40,
+                      endIndent: 40,
                     ),
-                    const ValueDay(value: "R\$2493,05", day: "Sexta"),
+                    const ValueDay(value: "R\$ 2493,05", day: "Sexta"),
                     Divider(
-                      height: 10,
+                      height: 20,
                       color: Colors.grey.shade300,
-                      thickness: 2,
-                      indent: 60,
-                      endIndent: 60,
+                      thickness: 1,
+                      indent: 40,
+                      endIndent: 40,
                     ),
-                    const ValueDay(value: "R\$2493,05", day: "Sábado"),
+                    const ValueDay(value: "R\$ 2493,05", day: "Sábado"),
                     Divider(
-                      height: 10,
+                      height: 20,
                       color: Colors.grey.shade300,
-                      thickness: 2,
-                      indent: 60,
-                      endIndent: 60,
+                      thickness: 1,
+                      indent: 40,
+                      endIndent: 40,
                     ),
-                    const ValueDay(value: "R\$2493,05", day: "Domingo"),
-                    SizedBox(
-                      height: 10,
+                    const ValueDay(value: "R\$ 2493,05", day: "Domingo"),
+                    const SizedBox(
+                      height: 20,
                     )
                   ],
                 ),

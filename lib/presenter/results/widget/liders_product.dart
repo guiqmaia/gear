@@ -1,12 +1,13 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
+import '../../../core/app_assets.dart';
+
 class ProductLeader extends StatelessWidget {
-  final String amount;
   final String product;
   final String value;
   const ProductLeader({
     Key? key,
-    required this.amount,
     required this.product,
     required this.value,
   }) : super(key: key);
@@ -15,26 +16,11 @@ class ProductLeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
+      children: [        
         Column(
-          children:  [
-            Padding(
-                padding: EdgeInsets.fromLTRB(50, 10, 50, 0)),
-            Text(
-              amount,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 17,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
-        Column(
-          children:  [
-            Padding(
-                padding: EdgeInsets.fromLTRB(50, 10, 50, 0)),
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(padding: EdgeInsets.fromLTRB(50, 10, 50, 0)),
             Text(
               product,
               style: TextStyle(
@@ -46,18 +32,24 @@ class ProductLeader extends StatelessWidget {
             ),
           ],
         ),
-        Column(
-          children:  [
-            Padding(
-                padding: EdgeInsets.fromLTRB(50, 10, 50, 0)),
-            Text(
-              value,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 17,
-                fontWeight: FontWeight.bold,
+        Column(          
+          children: [
+            const Padding(padding: const EdgeInsets.fromLTRB(50, 10, 50, 0)),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: greenNeon,
               ),
-              textAlign: TextAlign.center,
+              child: Text(
+                value,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
             ),
           ],
         ),
