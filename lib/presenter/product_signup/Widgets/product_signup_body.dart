@@ -29,7 +29,6 @@ class _SignupPageBodyState extends State<SignupPageBody> {
   TextEditingController categoryController = TextEditingController();
   TextEditingController quantityController = TextEditingController();
 
-  Uint8List? photo;
   String? dropdownValue;
 
 

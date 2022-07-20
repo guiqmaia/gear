@@ -7,7 +7,6 @@ class TopBarApp extends StatelessWidget {
   final dynamic pageRoute;
   final bool isProfile;
 
-
   const TopBarApp({
     Key? key,
     required this.title,
@@ -36,9 +35,9 @@ class TopBarApp extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).pop(context);
             },
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
-              color: Colors.white,
+              color: isProfile ? Colors.white : Colors.black,
               size: 30,
             ),
           ),
@@ -50,24 +49,21 @@ class TopBarApp extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           ),
-          Visibility(
-            visible: isProfile ? true : false,
-            child: InkWell(
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const ProfilePage(),
-                  ),
-                );
-              },
-              child: const CircleAvatar(
-                radius: 26,
-                backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.person,
-                  color: Colors.black,
-                  size: 35,
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const ProfilePage(),
                 ),
+              );
+            },
+            child: CircleAvatar(
+              radius: 26,
+              backgroundColor: isProfile ? Colors.white : Colors.black,
+              child: const Icon(
+                Icons.person,
+                color: Colors.black,
+                size: 35,
               ),
             ),
           ),

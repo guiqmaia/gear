@@ -14,6 +14,7 @@ String imgCocaCola = 'assets/images/coca_cola.png';
 String imgFanta = 'assets/images/fanta.png';
 String imgSprite = 'assets/images/sprite.png';
 String imgPepsi = 'assets/images/pepsi.png';
+String imgSodaAntarctica = 'assets/images/soda_antarctica.png';
 
 // beers
 String imgBeer = 'assets/images/beer.jpg';
