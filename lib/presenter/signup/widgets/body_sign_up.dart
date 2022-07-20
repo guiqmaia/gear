@@ -1,9 +1,9 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:gear/presenter/shared/widgets/text_field_app.dart';
 import '../../../infra/models/user_model.dart';
 import '../../shared/widgets/big_text_app.dart';
-import '../../shared/widgets/text_field_app.dart';
+import '../../shared/widgets/text_field_app_formatted.dart';
 
 import '../../../infra/database/gear_database.dart';
 
@@ -61,72 +61,58 @@ class _BodySignUpState extends State<BodySignUp> {
               labelItem: 'Nome Completo',
               iconInput: Icons.person,
               isObscured: false,
-              isFormatted: true,
-              formater: KmInputFormatter(),
               typeController: widget.nameController,
             ),
-            TextFieldApp(
+            TextFieldAppFormatted(
               labelItem: 'CPF',
               iconInput: Icons.person,
               typeController: widget.nameController,
               isObscured: false,
-              isFormatted: false,
-              formater: CpfInputFormatter(),
+              formater: CpfInputFormatter()!,
             ),
-            TextFieldApp(
+            TextFieldAppFormatted(
               labelItem: 'Data de Nascimento',
               iconInput: Icons.date_range,
               typeController: widget.bithdayDateController,
               isObscured: false,
-              isFormatted: false,
               formater: DataInputFormatter(),
             ),
             TextFieldApp(
               labelItem: 'Nome do Negócio',
               iconInput: Icons.text_fields_outlined,
               typeController: widget.bussinessNameController,
-              formater: CepInputFormatter(),
-              isFormatted: false,
               isObscured: false,
             ),
-            TextFieldApp(
+            TextFieldAppFormatted(
               labelItem: 'CNPJ',
               iconInput: Icons.numbers_sharp,
               typeController: widget.cnpjController,
               formater: CnpjInputFormatter(),
               isObscured: false,
-              isFormatted: false,
             ),
             TextFieldApp(
               labelItem: 'Telefone',
               iconInput: Icons.phone,
               typeController: widget.phoneController,
-              formater: TelefoneInputFormatter(),
-              isFormatted: false,
               isObscured: false,
             ),
             TextFieldApp(
               labelItem: 'Celular',
               iconInput: Icons.cell_wifi,
-              formater: TelefoneInputFormatter(),
               typeController: widget.cellphoneController,
-              isFormatted: false,
               isObscured: false,
             ),
-            TextFieldApp(
+            TextFieldAppFormatted(
               labelItem: 'CEP',
               iconInput: Icons.numbers,
               typeController: widget.cepController,
-              isFormatted: false,
               formater: CepInputFormatter(),
               isObscured: false,
             ),
             TextFieldApp(
               labelItem: 'Endereço',
               iconInput: Icons.home,
-              isFormatted: false,
               typeController: widget.adressController,
-              formater: CepInputFormatter(),
               isObscured: false,
             ),
             Padding(
@@ -137,17 +123,13 @@ class _BodySignUpState extends State<BodySignUp> {
               labelItem: 'Email',
               iconInput: Icons.email,
               typeController: widget.loginController,
-              isFormatted: false,
               isObscured: false,
-              formater: CepInputFormatter(),
             ),
             TextFieldApp(
               labelItem: 'Senha',
               iconInput: Icons.key,
               typeController: widget.passwordController,
-              isFormatted: false,
               isObscured: true,
-              formater: CepInputFormatter(),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 20, bottom: 10),
@@ -155,6 +137,7 @@ class _BodySignUpState extends State<BodySignUp> {
                 onPressed: () async {
                   UserModel userModel = UserModel(
                     name: widget.nameController.text,
+                    // cpf: widget.cpfController.text,
                     birthday: widget.bithdayDateController.text,
                     company: widget.bussinessNameController.text,
                     cnpj: widget.cnpjController.text,

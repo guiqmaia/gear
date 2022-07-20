@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gear/presenter/shared/widgets/text_field_app.dart';
 import '../../shared/widgets/dropdown_input.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -10,7 +11,6 @@ import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/product_model.dart';
 import '../../home/home_page.dart';
-import '../../shared/widgets/text_field_app.dart';
 import '../../shared/widgets/top_bar_app.dart';
 import 'default_image_container.dart';
 
