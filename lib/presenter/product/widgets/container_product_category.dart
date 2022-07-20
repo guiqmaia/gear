@@ -4,6 +4,7 @@ import 'package:gear/infra/database/gear_database.dart';
 
 import '../../../infra/models/product_model.dart';
 
+// ignore: must_be_immutable
 class ContainerProductCategory extends StatefulWidget {
   final String productName;
   final String productPrice;

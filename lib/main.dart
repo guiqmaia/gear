@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/home/home_page.dart';
+
+import 'package:gear/presenter/splash/splash_page.dart';
 
 void main(List<String> args) {
   runApp(
     const MaterialApp(
-      home: HomePage(),
+      home: SplashPage(),
       title: 'Gear',
       debugShowCheckedModeBanner: false,
     ),

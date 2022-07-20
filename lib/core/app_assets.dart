@@ -8,7 +8,6 @@ String imgStore = "assets/images/fotoConveniencia.png";
 String iconFacebook = 'assets/icons/facebook.png';
 String iconGoogle = 'assets/icons/google.png';
 
-
 // sodas
 String imgSodas = 'assets/images/soda.png';
 String imgCocaCola = 'assets/images/coca_cola.png';
@@ -37,7 +36,6 @@ String imgAbsolut = 'assets/images/absolut_vodka.webp';
 String imgBeefeater = 'assets/images/beefeater_gin.webp';
 String imgWhiteHorse = 'assets/images/white_horse_whisky.png';
 
-
 // energy drink
 String imgEnergyDrink = 'assets/images/energy_drink.webp';
 String imgRedBull = 'assets/images/redbull.png';
@@ -49,10 +47,16 @@ String imgWaterBottle = 'assets/images/water_bottle.jpg';
 String imgWater = 'assets/images/water.webp';
 String imgSparklingWater = 'assets/images/sparkling_water.jpg';
 
+List<String> listSodas = [imgCocaCola, imgFanta, imgSprite, imgPepsi];
+List<String> listBeers = [imgMaryWellsBeer, imgDearPaulaBeer, imgRedSonjaBeer, imgStannisPilsner];
+List<String> listWines = [imgCasaValduga, imgCasaPerini, imgCabrizRose, imgCabrizWhite];
+List<String> listDistilled = [imgBacardi, imgAbsolut, imgBeefeater, imgWhiteHorse];
+List<String> listEnergyDrink = [imgRedBull, imgMonster, imgBaly];
+List<String> listWater = [imgWater, imgSparklingWater];
+
 
 //Ilustrações
 String imgEmail = 'assets/images/email.png';
-
 
 // colors
 Color greenNeon = const Color.fromRGBO(202, 254, 72, 1);
