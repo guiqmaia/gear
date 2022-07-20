@@ -35,9 +35,9 @@ class TopBarApp extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).pop(context);
             },
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
-              color: Colors.white,
+              color: isProfile ? Colors.black : Colors.white,
               size: 30,
             ),
           ),
@@ -49,23 +49,23 @@ class TopBarApp extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           ),
-          Visibility(
-            visible: isProfile ? true : false,
-            child: InkWell(
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const ProfilePage(),
+          isProfile
+              ? const CircleAvatar(
+                  backgroundColor: Colors.black,
+                )
+              : InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const ProfilePage(),
+                      ),
+                    );
+                  },
+                  child: CircleAvatar(
+                    radius: 26,
+                    backgroundImage: Image.asset(imgStore).image,
                   ),
-                );
-              },
-              child: CircleAvatar(
-                radius: 26,
-                backgroundColor: Colors.white,
-                backgroundImage: Image.asset(imgStore).image,
-              ),
-            ),
-          ),
+                )
         ],
       ),
     );

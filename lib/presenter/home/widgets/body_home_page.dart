@@ -1,21 +1,12 @@
 import 'package:flutter/material.dart';
-
-
-
-import '../../shared/widgets/big_text_app.dart';
-import '../../shared/widgets/btn_standard_app.dart';
-
-import '../../../core/app_assets.dart';
 import 'package:onboarding/onboarding.dart';
 
-
+import '../../../core/app_assets.dart';
 import '../../../infra/database/create_database_products.dart';
 import '../../cash_register/cash_register_page.dart';
 import '../../category/category_page.dart';
-import '../../results/results_page.dart';
-
+import '../../shared/widgets/btn_standard_app.dart';
 import 'column_profile_info.dart';
-import 'columns_buttons.dart';
 import 'decorated_box_chart_results.dart';
 import 'top_bar_home.dart';
 
@@ -58,7 +49,7 @@ class _BodyHomePageState extends State<BodyHomePage> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TopBarHome(),
+                const TopBarHome(),
                 Container(
                   alignment: Alignment.center,
                   color: Colors.grey.shade400,
@@ -79,9 +70,9 @@ class _BodyHomePageState extends State<BodyHomePage> {
                           pagesLength: pagesLength,
                           indicator: Indicator(
                             activeIndicator: const ActiveIndicator(
-                                color: Colors.black,
-                                borderWidth: 1.4,
-                                ),
+                              color: Colors.black,
+                              borderWidth: 1.4,
+                            ),
                             closedIndicator: ClosedIndicator(color: greenNeon),
                             indicatorDesign: IndicatorDesign.polygon(
                               polygonDesign: PolygonDesign(
@@ -97,7 +88,6 @@ class _BodyHomePageState extends State<BodyHomePage> {
                 const SizedBox(
                   height: 30,
                 ),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -163,9 +153,6 @@ class _BodyHomePageState extends State<BodyHomePage> {
                     // ),
                   ],
                 ),
-
-              
-
               ],
             ),
           ],

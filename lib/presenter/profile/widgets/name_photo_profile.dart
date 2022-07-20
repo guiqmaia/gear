@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../edit_profile/edit_profile_page.dart';
+import '../../../core/app_assets.dart';
 
 class NamePhotoProfile extends StatelessWidget {
   const NamePhotoProfile({
@@ -13,28 +13,29 @@ class NamePhotoProfile extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 15),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.end,
+          Stack(
             children: [
               CircleAvatar(
                 radius: 80,
                 backgroundImage: Image.asset(
-                  "assets/images/fotoConveniencia.png",
+                  imgStore,
                   fit: BoxFit.cover,
                 ).image,
               ),
-              IconButton(
-                icon: const Icon(
-                  Icons.create_sharp,
-                ),
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const EditProfilePage(),
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: CircleAvatar(
+                  backgroundColor: Colors.black,
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.create_sharp,
+                      color: greenNeon,
+                      size: 20,
                     ),
-                  );
-                },
+                    onPressed: () {},
+                  ),
+                ),
               ),
             ],
           ),
@@ -55,7 +56,7 @@ class NamePhotoProfile extends StatelessWidget {
               color: Colors.black,
               fontSize: 17.5,
             ),
-          ),          
+          ),
         ],
       ),
     );
