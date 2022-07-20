@@ -3,7 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gear/presenter/shared/widgets/dropdown_input.dart';
+import '../../shared/widgets/dropdown_input.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
@@ -28,8 +28,10 @@ class _SignupPageBodyState extends State<SignupPageBody> {
   TextEditingController priceController = TextEditingController();
   TextEditingController categoryController = TextEditingController();
   TextEditingController quantityController = TextEditingController();
-  
-  String dropdownValue = 'Refrigerante';
+
+  Uint8List? photo;
+  String? dropdownValue;
+
 
   List<DropdownMenuItem<String>> list = const [
     DropdownMenuItem(value: 'Refrigerante', child: Text('Refrigerante')),
@@ -86,7 +88,8 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                   dropdownList: list,
                   labelDropdown: 'Escolha a Categoria',
                   iconDropdown: Icons.tag,
-                  dropdownValue: dropdownValue,
+                  selectedValue: dropdownValue,
+                  selectedValueController: categoryController,
                 ),
                 TextFieldApp(
                   labelItem: 'Quantidade',
@@ -136,7 +139,7 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                       ProductModel productModel = ProductModel(
                         name: nameController.text,
                         price: double.parse(priceController.text),
-                        category: dropdownValue,
+                        category: categoryController.text,
                         quantity: int.parse(quantityController.text),
                         image: photo!,
                       );

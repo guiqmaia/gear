@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../profile/profile_page.dart';
 
-import '../../shared/widgets/top_bar_app.dart';
+import '../profile/profile_page.dart';
+import '../shared/widgets/top_bar_app.dart';
 
 class EditProfilePage extends StatelessWidget {
   const EditProfilePage({Key? key}) : super(key: key);
