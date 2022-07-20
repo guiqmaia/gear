@@ -126,10 +126,10 @@ class _BodySignUpState extends State<BodySignUp> {
                   company: widget.bussinessNameController.text,
                   cnpj: widget.cnpjController.text,
                   telephone: widget.phoneController.text,
-                  cellPhone: widget.cellphoneController.text,
+                  mobileNumber: widget.cellphoneController.text,
                   cep: widget.cepController.text,
                   adress: widget.adressController.text,
-                  login: widget.loginController.text,
+                  email: widget.loginController.text,
                   password: widget.passwordController.text,
                 );
                 await GearDatabase.instance.insertUser(userModel);

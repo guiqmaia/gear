@@ -2,56 +2,60 @@
 import 'dart:convert';
 
 class UserModel {
+  int? id;
   String name;
   String birthday;
   String company;
   String cnpj;
   String telephone;
-  String cellPhone;
+  String mobileNumber;
   String cep;
   String adress;
-  String login;
+  String email;
   String password;
 
   UserModel({
+    this.id,
     required this.name,
     required this.birthday,
     required this.company,
     required this.cnpj,
     required this.telephone,
-    required this.cellPhone,
+    required this.mobileNumber,
     required this.cep,
     required this.adress,
-    required this.login,
+    required this.email,
     required this.password,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'id': id,
       'name': name,
       'birthday': birthday,
       'company': company,
       'cnpj': cnpj,
       'telephone': telephone,
-      'mobileNumber': cellPhone,
+      'mobileNumber': mobileNumber,
       'cep': cep,
       'adress': adress,
-      'email': login,
+      'email': email,
       'password': password,
     };
   }
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
+      id: map['id'] != null ? map['id'] as int : null,
       name: map['name'] as String,
       birthday: map['birthday'] as String,
       company: map['company'] as String,
       cnpj: map['cnpj'] as String,
       telephone: map['telephone'] as String,
-      cellPhone: map['mobileNumber'] as String,
+      mobileNumber: map['mobileNumber'] as String,
       cep: map['cep'] as String,
       adress: map['adress'] as String,
-      login: map['email'] as String,
+      email: map['email'] as String,
       password: map['password'] as String,
     );
   }
