@@ -1,7 +1,13 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:gear/core/app_assets.dart';
 import 'package:gear/presenter/home/home_page.dart';
 import 'package:gear/presenter/shared/widgets/top_bar_app.dart';
+
+import 'widget/daily_billing_metd.dart';
+import 'widget/liders_product.dart';
 
 class ResultsPage extends StatelessWidget {
   const ResultsPage({Key? key}) : super(key: key);
@@ -31,7 +37,8 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          const TopBarApp(title: 'Resultados', pageRoute: HomePage(), isProfile: false),
+          const TopBarApp(
+              title: 'Resultados', pageRoute: HomePage(), isProfile: false),
           Container(
             margin: const EdgeInsets.symmetric(
               vertical: 10,
@@ -48,8 +55,9 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
               width: double.maxFinite,
               height: MediaQuery.of(context).size.height * 0.4,
               decoration: BoxDecoration(
-                  color: Colors.grey.shade900,
-                  borderRadius: BorderRadius.circular(20)),
+                color: Colors.grey,
+                borderRadius: BorderRadius.circular(20),
+              ),
               child: Column(
                 children: [
                   const Padding(
@@ -57,9 +65,9 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                       vertical: 15,
                     ),
                     child: Text(
-                      'Líderes de Venda',
+                      'Produto Líderes',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: const Color.fromRGBO(202, 254, 72, 1),
                         fontWeight: FontWeight.bold,
                         fontSize: 25,
                       ),
@@ -77,7 +85,7 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                             Text(
                               'Quantidade',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.black,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -86,16 +94,16 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                             Text(
                               'Produto',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.black,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
                               textAlign: TextAlign.center,
                             ),
                             Text(
-                              'Faturamento',
+                              'Valor',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.black,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -106,42 +114,50 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                         const SizedBox(
                           height: 15,
                         ),
-                        Wrap(
-                          runSpacing: 15,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: const [
-                                Text(
-                                  '45',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                                Text(
-                                  'Tênis',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                                Text(
-                                  '4500,00',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
-                            ),
-                          ],
+                        const ProductLeader(
+                          amount: "45",
+                          product: "Cerveja Warren",
+                          value: "R\$4198,41",
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const ProductLeader(
+                          amount: "89",
+                          product: "Coca-Cola",
+                          value: "R\$5704,55",
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const ProductLeader(
+                          amount: "68",
+                          product: "Pepsi",
+                          value: "R\$1567,00",
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const ProductLeader(
+                          amount: "45",
+                          product: "Água Voss",
+                          value: "R\$10015,31",
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const ProductLeader(
+                          amount: "45",
+                          product: "Kaiser",
+                          value: "R\$1651,45",
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const ProductLeader(
+                          amount: "58",
+                          product: "Vinho Tinto",
+                          value: "R\$1871,54",
                         ),
                       ],
                     ),
@@ -150,115 +166,96 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
               ),
             ),
           ),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(
-                vertical: 10,
-                horizontal: 10,
-              ),
-              width: double.maxFinite,
-              height: MediaQuery.of(context).size.height * 0.4,
-              decoration: BoxDecoration(
-                  color: Colors.grey.shade900,
-                  borderRadius: BorderRadius.circular(20)),
-              child: Column(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 15,
+          Container(
+            margin: const EdgeInsets.symmetric(
+              vertical: 10,
+              horizontal: 10,
+            ),
+            width: double.maxFinite,
+            // height: MediaQuery.of(context).size.height * 0.4,
+            decoration: BoxDecoration(
+              color: Colors.grey,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Column(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 15,
+                  ),
+                  child: Text(
+                    'Faturamento Diário',
+                    style: TextStyle(
+                      color: Color.fromRGBO(202, 254, 72, 1),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
                     ),
-                    child: Text(
-                      'Líderes de Faturamento',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.3,
+                  child: ListView(
+                    scrollDirection: Axis.vertical,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: const [
+                          Text(
+                            'Valor',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          Text(
+                            'Dia da Semana',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
                       ),
-                      textAlign: TextAlign.center,
-                    ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const DailyBilling(
+                        day: "Segunda",
+                        value: "R\$3738.59",
+                      ),
+                      const DailyBilling(
+                        day: "Terça",
+                        value: "R\$2884.32",
+                      ),
+                      const DailyBilling(
+                        day: "Quarta",
+                        value: "R\$4247.21",
+                      ),
+                      const DailyBilling(
+                        day: "Quinta",
+                        value: "R\$1987.56",
+                      ),
+                      const DailyBilling(
+                        day: "Sexta",
+                        value: "R\$6875.04",
+                      ),
+                      const DailyBilling(
+                        day: "Sabádo",
+                        value: "R\$1745.51",
+                      ),
+                      const DailyBilling(
+                        day: "Domingo",
+                        value: "R\$2154,52",
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.3,
-                    child: ListView(
-                      scrollDirection: Axis.vertical,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: const [
-                            Text(
-                              'Quantidade',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                            Text(
-                              'Produto',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                            Text(
-                              'Faturamento',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Wrap(
-                          runSpacing: 15,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: const [
-                                Text(
-                                  '45',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                                Text(
-                                  'Tênis',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                                Text(
-                                  '4500,00',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
@@ -297,7 +294,7 @@ class BarChartSample1State extends State<BarChartSample1> {
       aspectRatio: 1,
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-        color: Colors.grey.shade900,
+        color: Colors.grey,
         child: Stack(
           children: <Widget>[
             Padding(
@@ -310,7 +307,7 @@ class BarChartSample1State extends State<BarChartSample1> {
                   const Text(
                     'Balanço Semanal',
                     style: TextStyle(
-                        color: Color.fromRGBO(240, 239, 244, 1),
+                        color: const Color.fromRGBO(202, 254, 72, 1),
                         fontSize: 24,
                         fontWeight: FontWeight.bold),
                   ),
@@ -378,19 +375,19 @@ class BarChartSample1State extends State<BarChartSample1> {
   List<BarChartGroupData> showingGroups() => List.generate(7, (i) {
         switch (i) {
           case 0:
-            return makeGroupData(0, 10500.33, isTouched: i == touchedIndex);
+            return makeGroupData(0, 3738.59, isTouched: i == touchedIndex);
           case 1:
-            return makeGroupData(1, 8700.50, isTouched: i == touchedIndex);
+            return makeGroupData(1, 2884.32, isTouched: i == touchedIndex);
           case 2:
-            return makeGroupData(2, 5800.25, isTouched: i == touchedIndex);
+            return makeGroupData(2, 4247.21, isTouched: i == touchedIndex);
           case 3:
-            return makeGroupData(3, 12400.00, isTouched: i == touchedIndex);
+            return makeGroupData(3, 1987.56, isTouched: i == touchedIndex);
           case 4:
-            return makeGroupData(4, 9670.75, isTouched: i == touchedIndex);
+            return makeGroupData(4, 6875.04, isTouched: i == touchedIndex);
           case 5:
-            return makeGroupData(5, 11500.00, isTouched: i == touchedIndex);
+            return makeGroupData(5, 1745.51, isTouched: i == touchedIndex);
           case 6:
-            return makeGroupData(6, 4500, isTouched: i == touchedIndex);
+            return makeGroupData(6, 2154.52, isTouched: i == touchedIndex);
           default:
             return throw Error();
         }
@@ -429,7 +426,7 @@ class BarChartSample1State extends State<BarChartSample1> {
                   throw Error();
               }
               return BarTooltipItem(
-                weekDay + '\n',
+                '$weekDay\n',
                 const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -497,25 +494,25 @@ class BarChartSample1State extends State<BarChartSample1> {
     Widget text;
     switch (value.toInt()) {
       case 0:
-        text = const Text('M', style: style);
+        text = const Text('S', style: style);
         break;
       case 1:
         text = const Text('T', style: style);
         break;
       case 2:
-        text = const Text('W', style: style);
+        text = const Text('Q', style: style);
         break;
       case 3:
-        text = const Text('T', style: style);
+        text = const Text('Q', style: style);
         break;
       case 4:
-        text = const Text('F', style: style);
+        text = const Text('S', style: style);
         break;
       case 5:
         text = const Text('S', style: style);
         break;
       case 6:
-        text = const Text('S', style: style);
+        text = const Text('D', style: style);
         break;
       default:
         text = const Text('', style: style);
