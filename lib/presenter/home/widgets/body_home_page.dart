@@ -39,6 +39,15 @@ class _BodyHomePageState extends State<BodyHomePage> {
     ),
   ];
 
+  Future createListProducts() async {
+    await CreateDatabaseProducts().createSodas();
+    await CreateDatabaseProducts().createBeers();
+    await CreateDatabaseProducts().createWines();
+    await CreateDatabaseProducts().createDistilled();
+    await CreateDatabaseProducts().createEnergyDrink();
+    await CreateDatabaseProducts().createWater();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -112,14 +121,8 @@ class _BodyHomePageState extends State<BodyHomePage> {
                       child: TextButton(
                         onPressed: () async {
                           if (!isCreated) {
-                            setState(() async {
-                              await CreateDatabaseProducts().createSodas();
-                              await CreateDatabaseProducts().createBeers();
-                              await CreateDatabaseProducts().createWines();
-                              await CreateDatabaseProducts().createDistilled();
-                              await CreateDatabaseProducts()
-                                  .createEnergyDrink();
-                              await CreateDatabaseProducts().createWater();
+                            setState(() {
+                              createListProducts();
                               isCreated = true;
 
                               Navigator.of(context).push(
