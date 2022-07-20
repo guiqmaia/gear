@@ -58,62 +58,72 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
             ),
             child: Column(
               children: [
-                const Text(
-                  'Produto Líderes',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
+                const Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 15,
                   ),
-                  textAlign: TextAlign.center,
+                  child: Text(
+                    'Mais Vendidos',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-                const ProductLeader(
-                  product: "1. Cerveja Warren",
-                  value: "R\$4198,41",
-                ),
-                Divider(
-                  height: 20,
-                  color: Colors.grey.shade300,
-                  thickness: 1,
-                  indent: 40,
-                  endIndent: 40,
-                ),
-                const ProductLeader(
-                  product: "2. Coca-Cola",
-                  value: "R\$5704,55",
-                ),Divider(
-                  height: 20,
-                  color: Colors.grey.shade300,
-                  thickness: 1,
-                  indent: 40,
-                  endIndent: 40,
-                ),
-                const ProductLeader(
-                  product: "3. Pepsi",
-                  value: "R\$1567,00",
-                ),Divider(
-                  height: 20,
-                  color: Colors.grey.shade300,
-                  thickness: 1,
-                  indent: 40,
-                  endIndent: 40,
-                ),
-                const ProductLeader(
-                  product: "4. Água Voss",
-                  value: "R\$10015,31",
-                ),Divider(
-                  height: 20,
-                  color: Colors.grey.shade300,
-                  thickness: 1,
-                  indent: 40,
-                  endIndent: 40,
-                ),
-                const ProductLeader(
-                  product: "5. Kaiser",
-                  value: "R\$1651,45",
-                ),
-                const SizedBox(
-                  height: 20,
+                Column(
+                  
+                  children: [
+                    const ProductLeader(
+                      product: "1. Mary Wells",
+                      value: "R\$ 4198,41",
+                    ),
+                    Divider(
+                      height: 20,
+                      color: Colors.grey.shade300,
+                      thickness: 1,
+                      indent: 40,
+                      endIndent: 40,
+                    ),
+                    const ProductLeader(
+                      product: "2. Coca-Cola",
+                      value: "R\$ 5704,55",
+                    ),Divider(
+                      height: 20,
+                      color: Colors.grey.shade300,
+                      thickness: 1,
+                      indent: 40,
+                      endIndent: 40,
+                    ),
+                    const ProductLeader(
+                      product: "3. Perini-Malbec",
+                      value: "R\$ 1567,00",
+                    ),Divider(
+                      height: 20,
+                      color: Colors.grey.shade300,
+                      thickness: 1,
+                      indent: 40,
+                      endIndent: 40,
+                    ),
+                    const ProductLeader(
+                      product: "4. White Horse",
+                      value: "R\$ 10015,31",
+                    ),Divider(
+                      height: 20,
+                      color: Colors.grey.shade300,
+                      thickness: 1,
+                      indent: 40,
+                      endIndent: 40,
+                    ),
+                    const ProductLeader(
+                      product: "5. RedBull",
+                      value: "R\$ 1651,45",
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -148,9 +158,9 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                   ),
                 ),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  
                   children: [
-                    const ValueDay(value: "R\$ 2493,05", day: "Segunda"),
+                    const ValueDay(value: "R\$ 3738,59", day: "Segunda"),
                     Divider(
                       height: 20,
                       color: Colors.grey.shade300,
@@ -158,7 +168,7 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                       indent: 40,
                       endIndent: 40,
                     ),
-                    const ValueDay(value: "R\$ 2493,05", day: "Terça"),
+                    const ValueDay(value: "R\$ 2884,32", day: "Terça"),
                     Divider(
                       height: 20,
                       color: Colors.grey.shade300,
@@ -166,7 +176,7 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                       indent: 40,
                       endIndent: 40,
                     ),
-                    const ValueDay(value: "R\$ 2493,05", day: "Quarta"),
+                    const ValueDay(value: "R\$ 4247,21", day: "Quarta"),
                     Divider(
                       height: 20,
                       color: Colors.grey.shade300,
@@ -174,7 +184,7 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                       indent: 40,
                       endIndent: 40,
                     ),
-                    const ValueDay(value: "R\$ 2493,05", day: "Quinta"),
+                    const ValueDay(value: "R\$ 1987,56", day: "Quinta"),
                     Divider(
                       height: 20,
                       color: Colors.grey.shade300,
@@ -182,7 +192,7 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                       indent: 40,
                       endIndent: 40,
                     ),
-                    const ValueDay(value: "R\$ 2493,05", day: "Sexta"),
+                    const ValueDay(value: "R\$ 6875,04", day: "Sexta"),
                     Divider(
                       height: 20,
                       color: Colors.grey.shade300,
@@ -190,7 +200,7 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                       indent: 40,
                       endIndent: 40,
                     ),
-                    const ValueDay(value: "R\$ 2493,05", day: "Sábado"),
+                    const ValueDay(value: "R\$ 1745,51", day: "Sábado"),
                     Divider(
                       height: 20,
                       color: Colors.grey.shade300,
@@ -198,7 +208,7 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                       indent: 40,
                       endIndent: 40,
                     ),
-                    const ValueDay(value: "R\$ 2493,05", day: "Domingo"),
+                    const ValueDay(value: "R\$ 2154,52", day: "Domingo"),
                     const SizedBox(
                       height: 20,
                     )
@@ -243,7 +253,7 @@ class BarChartSample1State extends State<BarChartSample1> {
       aspectRatio: 1,
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-        color: Colors.grey,
+        color: Colors.grey.shade400,                
         child: Stack(
           children: <Widget>[
             Padding(
@@ -256,7 +266,7 @@ class BarChartSample1State extends State<BarChartSample1> {
                   const Text(
                     'Balanço Semanal',
                     style: TextStyle(
-                        color: const Color.fromRGBO(202, 254, 72, 1),
+                        color: Colors.black,
                         fontSize: 24,
                         fontWeight: FontWeight.bold),
                   ),
@@ -266,7 +276,7 @@ class BarChartSample1State extends State<BarChartSample1> {
                   const Text(
                     'Distribuidora Bebidinhas',
                     style: TextStyle(
-                        color: Color.fromRGBO(240, 239, 244, 1),
+                        color: Colors.black,
                         fontSize: 18,
                         fontWeight: FontWeight.bold),
                   ),
@@ -351,25 +361,25 @@ class BarChartSample1State extends State<BarChartSample1> {
               String weekDay;
               switch (group.x.toInt()) {
                 case 0:
-                  weekDay = 'Monday';
+                  weekDay = 'Segunda';
                   break;
                 case 1:
-                  weekDay = 'Tuesday';
+                  weekDay = 'Terça';
                   break;
                 case 2:
-                  weekDay = 'Wednesday';
+                  weekDay = 'Quarta';
                   break;
                 case 3:
-                  weekDay = 'Thursday';
+                  weekDay = 'Quinta';
                   break;
                 case 4:
-                  weekDay = 'Friday';
+                  weekDay = 'Sexta';
                   break;
                 case 5:
-                  weekDay = 'Saturday';
+                  weekDay = 'Sábado';
                   break;
                 case 6:
-                  weekDay = 'Sunday';
+                  weekDay = 'Domingo';
                   break;
                 default:
                   throw Error();
@@ -436,7 +446,7 @@ class BarChartSample1State extends State<BarChartSample1> {
 
   Widget getTitles(double value, TitleMeta meta) {
     const style = TextStyle(
-      color: Colors.white,
+      color: Colors.black,
       fontWeight: FontWeight.bold,
       fontSize: 14,
     );

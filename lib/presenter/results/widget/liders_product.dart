@@ -32,7 +32,8 @@ class ProductLeader extends StatelessWidget {
             ),
           ],
         ),
-        Column(          
+        Column(        
+          crossAxisAlignment: CrossAxisAlignment.end,  
           children: [
             const Padding(padding: const EdgeInsets.fromLTRB(50, 10, 50, 0)),
             Container(
@@ -48,7 +49,7 @@ class ProductLeader extends StatelessWidget {
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
                 ),
-                textAlign: TextAlign.center,
+                
               ),
             ),
           ],

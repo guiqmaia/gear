@@ -46,7 +46,7 @@ class ValueDay extends StatelessWidget {
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
                 ),
-                textAlign: TextAlign.center,
+                
               ),
             ),
           ],
