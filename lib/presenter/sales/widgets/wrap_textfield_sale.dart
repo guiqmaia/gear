@@ -43,6 +43,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           ],
           labelDropdown: 'Categoria',
           iconDropdown: Icons.sell_rounded,
+          selectedValueController: widget.categoryController,
         ),
         DropDownInput(
           dropdownList: [
@@ -51,6 +52,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           ],
           labelDropdown: 'Produto',
           iconDropdown: Icons.description_rounded,
+          selectedValueController: widget.categoryController,
         ),
         TextFieldApp(
           labelItem: 'Código do produto',
@@ -73,7 +75,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           typeController: widget.quantityController,
         ),
         DropDownInput(
-          dropdownList: [
+          dropdownList: const [
             DropdownMenuItem(value: 'Crédito', child: Text('Crédito')),
             DropdownMenuItem(value: 'Débito', child: Text('Débito')),
             DropdownMenuItem(value: 'Dinheiro', child: Text('Dinheiro')),
@@ -81,6 +83,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           ],
           labelDropdown: 'Modo de pagamento',
           iconDropdown: Icons.credit_card_rounded,
+          selectedValueController: widget.categoryController,
         ),
         const Divider(
           indent: 15,
