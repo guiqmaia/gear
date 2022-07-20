@@ -32,7 +32,6 @@ class _SignupPageBodyState extends State<SignupPageBody> {
   Uint8List? photo;
   String? dropdownValue;
 
-
   List<DropdownMenuItem<String>> list = const [
     DropdownMenuItem(value: 'Refrigerante', child: Text('Refrigerante')),
     DropdownMenuItem(value: 'Cerveja', child: Text('Cerveja')),
@@ -41,8 +40,7 @@ class _SignupPageBodyState extends State<SignupPageBody> {
     DropdownMenuItem(value: 'Energético', child: Text('Energético')),
     DropdownMenuItem(value: 'Água', child: Text('Água')),
   ];
-  
-  Uint8List? photo;
+
   File? image;
   Future pickImage() async {
     try {
