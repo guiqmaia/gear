@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/core/app_assets.dart';
 
 import '../../profile/profile_page.dart';
 
@@ -11,8 +12,7 @@ class TopBarApp extends StatelessWidget {
     Key? key,
     required this.title,
     required this.pageRoute,
-    required this.isProfile, 
-   
+    required this.isProfile,
   }) : super(key: key);
 
   @override
@@ -37,7 +37,7 @@ class TopBarApp extends StatelessWidget {
             },
             icon: Icon(
               Icons.arrow_back_rounded,
-              color: isProfile ? Colors.white : Colors.black,
+              color: isProfile ? Colors.black : Colors.white,
               size: 30,
             ),
           ),
@@ -59,12 +59,7 @@ class TopBarApp extends StatelessWidget {
             },
             child: CircleAvatar(
               radius: 26,
-              backgroundColor: isProfile ? Colors.white : Colors.black,
-              child: const Icon(
-                Icons.person,
-                color: Colors.black,
-                size: 35,
-              ),
+              backgroundImage: isProfile ? Image.asset(imgBlack).image : Image.asset(imgStore).image,
             ),
           ),
         ],

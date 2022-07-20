@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // images
 String imgBusinessMan = 'assets/images/empresario.jpeg';
 String imgStore = "assets/images/fotoConveniencia.png";
+String imgBlack = 'assets/images/black.jpg';
 
 // icons
 String iconFacebook = 'assets/icons/facebook.png';

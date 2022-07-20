@@ -16,32 +16,50 @@ class ProductLeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Text(
-          amount,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 17,
-            fontWeight: FontWeight.bold,
-          ),
-          textAlign: TextAlign.center,
+        Column(
+          children:  [
+            Padding(
+                padding: EdgeInsets.fromLTRB(50, 10, 50, 0)),
+            Text(
+              amount,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
-        Text(
-          product,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 17,
-            fontWeight: FontWeight.bold,
-          ),
-          textAlign: TextAlign.center,
+        Column(
+          children:  [
+            Padding(
+                padding: EdgeInsets.fromLTRB(50, 10, 50, 0)),
+            Text(
+              product,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
-        Text(
-          value,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 17,
-            fontWeight: FontWeight.bold,
-          ),
-          textAlign: TextAlign.center,
+        Column(
+          children:  [
+            Padding(
+                padding: EdgeInsets.fromLTRB(50, 10, 50, 0)),
+            Text(
+              value,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
       ],
     );

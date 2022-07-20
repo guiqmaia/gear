@@ -33,7 +33,7 @@ class BodyProfilePage extends StatelessWidget {
             const TopBarApp(
               title: "Perfil",
               pageRoute: HomePage(),
-              isProfile: false,
+              isProfile: true,
             ),
             const NamePhotoProfile(),
             const SizedBox(height: 15),

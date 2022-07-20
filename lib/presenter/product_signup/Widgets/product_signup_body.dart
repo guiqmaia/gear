@@ -31,7 +31,6 @@ class _SignupPageBodyState extends State<SignupPageBody> {
 
   String? dropdownValue;
 
-
   List<DropdownMenuItem<String>> list = const [
     DropdownMenuItem(value: 'Refrigerante', child: Text('Refrigerante')),
     DropdownMenuItem(value: 'Cerveja', child: Text('Cerveja')),
