@@ -49,19 +49,23 @@ class TopBarApp extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           ),
-          InkWell(
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const ProfilePage(),
-                ),
-              );
-            },
-            child: CircleAvatar(
-              radius: 26,
-              backgroundImage: isProfile ? Image.asset(imgBlack).image : Image.asset(imgStore).image,
-            ),
-          ),
+          isProfile
+              ? const CircleAvatar(
+                  backgroundColor: Colors.black,
+                )
+              : InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const ProfilePage(),
+                      ),
+                    );
+                  },
+                  child: CircleAvatar(
+                    radius: 26,
+                    backgroundImage: Image.asset(imgStore).image,
+                  ),
+                )
         ],
       ),
     );
