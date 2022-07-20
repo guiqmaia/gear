@@ -42,7 +42,7 @@ class _SignupPageBodyState extends State<SignupPageBody> {
     DropdownMenuItem(value: 'Água', child: Text('Água')),
   ];
   
-  Uint8List? photo;
+  // Uint8List? photo;
   File? image;
   Future pickImage() async {
     try {
