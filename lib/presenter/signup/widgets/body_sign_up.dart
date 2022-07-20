@@ -12,6 +12,7 @@ class BodySignUp extends StatefulWidget {
     required this.bithdayDateController,
     required this.bussinessNameController,
     required this.cnpjController,
+    required this.cpfController,
     required this.phoneController,
     required this.cellphoneController,
     required this.cepController,
@@ -24,6 +25,7 @@ class BodySignUp extends StatefulWidget {
   final TextEditingController bithdayDateController;
   final TextEditingController bussinessNameController;
   final TextEditingController cnpjController;
+  final TextEditingController cpfController;
   final TextEditingController phoneController;
   final TextEditingController cellphoneController;
   final TextEditingController cepController;
@@ -72,6 +74,12 @@ class _BodySignUpState extends State<BodySignUp> {
             labelItem: 'CNPJ',
             iconInput: Icons.numbers_sharp,
             typeController: widget.cnpjController,
+            isObscured: false,
+          ),
+          TextFieldApp(
+            labelItem: 'CPF',
+            iconInput: Icons.numbers_sharp,
+            typeController: widget.cpfController,
             isObscured: false,
           ),
           TextFieldApp(

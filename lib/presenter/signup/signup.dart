@@ -32,6 +32,7 @@ class _SignupState extends State<Signup> {
           bithdayDateController: bithdayDateController,
           bussinessNameController: bussinessNameController,
           cnpjController: cnpjController,
+          cpfController: cpfController,
           phoneController: phoneController,
           cellphoneController: cellphoneController,
           cepController: cepController,
