@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../edit_profile/widgets/edit_profile_page.dart';
+import '../../edit_profile/edit_profile_page.dart';
 
 class NamePhotoProfile extends StatelessWidget {
   const NamePhotoProfile({

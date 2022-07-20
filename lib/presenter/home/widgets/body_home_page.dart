@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 
+=======
+import '../../shared/widgets/big_text_app.dart';
+import '../../shared/widgets/btn_standard_app.dart';
+>>>>>>> da68da98b0312d07bf1cba333c5b8593f146acc2
 import '../../../core/app_assets.dart';
 import 'package:onboarding/onboarding.dart';
 import 'column_profile_info.dart';

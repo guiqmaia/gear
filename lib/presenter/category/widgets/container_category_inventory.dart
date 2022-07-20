@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import '../../../infra/database/gear_database.dart';
 import '../../product/widgets/body_product_page.dart';
+=======
+>>>>>>> da68da98b0312d07bf1cba333c5b8593f146acc2
 import '../../../core/app_assets.dart';
 
 import '../../product/product_page.dart';
