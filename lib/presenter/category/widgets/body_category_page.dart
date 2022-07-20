@@ -15,7 +15,7 @@ class BodyCategoryPage extends StatelessWidget {
         const TopBarApp(
           title: 'Estoque',
           pageRoute: HomePage(),
-          isProfile: true,
+          isProfile: false,
         ),
         TextFieldApp(
           labelItem: 'Pesquisar',

@@ -47,7 +47,7 @@ class _BodyCategorySignupState extends State<BodyCategorySignup> {
           const TopBarApp(
             title: 'Cadastrar categoria',
             pageRoute: CategoryPage(),
-            isProfile: true,
+            isProfile: false,
           ),
           const SizedBox(height: 20),
           TextFieldApp(

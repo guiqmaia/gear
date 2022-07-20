@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-
-import '../../shared/widgets/btn_standard_app.dart';
-
-import '../../../core/app_assets.dart';
 import 'package:onboarding/onboarding.dart';
 
+import '../../../core/app_assets.dart';
 import '../../../infra/database/create_database_products.dart';
 import '../../cash_register/cash_register_page.dart';
 import '../../category/category_page.dart';
-
+import '../../shared/widgets/btn_standard_app.dart';
 import 'column_profile_info.dart';
 import 'decorated_box_chart_results.dart';
 import 'top_bar_home.dart';

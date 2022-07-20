@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:gear/infra/database/create_database_products.dart';
-import 'package:gear/infra/database/gear_database.dart';
-
-
-
 import '../../../core/app_assets.dart';
 import '../../product/product_page.dart';
 

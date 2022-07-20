@@ -2,7 +2,6 @@ import 'package:sqflite/sqflite.dart';
 
 import '../models/product_model.dart';
 import '../models/user_model.dart';
-import 'create_database_products.dart';
 
 class GearDatabase {
   static final GearDatabase instance = GearDatabase._init();

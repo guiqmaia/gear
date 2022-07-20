@@ -15,7 +15,7 @@ class BodyCashRegister extends StatelessWidget {
         const TopBarApp(
           title: 'Caixa',
           pageRoute: HomePage(),
-          isProfile: true,
+          isProfile: false,
         ),
         const RecentSalesContainer(),
         Wrap(
