@@ -2,7 +2,6 @@
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:gear/core/app_assets.dart';
 import 'package:gear/presenter/home/home_page.dart';
 import 'package:gear/presenter/shared/widgets/top_bar_app.dart';
 

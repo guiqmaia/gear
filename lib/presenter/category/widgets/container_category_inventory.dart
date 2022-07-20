@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gear/infra/database/gear_database.dart';
-import 'package:gear/presenter/product/widgets/body_product_page.dart';
+import '../../../infra/database/gear_database.dart';
+import '../../product/widgets/body_product_page.dart';
 import '../../../core/app_assets.dart';
 
 import '../../product/product_page.dart';

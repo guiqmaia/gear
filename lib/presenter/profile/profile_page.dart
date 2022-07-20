@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/login/login_page.dart';
+import '../login/login_page.dart';
 
 import '../../core/app_assets.dart';
 import '../home/home_page.dart';

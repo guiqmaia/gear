@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:gear/infra/models/user_model.dart';
-import 'package:gear/presenter/login/login_page.dart';
-import 'package:gear/presenter/shared/widgets/big_text_app.dart';
-import 'package:gear/presenter/shared/widgets/btn_standard_app.dart';
-import 'package:gear/presenter/shared/widgets/text_field_app.dart';
+import '../../../infra/models/user_model.dart';
+import '../../login/login_page.dart';
+import '../../shared/widgets/big_text_app.dart';
+import '../../shared/widgets/btn_standard_app.dart';
+import '../../shared/widgets/text_field_app.dart';
 
 import '../../../infra/database/gear_database.dart';
 
