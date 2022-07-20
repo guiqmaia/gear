@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../infra/models/user_model.dart';
-<<<<<<< HEAD
-import '../../login/login_page.dart';
 import '../../shared/widgets/big_text_app.dart';
-import '../../shared/widgets/btn_standard_app.dart';
-=======
-import '../../shared/widgets/big_text_app.dart';
->>>>>>> da68da98b0312d07bf1cba333c5b8593f146acc2
 import '../../shared/widgets/text_field_app.dart';
 
 import '../../../infra/database/gear_database.dart';
