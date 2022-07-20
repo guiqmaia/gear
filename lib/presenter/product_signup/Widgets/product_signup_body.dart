@@ -29,7 +29,7 @@ class _SignupPageBodyState extends State<SignupPageBody> {
   TextEditingController categoryController = TextEditingController();
   TextEditingController quantityController = TextEditingController();
   Uint8List? photo;
-  String dropdownValue = 'Refrigerante';
+  String? dropdownValue;
 
   List<DropdownMenuItem<String>> list = const [
     DropdownMenuItem(value: 'Refrigerante', child: Text('Refrigerante')),
@@ -85,7 +85,8 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                   dropdownList: list,
                   labelDropdown: 'Escolha a Categoria',
                   iconDropdown: Icons.tag,
-                  dropdownValue: dropdownValue,
+                  selectedValue: dropdownValue,
+                  selectedValueController: categoryController,
                 ),
                 TextFieldApp(
                   labelItem: 'Quantidade',
@@ -135,7 +136,7 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                       ProductModel productModel = ProductModel(
                         name: nameController.text,
                         price: double.parse(priceController.text),
-                        category: dropdownValue,
+                        category: categoryController.text,
                         quantity: int.parse(quantityController.text),
                         image: photo!,
                       );
