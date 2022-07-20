@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../core/app_assets.dart';
 
+import '../../core/app_assets.dart';
 import '../profile/profile_page.dart';
 import '../results/results_page.dart';
 import 'widgets/body_home_page.dart';

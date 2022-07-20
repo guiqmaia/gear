@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/shared/widgets/big_text_app.dart';
-import 'package:gear/presenter/shared/widgets/btn_standard_app.dart';
+import '../../shared/widgets/big_text_app.dart';
+import '../../shared/widgets/btn_standard_app.dart';
 import '../../../core/app_assets.dart';
 import 'package:onboarding/onboarding.dart';
 

@@ -1,8 +1,5 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:gear/core/app_assets.dart';
 import 'package:gear/presenter/home/home_page.dart';
 import 'package:gear/presenter/shared/widgets/top_bar_app.dart';
 
@@ -67,7 +64,7 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                     child: Text(
                       'Produto Líderes',
                       style: TextStyle(
-                        color: const Color.fromRGBO(202, 254, 72, 1),
+                        color: Color.fromRGBO(202, 254, 72, 1),
                         fontWeight: FontWeight.bold,
                         fontSize: 25,
                       ),

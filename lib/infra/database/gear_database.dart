@@ -1,5 +1,5 @@
-import 'package:gear/infra/models/product_model.dart';
-import 'package:gear/infra/models/user_model.dart';
+import '../models/product_model.dart';
+import '../models/user_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 class GearDatabase {

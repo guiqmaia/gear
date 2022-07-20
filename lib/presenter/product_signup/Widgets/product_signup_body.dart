@@ -3,7 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gear/presenter/shared/widgets/dropdown_input.dart';
+import '../../shared/widgets/dropdown_input.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';

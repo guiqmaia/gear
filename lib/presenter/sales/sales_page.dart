@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import 'widgets/body_sales_page.dart';
 import 'widgets/bottom_btn_sales.dart';
 
