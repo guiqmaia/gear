@@ -28,8 +28,10 @@ class _SignupPageBodyState extends State<SignupPageBody> {
   TextEditingController priceController = TextEditingController();
   TextEditingController categoryController = TextEditingController();
   TextEditingController quantityController = TextEditingController();
+
   Uint8List? photo;
   String? dropdownValue;
+
 
   List<DropdownMenuItem<String>> list = const [
     DropdownMenuItem(value: 'Refrigerante', child: Text('Refrigerante')),
@@ -39,7 +41,8 @@ class _SignupPageBodyState extends State<SignupPageBody> {
     DropdownMenuItem(value: 'Energético', child: Text('Energético')),
     DropdownMenuItem(value: 'Água', child: Text('Água')),
   ];
-
+  
+  Uint8List? photo;
   File? image;
   Future pickImage() async {
     try {
