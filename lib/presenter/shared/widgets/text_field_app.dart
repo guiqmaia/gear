@@ -1,5 +1,6 @@
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
 
 // ignore: must_be_immutable
 class TextFieldApp extends StatelessWidget {
@@ -7,6 +8,8 @@ class TextFieldApp extends StatelessWidget {
   final IconData iconInput;
   final dynamic typeController;
   bool? isObscured;
+  TextInputFormatter? formater;
+  bool? isFormatted = false;
 
   TextFieldApp({
     Key? key,
@@ -14,6 +17,8 @@ class TextFieldApp extends StatelessWidget {
     required this.iconInput,
     required this.typeController,
     this.isObscured = false,
+    this.formater,
+    this.isFormatted,
   }) : super(key: key);
 
   @override
@@ -30,22 +35,31 @@ class TextFieldApp extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
       ),
-      child: TextField(
-        controller: typeController,
-        obscureText: isObscured! ? true : false,
-        obscuringCharacter: '•',
-        keyboardType: TextInputType.name,
-        decoration: InputDecoration(
-          labelText: labelItem,
-          prefixIcon: Icon(
-            iconInput,
-            color: Colors.black,
-          ),
-          border: InputBorder.none,
-        ),
+      child: RowFormatters(
+        label: labelItem,
+        formatter: isFormatted! ? formater : formater,
       ),
     );
   }
 }
 
-// const Color.fromRGBO(0, 102, 204, 0.1)
+class RowFormatters extends StatelessWidget {
+  final String label;
+  final TextInputFormatter? formatter;
+  RowFormatters({
+    Key? key,
+    required this.label,
+    this.formatter,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      decoration: InputDecoration(label: Text(label)),
+      inputFormatters: [
+        FilteringTextInputFormatter.digitsOnly,
+        formatter!,
+      ],
+    );
+  }
+}
