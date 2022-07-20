@@ -60,7 +60,7 @@ class _BodyHomePageState extends State<BodyHomePage> {
                   Padding(
                     padding: EdgeInsets.only(top: 5, bottom: 5),
                     child: Text(
-                      'Drinks && Company',
+                      'Distribuidora Bebidinhas',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
