@@ -42,7 +42,7 @@ class _BodyHomePageState extends State<BodyHomePage> {
                 Stack(
                   children: [
                     Container(
-                      padding: EdgeInsets.only(top: 25),
+                      padding: const EdgeInsets.only(top: 25),
                       height: 400,
                       width: MediaQuery.of(context).size.width,
                       decoration: const BoxDecoration(
@@ -52,32 +52,38 @@ class _BodyHomePageState extends State<BodyHomePage> {
                           bottomRight: Radius.circular(150),
                         ),
                       ),
-                      child: Column(children: [
-                        const Text(
-                          'GEAR',
-                          style: TextStyle(
-                            color: Color.fromRGBO(202, 254, 72, 1),
-                            fontSize: 40,
-                            fontWeight: FontWeight.w500,
+                      child: Column(
+                        children: [
+                          const Text(
+                            'GEAR',
+                            style: TextStyle(
+                              color: Color.fromRGBO(202, 254, 72, 1),
+                              fontSize: 40,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 30),
-                        CircleAvatar(
-                          radius: 80,
-                          backgroundImage: Image.asset(
-                            imgStore,
-                            fit: BoxFit.cover,
-                          ).image,
-                        ),
-                      ]),
+                          const SizedBox(height: 30),
+                          CircleAvatar(
+                            radius: 70,
+                            backgroundImage: Image.asset(
+                              imgStore,
+                              fit: BoxFit.cover,
+                            ).image,
+                          ),
+                        ],
+                      ),
                     ),
                     Positioned(
-                      bottom: -5,
+                      bottom: 0,
                       left: 57,
                       child: Container(
                         padding: const EdgeInsets.only(top: 10, bottom: 20),
                         width: MediaQuery.of(context).size.width * 0.7,
                         decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.black,
+                            width: 2.0,
+                          ),
                           borderRadius: BorderRadius.circular(25),
                           color: greenNeon,
                         ),
@@ -171,7 +177,6 @@ class _BodyHomePageState extends State<BodyHomePage> {
                             color: Colors.black,
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
-                            
                           ),
                         ),
                       ),
