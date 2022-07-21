@@ -4,14 +4,16 @@ class DropDownInput extends StatefulWidget {
   final List<DropdownMenuItem<String>> dropdownList;
   final String labelDropdown;
   final IconData iconDropdown;
-  String? dropdownValue;
+  String? selectedValue;
+  TextEditingController selectedValueController = TextEditingController();
 
   DropDownInput({
     Key? key,
     required this.dropdownList,
     required this.labelDropdown,
     required this.iconDropdown,
-    this.dropdownValue,
+    this.selectedValue,
+    required this.selectedValueController,
   }) : super(key: key);
 
   @override
@@ -19,7 +21,6 @@ class DropDownInput extends StatefulWidget {
 }
 
 class _DropDownInputState extends State<DropDownInput> {
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,7 +28,7 @@ class _DropDownInputState extends State<DropDownInput> {
       margin: const EdgeInsets.symmetric(
         vertical: 10,
       ),
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: 16,
       ),
       child: DropdownButtonFormField(
@@ -45,9 +46,9 @@ class _DropDownInputState extends State<DropDownInput> {
           fillColor: Colors.white,
         ),
         //value: selectedValue,
-        onChanged: (String? newValue) {
+        onChanged: (selectedValue) {
           setState(() {
-            widget.dropdownValue = newValue!;
+            widget.selectedValueController.text = selectedValue.toString();
           });
         },
         items: widget.dropdownList,

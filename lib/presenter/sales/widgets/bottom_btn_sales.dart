@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gear/core/app_assets.dart';
-import 'package:gear/presenter/cash_register/widgets/sale_register_container.dart';
+import '../../../core/app_assets.dart';
+import '../../cash_register/widgets/sale_register_container.dart';
 import '../../cash_register/cash_register_page.dart';
 import '../../shared/widgets/btn_standard_app.dart';
 
@@ -38,6 +38,7 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
       quantity: widget.quantityController.toString(),
       product: widget.productController.toString(),
       productImg: imgSodas,
+      payment: widget.payController.toString(),
     );
     setState(() {
       salesList.add(newSale);

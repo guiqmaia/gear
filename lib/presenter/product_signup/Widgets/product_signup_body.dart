@@ -3,14 +3,14 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gear/presenter/shared/widgets/dropdown_input.dart';
+import 'package:gear/presenter/shared/widgets/text_field_app.dart';
+import '../../shared/widgets/dropdown_input.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/product_model.dart';
 import '../../home/home_page.dart';
-import '../../shared/widgets/text_field_app.dart';
 import '../../shared/widgets/top_bar_app.dart';
 import 'default_image_container.dart';
 
@@ -28,8 +28,8 @@ class _SignupPageBodyState extends State<SignupPageBody> {
   TextEditingController priceController = TextEditingController();
   TextEditingController categoryController = TextEditingController();
   TextEditingController quantityController = TextEditingController();
-  Uint8List? photo;
-  String dropdownValue = 'Refrigerante';
+
+  String? dropdownValue;
 
   List<DropdownMenuItem<String>> list = const [
     DropdownMenuItem(value: 'Refrigerante', child: Text('Refrigerante')),
@@ -39,7 +39,8 @@ class _SignupPageBodyState extends State<SignupPageBody> {
     DropdownMenuItem(value: 'Energético', child: Text('Energético')),
     DropdownMenuItem(value: 'Água', child: Text('Água')),
   ];
-
+  
+  Uint8List? photo;
   File? image;
   Future pickImage() async {
     try {
@@ -75,22 +76,26 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                   labelItem: 'Nome',
                   iconInput: Icons.format_color_text_sharp,
                   typeController: nameController,
+                  isObscured: false,
                 ),
                 TextFieldApp(
                   labelItem: 'Preço',
                   iconInput: Icons.attach_money,
                   typeController: priceController,
+                  isObscured: false,
                 ),
                 DropDownInput(
                   dropdownList: list,
                   labelDropdown: 'Escolha a Categoria',
                   iconDropdown: Icons.tag,
-                  dropdownValue: dropdownValue,
+                  selectedValue: dropdownValue,
+                  selectedValueController: categoryController,
                 ),
                 TextFieldApp(
                   labelItem: 'Quantidade',
                   iconInput: Icons.numbers,
                   typeController: quantityController,
+                  isObscured: false,
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -135,7 +140,7 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                       ProductModel productModel = ProductModel(
                         name: nameController.text,
                         price: double.parse(priceController.text),
-                        category: dropdownValue,
+                        category: categoryController.text,
                         quantity: int.parse(quantityController.text),
                         image: photo!,
                       );

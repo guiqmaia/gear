@@ -1,29 +1,27 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:gear/core/app_assets.dart';
 
-import '../../../core/app_assets.dart';
-
-class ProductLeader extends StatelessWidget {
-  final String product;
+class ValueDay extends StatelessWidget {
   final String value;
-  const ProductLeader({
+  final String day;
+  const ValueDay({
     Key? key,
-    required this.product,
     required this.value,
+    required this.day,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [        
+      children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(padding: EdgeInsets.fromLTRB(50, 10, 50, 0)),
+            const Padding(padding: EdgeInsets.fromLTRB(50, 10, 50, 0)),
             Text(
-              product,
-              style: TextStyle(
+              day,
+              style: const TextStyle(
                 color: Colors.black,
                 fontSize: 17,
                 fontWeight: FontWeight.bold,
@@ -32,8 +30,7 @@ class ProductLeader extends StatelessWidget {
             ),
           ],
         ),
-        Column(        
-          crossAxisAlignment: CrossAxisAlignment.end,  
+        Column(
           children: [
             const Padding(padding: const EdgeInsets.fromLTRB(50, 10, 50, 0)),
             Container(

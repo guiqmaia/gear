@@ -1,12 +1,9 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:gear/core/app_assets.dart';
 import 'package:gear/presenter/home/home_page.dart';
 import 'package:gear/presenter/shared/widgets/top_bar_app.dart';
 
-import 'widget/daily_billing_metd.dart';
+import 'widget/value_day.dart';
 import 'widget/liders_product.dart';
 
 class ResultsPage extends StatelessWidget {
@@ -46,136 +43,103 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
             ),
             child: const BarChartSample1(),
           ),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(
-                vertical: 10,
-                horizontal: 10,
-              ),
-              width: double.maxFinite,
-              height: MediaQuery.of(context).size.height * 0.4,
-              decoration: BoxDecoration(
-                color: Colors.grey,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Column(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 15,
-                    ),
-                    child: Text(
-                      'Produto Líderes',
-                      style: TextStyle(
-                        color: const Color.fromRGBO(202, 254, 72, 1),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
+          Container(
+            margin: const EdgeInsets.all(22),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.grey.shade500,
+                    blurRadius: 3,
+                    spreadRadius: 3,
+                    offset: const Offset(5, 5)),
+              ],
+            ),
+            child: Column(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 15,
                   ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.3,
-                    child: ListView(
-                      scrollDirection: Axis.vertical,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: const [
-                            Text(
-                              'Quantidade',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                            Text(
-                              'Produto',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                            Text(
-                              'Valor',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        const ProductLeader(
-                          amount: "45",
-                          product: "Cerveja Warren",
-                          value: "R\$4198,41",
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const ProductLeader(
-                          amount: "89",
-                          product: "Coca-Cola",
-                          value: "R\$5704,55",
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const ProductLeader(
-                          amount: "68",
-                          product: "Pepsi",
-                          value: "R\$1567,00",
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const ProductLeader(
-                          amount: "45",
-                          product: "Água Voss",
-                          value: "R\$10015,31",
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const ProductLeader(
-                          amount: "45",
-                          product: "Kaiser",
-                          value: "R\$1651,45",
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const ProductLeader(
-                          amount: "58",
-                          product: "Vinho Tinto",
-                          value: "R\$1871,54",
-                        ),
-                      ],
+                  child: Text(
+                    'Mais Vendidos',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
                     ),
+                    textAlign: TextAlign.center,
                   ),
-                ],
-              ),
+                ),
+                Column(
+                  
+                  children: [
+                    const ProductLeader(
+                      product: "1. Mary Wells",
+                      value: "R\$ 4198,41",
+                    ),
+                    Divider(
+                      height: 20,
+                      color: Colors.grey.shade300,
+                      thickness: 1,
+                      indent: 40,
+                      endIndent: 40,
+                    ),
+                    const ProductLeader(
+                      product: "2. Coca-Cola",
+                      value: "R\$ 5704,55",
+                    ),Divider(
+                      height: 20,
+                      color: Colors.grey.shade300,
+                      thickness: 1,
+                      indent: 40,
+                      endIndent: 40,
+                    ),
+                    const ProductLeader(
+                      product: "3. Perini-Malbec",
+                      value: "R\$ 1567,00",
+                    ),Divider(
+                      height: 20,
+                      color: Colors.grey.shade300,
+                      thickness: 1,
+                      indent: 40,
+                      endIndent: 40,
+                    ),
+                    const ProductLeader(
+                      product: "4. White Horse",
+                      value: "R\$ 10015,31",
+                    ),Divider(
+                      height: 20,
+                      color: Colors.grey.shade300,
+                      thickness: 1,
+                      indent: 40,
+                      endIndent: 40,
+                    ),
+                    const ProductLeader(
+                      product: "5. RedBull",
+                      value: "R\$ 1651,45",
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
           Container(
-            margin: const EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 10,
-            ),
-            width: double.maxFinite,
-            // height: MediaQuery.of(context).size.height * 0.4,
+            margin: const EdgeInsets.all(22),
             decoration: BoxDecoration(
-              color: Colors.grey,
-              borderRadius: BorderRadius.circular(20),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.grey.shade500,
+                    blurRadius: 3,
+                    spreadRadius: 3,
+                    offset: const Offset(5, 5)),
+              ],
             ),
             child: Column(
               children: [
@@ -186,74 +150,69 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                   child: Text(
                     'Faturamento Diário',
                     style: TextStyle(
-                      color: Color.fromRGBO(202, 254, 72, 1),
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 25,
                     ),
                     textAlign: TextAlign.center,
                   ),
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.3,
-                  child: ListView(
-                    scrollDirection: Axis.vertical,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: const [
-                          Text(
-                            'Valor',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                          Text(
-                            'Dia da Semana',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const DailyBilling(
-                        day: "Segunda",
-                        value: "R\$3738.59",
-                      ),
-                      const DailyBilling(
-                        day: "Terça",
-                        value: "R\$2884.32",
-                      ),
-                      const DailyBilling(
-                        day: "Quarta",
-                        value: "R\$4247.21",
-                      ),
-                      const DailyBilling(
-                        day: "Quinta",
-                        value: "R\$1987.56",
-                      ),
-                      const DailyBilling(
-                        day: "Sexta",
-                        value: "R\$6875.04",
-                      ),
-                      const DailyBilling(
-                        day: "Sabádo",
-                        value: "R\$1745.51",
-                      ),
-                      const DailyBilling(
-                        day: "Domingo",
-                        value: "R\$2154,52",
-                      ),
-                    ],
-                  ),
+                Column(
+                  
+                  children: [
+                    const ValueDay(value: "R\$ 3738,59", day: "Segunda"),
+                    Divider(
+                      height: 20,
+                      color: Colors.grey.shade300,
+                      thickness: 1,
+                      indent: 40,
+                      endIndent: 40,
+                    ),
+                    const ValueDay(value: "R\$ 2884,32", day: "Terça"),
+                    Divider(
+                      height: 20,
+                      color: Colors.grey.shade300,
+                      thickness: 1,
+                      indent: 40,
+                      endIndent: 40,
+                    ),
+                    const ValueDay(value: "R\$ 4247,21", day: "Quarta"),
+                    Divider(
+                      height: 20,
+                      color: Colors.grey.shade300,
+                      thickness: 1,
+                      indent: 40,
+                      endIndent: 40,
+                    ),
+                    const ValueDay(value: "R\$ 1987,56", day: "Quinta"),
+                    Divider(
+                      height: 20,
+                      color: Colors.grey.shade300,
+                      thickness: 1,
+                      indent: 40,
+                      endIndent: 40,
+                    ),
+                    const ValueDay(value: "R\$ 6875,04", day: "Sexta"),
+                    Divider(
+                      height: 20,
+                      color: Colors.grey.shade300,
+                      thickness: 1,
+                      indent: 40,
+                      endIndent: 40,
+                    ),
+                    const ValueDay(value: "R\$ 1745,51", day: "Sábado"),
+                    Divider(
+                      height: 20,
+                      color: Colors.grey.shade300,
+                      thickness: 1,
+                      indent: 40,
+                      endIndent: 40,
+                    ),
+                    const ValueDay(value: "R\$ 2154,52", day: "Domingo"),
+                    const SizedBox(
+                      height: 20,
+                    )
+                  ],
                 ),
               ],
             ),
@@ -294,7 +253,7 @@ class BarChartSample1State extends State<BarChartSample1> {
       aspectRatio: 1,
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-        color: Colors.grey,
+        color: Colors.grey.shade400,                
         child: Stack(
           children: <Widget>[
             Padding(
@@ -307,7 +266,7 @@ class BarChartSample1State extends State<BarChartSample1> {
                   const Text(
                     'Balanço Semanal',
                     style: TextStyle(
-                        color: const Color.fromRGBO(202, 254, 72, 1),
+                        color: Colors.black,
                         fontSize: 24,
                         fontWeight: FontWeight.bold),
                   ),
@@ -317,7 +276,7 @@ class BarChartSample1State extends State<BarChartSample1> {
                   const Text(
                     'Distribuidora Bebidinhas',
                     style: TextStyle(
-                        color: Color.fromRGBO(240, 239, 244, 1),
+                        color: Colors.black,
                         fontSize: 18,
                         fontWeight: FontWeight.bold),
                   ),
@@ -402,25 +361,25 @@ class BarChartSample1State extends State<BarChartSample1> {
               String weekDay;
               switch (group.x.toInt()) {
                 case 0:
-                  weekDay = 'Monday';
+                  weekDay = 'Segunda';
                   break;
                 case 1:
-                  weekDay = 'Tuesday';
+                  weekDay = 'Terça';
                   break;
                 case 2:
-                  weekDay = 'Wednesday';
+                  weekDay = 'Quarta';
                   break;
                 case 3:
-                  weekDay = 'Thursday';
+                  weekDay = 'Quinta';
                   break;
                 case 4:
-                  weekDay = 'Friday';
+                  weekDay = 'Sexta';
                   break;
                 case 5:
-                  weekDay = 'Saturday';
+                  weekDay = 'Sábado';
                   break;
                 case 6:
-                  weekDay = 'Sunday';
+                  weekDay = 'Domingo';
                   break;
                 default:
                   throw Error();
@@ -487,7 +446,7 @@ class BarChartSample1State extends State<BarChartSample1> {
 
   Widget getTitles(double value, TitleMeta meta) {
     const style = TextStyle(
-      color: Colors.white,
+      color: Colors.black,
       fontWeight: FontWeight.bold,
       fontSize: 14,
     );

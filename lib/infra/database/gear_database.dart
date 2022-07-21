@@ -1,6 +1,7 @@
-import 'package:gear/infra/models/product_model.dart';
-import 'package:gear/infra/models/user_model.dart';
 import 'package:sqflite/sqflite.dart';
+
+import '../models/product_model.dart';
+import '../models/user_model.dart';
 
 class GearDatabase {
   static final GearDatabase instance = GearDatabase._init();
@@ -60,6 +61,7 @@ class GearDatabase {
     db.insert("user", user.toMap());
     return user;
   }
+
   // void update() async {
   //   await _database!.rawUpdate(
   //     'UPDATE Test SET name = ?, value = ? WHERE name = ?',
@@ -70,6 +72,7 @@ class GearDatabase {
   Future<List<ProductModel>> select(category) async {
     final db = await instance.database;
     List<Map> list = await db
+        // ignore: prefer_interpolation_to_compose_strings
         .rawQuery('${'SELECT * FROM product WHERE category = "' + category}"');
     List<ProductModel> listProducts = [];
 

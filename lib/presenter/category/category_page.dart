@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/product_signup/product_signup_page.dart';
+import '../product_signup/product_signup_page.dart';
 
 import '../../core/app_assets.dart';
-import '../category_signup/category_signup_page.dart';
 import '../shared/widgets/btn_standard_app.dart';
 import 'widgets/body_category_page.dart';
 

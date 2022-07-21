@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/login/login_page.dart';
 
 import '../../core/app_assets.dart';
 import '../home/home_page.dart';
@@ -34,7 +33,7 @@ class BodyProfilePage extends StatelessWidget {
             const TopBarApp(
               title: "Perfil",
               pageRoute: HomePage(),
-              isProfile: false,
+              isProfile: true,
             ),
             const NamePhotoProfile(),
             const SizedBox(height: 15),

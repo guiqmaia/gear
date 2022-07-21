@@ -7,6 +7,8 @@ import 'package:get_it/get_it.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
+import '../../../core/app_assets.dart';
+
 import '../../home/home_page.dart';
 import '../../signup/signup.dart';
 

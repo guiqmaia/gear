@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../cash_register/cash_register_page.dart';
@@ -35,7 +34,7 @@ class BodySalesPage extends StatelessWidget {
         const TopBarApp(
           title: 'Adicionar venda',
           pageRoute: CashRegisterPage(),
-          isProfile: true,
+          isProfile: false,
         ),
         WrapTextFieldSale(
           categoryController: categoryController,

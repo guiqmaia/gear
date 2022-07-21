@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 class ProductModel {
   int? id;
   String name;
