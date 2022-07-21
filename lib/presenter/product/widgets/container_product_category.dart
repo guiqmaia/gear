@@ -79,7 +79,8 @@ class _ContainerProductCategoryState extends State<ContainerProductCategory> {
               borderRadius: BorderRadius.circular(12),
               child: Image.memory(
                 widget.productImg,
-                height: MediaQuery.of(context).size.height * 0.13,
+                height: MediaQuery.of(context).size.height * 0.1,
+                fit: BoxFit.cover,
               ),
             ),
             const SizedBox(width: 10),
@@ -119,7 +120,7 @@ class _ContainerProductCategoryState extends State<ContainerProductCategory> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 25),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.025),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
