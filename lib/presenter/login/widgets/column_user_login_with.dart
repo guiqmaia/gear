@@ -27,18 +27,20 @@ class ColumnUserLoginWith extends StatefulWidget {
 }
 
 class _ColumnUserLoginWithState extends State<ColumnUserLoginWith> {
-  bool loginCorrect = false;
-
   Future<void> verifyLogin() async {
     UserModel user = await GearDatabase.instance.selectUser(
       widget.loginController.text,
       widget.passwordController.text,
     );
     if (user.email == widget.loginController.text) {
-      setState(() {
-        loginCorrect = true;
-        logedUser = user;
-      });
+      setState(
+        () {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const HomePage()),
+          );
+          logedUser = user;
+        },
+      );
     }
   }
 
@@ -102,12 +104,7 @@ class _ColumnUserLoginWithState extends State<ColumnUserLoginWith> {
               child: TextButton(
                 onPressed: () {
                   verifyLogin();
-                  loginCorrect
-                      ? Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) => const HomePage()),
-                        )
-                      : print('object');
+                  print('object');
                 },
                 child: const Text(
                   'Entrar',
