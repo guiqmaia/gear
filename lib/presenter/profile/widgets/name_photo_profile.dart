@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/core/app_getit.dart';
 
 import '../../../core/app_assets.dart';
 
@@ -42,17 +43,17 @@ class NamePhotoProfile extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          const Text(
-            "Distribuidora Bebidinhas",
-            style: TextStyle(
+          Text(
+            logedUser.company,
+            style: const TextStyle(
               color: Colors.black,
               fontSize: 25,
               fontWeight: FontWeight.bold,
             ),
           ),
-          const Text(
-            "27.042.017/0001-22",
-            style: TextStyle(
+          Text(
+            logedUser.cnpj,
+            style: const TextStyle(
               color: Colors.black,
               fontSize: 17.5,
             ),

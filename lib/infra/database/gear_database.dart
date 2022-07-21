@@ -18,7 +18,7 @@ class GearDatabase {
 
   Future<Database> _initDB() async {
     var databasesPath = await getDatabasesPath();
-    String path = '${databasesPath}sdkbfh.db';
+    String path = '${databasesPath}kjneoin.db';
     return await openDatabase(
       path,
       version: 1,
@@ -37,10 +37,10 @@ class GearDatabase {
               cpf VARCHAR(20) NOT NULL,
               birthday VARCHAR(14) NOT NULL, 
               company VACHAR(45) NOT NULL, 
-              CNPJ VARCHAR(45) NOT NULL, 
+              cnpj VARCHAR(45) NOT NULL, 
               telephone VARCHAR(45) NULL,
               mobileNumber VACHAR(45) NOT NULL, 
-              CEP VACHAR(45) NOT NULL, 
+              cep VACHAR(45) NOT NULL, 
               adress VACHAR(70) NOT NULL,
               email VARCHAR(70) NOT NULL,
               password VARCHAR(40) NOT NULL)''');

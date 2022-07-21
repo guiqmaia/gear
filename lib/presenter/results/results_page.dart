@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:gear/core/app_getit.dart';
 import '../home/home_page.dart';
 import '../shared/widgets/top_bar_app.dart';
 
@@ -50,9 +51,9 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
               borderRadius: BorderRadius.circular(15),
               boxShadow: [
                 BoxShadow(
-                color: Colors.grey.shade400,
-                blurRadius: 10,
-                offset: const Offset(12, 12)),
+                    color: Colors.grey.shade400,
+                    blurRadius: 10,
+                    offset: const Offset(12, 12)),
               ],
             ),
             child: Column(
@@ -136,9 +137,9 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
               borderRadius: BorderRadius.circular(15),
               boxShadow: [
                 BoxShadow(
-                color: Colors.grey.shade400,
-                blurRadius: 10,
-                offset: const Offset(12, 12)),
+                    color: Colors.grey.shade400,
+                    blurRadius: 10,
+                    offset: const Offset(12, 12)),
               ],
             ),
             child: Column(
@@ -283,9 +284,9 @@ class BarChartSample1State extends State<BarChartSample1> {
                     const SizedBox(
                       height: 4,
                     ),
-                    const Text(
-                      'Distribuidora Bebidinhas',
-                      style: TextStyle(
+                    Text(
+                      logedUser.company,
+                      style: const TextStyle(
                           color: Colors.black,
                           fontSize: 18,
                           fontWeight: FontWeight.bold),
