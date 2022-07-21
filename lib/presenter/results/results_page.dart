@@ -73,7 +73,6 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                   ),
                 ),
                 Column(
-                  
                   children: [
                     const ProductLeader(
                       product: "1. Mary Wells",
@@ -89,7 +88,8 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                     const ProductLeader(
                       product: "2. Coca-Cola",
                       value: "R\$ 5704,55",
-                    ),Divider(
+                    ),
+                    Divider(
                       height: 20,
                       color: Colors.grey.shade300,
                       thickness: 1,
@@ -99,7 +99,8 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                     const ProductLeader(
                       product: "3. Perini-Malbec",
                       value: "R\$ 1567,00",
-                    ),Divider(
+                    ),
+                    Divider(
                       height: 20,
                       color: Colors.grey.shade300,
                       thickness: 1,
@@ -109,7 +110,8 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                     const ProductLeader(
                       product: "4. White Horse",
                       value: "R\$ 10015,31",
-                    ),Divider(
+                    ),
+                    Divider(
                       height: 20,
                       color: Colors.grey.shade300,
                       thickness: 1,
@@ -158,7 +160,6 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
                   ),
                 ),
                 Column(
-                  
                   children: [
                     const ValueDay(value: "R\$ 3738,59", day: "Segunda"),
                     Divider(
@@ -251,51 +252,64 @@ class BarChartSample1State extends State<BarChartSample1> {
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: 1,
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-        color: Colors.grey.shade400,                
-        child: Stack(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  const Text(
-                    'Balanço Semanal',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(
-                    height: 4,
-                  ),
-                  const Text(
-                    'Distribuidora Bebidinhas',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(
-                    height: 38,
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: BarChart(mainBarData()),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                ],
-              ),
-            ),
+      child: Container(
+        margin: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey.shade500,
+                blurRadius: 10,
+                spreadRadius: 1,
+                offset: const Offset(7, 7)),
           ],
+        ),
+        child: Card(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+          child: Stack(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    const Text(
+                      'Balanço Semanal',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(
+                      height: 4,
+                    ),
+                    const Text(
+                      'Distribuidora Bebidinhas',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(
+                      height: 38,
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: BarChart(mainBarData()),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
