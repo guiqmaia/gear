@@ -49,7 +49,6 @@ class _BodyProductPageState extends State<BodyProductPage> {
         const SizedBox(height: 10),
         TextFieldApp(
           labelItem: 'Pesquisar',
-          iconInput: Icons.search,
           typeController: searchController,
           isObscured: false,
         ),

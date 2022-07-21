@@ -74,13 +74,11 @@ class _SignupPageBodyState extends State<SignupPageBody> {
               children: [
                 TextFieldApp(
                   labelItem: 'Nome',
-                  iconInput: Icons.format_color_text_sharp,
                   typeController: nameController,
                   isObscured: false,
                 ),
                 TextFieldApp(
                   labelItem: 'Preço',
-                  iconInput: Icons.attach_money,
                   typeController: priceController,
                   isObscured: false,
                 ),
@@ -93,7 +91,6 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                 ),
                 TextFieldApp(
                   labelItem: 'Quantidade',
-                  iconInput: Icons.numbers,
                   typeController: quantityController,
                   isObscured: false,
                 ),
