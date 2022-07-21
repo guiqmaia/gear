@@ -11,7 +11,6 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3)).then(
@@ -28,15 +27,10 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Colors.black,
       body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: const [
-            AnimationSplash(),           
-          ],
-        ),
+        child: AnimationSplash(),
       ),
     );
   }

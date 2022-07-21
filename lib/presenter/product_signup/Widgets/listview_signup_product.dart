@@ -9,6 +9,7 @@ import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/product_model.dart';
 import '../../category/category_page.dart';
+import '../../product/product_page.dart';
 import '../../shared/widgets/dropdown_input.dart';
 import '../../shared/widgets/text_field_app.dart';
 import 'default_image_container.dart';
@@ -138,11 +139,15 @@ class _ListViewSingupProductState extends State<ListViewSingupProduct> {
               );
               await GearDatabase.instance.insert(productModel);
               if (!widget.mounted) return;
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const CategoryPage()),
+                MaterialPageRoute(
+                  builder: (context) => ProductPage(
+                    categoryTitle: widget.categoryController.text,
+                  ),
+                ),
               );
-              Navigator.of(context).pop();
-              Navigator.of(context).pop();
             },
             child: const Text(
               'Concluir',

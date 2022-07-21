@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../core/app_assets.dart';
 
+import '../../core/app_assets.dart';
 import 'Widgets/body_product_signup.dart';
 
 class ProductSignupPage extends StatelessWidget {

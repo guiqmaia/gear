@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gear/core/app_getit.dart';
+import '../../../core/app_getit.dart';
 
 import '../../../core/app_assets.dart';
 

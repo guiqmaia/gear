@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../core/app_assets.dart';
 
 import 'widgets/body_sales_page.dart';
 import 'widgets/bottom_btn_sales.dart';
@@ -23,7 +24,7 @@ class _SalesPageState extends State<SalesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(240, 239, 244, 1),
+      backgroundColor: backgroundGrey,
       body: SingleChildScrollView(
         child: BodySalesPage(
           categoryController: categoryController,

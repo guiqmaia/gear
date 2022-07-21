@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/app_assets.dart';
 import '../profile/widgets/body_profile_page.dart';
-import '../statistics/statistics_page.dart';
+import '../statistics/widget/body_statistics_page.dart';
 import 'widgets/body_home_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     BodyHomePage(),
-    BodyStatistics(),
+    BodyStatisticsPage(),
     BodyProfilePage(),
   ];
 
@@ -37,16 +37,16 @@ class _HomePageState extends State<HomePage> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home,
-              size: 35,
+              Icons.home_rounded,
+              size: 32,
             ),
             label: 'Home',
             backgroundColor: Colors.white,
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.bar_chart,
-              size: 35,
+              Icons.bar_chart_rounded,
+              size: 32,
             ),
             label: 'Estatísticas',
             backgroundColor: Colors.white,
@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
-              size: 35,
+              size: 32,
             ),
             label: 'Perfil',
             backgroundColor: Colors.white,

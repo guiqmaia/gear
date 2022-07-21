@@ -41,10 +41,11 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
       productImg: imgSodas,
       payment: widget.payController.toString(),
     );
-    setState(() {
-      salesList.add(newSale);
-      print(salesList.length);
-    });
+    setState(
+      () {
+        salesList.add(newSale);
+      },
+    );
   }
 
   @override
@@ -56,7 +57,7 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
           title: 'Finalizar venda',
           pageRoute: const CashRegisterPage(),
           widthBtn: MediaQuery.of(context).size.width * 0.45,
-          onPressed: (){},
+          onPressed: () {},
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -68,10 +69,10 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
                 backgroundColor: Colors.black,
                 child: IconButton(
                   tooltip: 'Adicione',
-                  onPressed: (){},
-                  icon: const Icon(
+                  onPressed: () {},
+                  icon: Icon(
                     Icons.add,
-                    color: Color.fromRGBO(202, 254, 72, 1),
+                    color: greenNeon,
                     size: 30,
                   ),
                 ),
@@ -81,7 +82,7 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
               padding: const EdgeInsets.only(right: 15),
               child: CircleAvatar(
                 radius: 25,
-                backgroundColor: const Color.fromRGBO(202, 254, 72, 1),
+                backgroundColor: greenNeon,
                 child: IconButton(
                   tooltip: 'Limpar',
                   onPressed: () {

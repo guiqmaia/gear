@@ -11,7 +11,7 @@ class StackTopHome extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: MediaQuery.of(context).size.height * 0.57,
+          height: MediaQuery.of(context).size.height * 0.58,
           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 35),
           width: MediaQuery.of(context).size.width,
           decoration: const BoxDecoration(
@@ -23,10 +23,10 @@ class StackTopHome extends StatelessWidget {
           ),
           child: Column(
             children: [
-              const Text(
+              Text(
                 'GEAR',
                 style: TextStyle(
-                  color: Color.fromRGBO(202, 254, 72, 1),
+                  color: greenNeon,
                   fontSize: 40,
                   fontWeight: FontWeight.w500,
                 ),
@@ -44,9 +44,9 @@ class StackTopHome extends StatelessWidget {
         ),
         Positioned(
           bottom: 0,
-          left: 57,
+          left: MediaQuery.of(context).size.width * 0.15,
           child: Container(
-            padding: const EdgeInsets.only(top: 10, bottom: 20),
+            padding: const EdgeInsets.symmetric(vertical: 12),
             width: MediaQuery.of(context).size.width * 0.7,
             decoration: BoxDecoration(
               border: Border.all(
@@ -59,30 +59,28 @@ class StackTopHome extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 5, bottom: 5),
-                  child: Text(
-                    logedUser.company,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                Text(
+                  logedUser.company,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 19,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
+                const SizedBox(height: 5),
                 Text(
                   logedUser.cnpj,
                   style: const TextStyle(
                       color: Colors.black,
-                      fontSize: 15,
+                      fontSize: 14,
                       fontWeight: FontWeight.w500),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 10),
                 Text(
                   logedUser.name,
                   style: const TextStyle(
                     color: Colors.black,
-                    fontSize: 15,
+                    fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),
                 ),

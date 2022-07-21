@@ -28,13 +28,13 @@ class _ColumnBtnHomeState extends State<ColumnBtnHome> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         BtnStandardApp(
           title: "CAIXA",
           widthBtn: MediaQuery.of(context).size.width * 0.9,
           heightBtn: MediaQuery.of(context).size.height * 0.1,
-          fontSize: 22,
+          fontSize: 21,
           fontColorBtn: greenNeon,
           backgroundColorBtn: Colors.black,
           pageRoute: const CashRegisterPage(),
@@ -79,7 +79,7 @@ class _ColumnBtnHomeState extends State<ColumnBtnHome> {
               'ESTOQUE',
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 22,
+                fontSize: 21,
                 fontWeight: FontWeight.bold,
               ),
             ),

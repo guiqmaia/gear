@@ -2,7 +2,7 @@ import 'package:get_it/get_it.dart';
 
 import '../infra/models/user_model.dart';
 
-final getit = GetIt.I;
+final getIt = GetIt.I;
 
 UserModel logedUser = UserModel(
     name: 'name',
@@ -17,4 +17,4 @@ UserModel logedUser = UserModel(
     email: 'email',
     password: 'password');
 
-void setupGetIT() => getit.registerSingleton<UserModel>(logedUser);
+void setupGetIt() => getIt.registerSingleton<UserModel>(logedUser);

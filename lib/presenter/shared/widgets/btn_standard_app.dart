@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
 class BtnStandardApp extends StatelessWidget {
   final String title;
   final dynamic pageRoute;
@@ -15,8 +13,8 @@ class BtnStandardApp extends StatelessWidget {
   BtnStandardApp({
     Key? key,
     required this.title,
-    this.pageRoute,
     required this.widthBtn,
+    this.pageRoute,
     this.heightBtn,
     this.fontSize = 18,
     this.onPressed,

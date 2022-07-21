@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'adress_model.dart';
-
 import 'user_model.dart';
 
 class CompanyModel {

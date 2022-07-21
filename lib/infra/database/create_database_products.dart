@@ -1,9 +1,10 @@
 import 'dart:typed_data';
 
 import 'package:flutter/services.dart';
+
 import '../../core/app_assets.dart';
-import 'gear_database.dart';
 import '../models/product_model.dart';
+import 'gear_database.dart';
 
 class CreateDatabaseProducts {
   ByteData? bytes;

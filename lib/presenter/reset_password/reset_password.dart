@@ -12,8 +12,10 @@ class ResetPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundGrey,
-      body: BodyResetPassword(
-        emailController: emailController,
+      body: SingleChildScrollView(
+        child: BodyResetPassword(
+          emailController: emailController,
+        ),
       ),
     );
   }

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/product_model.dart';
-import '../../shared/widgets/text_field_app.dart';
-
 import '../../shared/widgets/dropdown_input.dart';
-
+import '../../shared/widgets/text_field_app.dart';
 
 class WrapTextFieldSale extends StatefulWidget {
   const WrapTextFieldSale({
@@ -37,23 +36,22 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
   List<DropdownMenuItem<String>>? dropDownItems = [];
   String? categoryValue;
 
-  // Future<List<DropdownMenuItem<String>>> getDropdownItems(category) async {
-  //   listProduct = await GearDatabase.instance.select(category);
-  //   print(category);
+  Future<List<DropdownMenuItem<String>>> getDropdownItems(category) async {
+    listProduct = await GearDatabase.instance.select(category);
 
-  //   listProduct!.forEach((entry) {
-  //     var newDropdown = DropdownMenuItem(
-  //       child: Text('${entry.name}'),
-  //       value: '{$entry.name}',
-  //     );
-  //     print(entry.name);
+    listProduct!.forEach(
+      (entry) {
+        var newDropdown = DropdownMenuItem(
+          child: Text('${entry.name}'),
+          value: '{$entry.name}',
+        );
 
-  //     dropDownItems!.add(newDropdown);
-  //   });
+        dropDownItems!.add(newDropdown);
+      },
+    );
 
-  //   print(dropDownItems);
-  //   return dropDownItems!;
-  // }
+    return dropDownItems!;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +108,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           ],
           labelDropdown: 'Modo de pagamento',
           iconDropdown: Icons.credit_card_rounded,
-          selectedValueController: widget.categoryController,
+          selectedValueController: widget.payController,
         ),
         const Divider(
           indent: 15,

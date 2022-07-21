@@ -65,7 +65,7 @@ class TopBarApp extends StatelessWidget {
                     radius: 26,
                     backgroundImage: Image.asset(imgStore).image,
                   ),
-                )
+                ),
         ],
       ),
     );

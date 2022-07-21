@@ -28,17 +28,18 @@ class _SignupState extends State<Signup> {
     return Scaffold(
       backgroundColor: backgroundGrey,
       body: BodySignUp(
-          nameController: nameController,
-          bithdayDateController: bithdayDateController,
-          bussinessNameController: bussinessNameController,
-          cnpjController: cnpjController,
-          cpfController: cpfController,
-          phoneController: phoneController,
-          cellphoneController: cellphoneController,
-          cepController: cepController,
-          adressController: adressController,
-          loginController: loginController,
-          passwordController: passwordController),
+        nameController: nameController,
+        bithdayDateController: bithdayDateController,
+        bussinessNameController: bussinessNameController,
+        cnpjController: cnpjController,
+        cpfController: cpfController,
+        phoneController: phoneController,
+        cellphoneController: cellphoneController,
+        cepController: cepController,
+        adressController: adressController,
+        loginController: loginController,
+        passwordController: passwordController,
+      ),
     );
   }
 }

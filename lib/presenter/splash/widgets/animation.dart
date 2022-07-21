@@ -1,16 +1,15 @@
-import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter/material.dart';
+
 import '../../../core/app_assets.dart';
 
 class AnimationSplash extends StatelessWidget {
-  const AnimationSplash({
-    Key? key,
-  }) : super(key: key);
+  const AnimationSplash({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 250.0,
+      width: MediaQuery.of(context).size.width,
       child: TextLiquidFill(
         text: 'Gear',
         waveColor: greenNeon,
@@ -19,8 +18,8 @@ class AnimationSplash extends StatelessWidget {
           fontSize: 80.0,
           fontWeight: FontWeight.bold,
         ),
-        loadDuration:const Duration(seconds: 2),
-        boxHeight: 300.0,
+        loadDuration: const Duration(seconds: 2),
+        boxHeight: MediaQuery.of(context).size.height,
       ),
     );
   }
