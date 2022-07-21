@@ -4,20 +4,16 @@ import 'package:flutter/services.dart';
 // ignore: must_be_immutable
 class TextFieldAppFormatted extends StatelessWidget {
   final String labelItem;
-  final IconData iconInput;
   final dynamic typeController;
-  bool? isObscured;
   TextInputFormatter? formater;
-  bool? isFormatted = false;
+  final Icon iconInput;
 
   TextFieldAppFormatted({
     Key? key,
     required this.labelItem,
     required this.iconInput,
     required this.typeController,
-    this.isObscured = false,
     this.formater,
-    this.isFormatted = false,
   }) : super(key: key);
 
   @override
@@ -36,7 +32,9 @@ class TextFieldAppFormatted extends StatelessWidget {
       ),
       child: RowFormatters(
         label: labelItem,
-        formatter: isFormatted! ? formater : formater,
+        formatter: formater,
+        controller: typeController,
+        icon: iconInput,
       ),
     );
   }
@@ -45,16 +43,21 @@ class TextFieldAppFormatted extends StatelessWidget {
 class RowFormatters extends StatelessWidget {
   final String label;
   final TextInputFormatter? formatter;
+  TextEditingController controller = TextEditingController();
+  Icon icon;
   RowFormatters({
     Key? key,
     required this.label,
     this.formatter,
+    required this.icon,
+    required this.controller,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      decoration: InputDecoration(label: Text(label)),
+      decoration: InputDecoration(label: Text(label), icon: icon),
+      controller: controller,
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly,
         formatter!,

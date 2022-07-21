@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gear/core/app_assets.dart';
+import '../../../core/app_assets.dart';
 
 class ValueDay extends StatelessWidget {
   final String value;
@@ -34,7 +34,7 @@ class ValueDay extends StatelessWidget {
           Column(
             children: [
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: greenNeon,

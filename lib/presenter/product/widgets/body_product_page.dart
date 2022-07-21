@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/shared/widgets/text_field_app.dart';
+import '../../shared/widgets/text_field_app.dart';
 
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/product_model.dart';
@@ -22,6 +22,7 @@ class BodyProductPage extends StatefulWidget {
 class _BodyProductPageState extends State<BodyProductPage> {
   List<ProductModel> products = [];
   bool isLoading = false;
+  TextEditingController searchController = TextEditingController();
 
   @override
   void initState() {
@@ -49,7 +50,7 @@ class _BodyProductPageState extends State<BodyProductPage> {
         TextFieldApp(
           labelItem: 'Pesquisar',
           iconInput: Icons.search,
-          typeController: null,
+          typeController: searchController,
           isObscured: false,
         ),
         isLoading

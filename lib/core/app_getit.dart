@@ -1,5 +1,6 @@
-import 'package:gear/infra/models/user_model.dart';
 import 'package:get_it/get_it.dart';
+
+import '../infra/models/user_model.dart';
 
 final getit = GetIt.I;
 
