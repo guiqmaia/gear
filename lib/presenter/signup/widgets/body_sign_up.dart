@@ -64,11 +64,6 @@ class _BodySignUpState extends State<BodySignUp> {
                   isObscured: false,
                   typeController: widget.nameController,
                 ),
-                TextFieldApp(
-                  labelItem: 'Nome Completo',
-                  isObscured: false,
-                  typeController: widget.nameController,
-                ),
                 TextFieldAppFormatted(
                   labelItem: 'CPF',
                   typeController: widget.cpfController,
