@@ -19,7 +19,6 @@ class BodyCategoryPage extends StatelessWidget {
         ),
         TextFieldApp(
           labelItem: 'Pesquisar',
-          iconInput: Icons.search,
           typeController: searchController,
           isObscured: false,
         ),

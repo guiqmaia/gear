@@ -48,7 +48,6 @@ class BodyResetPassword extends StatelessWidget {
             const SizedBox(height: 15),
             TextFieldApp(
               labelItem: 'Email',
-              iconInput: Icons.email,
               typeController: emailController,
               isObscured: false,
             ),

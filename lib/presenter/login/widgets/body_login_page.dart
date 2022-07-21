@@ -27,13 +27,11 @@ class BodyLoginPage extends StatelessWidget {
             ContainerText(),
             TextFieldApp(
               labelItem: 'Email',
-              iconInput: Icons.email,
               typeController: loginController,
               isObscured: false,
             ),
             TextFieldApp(
               labelItem: 'Senha',
-              iconInput: Icons.key,
               typeController: passwordController,
               isObscured: true,
             ),
