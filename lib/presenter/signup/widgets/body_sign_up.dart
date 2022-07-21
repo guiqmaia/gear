@@ -65,17 +65,25 @@ class _BodySignUpState extends State<BodySignUp> {
                   isObscured: false,
                   typeController: widget.nameController,
                 ),
+                TextFieldApp(
+                  labelItem: 'Nome Completo',
+                  iconInput: Icons.person,
+                  isObscured: false,
+                  typeController: widget.nameController,
+                ),
                 TextFieldAppFormatted(
                   labelItem: 'CPF',
                   iconInput: const Icon(Icons.numbers),
                   typeController: widget.cpfController,
                   formater: CpfInputFormatter(),
+                  textInputType: TextInputType.number,
                 ),
                 TextFieldAppFormatted(
                   labelItem: 'Data de Nascimento',
                   iconInput: const Icon(Icons.date_range_rounded),
                   typeController: widget.bithdayDateController,
                   formater: DataInputFormatter(),
+                  textInputType: TextInputType.number,
                 ),
                 TextFieldApp(
                   labelItem: 'Nome do Negócio',
@@ -88,24 +96,28 @@ class _BodySignUpState extends State<BodySignUp> {
                   iconInput: const Icon(Icons.numbers_sharp),
                   typeController: widget.cnpjController,
                   formater: CnpjInputFormatter(),
+                  textInputType: TextInputType.number,
                 ),
                 TextFieldAppFormatted(
                   labelItem: 'Telefone',
                   iconInput: const Icon(Icons.phone),
                   typeController: widget.phoneController,
                   formater: TelefoneInputFormatter(),
+                  textInputType: TextInputType.number,
                 ),
                 TextFieldAppFormatted(
                   labelItem: 'Celular',
                   iconInput: const Icon(Icons.cell_wifi),
                   typeController: widget.cellphoneController,
                   formater: TelefoneInputFormatter(),
+                  textInputType: TextInputType.number,
                 ),
                 TextFieldAppFormatted(
                   labelItem: 'CEP',
                   iconInput: const Icon(CupertinoIcons.location_solid),
                   typeController: widget.cepController,
                   formater: CepInputFormatter(),
+                  textInputType: TextInputType.number,
                 ),
                 TextFieldApp(
                   labelItem: 'Endereço',
@@ -171,7 +183,7 @@ class _BodySignUpState extends State<BodySignUp> {
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),
