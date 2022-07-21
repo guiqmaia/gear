@@ -50,10 +50,9 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
               borderRadius: BorderRadius.circular(15),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.grey.shade500,
-                    blurRadius: 3,
-                    spreadRadius: 3,
-                    offset: const Offset(5, 5)),
+                color: Colors.grey.shade400,
+                blurRadius: 10,
+                offset: const Offset(12, 12)),
               ],
             ),
             child: Column(
@@ -137,17 +136,16 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
               borderRadius: BorderRadius.circular(15),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.grey.shade500,
-                    blurRadius: 3,
-                    spreadRadius: 3,
-                    offset: const Offset(5, 5)),
+                color: Colors.grey.shade400,
+                blurRadius: 10,
+                offset: const Offset(12, 12)),
               ],
             ),
             child: Column(
               children: [
                 const Padding(
                   padding: EdgeInsets.symmetric(
-                    vertical: 15,
+                    vertical: 20,
                   ),
                   child: Text(
                     'Faturamento Diário',
@@ -258,10 +256,9 @@ class BarChartSample1State extends State<BarChartSample1> {
           borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
-                color: Colors.grey.shade500,
+                color: Colors.grey.shade400,
                 blurRadius: 10,
-                spreadRadius: 1,
-                offset: const Offset(7, 7)),
+                offset: const Offset(12, 12)),
           ],
         ),
         child: Card(
