@@ -21,6 +21,7 @@ class BodyCategoryPage extends StatelessWidget {
           labelItem: 'Pesquisar',
           iconInput: Icons.search,
           typeController: null,
+          isObscured: false,
         ),
         const SizedBox(height: 10),
         const WrapContainerCategory(),

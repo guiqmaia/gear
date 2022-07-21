@@ -36,7 +36,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
     return Wrap(
       children: [
         DropDownInput(
-          dropdownList: [
+          dropdownList: const [
             DropdownMenuItem(value: 'Tênis', child: Text('Tênis')),
             DropdownMenuItem(value: 'Camiseta', child: Text('Camiseta')),
             DropdownMenuItem(value: 'Casaco', child: Text('Casaco')),
@@ -47,7 +47,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           selectedValueController: widget.categoryController,
         ),
         DropDownInput(
-          dropdownList: [
+          dropdownList: const [
             DropdownMenuItem(value: 'Produto', child: Text('Produto')),
             DropdownMenuItem(value: 'Produto2', child: Text('Produto2')),
           ],
@@ -59,21 +59,25 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           labelItem: 'Código do produto',
           iconInput: Icons.code_rounded,
           typeController: widget.codeController,
+          isObscured: false,
         ),
         TextFieldApp(
           labelItem: 'Preço do produto',
           iconInput: Icons.price_check_rounded,
           typeController: widget.priceController,
+          isObscured: false,
         ),
         TextFieldApp(
           labelItem: 'Desconto',
           iconInput: Icons.price_change_rounded,
           typeController: widget.descountController,
+          isObscured: false,
         ),
         TextFieldApp(
           labelItem: 'Quantidade',
           iconInput: Icons.production_quantity_limits_rounded,
           typeController: widget.quantityController,
+          isObscured: false,
         ),
         DropDownInput(
           dropdownList: const [
@@ -95,6 +99,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           labelItem: 'Total',
           iconInput: Icons.attach_money_rounded,
           typeController: widget.totalController,
+          isObscured: false,
         ),
       ],
     );

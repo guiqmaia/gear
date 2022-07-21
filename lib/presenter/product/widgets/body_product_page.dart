@@ -50,6 +50,7 @@ class _BodyProductPageState extends State<BodyProductPage> {
           labelItem: 'Pesquisar',
           iconInput: Icons.search,
           typeController: null,
+          isObscured: false,
         ),
         isLoading
             ? const CircularProgressIndicator()
