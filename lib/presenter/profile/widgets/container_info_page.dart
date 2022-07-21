@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gear/core/app_getit.dart';
 
+import '../../../core/app_getit.dart';
 import 'info_container_profile.dart';
 
 class ContainerInfo extends StatelessWidget {
