@@ -43,7 +43,7 @@ class _BodyHomePageState extends State<BodyHomePage> {
                     Container(
                       height: MediaQuery.of(context).size.height * 0.57,
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 40),
+                          horizontal: 30, vertical: 35),
                       width: MediaQuery.of(context).size.width,
                       decoration: const BoxDecoration(
                         color: Colors.black,
@@ -62,7 +62,7 @@ class _BodyHomePageState extends State<BodyHomePage> {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          const SizedBox(height: 30),
+                          SizedBox(height: MediaQuery.of(context).size.height * 0.06 ),
                           CircleAvatar(
                             radius: 70,
                             backgroundImage: Image.asset(

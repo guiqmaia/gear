@@ -33,6 +33,8 @@ class _ColumnUserLoginWithState extends State<ColumnUserLoginWith> {
       widget.loginController.text,
       widget.passwordController.text,
     );
+    widget.loginController.clear();
+    widget.passwordController.clear();
     if (user.email == widget.loginController.text) {
       setState(
         () {
