@@ -68,11 +68,13 @@ class _BodySignUpState extends State<BodySignUp> {
               labelItem: 'CPF',
               typeController: widget.cpfController,
               formater: CpfInputFormatter(),
+              textInputType: TextInputType.number,
             ),
             TextFieldAppFormatted(
               labelItem: 'Data de Nascimento',
               typeController: widget.bithdayDateController,
               formater: DataInputFormatter(),
+              textInputType: TextInputType.number,
             ),
             TextFieldApp(
               labelItem: 'Nome do Negócio',
@@ -83,21 +85,25 @@ class _BodySignUpState extends State<BodySignUp> {
               labelItem: 'CNPJ',
               typeController: widget.cnpjController,
               formater: CnpjInputFormatter(),
+              textInputType: TextInputType.number,
             ),
             TextFieldAppFormatted(
               labelItem: 'Telefone',
               typeController: widget.phoneController,
               formater: TelefoneInputFormatter(),
+              textInputType: TextInputType.number,
             ),
             TextFieldAppFormatted(
               labelItem: 'Celular',
               typeController: widget.cellphoneController,
               formater: TelefoneInputFormatter(),
+              textInputType: TextInputType.number, 
             ),
             TextFieldAppFormatted(
               labelItem: 'CEP',
               typeController: widget.cepController,
               formater: CepInputFormatter(),
+              textInputType: TextInputType.number, 
             ),
             TextFieldApp(
               labelItem: 'Endereço',

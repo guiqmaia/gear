@@ -6,12 +6,14 @@ class TextFieldAppFormatted extends StatelessWidget {
   final String labelItem;
   final dynamic typeController;
   TextInputFormatter? formater;
+  TextInputType textInputType;
 
   TextFieldAppFormatted({
     Key? key,
     required this.labelItem,
     required this.typeController,
     this.formater,
+    required this.textInputType,
   }) : super(key: key);
 
   @override
@@ -32,6 +34,7 @@ class TextFieldAppFormatted extends StatelessWidget {
         label: labelItem,
         formatter: formater,
         controller: typeController,
+        keyboardType: textInputType,
       ),
     );
   }
@@ -40,12 +43,14 @@ class TextFieldAppFormatted extends StatelessWidget {
 class RowFormatters extends StatelessWidget {
   final String label;
   final TextInputFormatter? formatter;
-  TextEditingController controller = TextEditingController();
+  TextEditingController controller;
+  TextInputType keyboardType;
   RowFormatters({
     Key? key,
     required this.label,
     this.formatter,
     required this.controller,
+    required this.keyboardType,
   }) : super(key: key);
 
   @override
@@ -57,6 +62,7 @@ class RowFormatters extends StatelessWidget {
         FilteringTextInputFormatter.digitsOnly,
         formatter!,
       ],
+      keyboardType: keyboardType,
     );
   }
 }
