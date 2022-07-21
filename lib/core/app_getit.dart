@@ -6,6 +6,7 @@ final getit = GetIt.I;
 UserModel logedUser = UserModel(
     name: 'name',
     birthday: 'birthday',
+    cpf: 'cpf',
     company: 'company',
     cnpj: 'cnpj',
     telephone: 'telephone',

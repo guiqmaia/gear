@@ -45,6 +45,7 @@ dependencies:
   animated_text_kit: ^4.2.2
   get_it: ^7.2.0
   brasil_fields: ^1.4.5
+  graphic: ^0.10.5
 
 dev_dependencies:
   flutter_test:
