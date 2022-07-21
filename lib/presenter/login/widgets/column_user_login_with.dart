@@ -1,17 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gear/core/app_assets.dart';
-import 'package:gear/core/app_getit.dart';
-import 'package:gear/infra/models/user_model.dart';
-import 'package:gear/presenter/login/login_page.dart';
-import '../../../core/app_assets.dart';
-import '../../../core/app_getit.dart';
-import '../../../infra/models/user_model.dart';
 
-import '../../../core/app_assets.dart';
-import '../../../infra/database/gear_database.dart';
-
-import '../../home/home_page.dart';
 import '../../signup/signup.dart';
+import 'btn_login.dart';
+import 'icons_btn_login.dart';
 
 class ColumnUserLoginWith extends StatefulWidget {
   final TextEditingController loginController;
@@ -28,107 +19,30 @@ class ColumnUserLoginWith extends StatefulWidget {
 }
 
 class _ColumnUserLoginWithState extends State<ColumnUserLoginWith> {
-  Future<void> verifyLogin() async {
-    UserModel user = await GearDatabase.instance.selectUser(
-      widget.loginController.text,
-      widget.passwordController.text,
-    );
-
-    if (user.email == widget.loginController.text) {
-      setState(
-        () {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const HomePage()),
-          );
-          logedUser = user;
-        },
-      );
-    }
-    widget.loginController.clear();
-    widget.passwordController.clear();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Wrap(
-          spacing: 20,
-          children: [
-            InkWell(
-              customBorder: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(25),
-              ),
-              onTap: () {},
-              child: CircleAvatar(
-                backgroundColor: Colors.white,
-                radius: 30,
-                child: Image.asset(
-                  iconGoogle,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            InkWell(
-              customBorder: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(25),
-              ),
-              onTap: () {},
-              child: CircleAvatar(
-                backgroundColor: Colors.white,
-                radius: 30,
-                child: Image.asset(
-                  iconFacebook,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ],
-        ),
-        const Padding(
-          padding: EdgeInsets.only(bottom: 10, top: 10),
-          child: Text('Entrar com'),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: greenNeon,
-              ),
-              margin: const EdgeInsets.symmetric(
-                horizontal: 15,
-                vertical: 10,
-              ),
-              width: MediaQuery.of(context).size.width * 0.9,
-              padding: const EdgeInsets.symmetric(
-                vertical: 3,
-              ),
-              child: TextButton(
-                onPressed: () {
-                  verifyLogin();
-                },
-                child: const Text(
-                  'Entrar',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-        TextButton(
+    return Center(
+      child: Column(
+        children: [
+          const IconsBtnLogin(),
+          const Padding(
+            padding: EdgeInsets.only(bottom: 10, top: 10),
+            child: Text('Entrar com'),
+          ),
+          BtnLogin(
+            loginController: widget.loginController,
+            passwordController: widget.passwordController,
+          ),
+          TextButton(
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => const Signup()),
               );
             },
-            child: const Text('Cadastre-se'))
-      ],
+            child: const Text('Cadastre-se'),
+          ),
+        ],
+      ),
     );
   }
 }

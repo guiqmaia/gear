@@ -1,14 +1,13 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/shared/widgets/top_bar_app.dart';
-import '../../shared/widgets/text_field_app.dart';
-import '../../../core/app_assets.dart';
-import '../../../infra/models/user_model.dart';
-import '../../shared/widgets/big_text_app.dart';
-import '../../shared/widgets/text_field_app_formatted.dart';
 
+import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
+import '../../../infra/models/user_model.dart';
+import '../../shared/widgets/text_field_app.dart';
+import '../../shared/widgets/text_field_app_formatted.dart';
+import '../../shared/widgets/top_bar_app.dart';
 
 class BodySignUp extends StatefulWidget {
   const BodySignUp({
@@ -117,7 +116,7 @@ class _BodySignUpState extends State<BodySignUp> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 20, bottom: 20),
-                  child: BigTextApp(text: 'Informações de Login'),
+                  child: Text('Informações de Login'),
                 ),
                 TextFieldApp(
                   labelItem: 'Email',

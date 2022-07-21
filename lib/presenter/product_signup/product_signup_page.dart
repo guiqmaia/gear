@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/app_assets.dart';
 
-import 'Widgets/product_signup_body.dart';
+import 'Widgets/body_product_signup.dart';
 
 class ProductSignupPage extends StatelessWidget {
   const ProductSignupPage({Key? key}) : super(key: key);
@@ -10,7 +10,7 @@ class ProductSignupPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundGrey,
-      body: const SignupPageBody(),
+      body: const BodySignupPage(),
     );
   }
 }

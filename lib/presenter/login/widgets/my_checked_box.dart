@@ -12,8 +12,8 @@ class _MyCheckedBoxState extends State<MyCheckedBox> {
 
   @override
   Widget build(BuildContext context) {
+    
     Color getColor(Set<MaterialState> states) {
-      
       return Colors.blue;
     }
 
@@ -22,9 +22,7 @@ class _MyCheckedBoxState extends State<MyCheckedBox> {
       fillColor: MaterialStateProperty.resolveWith(getColor),
       value: isChecked,
       onChanged: (bool? value) {
-        setState(() {
-          isChecked = value!;
-        });
+        setState(() => isChecked = value!);
       },
     );
   }

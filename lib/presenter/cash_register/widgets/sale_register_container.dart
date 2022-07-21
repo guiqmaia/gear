@@ -2,35 +2,28 @@ import 'package:flutter/material.dart';
 
 import '../../../core/app_assets.dart';
 
-// ignore: must_be_immutable
-class RecentSalesList extends StatefulWidget {
-  List sales;
-
-  RecentSalesList({
-    Key? key,
-    required this.sales,
-  }) : super(key: key);
-
-  @override
-  State<RecentSalesList> createState() => _RecentSalesListState();
-}
-
-class _RecentSalesListState extends State<RecentSalesList> {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: const [],
-    );
-  }
-}
-
 List<SaleRegisterContainer> salesList = [
   SaleRegisterContainer(
-      price: 'R\$ 25,00', quantity: 5, product: 'Soda', productImg: imgSodaAntarctica, payment: 'Débito',),
+    price: 'R\$ 25,00',
+    quantity: 5,
+    product: 'Soda',
+    productImg: imgSodaAntarctica,
+    payment: 'Débito',
+  ),
   SaleRegisterContainer(
-      price: 'R\$ 50,00', quantity: 10, product: 'Coca-cola', productImg: imgCocaCola, payment: 'Crédito',),
+    price: 'R\$ 50,00',
+    quantity: 10,
+    product: 'Coca-cola',
+    productImg: imgCocaCola,
+    payment: 'Crédito',
+  ),
   SaleRegisterContainer(
-      price: 'R\$ 120,50', quantity: 1, product: 'White Horse', productImg: imgWhiteHorse, payment: 'PIX',),
+    price: 'R\$ 120,50',
+    quantity: 1,
+    product: 'White Horse',
+    productImg: imgWhiteHorse,
+    payment: 'PIX',
+  ),
 ];
 
 List get getLista {

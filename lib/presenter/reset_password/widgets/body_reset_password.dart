@@ -23,10 +23,9 @@ class BodyResetPassword extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              width: 200,
-              height: 200,
+              width: MediaQuery.of(context).size.width * 0.7,
+              height: MediaQuery.of(context).size.height * 0.3,
               child: Image.asset(imgEmail),
-
             ),
             const SizedBox(height: 50),
             const Center(

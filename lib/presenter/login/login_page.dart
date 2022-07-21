@@ -19,8 +19,9 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: backgroundGrey,
       body: BodyLoginPage(
-          loginController: loginController,
-          passwordController: passwordController),
+        loginController: loginController,
+        passwordController: passwordController,
+      ),
     );
   }
 }

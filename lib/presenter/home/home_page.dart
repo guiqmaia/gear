@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/statistics/statistics_page.dart';
 
 import '../../core/app_assets.dart';
-import '../profile/profile_page.dart';
+import '../profile/widgets/body_profile_page.dart';
+import '../statistics/statistics_page.dart';
 import 'widgets/body_home_page.dart';
 
 class HomePage extends StatefulWidget {

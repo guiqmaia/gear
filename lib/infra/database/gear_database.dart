@@ -60,13 +60,6 @@ class GearDatabase {
     return user;
   }
 
-  // void update() async {
-  //   await _database!.rawUpdate(
-  //     'UPDATE Test SET name = ?, value = ? WHERE name = ?',
-  //     ['updated name', '9876', 'some name'],
-  //   );
-  // }
-
   Future<List<ProductModel>> select(category) async {
     final db = await instance.database;
     List<Map> list = await db
@@ -90,7 +83,6 @@ class GearDatabase {
     final db = await instance.database;
     List<Map<String, dynamic>> list = await db.rawQuery(
         '${'SELECT * FROM user WHERE email = "' + login + '" AND password = "' + password}"');
-    print(list);
     UserModel user = UserModel.fromMap(list[0]);
     return user;
   }

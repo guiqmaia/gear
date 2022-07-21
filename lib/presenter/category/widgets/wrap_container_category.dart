@@ -4,9 +4,7 @@ import '../../../core/app_assets.dart';
 import 'container_category_inventory.dart';
 
 class WrapContainerCategory extends StatelessWidget {
-  const WrapContainerCategory({
-    Key? key,
-  }) : super(key: key);
+  const WrapContainerCategory({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

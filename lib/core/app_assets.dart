@@ -49,6 +49,7 @@ String imgWaterBottle = 'assets/images/water_bottle.jpg';
 String imgWater = 'assets/images/water.webp';
 String imgSparklingWater = 'assets/images/sparkling_water.jpg';
 
+// listas produtos
 List<String> listSodas = [imgCocaCola, imgFanta, imgSprite, imgPepsi];
 List<String> listBeers = [imgMaryWellsBeer, imgDearPaulaBeer, imgRedSonjaBeer, imgStannisPilsner];
 List<String> listWines = [imgCasaValduga, imgCasaPerini, imgCabrizRose, imgCabrizWhite];

@@ -5,7 +5,6 @@ import '../product_signup/product_signup_page.dart';
 import '../shared/widgets/btn_standard_app.dart';
 import 'widgets/body_product_page.dart';
 
-// ignore: must_be_immutable
 class ProductPage extends StatelessWidget {
   final String categoryTitle;
 

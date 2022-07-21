@@ -4,9 +4,7 @@ import 'package:gear/core/app_getit.dart';
 import '../../../core/app_assets.dart';
 
 class NamePhotoProfile extends StatelessWidget {
-  const NamePhotoProfile({
-    Key? key,
-  }) : super(key: key);
+  const NamePhotoProfile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
