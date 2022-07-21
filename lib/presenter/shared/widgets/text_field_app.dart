@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -8,7 +7,7 @@ class TextFieldApp extends StatelessWidget {
   final IconData iconInput;
   final dynamic typeController;
   bool isObscured = true;
-  
+
   TextInputFormatter? formater;
   bool? isFormatted = false;
 
@@ -39,6 +38,7 @@ class TextFieldApp extends StatelessWidget {
       child: RowFormatters(
         label: labelItem,
         isObscured: isObscured,
+        controller: typeController,
         // formatter: isFormatted! ? formater : formater,
       ),
     );
@@ -48,13 +48,15 @@ class TextFieldApp extends StatelessWidget {
 class RowFormatters extends StatelessWidget {
   final String label;
   final TextInputFormatter? formatter;
+  TextEditingController controller = TextEditingController();
   bool isObscured = false;
-  
+
   RowFormatters({
     Key? key,
     required this.label,
     this.formatter,
     required this.isObscured,
+    required this.controller,
   }) : super(key: key);
 
   @override
@@ -62,10 +64,7 @@ class RowFormatters extends StatelessWidget {
     return TextField(
       obscureText: isObscured ? true : false,
       decoration: InputDecoration(label: Text(label)),
-      // inputFormatters: [
-      //   FilteringTextInputFormatter.digitsOnly,
-      //   formatter!,
-      // ],
+      controller: controller,
     );
   }
 }
