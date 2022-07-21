@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/shared/widgets/text_field_app.dart';
+import '../../shared/widgets/text_field_app.dart';
 
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/product_model.dart';
