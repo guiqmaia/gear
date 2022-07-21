@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:gear/presenter/splash/splash_page.dart';
-
 import 'core/app_getit.dart';
+import 'presenter/splash/splash_page.dart';
 
 void main(List<String> args) {
   setupGetIT();

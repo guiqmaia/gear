@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/core/app_getit.dart';
 
 import 'info_container_profile.dart';
 
@@ -23,11 +24,11 @@ class ContainerInfo extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               InfoContainerProfile(
                 titleInfo: "Telefone:",
-                info: "(47) 3732 - 0010",
-                style: TextStyle(
+                info: logedUser.telephone,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 15,
                 ),
@@ -35,8 +36,8 @@ class ContainerInfo extends StatelessWidget {
               ),
               InfoContainerProfile(
                 titleInfo: "CEP:",
-                info: "90035-190",
-                style: TextStyle(
+                info: logedUser.cep,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 15,
                 ),
@@ -44,8 +45,8 @@ class ContainerInfo extends StatelessWidget {
               ),
               InfoContainerProfile(
                 titleInfo: "Endereço:",
-                info: "Av. Osvaldo Aranha, 720 ",
-                style: TextStyle(
+                info: logedUser.adress,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 15,
                 ),
@@ -53,8 +54,8 @@ class ContainerInfo extends StatelessWidget {
               ),
               InfoContainerProfile(
                   titleInfo: "Email:",
-                  info: "bebidinhas@gmail.com.br",
-                  style: TextStyle(
+                  info: logedUser.email,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15,
                   ),
@@ -76,27 +77,27 @@ class ContainerInfo extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               InfoContainerProfile(
                   titleInfo: "Nome:",
-                  info: "Douglas Costa da Silva",
-                  style: TextStyle(
+                  info: logedUser.name,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15,
                   ),
                   iconInfo: Icons.person_outline),
               InfoContainerProfile(
                   titleInfo: "Data de Nascimento:",
-                  info: "27/04/2017",
-                  style: TextStyle(
+                  info: logedUser.birthday,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15,
                   ),
                   iconInfo: Icons.date_range_rounded),
               InfoContainerProfile(
                 titleInfo: "CPF:",
-                info: "109.504.364-60",
-                style: TextStyle(
+                info: logedUser.cpf,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 15,
                 ),

@@ -1,6 +1,7 @@
 import 'package:brasil_fields/brasil_fields.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/shared/widgets/text_field_app.dart';
+import '../../shared/widgets/text_field_app.dart';
 import '../../../core/app_assets.dart';
 import '../../../infra/models/user_model.dart';
 import '../../shared/widgets/big_text_app.dart';
@@ -66,16 +67,14 @@ class _BodySignUpState extends State<BodySignUp> {
             ),
             TextFieldAppFormatted(
               labelItem: 'CPF',
-              iconInput: Icons.person,
-              typeController: widget.nameController,
-              isObscured: false,
+              iconInput: const Icon(Icons.numbers),
+              typeController: widget.cpfController,
               formater: CpfInputFormatter(),
             ),
             TextFieldAppFormatted(
               labelItem: 'Data de Nascimento',
-              iconInput: Icons.date_range,
+              iconInput: const Icon(Icons.date_range_rounded),
               typeController: widget.bithdayDateController,
-              isObscured: false,
               formater: DataInputFormatter(),
             ),
             TextFieldApp(
@@ -86,31 +85,27 @@ class _BodySignUpState extends State<BodySignUp> {
             ),
             TextFieldAppFormatted(
               labelItem: 'CNPJ',
-              iconInput: Icons.numbers_sharp,
+              iconInput: const Icon(Icons.numbers_sharp),
               typeController: widget.cnpjController,
               formater: CnpjInputFormatter(),
-              isObscured: false,
             ),
             TextFieldAppFormatted(
               labelItem: 'Telefone',
-              iconInput: Icons.phone,
+              iconInput: const Icon(Icons.phone),
               typeController: widget.phoneController,
               formater: TelefoneInputFormatter(),
-              isObscured: false,
             ),
             TextFieldAppFormatted(
               labelItem: 'Celular',
-              iconInput: Icons.cell_wifi,
+              iconInput: const Icon(Icons.cell_wifi),
               typeController: widget.cellphoneController,
               formater: TelefoneInputFormatter(),
-              isObscured: false,
             ),
             TextFieldAppFormatted(
               labelItem: 'CEP',
-              iconInput: Icons.numbers,
+              iconInput: const Icon(CupertinoIcons.location_solid),
               typeController: widget.cepController,
               formater: CepInputFormatter(),
-              isObscured: false,
             ),
             TextFieldApp(
               labelItem: 'Endereço',

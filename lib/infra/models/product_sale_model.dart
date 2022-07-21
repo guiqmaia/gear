@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:gear/infra/models/product_model.dart';
-import 'package:gear/infra/models/sale_model.dart';
+import 'product_model.dart';
+import 'sale_model.dart';
 
 class ProductSale {
   ProductModel produto;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/statistics/statistics_page.dart';
 
 import '../../core/app_assets.dart';
 import '../profile/profile_page.dart';
-import '../results/results_page.dart';
 import 'widgets/body_home_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     BodyHomePage(),
-    BodyResultsPage(),
+    BodyStatistics(),
     BodyProfilePage(),
   ];
 
@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
-              size: 28,
+              size: 35,
             ),
             label: 'Home',
             backgroundColor: Colors.white,
@@ -48,13 +48,13 @@ class _HomePageState extends State<HomePage> {
               Icons.bar_chart,
               size: 35,
             ),
-            label: 'Resultados',
+            label: 'Estatísticas',
             backgroundColor: Colors.white,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
-              size: 30,
+              size: 35,
             ),
             label: 'Perfil',
             backgroundColor: Colors.white,

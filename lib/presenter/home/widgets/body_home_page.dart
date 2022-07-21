@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/shared/widgets/btn_standard_app.dart';
-import 'package:onboarding/onboarding.dart';
+import 'package:gear/core/app_getit.dart';
+import '../../shared/widgets/btn_standard_app.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../infra/database/create_database_products.dart';
 import '../../cash_register/cash_register_page.dart';
 import '../../category/category_page.dart';
-import 'top_bar_home.dart';
 
 class BodyHomePage extends StatefulWidget {
   const BodyHomePage({Key? key}) : super(key: key);
@@ -42,8 +41,9 @@ class _BodyHomePageState extends State<BodyHomePage> {
                 Stack(
                   children: [
                     Container(
-                      padding: const EdgeInsets.only(top: 25),
-                      height: 400,
+                      height: MediaQuery.of(context).size.height * 0.57,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 40),
                       width: MediaQuery.of(context).size.width,
                       decoration: const BoxDecoration(
                         color: Colors.black,
@@ -89,12 +89,12 @@ class _BodyHomePageState extends State<BodyHomePage> {
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
+                          children: [
                             Padding(
-                              padding: EdgeInsets.only(top: 5, bottom: 5),
+                              padding: const EdgeInsets.only(top: 5, bottom: 5),
                               child: Text(
-                                'Distribuidora Bebidinhas',
-                                style: TextStyle(
+                                logedUser.company,
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -102,15 +102,15 @@ class _BodyHomePageState extends State<BodyHomePage> {
                               ),
                             ),
                             Text(
-                              '27.042.017/00001-22',
-                              style: TextStyle(
+                              logedUser.cnpj,
+                              style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 15,
                                   fontWeight: FontWeight.w500),
                             ),
-                            SizedBox(height: 8),
-                            Text('Douglas Costa da Silva ',
-                                style: TextStyle(
+                            const SizedBox(height: 8),
+                            Text(logedUser.name,
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 15,
                                   fontWeight: FontWeight.w500,
@@ -156,20 +156,19 @@ class _BodyHomePageState extends State<BodyHomePage> {
                             setState(() {
                               createListProducts();
                               isCreated = true;
-
                               Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) => const CategoryPage(),
                                 ),
                               );
                             });
+                          } else {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const CategoryPage(),
+                              ),
+                            );
                           }
-
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const CategoryPage(),
-                            ),
-                          );
                         },
                         child: const Text(
                           'ESTOQUE',
@@ -181,11 +180,6 @@ class _BodyHomePageState extends State<BodyHomePage> {
                         ),
                       ),
                     ),
-                    // BtnStandardApp(
-                    //   title: "Estoque",
-                    //   widthBtn: MediaQuery.of(context).size.width * 0.3,
-                    //   pageRoute: const CategoryPage(),
-                    // ),
                   ],
                 ),
               ],

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:gear/infra/database/gear_database.dart';
-import 'package:gear/infra/models/product_model.dart';
-import 'package:gear/presenter/shared/widgets/text_field_app.dart';
+
+import '../../../infra/models/product_model.dart';
+import '../../shared/widgets/text_field_app.dart';
 
 import '../../shared/widgets/dropdown_input.dart';
-import '../../shared/widgets/text_field_app_formatted.dart';
+
 
 class WrapTextFieldSale extends StatefulWidget {
   const WrapTextFieldSale({

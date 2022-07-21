@@ -1,7 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/home/home_page.dart';
-import 'package:gear/presenter/shared/widgets/top_bar_app.dart';
+import 'package:gear/core/app_getit.dart';
+import '../home/home_page.dart';
+import '../shared/widgets/top_bar_app.dart';
 
 import 'widget/value_day.dart';
 import 'widget/liders_product.dart';
@@ -12,21 +13,21 @@ class ResultsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: BodyResultsPage(),
+      body: BodyStatistics(),
     );
   }
 }
 
-class BodyResultsPage extends StatefulWidget {
-  const BodyResultsPage({
+class BodyStatistics extends StatefulWidget {
+  const BodyStatistics({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<BodyResultsPage> createState() => _BodyResultsPageState();
+  State<BodyStatistics> createState() => _BodyStatisticsState();
 }
 
-class _BodyResultsPageState extends State<BodyResultsPage> {
+class _BodyStatisticsState extends State<BodyStatistics> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -35,7 +36,7 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           const TopBarApp(
-              title: 'Resultados', pageRoute: HomePage(), isProfile: false),
+              title: 'Estatísticas', pageRoute: HomePage(), isProfile: false),
           Container(
             margin: const EdgeInsets.symmetric(
               vertical: 10,
@@ -50,9 +51,9 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
               borderRadius: BorderRadius.circular(15),
               boxShadow: [
                 BoxShadow(
-                color: Colors.grey.shade400,
-                blurRadius: 10,
-                offset: const Offset(12, 12)),
+                    color: Colors.grey.shade400,
+                    blurRadius: 10,
+                    offset: const Offset(12, 12)),
               ],
             ),
             child: Column(
@@ -136,9 +137,9 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
               borderRadius: BorderRadius.circular(15),
               boxShadow: [
                 BoxShadow(
-                color: Colors.grey.shade400,
-                blurRadius: 10,
-                offset: const Offset(12, 12)),
+                    color: Colors.grey.shade400,
+                    blurRadius: 10,
+                    offset: const Offset(12, 12)),
               ],
             ),
             child: Column(
@@ -283,9 +284,9 @@ class BarChartSample1State extends State<BarChartSample1> {
                     const SizedBox(
                       height: 4,
                     ),
-                    const Text(
-                      'Distribuidora Bebidinhas',
-                      style: TextStyle(
+                    Text(
+                      logedUser.company,
+                      style: const TextStyle(
                           color: Colors.black,
                           fontSize: 18,
                           fontWeight: FontWeight.bold),
