@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'info_container_profile.dart';
@@ -14,8 +15,8 @@ class ContainerInfo extends StatelessWidget {
           margin: const EdgeInsets.symmetric(
             horizontal: 20,
           ),
-          width: 390,
-          height: 530,
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          width: MediaQuery.of(context).size.width * 0.9,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
@@ -31,7 +32,7 @@ class ContainerInfo extends StatelessWidget {
                   color: Colors.white,
                   fontSize: 15,
                 ),
-                iconInfo: Icons.local_phone_outlined,
+                iconInfo: Icons.phone,
               ),
               InfoContainerProfile(
                 titleInfo: "CEP:",
@@ -40,7 +41,7 @@ class ContainerInfo extends StatelessWidget {
                   color: Colors.white,
                   fontSize: 15,
                 ),
-                iconInfo: Icons.location_searching,
+                iconInfo: CupertinoIcons.location_solid,
               ),
               InfoContainerProfile(
                 titleInfo: "Endereço:",
@@ -49,7 +50,7 @@ class ContainerInfo extends StatelessWidget {
                   color: Colors.white,
                   fontSize: 15,
                 ),
-                iconInfo: Icons.location_on_outlined,
+                iconInfo: Icons.home,
               ),
               InfoContainerProfile(
                   titleInfo: "Email:",
@@ -58,7 +59,7 @@ class ContainerInfo extends StatelessWidget {
                     color: Colors.white,
                     fontSize: 15,
                   ),
-                  iconInfo: Icons.email_outlined),
+                  iconInfo: Icons.email),
             ],
           ),
         ),
@@ -67,8 +68,8 @@ class ContainerInfo extends StatelessWidget {
             horizontal: 20,
             vertical: 20,
           ),
-          width: 390,
-          height: 400,
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          width: MediaQuery.of(context).size.width * 0.9,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
@@ -84,16 +85,15 @@ class ContainerInfo extends StatelessWidget {
                     color: Colors.white,
                     fontSize: 15,
                   ),
-                  iconInfo: Icons.person_outline),
+                  iconInfo: Icons.person),
               InfoContainerProfile(
-                titleInfo: "Data de Nascimento:",
-                info: "27/04/2017",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
-                ),
-                iconInfo: Icons.location_searching,
-              ),
+                  titleInfo: "Data de Nascimento:",
+                  info: "27/04/2017",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                  ),
+                  iconInfo: Icons.date_range_rounded),
               InfoContainerProfile(
                 titleInfo: "CPF:",
                 info: "109.504.364-60",
@@ -101,7 +101,7 @@ class ContainerInfo extends StatelessWidget {
                   color: Colors.white,
                   fontSize: 15,
                 ),
-                iconInfo: Icons.location_on_outlined,
+                iconInfo: Icons.numbers,
               ),
             ],
           ),

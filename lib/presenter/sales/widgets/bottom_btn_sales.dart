@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+
 import '../../../core/app_assets.dart';
-import '../../cash_register/widgets/sale_register_container.dart';
 import '../../cash_register/cash_register_page.dart';
+import '../../cash_register/widgets/sale_register_container.dart';
 import '../../shared/widgets/btn_standard_app.dart';
 
 class BottomBtnSales extends StatefulWidget {
-  BottomBtnSales({
+  const BottomBtnSales({
     Key? key,
     required this.categoryController,
     required this.codeController,

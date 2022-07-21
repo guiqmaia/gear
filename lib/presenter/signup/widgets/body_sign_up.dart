@@ -1,6 +1,7 @@
 import 'package:brasil_fields/brasil_fields.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/shared/widgets/text_field_app.dart';
+import '../../shared/widgets/text_field_app.dart';
 import '../../../core/app_assets.dart';
 import '../../../infra/models/user_model.dart';
 import '../../shared/widgets/big_text_app.dart';
@@ -66,13 +67,13 @@ class _BodySignUpState extends State<BodySignUp> {
             ),
             TextFieldAppFormatted(
               labelItem: 'CPF',
-              iconInput: Icon(Icons.person),
+              iconInput: const Icon(Icons.numbers),
               typeController: widget.nameController,
               formater: CpfInputFormatter(),
             ),
             TextFieldAppFormatted(
               labelItem: 'Data de Nascimento',
-              iconInput: Icon(Icons.date_range),
+              iconInput: const Icon(Icons.date_range_rounded),
               typeController: widget.bithdayDateController,
               formater: DataInputFormatter(),
             ),
@@ -84,25 +85,25 @@ class _BodySignUpState extends State<BodySignUp> {
             ),
             TextFieldAppFormatted(
               labelItem: 'CNPJ',
-              iconInput: Icon(Icons.numbers_sharp),
+              iconInput: const Icon(Icons.numbers_sharp),
               typeController: widget.cnpjController,
               formater: CnpjInputFormatter(),
             ),
             TextFieldAppFormatted(
               labelItem: 'Telefone',
-              iconInput: Icon(Icons.phone),
+              iconInput: const Icon(Icons.phone),
               typeController: widget.phoneController,
               formater: TelefoneInputFormatter(),
             ),
             TextFieldAppFormatted(
               labelItem: 'Celular',
-              iconInput: Icon(Icons.cell_wifi),
+              iconInput: const Icon(Icons.cell_wifi),
               typeController: widget.cellphoneController,
               formater: TelefoneInputFormatter(),
             ),
             TextFieldAppFormatted(
               labelItem: 'CEP',
-              iconInput: Icon(Icons.numbers),
+              iconInput: const Icon(CupertinoIcons.location_solid),
               typeController: widget.cepController,
               formater: CepInputFormatter(),
             ),
