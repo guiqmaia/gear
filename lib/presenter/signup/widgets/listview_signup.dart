@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/user_model.dart';
-import '../../shared/widgets/text_field_app.dart';
-import '../../shared/widgets/text_field_app_formatted.dart';
+import '../../../shared/widgets/text_field_app.dart';
+import '../../../shared/widgets/text_field_app_formatted.dart';
 
 class ListViewSignUp extends StatefulWidget {
   const ListViewSignUp({

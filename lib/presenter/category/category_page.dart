@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../product_signup/product_signup_page.dart';
 
 import '../../core/app_assets.dart';
-import '../shared/widgets/btn_standard_app.dart';
+import '../../shared/widgets/btn_standard_app.dart';
 import 'widgets/body_category_page.dart';
 
 class CategoryPage extends StatelessWidget {

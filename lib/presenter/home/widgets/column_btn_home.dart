@@ -4,7 +4,7 @@ import '../../../core/app_assets.dart';
 import '../../../infra/database/create_database_products.dart';
 import '../../category/category_page.dart';
 import '../../sales/sales_page.dart';
-import '../../shared/widgets/btn_standard_app.dart';
+import '../../../shared/widgets/btn_standard_app.dart';
 
 class ColumnBtnHome extends StatefulWidget {
   const ColumnBtnHome({Key? key}) : super(key: key);

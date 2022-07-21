@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/app_assets.dart';
-
-import '../../profile/profile_page.dart';
+import '../../presenter/profile/profile_page.dart';
 
 class TopBarApp extends StatelessWidget {
   final String title;
