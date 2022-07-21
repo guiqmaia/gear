@@ -6,6 +6,10 @@ class BtnStandardApp extends StatelessWidget {
   final String title;
   final dynamic pageRoute;
   final dynamic widthBtn;
+  final dynamic heightBtn;
+  final double fontSize;
+  final Color backgroundColorBtn;
+  final Color fontColorBtn;
   Function? onPressed;
 
   BtnStandardApp({
@@ -13,7 +17,11 @@ class BtnStandardApp extends StatelessWidget {
     required this.title,
     this.pageRoute,
     required this.widthBtn,
+    this.heightBtn,
+    this.fontSize = 18,
     this.onPressed,
+    this.backgroundColorBtn = const Color.fromRGBO(202, 254, 72, 1),
+    this.fontColorBtn = Colors.black,
   }) : super(key: key);
 
   @override
@@ -21,13 +29,14 @@ class BtnStandardApp extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: greenNeon,
+        color: backgroundColorBtn,
       ),
       margin: const EdgeInsets.symmetric(
         horizontal: 15,
         vertical: 10,
       ),
       width: widthBtn,
+      height: heightBtn,
       padding: const EdgeInsets.symmetric(
         vertical: 3,
       ),
@@ -45,9 +54,9 @@ class BtnStandardApp extends StatelessWidget {
         },
         child: Text(
           title,
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 18,
+          style: TextStyle(
+            color: fontColorBtn,
+            fontSize: fontSize,
             fontWeight: FontWeight.bold,
           ),
         ),
