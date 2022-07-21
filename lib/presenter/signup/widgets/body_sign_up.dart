@@ -68,7 +68,7 @@ class _BodySignUpState extends State<BodySignUp> {
               iconInput: Icons.person,
               typeController: widget.nameController,
               isObscured: false,
-              formater: CpfInputFormatter()!,
+              formater: CpfInputFormatter(),
             ),
             TextFieldAppFormatted(
               labelItem: 'Data de Nascimento',

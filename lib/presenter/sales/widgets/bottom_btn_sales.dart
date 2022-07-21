@@ -38,6 +38,7 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
       quantity: widget.quantityController.toString(),
       product: widget.productController.toString(),
       productImg: imgSodas,
+      payment: widget.payController.toString(),
     );
     setState(() {
       salesList.add(newSale);

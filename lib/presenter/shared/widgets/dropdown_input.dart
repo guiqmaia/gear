@@ -28,7 +28,7 @@ class _DropDownInputState extends State<DropDownInput> {
       margin: const EdgeInsets.symmetric(
         vertical: 10,
       ),
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: 16,
       ),
       child: DropdownButtonFormField(
@@ -48,7 +48,7 @@ class _DropDownInputState extends State<DropDownInput> {
         //value: selectedValue,
         onChanged: (selectedValue) {
           setState(() {
-            widget.selectedValueController.text = selectedValue as String;
+            widget.selectedValueController.text = selectedValue.toString();
           });
         },
         items: widget.dropdownList,

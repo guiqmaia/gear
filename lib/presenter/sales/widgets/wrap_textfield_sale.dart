@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gear/infra/database/gear_database.dart';
+import 'package:gear/infra/models/product_model.dart';
 import 'package:gear/presenter/shared/widgets/text_field_app.dart';
 
 import '../../shared/widgets/dropdown_input.dart';
@@ -31,29 +33,58 @@ class WrapTextFieldSale extends StatefulWidget {
 }
 
 class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
+  List<ProductModel>? listProduct;
+  List<DropdownMenuItem<String>>? dropDownItems = [];
+  String? categoryValue;
+
+  Future<List<DropdownMenuItem<String>>> getDropdownItems(category) async {
+    listProduct = await GearDatabase.instance.select(category);
+    print(category);
+
+    listProduct!.forEach((entry) {
+      var newDropdown = DropdownMenuItem(
+        child: Text('${entry.name}'),
+        value: '{$entry.name}',
+      );
+      print(entry.name);
+
+      dropDownItems!.add(newDropdown);
+    });
+
+    print(dropDownItems);
+    return dropDownItems!;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Wrap(
       children: [
         DropDownInput(
           dropdownList: const [
-            DropdownMenuItem(value: 'Tênis', child: Text('Tênis')),
-            DropdownMenuItem(value: 'Camiseta', child: Text('Camiseta')),
-            DropdownMenuItem(value: 'Casaco', child: Text('Casaco')),
-            DropdownMenuItem(value: 'Calça', child: Text('Calça')),
+            DropdownMenuItem(
+                value: 'Refrigerante', child: Text('Refrigerante')),
+            DropdownMenuItem(value: 'Cerveja', child: Text('Cerveja')),
+            DropdownMenuItem(value: 'Vinho', child: Text('Vinho')),
+            DropdownMenuItem(value: 'Destilado', child: Text('Destilado')),
+            DropdownMenuItem(value: 'Energético', child: Text('Energético')),
+            DropdownMenuItem(value: 'Água', child: Text('Água')),
           ],
           labelDropdown: 'Categoria',
           iconDropdown: Icons.sell_rounded,
           selectedValueController: widget.categoryController,
         ),
-        DropDownInput(
-          dropdownList: const [
-            DropdownMenuItem(value: 'Produto', child: Text('Produto')),
-            DropdownMenuItem(value: 'Produto2', child: Text('Produto2')),
-          ],
-          labelDropdown: 'Produto',
-          iconDropdown: Icons.description_rounded,
-          selectedValueController: widget.categoryController,
+        InkWell(
+          onTap: () {
+            setState(() {
+              getDropdownItems(widget.categoryController.text);
+            });
+          },
+          child: DropDownInput(
+            dropdownList: dropDownItems!,
+            labelDropdown: 'Produto',
+            iconDropdown: Icons.description_rounded,
+            selectedValueController: widget.categoryController,
+          ),
         ),
         TextFieldApp(
           labelItem: 'Código do produto',
