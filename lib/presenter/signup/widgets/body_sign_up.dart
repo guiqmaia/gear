@@ -8,7 +8,7 @@ import '../../shared/widgets/text_field_app_formatted.dart';
 import '../../../infra/database/gear_database.dart';
 
 class BodySignUp extends StatefulWidget {
-  BodySignUp({
+  const BodySignUp({
     Key? key,
     required this.nameController,
     required this.bithdayDateController,
@@ -68,7 +68,7 @@ class _BodySignUpState extends State<BodySignUp> {
               iconInput: Icons.person,
               typeController: widget.nameController,
               isObscured: false,
-              formater: CpfInputFormatter()!,
+              formater: CpfInputFormatter(),
             ),
             TextFieldAppFormatted(
               labelItem: 'Data de Nascimento',

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gear/infra/database/gear_database.dart';
+import 'package:gear/infra/models/product_model.dart';
 import 'package:gear/presenter/shared/widgets/text_field_app.dart';
 
 import '../../shared/widgets/dropdown_input.dart';
@@ -31,25 +33,49 @@ class WrapTextFieldSale extends StatefulWidget {
 }
 
 class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
+  List<ProductModel>? listProduct;
+  List<DropdownMenuItem<String>>? dropDownItems = [];
+  String? categoryValue;
+
+  // Future<List<DropdownMenuItem<String>>> getDropdownItems(category) async {
+  //   listProduct = await GearDatabase.instance.select(category);
+  //   print(category);
+
+  //   listProduct!.forEach((entry) {
+  //     var newDropdown = DropdownMenuItem(
+  //       child: Text('${entry.name}'),
+  //       value: '{$entry.name}',
+  //     );
+  //     print(entry.name);
+
+  //     dropDownItems!.add(newDropdown);
+  //   });
+
+  //   print(dropDownItems);
+  //   return dropDownItems!;
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Wrap(
       children: [
         DropDownInput(
-          dropdownList: [
-            DropdownMenuItem(value: 'Tênis', child: Text('Tênis')),
-            DropdownMenuItem(value: 'Camiseta', child: Text('Camiseta')),
-            DropdownMenuItem(value: 'Casaco', child: Text('Casaco')),
-            DropdownMenuItem(value: 'Calça', child: Text('Calça')),
+          dropdownList: const [
+            DropdownMenuItem(
+                value: 'Refrigerante', child: Text('Refrigerante')),
+            DropdownMenuItem(value: 'Cerveja', child: Text('Cerveja')),
+            DropdownMenuItem(value: 'Vinho', child: Text('Vinho')),
+            DropdownMenuItem(value: 'Destilado', child: Text('Destilado')),
+            DropdownMenuItem(value: 'Energético', child: Text('Energético')),
+            DropdownMenuItem(value: 'Água', child: Text('Água')),
           ],
           labelDropdown: 'Categoria',
           iconDropdown: Icons.sell_rounded,
           selectedValueController: widget.categoryController,
         ),
         DropDownInput(
-          dropdownList: [
+          dropdownList: const [
             DropdownMenuItem(value: 'Produto', child: Text('Produto')),
-            DropdownMenuItem(value: 'Produto2', child: Text('Produto2')),
           ],
           labelDropdown: 'Produto',
           iconDropdown: Icons.description_rounded,
@@ -59,21 +85,25 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           labelItem: 'Código do produto',
           iconInput: Icons.code_rounded,
           typeController: widget.codeController,
+          isObscured: false,
         ),
         TextFieldApp(
           labelItem: 'Preço do produto',
           iconInput: Icons.price_check_rounded,
           typeController: widget.priceController,
+          isObscured: false,
         ),
         TextFieldApp(
           labelItem: 'Desconto',
           iconInput: Icons.price_change_rounded,
           typeController: widget.descountController,
+          isObscured: false,
         ),
         TextFieldApp(
           labelItem: 'Quantidade',
           iconInput: Icons.production_quantity_limits_rounded,
           typeController: widget.quantityController,
+          isObscured: false,
         ),
         DropDownInput(
           dropdownList: const [
@@ -95,6 +125,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           labelItem: 'Total',
           iconInput: Icons.attach_money_rounded,
           typeController: widget.totalController,
+          isObscured: false,
         ),
       ],
     );

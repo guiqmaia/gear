@@ -72,6 +72,7 @@ class GearDatabase {
   Future<List<ProductModel>> select(category) async {
     final db = await instance.database;
     List<Map> list = await db
+        // ignore: prefer_interpolation_to_compose_strings
         .rawQuery('${'SELECT * FROM product WHERE category = "' + category}"');
     List<ProductModel> listProducts = [];
 

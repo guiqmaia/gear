@@ -76,11 +76,13 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                   labelItem: 'Nome',
                   iconInput: Icons.format_color_text_sharp,
                   typeController: nameController,
+                  isObscured: false,
                 ),
                 TextFieldApp(
                   labelItem: 'Preço',
                   iconInput: Icons.attach_money,
                   typeController: priceController,
+                  isObscured: false,
                 ),
                 DropDownInput(
                   dropdownList: list,
@@ -93,6 +95,7 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                   labelItem: 'Quantidade',
                   iconInput: Icons.numbers,
                   typeController: quantityController,
+                  isObscured: false,
                 ),
                 Container(
                   decoration: BoxDecoration(

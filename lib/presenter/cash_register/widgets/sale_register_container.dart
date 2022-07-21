@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../core/app_assets.dart';
 
 // ignore: must_be_immutable
@@ -25,7 +26,11 @@ class _RecentSalesListState extends State<RecentSalesList> {
 
 List<SaleRegisterContainer> salesList = [
   SaleRegisterContainer(
-      price: 'R\$ 25,00', quantity: 5, product: 'Soda', productImg: imgSodas),
+      price: 'R\$ 25,00', quantity: 5, product: 'Soda', productImg: imgSodaAntarctica, payment: 'Débito',),
+  SaleRegisterContainer(
+      price: 'R\$ 50,00', quantity: 10, product: 'Coca-cola', productImg: imgCocaCola, payment: 'Crédito',),
+  SaleRegisterContainer(
+      price: 'R\$ 120,50', quantity: 1, product: 'White Horse', productImg: imgWhiteHorse, payment: 'PIX',),
 ];
 
 List get getLista {
@@ -37,6 +42,7 @@ class SaleRegisterContainer extends StatelessWidget {
   final dynamic quantity;
   final String product;
   final dynamic productImg;
+  final String payment;
 
   const SaleRegisterContainer({
     Key? key,
@@ -44,6 +50,7 @@ class SaleRegisterContainer extends StatelessWidget {
     required this.quantity,
     required this.product,
     required this.productImg,
+    required this.payment,
   }) : super(key: key);
 
   @override
@@ -96,7 +103,7 @@ class SaleRegisterContainer extends StatelessWidget {
                   ),
                   const SizedBox(height: 15),
                   Text(
-                    'Débito',
+                    payment,
                     style: TextStyle(
                       color: Colors.grey.shade700,
                       fontSize: 14,

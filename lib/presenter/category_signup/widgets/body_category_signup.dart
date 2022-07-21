@@ -54,6 +54,7 @@ class _BodyCategorySignupState extends State<BodyCategorySignup> {
             labelItem: 'Nome',
             iconInput: Icons.tag_rounded,
             typeController: null,
+            isObscured: false,
           ),
           Container(
             decoration: BoxDecoration(
