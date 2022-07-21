@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/core/app_getit.dart';
 import '../../shared/widgets/btn_standard_app.dart';
 
 import '../../../core/app_assets.dart';
@@ -88,12 +89,12 @@ class _BodyHomePageState extends State<BodyHomePage> {
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
+                          children: [
                             Padding(
-                              padding: EdgeInsets.only(top: 5, bottom: 5),
+                              padding: const EdgeInsets.only(top: 5, bottom: 5),
                               child: Text(
-                                'Distribuidora Bebidinhas',
-                                style: TextStyle(
+                                logedUser.company,
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -101,21 +102,19 @@ class _BodyHomePageState extends State<BodyHomePage> {
                               ),
                             ),
                             Text(
-                              '27.042.017/00001-22',
-                              style: TextStyle(
+                              logedUser.cnpj,
+                              style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 15,
                                   fontWeight: FontWeight.w500),
                             ),
-                            SizedBox(height: 8),
-                            Text(
-                              'Douglas Costa da Silva ',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
+                            const SizedBox(height: 8),
+                            Text(logedUser.name,
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                )),
                           ],
                         ),
                       ),
@@ -163,12 +162,13 @@ class _BodyHomePageState extends State<BodyHomePage> {
                                 ),
                               );
                             });
+                          } else {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const CategoryPage(),
+                              ),
+                            );
                           }
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const CategoryPage(),
-                            ),
-                          );
                         },
                         child: const Text(
                           'ESTOQUE',

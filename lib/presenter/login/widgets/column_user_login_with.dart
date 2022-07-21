@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:gear/core/app_assets.dart';
+import 'package:gear/core/app_getit.dart';
+import 'package:gear/infra/models/user_model.dart';
+import 'package:gear/presenter/login/login_page.dart';
 import '../../../core/app_assets.dart';
 import '../../../core/app_getit.dart';
 import '../../../infra/models/user_model.dart';
 
-
 import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
-
 
 import '../../home/home_page.dart';
 import '../../signup/signup.dart';
@@ -26,18 +28,20 @@ class ColumnUserLoginWith extends StatefulWidget {
 }
 
 class _ColumnUserLoginWithState extends State<ColumnUserLoginWith> {
-  bool loginCorrect = false;
-
   Future<void> verifyLogin() async {
     UserModel user = await GearDatabase.instance.selectUser(
       widget.loginController.text,
       widget.passwordController.text,
     );
     if (user.email == widget.loginController.text) {
-      setState(() {
-        loginCorrect = true;
-        logedUser = user;
-      });
+      setState(
+        () {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const HomePage()),
+          );
+          logedUser = user;
+        },
+      );
     }
   }
 
@@ -101,12 +105,7 @@ class _ColumnUserLoginWithState extends State<ColumnUserLoginWith> {
               child: TextButton(
                 onPressed: () {
                   verifyLogin();
-                  loginCorrect
-                      ? Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) => const HomePage()),
-                        )
-                      : print('object');
+                  print('object');
                 },
                 child: const Text(
                   'Entrar',

@@ -68,7 +68,7 @@ class _BodySignUpState extends State<BodySignUp> {
             TextFieldAppFormatted(
               labelItem: 'CPF',
               iconInput: const Icon(Icons.numbers),
-              typeController: widget.nameController,
+              typeController: widget.cpfController,
               formater: CpfInputFormatter(),
             ),
             TextFieldAppFormatted(
