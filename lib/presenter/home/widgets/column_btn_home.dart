@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../infra/database/create_database_products.dart';
-import '../../cash_register/cash_register_page.dart';
 import '../../category/category_page.dart';
+import '../../sales/sales_page.dart';
 import '../../shared/widgets/btn_standard_app.dart';
 
 class ColumnBtnHome extends StatefulWidget {
@@ -37,7 +37,7 @@ class _ColumnBtnHomeState extends State<ColumnBtnHome> {
           fontSize: 21,
           fontColorBtn: greenNeon,
           backgroundColorBtn: Colors.black,
-          pageRoute: const CashRegisterPage(),
+          pageRoute: const SalesPage(),
         ),
         Container(
           decoration: BoxDecoration(

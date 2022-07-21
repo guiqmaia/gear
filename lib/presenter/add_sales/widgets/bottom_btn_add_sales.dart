@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/app_assets.dart';
-import '../../cash_register/cash_register_page.dart';
-import '../../cash_register/widgets/sale_register_container.dart';
+import '../../sales/sales_page.dart';
+import '../../sales/widgets/sale_register_container.dart';
 import '../../shared/widgets/btn_standard_app.dart';
 
 class BottomBtnSales extends StatefulWidget {
@@ -32,7 +32,6 @@ class BottomBtnSales extends StatefulWidget {
 }
 
 class _BottomBtnSalesState extends State<BottomBtnSales> {
-
   salesAdd() {
     var newSale = SaleRegisterContainer(
       price: widget.priceController.toString(),
@@ -55,7 +54,7 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
       children: [
         BtnStandardApp(
           title: 'Finalizar venda',
-          pageRoute: const CashRegisterPage(),
+          pageRoute: const SalesPage(),
           widthBtn: MediaQuery.of(context).size.width * 0.45,
           onPressed: () {},
         ),
