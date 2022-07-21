@@ -42,6 +42,7 @@ class _BodyHomePageState extends State<BodyHomePage> {
                 Stack(
                   children: [
                     Container(
+                      padding: EdgeInsets.only(top: 25),
                       height: 400,
                       width: MediaQuery.of(context).size.width,
                       decoration: const BoxDecoration(
@@ -52,7 +53,15 @@ class _BodyHomePageState extends State<BodyHomePage> {
                         ),
                       ),
                       child: Column(children: [
-                        const Text('Gear'),
+                        const Text(
+                          'GEAR',
+                          style: TextStyle(
+                            color: Color.fromRGBO(202, 254, 72, 1),
+                            fontSize: 40,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        SizedBox(height: 30),
                         CircleAvatar(
                           radius: 80,
                           backgroundImage: Image.asset(
@@ -63,10 +72,10 @@ class _BodyHomePageState extends State<BodyHomePage> {
                       ]),
                     ),
                     Positioned(
-                      bottom: 0,
+                      bottom: -5,
+                      left: 57,
                       child: Container(
-                        padding: const EdgeInsets.only(top: 10, bottom: 10),
-                        
+                        padding: const EdgeInsets.only(top: 10, bottom: 20),
                         width: MediaQuery.of(context).size.width * 0.7,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(25),
@@ -88,13 +97,17 @@ class _BodyHomePageState extends State<BodyHomePage> {
                             ),
                             Text(
                               '27.042.017/00001-22',
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 15),
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500),
                             ),
-                            Text('Douglas Costa da Silva',
+                            SizedBox(height: 8),
+                            Text('Douglas Costa da Silva ',
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 15,
+                                  fontWeight: FontWeight.w500,
                                 )),
                           ],
                         ),
@@ -105,12 +118,16 @@ class _BodyHomePageState extends State<BodyHomePage> {
                 const SizedBox(
                   height: 30,
                 ),
-                Row(
+                Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     BtnStandardApp(
-                      title: "Caixa",
-                      widthBtn: MediaQuery.of(context).size.width * 0.3,
+                      title: "CAIXA",
+                      widthBtn: MediaQuery.of(context).size.width * 0.9,
+                      heightBtn: MediaQuery.of(context).size.height * 0.1,
+                      fontSize: 22,
+                      fontColorBtn: greenNeon,
+                      backgroundColorBtn: Colors.black,
                       pageRoute: const CashRegisterPage(),
                     ),
                     Container(
@@ -122,7 +139,8 @@ class _BodyHomePageState extends State<BodyHomePage> {
                         horizontal: 15,
                         vertical: 10,
                       ),
-                      width: MediaQuery.of(context).size.width * 0.3,
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      height: MediaQuery.of(context).size.height * 0.1,
                       padding: const EdgeInsets.symmetric(
                         vertical: 3,
                       ),
@@ -148,11 +166,12 @@ class _BodyHomePageState extends State<BodyHomePage> {
                           );
                         },
                         child: const Text(
-                          'Estoque',
+                          'ESTOQUE',
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 18,
+                            fontSize: 22,
                             fontWeight: FontWeight.bold,
+                            
                           ),
                         ),
                       ),

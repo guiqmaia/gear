@@ -38,7 +38,10 @@ class BodyLoginPage extends StatelessWidget {
               isObscured: true,
             ),
             const ContainerUserOptions(),
-            const ColumnUserLoginWith(),
+            ColumnUserLoginWith(
+              loginController: loginController,
+              passwordController: passwordController,
+            ),
           ],
         ),
       ),

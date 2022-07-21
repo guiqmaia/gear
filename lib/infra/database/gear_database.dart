@@ -18,34 +18,33 @@ class GearDatabase {
 
   Future<Database> _initDB() async {
     var databasesPath = await getDatabasesPath();
-    String path = '${databasesPath}newdata.db';
+    String path = '${databasesPath}geardatabase.db';
     print(path);
     return await openDatabase(
       path,
       version: 1,
       onCreate: (Database db, int version) async {
-        await db.execute(
-          '''CREATE TABLE IF NOT EXISTS product (
+        await db.execute('''CREATE TABLE IF NOT EXISTS product (
               id INTEGER PRIMARY KEY AUTOINCREMENT, 
               name VACHAR(45) NOT NULL, 
               price DOUBLE NOT NULL, 
               category VACHAR(45) NOT NULL, 
               quantity INT NOT NULL, 
-              image BLOB NULL);
+              image BLOB NULL)''');
 
-              CREATE TABLE IF NOT EXISTS user (
+        await db.execute('''CREATE TABLE IF NOT EXISTS user (
               id INTEGER PRIMARY KEY AUTOINCREMENT, 
               name VACHAR(70) NOT NULL, 
+              cpf VARCHAR(20) NOT NULL,
               birthday VARCHAR(14) NOT NULL, 
               company VACHAR(45) NOT NULL, 
               CNPJ VARCHAR(45) NOT NULL, 
-              telephone VARCHAR(45) NULL
-              cellPhone VACHAR(45) NOT NULL, 
+              telephone VARCHAR(45) NULL,
+              mobileNumber VACHAR(45) NOT NULL, 
               CEP VACHAR(45) NOT NULL, 
               adress VACHAR(70) NOT NULL,
-              login VARCHAR(70) NOT NULL,
-              password VARCHAR(40) NOT NULL)''',
-        );
+              email VARCHAR(70) NOT NULL,
+              password VARCHAR(40) NOT NULL)''');
       },
     );
   }
@@ -88,9 +87,20 @@ class GearDatabase {
     return listProducts;
   }
 
-  Future delete(int code) async {
+  Future<UserModel> selectUser(login, password) async {
     final db = await instance.database;
-    await db.rawDelete('DELETE FROM product WHERE id = $code');
+    List<Map<String, dynamic>> list = await db.rawQuery(
+        '${'SELECT * FROM user WHERE email = "' + login + '" AND password = "' + password}"');
+    print(list);
+    UserModel user = UserModel.fromMap(list[0]);
+    return user;
+  }
+
+  Future delete(int productCode) async {
+    final db = await instance.database;
+    db.rawDelete(
+      'DELETE FROM product WHERE id = $productCode',
+    );
   }
 
   Future closeDatabase() async {
