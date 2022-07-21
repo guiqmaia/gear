@@ -33,8 +33,7 @@ class _ColumnUserLoginWithState extends State<ColumnUserLoginWith> {
       widget.loginController.text,
       widget.passwordController.text,
     );
-    widget.loginController.clear();
-    widget.passwordController.clear();
+
     if (user.email == widget.loginController.text) {
       setState(
         () {
@@ -107,7 +106,8 @@ class _ColumnUserLoginWithState extends State<ColumnUserLoginWith> {
               child: TextButton(
                 onPressed: () {
                   verifyLogin();
-                  print('object');
+                  widget.loginController.clear();
+                  widget.passwordController.clear();
                 },
                 child: const Text(
                   'Entrar',
