@@ -40,8 +40,9 @@ class _BodyHomePageState extends State<BodyHomePage> {
                 Stack(
                   children: [
                     Container(
-                      padding: const EdgeInsets.only(top: 25),
-                      height: 400,
+                      height: MediaQuery.of(context).size.height * 0.57,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 40),
                       width: MediaQuery.of(context).size.width,
                       decoration: const BoxDecoration(
                         color: Colors.black,
