@@ -44,6 +44,7 @@ dependencies:
   flutter_launcher_icons: ^0.9.3   
   animated_text_kit: ^4.2.2
   brasil_fields: ^1.4.5
+  graphic: ^0.10.5
 
 dev_dependencies:
   flutter_test:
