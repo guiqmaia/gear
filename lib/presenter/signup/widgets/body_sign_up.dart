@@ -90,16 +90,18 @@ class _BodySignUpState extends State<BodySignUp> {
               formater: CnpjInputFormatter(),
               isObscured: false,
             ),
-            TextFieldApp(
+            TextFieldAppFormatted(
               labelItem: 'Telefone',
               iconInput: Icons.phone,
               typeController: widget.phoneController,
+              formater: TelefoneInputFormatter(),
               isObscured: false,
             ),
-            TextFieldApp(
+            TextFieldAppFormatted(
               labelItem: 'Celular',
               iconInput: Icons.cell_wifi,
               typeController: widget.cellphoneController,
+              formater: TelefoneInputFormatter(),
               isObscured: false,
             ),
             TextFieldAppFormatted(
@@ -137,15 +139,15 @@ class _BodySignUpState extends State<BodySignUp> {
                 onPressed: () async {
                   UserModel userModel = UserModel(
                     name: widget.nameController.text,
-                    // cpf: widget.cpfController.text,
+                    cpf: widget.cpfController.text,
                     birthday: widget.bithdayDateController.text,
                     company: widget.bussinessNameController.text,
                     cnpj: widget.cnpjController.text,
                     telephone: widget.phoneController.text,
-                    cellPhone: widget.cellphoneController.text,
+                    mobileNumber: widget.cellphoneController.text,
                     cep: widget.cepController.text,
                     adress: widget.adressController.text,
-                    login: widget.loginController.text,
+                    email: widget.loginController.text,
                     password: widget.passwordController.text,
                   );
                   await GearDatabase.instance.insertUser(userModel);
