@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../shared/widgets/btn_standard_app.dart';
 
-
 import '../../../core/app_assets.dart';
 import '../../../infra/database/create_database_products.dart';
 import '../../cash_register/cash_register_page.dart';
 import '../../category/category_page.dart';
-
 
 class BodyHomePage extends StatefulWidget {
   const BodyHomePage({Key? key}) : super(key: key);
@@ -109,12 +107,14 @@ class _BodyHomePageState extends State<BodyHomePage> {
                                   fontWeight: FontWeight.w500),
                             ),
                             SizedBox(height: 8),
-                            Text('Douglas Costa da Silva ',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500,
-                                )),
+                            Text(
+                              'Douglas Costa da Silva ',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -156,7 +156,6 @@ class _BodyHomePageState extends State<BodyHomePage> {
                             setState(() {
                               createListProducts();
                               isCreated = true;
-
                               Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) => const CategoryPage(),
@@ -164,7 +163,6 @@ class _BodyHomePageState extends State<BodyHomePage> {
                               );
                             });
                           }
-
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) => const CategoryPage(),

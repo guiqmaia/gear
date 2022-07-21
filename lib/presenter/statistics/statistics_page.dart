@@ -12,21 +12,21 @@ class ResultsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: BodyResultsPage(),
+      body: BodyStatistics(),
     );
   }
 }
 
-class BodyResultsPage extends StatefulWidget {
-  const BodyResultsPage({
+class BodyStatistics extends StatefulWidget {
+  const BodyStatistics({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<BodyResultsPage> createState() => _BodyResultsPageState();
+  State<BodyStatistics> createState() => _BodyStatisticsState();
 }
 
-class _BodyResultsPageState extends State<BodyResultsPage> {
+class _BodyStatisticsState extends State<BodyStatistics> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -35,7 +35,7 @@ class _BodyResultsPageState extends State<BodyResultsPage> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           const TopBarApp(
-              title: 'Resultados', pageRoute: HomePage(), isProfile: false),
+              title: 'Estatísticas', pageRoute: HomePage(), isProfile: false),
           Container(
             margin: const EdgeInsets.symmetric(
               vertical: 10,

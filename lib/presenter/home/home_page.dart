@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/statistics/statistics_page.dart';
 
 import '../../core/app_assets.dart';
 import '../profile/profile_page.dart';
-import '../results/results_page.dart';
 import 'widgets/body_home_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     BodyHomePage(),
-    BodyResultsPage(),
+    BodyStatistics(),
     BodyProfilePage(),
   ];
 
