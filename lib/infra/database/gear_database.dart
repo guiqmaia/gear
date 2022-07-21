@@ -18,7 +18,7 @@ class GearDatabase {
 
   Future<Database> _initDB() async {
     var databasesPath = await getDatabasesPath();
-    String path = '${databasesPath}kjneoin.db';
+    String path = '${databasesPath}/teste.db';
     return await openDatabase(
       path,
       version: 1,

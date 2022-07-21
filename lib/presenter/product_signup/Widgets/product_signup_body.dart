@@ -3,6 +3,8 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gear/presenter/category/category_page.dart';
+import 'package:gear/presenter/product/product_page.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
@@ -39,7 +41,7 @@ class _SignupPageBodyState extends State<SignupPageBody> {
     DropdownMenuItem(value: 'Energético', child: Text('Energético')),
     DropdownMenuItem(value: 'Água', child: Text('Água')),
   ];
-  
+
   Uint8List? photo;
   File? image;
   Future pickImage() async {
@@ -146,6 +148,9 @@ class _SignupPageBodyState extends State<SignupPageBody> {
                       );
                       await GearDatabase.instance.insert(productModel);
                       if (!mounted) return;
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CategoryPage()));
+                      Navigator.of(context).pop();
+                      Navigator.of(context).pop();
                       Navigator.of(context).pop();
                     },
                     child: const Text(

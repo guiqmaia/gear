@@ -44,6 +44,8 @@ class _ColumnUserLoginWithState extends State<ColumnUserLoginWith> {
         },
       );
     }
+    widget.loginController.clear();
+    widget.passwordController.clear();
   }
 
   @override
@@ -106,8 +108,6 @@ class _ColumnUserLoginWithState extends State<ColumnUserLoginWith> {
               child: TextButton(
                 onPressed: () {
                   verifyLogin();
-                  widget.loginController.clear();
-                  widget.passwordController.clear();
                 },
                 child: const Text(
                   'Entrar',
