@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../add_sales/add_sales_page.dart';
 import '../shared/widgets/btn_standard_app.dart';
 import 'widgets/body_sales_page.dart';
 
@@ -18,7 +19,7 @@ class _SalesPageState extends State<SalesPage> {
       body: const BodyCashRegister(),
       bottomNavigationBar: BtnStandardApp(
         title: 'Adicionar venda',
-        pageRoute: const SalesPage(),
+        pageRoute: const AddSalesPage(),
         widthBtn: MediaQuery.of(context).size.width,
       ),
     );
