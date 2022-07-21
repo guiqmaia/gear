@@ -37,23 +37,23 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
   List<DropdownMenuItem<String>>? dropDownItems = [];
   String? categoryValue;
 
-  Future<List<DropdownMenuItem<String>>> getDropdownItems(category) async {
-    listProduct = await GearDatabase.instance.select(category);
-    print(category);
+  // Future<List<DropdownMenuItem<String>>> getDropdownItems(category) async {
+  //   listProduct = await GearDatabase.instance.select(category);
+  //   print(category);
 
-    listProduct!.forEach((entry) {
-      var newDropdown = DropdownMenuItem(
-        child: Text('${entry.name}'),
-        value: '{$entry.name}',
-      );
-      print(entry.name);
+  //   listProduct!.forEach((entry) {
+  //     var newDropdown = DropdownMenuItem(
+  //       child: Text('${entry.name}'),
+  //       value: '{$entry.name}',
+  //     );
+  //     print(entry.name);
 
-      dropDownItems!.add(newDropdown);
-    });
+  //     dropDownItems!.add(newDropdown);
+  //   });
 
-    print(dropDownItems);
-    return dropDownItems!;
-  }
+  //   print(dropDownItems);
+  //   return dropDownItems!;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -73,18 +73,13 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           iconDropdown: Icons.sell_rounded,
           selectedValueController: widget.categoryController,
         ),
-        InkWell(
-          onTap: () {
-            setState(() {
-              getDropdownItems(widget.categoryController.text);
-            });
-          },
-          child: DropDownInput(
-            dropdownList: dropDownItems!,
-            labelDropdown: 'Produto',
-            iconDropdown: Icons.description_rounded,
-            selectedValueController: widget.categoryController,
-          ),
+        DropDownInput(
+          dropdownList: const [
+            DropdownMenuItem(value: 'Produto', child: Text('Produto')),
+          ],
+          labelDropdown: 'Produto',
+          iconDropdown: Icons.description_rounded,
+          selectedValueController: widget.categoryController,
         ),
         TextFieldApp(
           labelItem: 'Código do produto',

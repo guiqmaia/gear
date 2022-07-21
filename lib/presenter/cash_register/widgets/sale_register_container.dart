@@ -29,6 +29,8 @@ List<SaleRegisterContainer> salesList = [
       price: 'R\$ 25,00', quantity: 5, product: 'Soda', productImg: imgSodaAntarctica, payment: 'Débito',),
   SaleRegisterContainer(
       price: 'R\$ 50,00', quantity: 10, product: 'Coca-cola', productImg: imgCocaCola, payment: 'Crédito',),
+  SaleRegisterContainer(
+      price: 'R\$ 120,50', quantity: 1, product: 'White Horse', productImg: imgWhiteHorse, payment: 'PIX',),
 ];
 
 List get getLista {
