@@ -75,7 +75,6 @@ class _ContainerProductCategoryState extends State<ContainerProductCategory> {
                 deleteProduct();
               },
             ),
-            const SizedBox(width: 5),
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Image.memory(
