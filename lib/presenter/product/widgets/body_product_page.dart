@@ -22,6 +22,7 @@ class BodyProductPage extends StatefulWidget {
 class _BodyProductPageState extends State<BodyProductPage> {
   List<ProductModel> products = [];
   bool isLoading = false;
+  TextEditingController searchController = TextEditingController();
 
   @override
   void initState() {
@@ -49,7 +50,7 @@ class _BodyProductPageState extends State<BodyProductPage> {
         TextFieldApp(
           labelItem: 'Pesquisar',
           iconInput: Icons.search,
-          typeController: null,
+          typeController: searchController,
           isObscured: false,
         ),
         isLoading

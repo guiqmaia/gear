@@ -6,8 +6,8 @@ import '../../shared/widgets/top_bar_app.dart';
 import 'wrap_container_category.dart';
 
 class BodyCategoryPage extends StatelessWidget {
-  const BodyCategoryPage({Key? key}) : super(key: key);
-
+  BodyCategoryPage({Key? key}) : super(key: key);
+  TextEditingController searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -20,7 +20,7 @@ class BodyCategoryPage extends StatelessWidget {
         TextFieldApp(
           labelItem: 'Pesquisar',
           iconInput: Icons.search,
-          typeController: null,
+          typeController: searchController,
           isObscured: false,
         ),
         const SizedBox(height: 10),
