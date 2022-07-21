@@ -43,7 +43,7 @@ class _BodyProductPageState extends State<BodyProductPage> {
         TopBarApp(
           title: widget.categoryTitle,
           pageRoute: const CategoryPage(),
-          isProfile: true,
+          isProfile: false,
         ),
         const SizedBox(height: 10),
         TextFieldApp(

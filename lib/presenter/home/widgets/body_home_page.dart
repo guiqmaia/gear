@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-
-import '../../shared/widgets/btn_standard_app.dart';
+import 'package:gear/presenter/shared/widgets/btn_standard_app.dart';
+import 'package:onboarding/onboarding.dart';
 
 import '../../../core/app_assets.dart';
-
 import '../../../infra/database/create_database_products.dart';
 import '../../cash_register/cash_register_page.dart';
 import '../../category/category_page.dart';
-
 import 'top_bar_home.dart';
 
 class BodyHomePage extends StatefulWidget {
