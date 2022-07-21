@@ -12,7 +12,7 @@ class CategoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundGrey,
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: BodyCategoryPage(),
       ),
       bottomNavigationBar: BtnStandardApp(
