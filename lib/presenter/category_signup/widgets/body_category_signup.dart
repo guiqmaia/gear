@@ -52,7 +52,6 @@ class _BodyCategorySignupState extends State<BodyCategorySignup> {
           const SizedBox(height: 20),
           TextFieldApp(
             labelItem: 'Nome',
-            iconInput: Icons.tag_rounded,
             typeController: null,
             isObscured: false,
           ),

@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 // ignore: must_be_immutable
 class TextFieldApp extends StatelessWidget {
   final String labelItem;
-  final IconData iconInput;
   final dynamic typeController;
   bool isObscured = true;
 
@@ -14,7 +13,6 @@ class TextFieldApp extends StatelessWidget {
   TextFieldApp({
     Key? key,
     required this.labelItem,
-    required this.iconInput,
     required this.typeController,
     required this.isObscured,
     // this.formater,
@@ -63,7 +61,9 @@ class RowFormatters extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       obscureText: isObscured ? true : false,
-      decoration: InputDecoration(label: Text(label)),
+      decoration: InputDecoration(
+        label: Text(label),
+      ),
       controller: controller,
     );
   }
