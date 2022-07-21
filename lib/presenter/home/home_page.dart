@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
-              size: 28,
+              size: 35,
             ),
             label: 'Home',
             backgroundColor: Colors.white,
@@ -48,13 +48,13 @@ class _HomePageState extends State<HomePage> {
               Icons.bar_chart,
               size: 35,
             ),
-            label: 'Resultados',
+            label: 'Estatísticas',
             backgroundColor: Colors.white,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
-              size: 30,
+              size: 35,
             ),
             label: 'Perfil',
             backgroundColor: Colors.white,

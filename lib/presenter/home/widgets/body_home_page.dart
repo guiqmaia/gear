@@ -180,11 +180,6 @@ class _BodyHomePageState extends State<BodyHomePage> {
                         ),
                       ),
                     ),
-                    // BtnStandardApp(
-                    //   title: "Estoque",
-                    //   widthBtn: MediaQuery.of(context).size.width * 0.3,
-                    //   pageRoute: const CategoryPage(),
-                    // ),
                   ],
                 ),
               ],
