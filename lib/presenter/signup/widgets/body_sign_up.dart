@@ -74,7 +74,7 @@ class _BodySignUpState extends State<BodySignUp> {
             ),
             TextFieldAppFormatted(
               labelItem: 'Data de Nascimento',
-              iconInput: Icons.date_range,
+              iconInput: Icons.date_range_rounded,
               typeController: widget.bithdayDateController,
               isObscured: false,
               formater: DataInputFormatter(),

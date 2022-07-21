@@ -7,6 +7,7 @@ class InfoContainerProfile extends StatelessWidget {
   final String titleInfo;
   final String info;
   final IconData iconInfo;
+
   const InfoContainerProfile({
     Key? key,
     required TextStyle style,
@@ -23,9 +24,9 @@ class InfoContainerProfile extends StatelessWidget {
       ),
       child: Container(
         padding: const EdgeInsets.symmetric(
-          horizontal: 10,
+          horizontal: 15,
+          vertical: 18,
         ),
-        height: 100,
         margin: const EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
@@ -58,7 +59,7 @@ class InfoContainerProfile extends StatelessWidget {
                 Icon(
                   iconInfo,
                   color: greenNeon,
-                  size: 32,
+                  size: 28,
                 ),
                 const SizedBox(width: 10),
                 Text(
