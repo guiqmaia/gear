@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'info_container_profile.dart';
@@ -31,7 +32,7 @@ class ContainerInfo extends StatelessWidget {
                   color: Colors.white,
                   fontSize: 15,
                 ),
-                iconInfo: Icons.local_phone_outlined,
+                iconInfo: Icons.phone,
               ),
               InfoContainerProfile(
                 titleInfo: "CEP:",
@@ -40,7 +41,7 @@ class ContainerInfo extends StatelessWidget {
                   color: Colors.white,
                   fontSize: 15,
                 ),
-                iconInfo: Icons.location_searching,
+                iconInfo: CupertinoIcons.location_solid,
               ),
               InfoContainerProfile(
                 titleInfo: "Endereço:",
@@ -49,7 +50,7 @@ class ContainerInfo extends StatelessWidget {
                   color: Colors.white,
                   fontSize: 15,
                 ),
-                iconInfo: Icons.location_on_outlined,
+                iconInfo: Icons.home,
               ),
               InfoContainerProfile(
                   titleInfo: "Email:",
@@ -58,7 +59,7 @@ class ContainerInfo extends StatelessWidget {
                     color: Colors.white,
                     fontSize: 15,
                   ),
-                  iconInfo: Icons.email_outlined),
+                  iconInfo: Icons.email),
             ],
           ),
         ),
@@ -84,7 +85,7 @@ class ContainerInfo extends StatelessWidget {
                     color: Colors.white,
                     fontSize: 15,
                   ),
-                  iconInfo: Icons.person_outline),
+                  iconInfo: Icons.person),
               InfoContainerProfile(
                   titleInfo: "Data de Nascimento:",
                   info: "27/04/2017",
@@ -100,7 +101,7 @@ class ContainerInfo extends StatelessWidget {
                   color: Colors.white,
                   fontSize: 15,
                 ),
-                iconInfo: Icons.location_on_outlined,
+                iconInfo: Icons.numbers,
               ),
             ],
           ),
