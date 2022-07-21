@@ -1,7 +1,7 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/shared/widgets/text_field_app.dart';
+import '../../shared/widgets/text_field_app.dart';
 import '../../../core/app_assets.dart';
 import '../../../infra/models/user_model.dart';
 import '../../shared/widgets/big_text_app.dart';

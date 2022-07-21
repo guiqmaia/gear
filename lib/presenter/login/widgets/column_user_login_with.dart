@@ -3,10 +3,12 @@ import 'package:gear/core/app_assets.dart';
 import 'package:gear/core/app_getit.dart';
 import 'package:gear/infra/models/user_model.dart';
 import 'package:gear/presenter/login/login_page.dart';
+import '../../../core/app_assets.dart';
+import '../../../core/app_getit.dart';
+import '../../../infra/models/user_model.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
-import '../../../core/app_assets.dart';
 
 import '../../home/home_page.dart';
 import '../../signup/signup.dart';

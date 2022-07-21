@@ -1,7 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/home/home_page.dart';
-import 'package:gear/presenter/shared/widgets/top_bar_app.dart';
+import '../home/home_page.dart';
+import '../shared/widgets/top_bar_app.dart';
 
 import 'widget/value_day.dart';
 import 'widget/liders_product.dart';

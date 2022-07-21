@@ -45,7 +45,7 @@ class TextFieldAppFormatted extends StatelessWidget {
 class RowFormatters extends StatelessWidget {
   final String label;
   final TextInputFormatter? formatter;
-  RowFormatters({
+  const RowFormatters({
     Key? key,
     required this.label,
     this.formatter,

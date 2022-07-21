@@ -24,7 +24,7 @@ class ProductLeader extends StatelessWidget {
             children: [
               Text(
                 product,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
@@ -35,9 +35,9 @@ class ProductLeader extends StatelessWidget {
           ),
           Column(
             children: [
-              const Padding(padding: const EdgeInsets.fromLTRB(50, 10, 50, 0)),
+              const Padding(padding: EdgeInsets.fromLTRB(50, 10, 50, 0)),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: greenNeon,
