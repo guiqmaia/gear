@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/shared/widgets/text_field_app.dart';
 
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/product_model.dart';
 import '../../category/category_page.dart';
-import '../../shared/widgets/text_field_app.dart';
 import '../../shared/widgets/top_bar_app.dart';
 import 'container_product_category.dart';
 
@@ -50,6 +50,7 @@ class _BodyProductPageState extends State<BodyProductPage> {
           labelItem: 'Pesquisar',
           iconInput: Icons.search,
           typeController: null,
+          isObscured: false,
         ),
         isLoading
             ? const CircularProgressIndicator()

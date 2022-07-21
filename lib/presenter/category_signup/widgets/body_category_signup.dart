@@ -3,12 +3,12 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gear/presenter/shared/widgets/text_field_app.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
 import '../../category/category_page.dart';
 import '../../product_signup/Widgets/default_image_container.dart';
-import '../../shared/widgets/text_field_app.dart';
 import '../../shared/widgets/top_bar_app.dart';
 
 class BodyCategorySignup extends StatefulWidget {
@@ -54,6 +54,7 @@ class _BodyCategorySignupState extends State<BodyCategorySignup> {
             labelItem: 'Nome',
             iconInput: Icons.tag_rounded,
             typeController: null,
+            isObscured: false,
           ),
           Container(
             decoration: BoxDecoration(

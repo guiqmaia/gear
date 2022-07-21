@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/shared/widgets/text_field_app.dart';
 import '../../../core/app_assets.dart';
-import '../../shared/widgets/text_field_app.dart';
+import '../../shared/widgets/text_field_app_formatted.dart';
 
 import '../../shared/widgets/btn_standard_app.dart';
 import '../../login/login_page.dart';
