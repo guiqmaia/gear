@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/profile/profile_page.dart';
 
 import 'package:gear/presenter/splash/splash_page.dart';
 
@@ -8,7 +9,7 @@ void main(List<String> args) {
   setupGetIT();
   runApp(
     const MaterialApp(
-      home: SplashPage(),
+      home: ProfilePage(),
       title: 'Gear',
       debugShowCheckedModeBanner: false,
     ),

@@ -1,4 +1,5 @@
 import 'package:brasil_fields/brasil_fields.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gear/presenter/shared/widgets/text_field_app.dart';
 import '../../../core/app_assets.dart';
@@ -66,7 +67,7 @@ class _BodySignUpState extends State<BodySignUp> {
             ),
             TextFieldAppFormatted(
               labelItem: 'CPF',
-              iconInput: Icons.person,
+              iconInput: Icons.numbers,
               typeController: widget.nameController,
               isObscured: false,
               formater: CpfInputFormatter(),
@@ -107,7 +108,7 @@ class _BodySignUpState extends State<BodySignUp> {
             ),
             TextFieldAppFormatted(
               labelItem: 'CEP',
-              iconInput: Icons.numbers,
+              iconInput: CupertinoIcons.location_solid,
               typeController: widget.cepController,
               formater: CepInputFormatter(),
               isObscured: false,
