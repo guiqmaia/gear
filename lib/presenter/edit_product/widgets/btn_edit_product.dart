@@ -78,6 +78,14 @@ class _BtnEditProductState extends State<BtnEditProduct> {
 
           Navigator.of(context).pop();
           Navigator.of(context).pop();
+          Navigator.of(context).pop();
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => ProductPage(
+                categoryTitle: widget.categoryTitle,
+              ),
+            ),
+          );
         },
         child: const Text(
           'Editar',
