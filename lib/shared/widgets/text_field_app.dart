@@ -4,12 +4,14 @@ class TextFieldApp extends StatelessWidget {
   final String labelItem;
   final dynamic typeController;
   bool isObscured = true;
+  bool isEnabled = true;
 
   TextFieldApp({
     Key? key,
     required this.labelItem,
     required this.typeController,
     required this.isObscured,
+    this.isEnabled = true,
   }) : super(key: key);
 
   @override
@@ -31,6 +33,7 @@ class TextFieldApp extends StatelessWidget {
         controller: typeController,
         decoration: InputDecoration(
           label: Text(labelItem),
+          enabled: isEnabled ? true : false,
         ),
       ),
     );
