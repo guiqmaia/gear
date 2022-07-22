@@ -1,11 +1,15 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:gear/core/app_getit.dart';
+import 'package:gear/infra/database/gear_database.dart';
+import 'package:gear/infra/models/user_model.dart';
+import 'package:gear/presenter/home/home_page.dart';
 import 'package:gear/presenter/profile/profile_page.dart';
-import 'package:gear/shared/widgets/btn_standard_app.dart';
-import 'package:gear/shared/widgets/text_field_app.dart';
-import 'package:gear/shared/widgets/text_field_app_formatted.dart';
-import 'package:gear/shared/widgets/top_bar_app.dart';
+import 'package:gear/presenter/profile/widgets/body_profile_page.dart';
+import 'package:gear/presenter/shared/widgets/btn_standard_app.dart';
+import 'package:gear/presenter/shared/widgets/text_field_app.dart';
+import 'package:gear/presenter/shared/widgets/text_field_app_formatted.dart';
+import 'package:gear/presenter/shared/widgets/top_bar_app.dart';
 
 class EditProfileBody extends StatefulWidget {
   const EditProfileBody({Key? key}) : super(key: key);
@@ -16,12 +20,12 @@ class EditProfileBody extends StatefulWidget {
 
 class _EditProfileBodyState extends State<EditProfileBody> {
   final necessaryController = TextEditingController();
-  final telephoneController = TextEditingController();
-  final mobileNumberController = TextEditingController();
-  final cepController = TextEditingController();
-  final adressController = TextEditingController();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  dynamic telephoneController = TextEditingController();
+  dynamic mobileNumberController = TextEditingController();
+  dynamic cepController = TextEditingController();
+  dynamic adressController = TextEditingController();
+  dynamic emailController = TextEditingController();
+  dynamic passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,7 +85,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
               labelItem: 'CEP atual: ${logedUser.cep}',
               typeController: cepController,
               isEnabled: true,
-              formater: TelefoneInputFormatter(),
+              formater: CepInputFormatter(),
               textInputType: TextInputType.number,
             ),
             TextFieldApp(
@@ -94,9 +98,30 @@ class _EditProfileBodyState extends State<EditProfileBody> {
               height: MediaQuery.of(context).size.height * 0.03,
             ),
             BtnStandardApp(
+              onPressed: () async {
+                telephoneController ??= logedUser.telephone;
+                mobileNumberController ??= logedUser.mobileNumber;
+                cepController ??= logedUser.cep;
+                adressController ??= logedUser.adress;
+                UserModel user = UserModel(
+                  name: logedUser.name,
+                  cpf: logedUser.cpf,
+                  birthday: logedUser.birthday,
+                  company: logedUser.company,
+                  cnpj: logedUser.cnpj,
+                  telephone: telephoneController.text,
+                  mobileNumber: mobileNumberController.text,
+                  cep: cepController.text,
+                  adress: adressController.text,
+                  email: logedUser.email,
+                  password: logedUser.password,
+                );
+                await GearDatabase.instance.update(user);
+              },
               title: 'Concluir Edição',
               widthBtn: MediaQuery.of(context).size.width * 0.85,
-              pageRoute: const ProfilePage(),
+              pageRoute: const HomePage(),
+              
             ),
           ],
         ),

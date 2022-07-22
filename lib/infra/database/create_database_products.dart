@@ -15,7 +15,6 @@ class CreateDatabaseProducts {
       bytes = await rootBundle.load(path);
       imgAsset = bytes!.buffer.asUint8List();
     } catch (e) {
-      // ignore: avoid_print
       print('Falha em puxar a imagem: $e');
     }
   }
@@ -88,7 +87,6 @@ class CreateDatabaseProducts {
   createSodas() async {
     for (int i = 0; i < namesSodas.length; i++) {
       await GearDatabase.instance.insert(
-        "product",
         await createProductModel(
           namesSodas[i],
           priceSodas[i],
@@ -103,7 +101,6 @@ class CreateDatabaseProducts {
   createBeers() async {
     for (int i = 0; i < namesBeers.length; i++) {
       await GearDatabase.instance.insert(
-        "product",
         await createProductModel(
           namesBeers[i],
           priceBeers[i],
@@ -118,7 +115,6 @@ class CreateDatabaseProducts {
   createWines() async {
     for (int i = 0; i < namesWines.length; i++) {
       await GearDatabase.instance.insert(
-        "product",
         await createProductModel(
           namesWines[i],
           priceWines[i],
@@ -133,7 +129,6 @@ class CreateDatabaseProducts {
   createDistilled() async {
     for (int i = 0; i < namesDistilled.length; i++) {
       await GearDatabase.instance.insert(
-        "product",
         await createProductModel(
           namesDistilled[i],
           priceDistilled[i],
@@ -148,7 +143,6 @@ class CreateDatabaseProducts {
   createEnergyDrink() async {
     for (int i = 0; i < namesEnergyDrink.length; i++) {
       await GearDatabase.instance.insert(
-        "product",
         await createProductModel(
           namesEnergyDrink[i],
           priceEnergyDrink[i],
@@ -163,7 +157,6 @@ class CreateDatabaseProducts {
   createWater() async {
     for (int i = 0; i < namesWater.length; i++) {
       await GearDatabase.instance.insert(
-        "product",
         await createProductModel(
           namesWater[i],
           priceWater[i],
