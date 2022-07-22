@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
-import '../../category/category_page.dart';
 import '../../product/product_page.dart';
 
 class BtnEditProduct extends StatefulWidget {
@@ -13,7 +12,6 @@ class BtnEditProduct extends StatefulWidget {
     required this.newQuantityController,
     required this.productCode,
     required this.categoryTitle,
-    //required this.photo,
   }) : super(key: key);
 
   final TextEditingController newNameController;
@@ -21,7 +19,6 @@ class BtnEditProduct extends StatefulWidget {
   final TextEditingController newQuantityController;
   final int productCode;
   final String categoryTitle;
-  //Uint8List? photo;
 
   @override
   State<BtnEditProduct> createState() => _BtnEditProductState();
