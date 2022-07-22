@@ -8,12 +8,14 @@ class TextFieldAppFormatted extends StatelessWidget {
   final dynamic typeController;
   TextInputFormatter? formater;
   TextInputType textInputType;
+  bool? isEnabled;
 
   TextFieldAppFormatted({
     Key? key,
     required this.labelItem,
     required this.typeController,
     required this.textInputType,
+    this.isEnabled = true,
     this.formater,
   }) : super(key: key);
 
@@ -34,6 +36,7 @@ class TextFieldAppFormatted extends StatelessWidget {
         formatter: formater,
         controller: typeController,
         keyboardType: textInputType,
+        isEnabled: isEnabled! ? true : false,
       ),
     );
   }

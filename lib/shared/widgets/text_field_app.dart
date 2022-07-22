@@ -4,7 +4,7 @@ class TextFieldApp extends StatelessWidget {
   final String labelItem;
   final dynamic typeController;
   bool isObscured = true;
-  bool isEnabled = true;
+  bool isEnabled;
 
   TextFieldApp({
     Key? key,
@@ -33,7 +33,7 @@ class TextFieldApp extends StatelessWidget {
         controller: typeController,
         decoration: InputDecoration(
           label: Text(labelItem),
-          enabled: isEnabled ? true : false,
+          enabled: isEnabled ? true : false
         ),
       ),
     );

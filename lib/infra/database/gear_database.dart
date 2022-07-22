@@ -95,30 +95,7 @@ class GearDatabase {
     return user;
   }
 
-<<<<<<< HEAD
-  // Future<UserModel> updateUser(UserModel user) async {
-    
-  //   int? id;
-  //   String name;
-  //   String cpf;
-  //   String birthday;
-  //   String company;
-  //   String cnpj;
-  //   String telephone;
-  //   String mobileNumber;
-  //   String cep;
-  //   String adress;
-  //   String email;
-  //   String password;
-
-  //   Database db = await GearDatabase.instance.database;
-
-  // }
-
-  Future delete(int productCode) async {
-=======
   Future delete(table, int id) async {
->>>>>>> 607a1e8c54a8726c4a857d6a8f9dfd1518a6eeb4
     final db = await instance.database;
     db.rawDelete(
       'DELETE FROM $table WHERE id = $id',
