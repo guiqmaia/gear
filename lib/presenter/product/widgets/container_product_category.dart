@@ -30,7 +30,8 @@ class _ContainerProductCategoryState extends State<ContainerProductCategory> {
   bool isLoading = false;
 
   deleteProduct() async {
-    widget.products = await GearDatabase.instance.delete(widget.productCode);
+    widget.products =
+        await GearDatabase.instance.delete("product", widget.productCode);
     setState(() => isLoading = true);
   }
 
