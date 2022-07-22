@@ -19,7 +19,7 @@ class GearDatabase {
 
   Future<Database> _initDB() async {
     var databasesPath = await getDatabasesPath();
-    String path = '$databasesPath/asdakdsna.db';
+    String path = '$databasesPath/teste.db';
     return await openDatabase(
       path,
       version: 1,
@@ -61,6 +61,18 @@ class GearDatabase {
     db.insert(table, model.toMap());
     return model;
   }
+
+  // Future<List<T>> operation<T>(T model, String sql) async {
+  //   final db = await instance.database;
+  //   List<Map<String, dynamic>> list = await db.rawQuery(sql);
+  //   List<T> listProducts = [];
+
+  //   for (int i = 0; i < list.length; i++) {
+  //     listProducts.add(model.fromMap(list[i]));
+  //   }
+
+  //   return listProducts;
+  // }
 
   Future<List<ProductModel>> selectAll(category) async {
     final db = await instance.database;

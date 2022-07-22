@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../product_signup/product_signup_page.dart';
 
 import '../../core/app_assets.dart';
 import '../../shared/widgets/btn_standard_app.dart';
+import '../category_signup/category_signup_page.dart';
 import 'widgets/body_category_page.dart';
 
 class CategoryPage extends StatelessWidget {
@@ -16,8 +16,8 @@ class CategoryPage extends StatelessWidget {
         child: BodyCategoryPage(),
       ),
       bottomNavigationBar: BtnStandardApp(
-        title: 'Novo produto',
-        pageRoute: const ProductSignupPage(),
+        title: 'Nova categoria',
+        pageRoute: const CategorySignupPage(),
         widthBtn: MediaQuery.of(context).size.width,
       ),
     );
