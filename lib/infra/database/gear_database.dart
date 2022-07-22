@@ -1,3 +1,4 @@
+import 'package:gear/infra/models/default_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../models/product_model.dart';
@@ -18,7 +19,7 @@ class GearDatabase {
 
   Future<Database> _initDB() async {
     var databasesPath = await getDatabasesPath();
-    String path = '${databasesPath}/teste.db';
+    String path = '$databasesPath/teste.db';
     return await openDatabase(
       path,
       version: 1,
@@ -48,16 +49,10 @@ class GearDatabase {
     );
   }
 
-  Future<ProductModel> insert(ProductModel productModel) async {
+  Future<DefaultModel> insert(String table, DefaultModel model) async {
     final db = await instance.database;
-    db.insert("product", productModel.toMap());
-    return productModel;
-  }
-
-  Future<UserModel> insertUser(UserModel user) async {
-    final db = await instance.database;
-    db.insert("user", user.toMap());
-    return user;
+    db.insert(table, model.toMap());
+    return model;
   }
 
   Future<List<ProductModel>> select(category) async {
@@ -82,7 +77,7 @@ class GearDatabase {
   Future<UserModel> selectUser(login, password) async {
     final db = await instance.database;
     List<Map<String, dynamic>> list = await db.rawQuery(
-        '${'SELECT * FROM user WHERE email = "' + login + '" AND password = "' + password}"');
+        'SELECT * FROM user WHERE email = $login AND password = $password');
     UserModel user = UserModel.fromMap(list[0]);
     return user;
   }

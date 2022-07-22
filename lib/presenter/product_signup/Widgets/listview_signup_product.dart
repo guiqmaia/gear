@@ -8,7 +8,6 @@ import 'package:image_picker/image_picker.dart';
 import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/product_model.dart';
-import '../../category/category_page.dart';
 import '../../product/product_page.dart';
 import '../../../shared/widgets/dropdown_input.dart';
 import '../../../shared/widgets/text_field_app.dart';
@@ -130,11 +129,11 @@ class _ListViewSingupProductState extends State<ListViewSingupProduct> {
           ),
           child: TextButton(
             onPressed: () async {
-              if(int.parse(widget.quantityController.text) < 0) {
+              if (int.parse(widget.quantityController.text) < 0) {
                 return;
               }
 
-              if(double.parse(widget.priceController.text) < 0) {
+              if (double.parse(widget.priceController.text) < 0) {
                 return;
               }
 
@@ -145,7 +144,7 @@ class _ListViewSingupProductState extends State<ListViewSingupProduct> {
                 quantity: int.parse(widget.quantityController.text),
                 image: photo!,
               );
-              await GearDatabase.instance.insert(productModel);
+              await GearDatabase.instance.insert("product", productModel);
               if (!widget.mounted) return;
               Navigator.of(context).pop();
               Navigator.of(context).pop();

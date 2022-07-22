@@ -1,5 +1,4 @@
 import 'package:brasil_fields/brasil_fields.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/app_assets.dart';
@@ -147,7 +146,7 @@ class _ListViewSignUpState extends State<ListViewSignUp> {
                 email: widget.loginController.text,
                 password: widget.passwordController.text,
               );
-              await GearDatabase.instance.insertUser(userModel);
+              await GearDatabase.instance.insert("user", userModel);
 
               if (!mounted) return;
 

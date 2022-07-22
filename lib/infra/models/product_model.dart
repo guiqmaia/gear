@@ -1,7 +1,10 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-class ProductModel {
+import 'package:gear/infra/models/default_model.dart';
+
+class ProductModel implements DefaultModel {
+  @override
   int? id;
   String name;
   double price;
@@ -18,6 +21,7 @@ class ProductModel {
     required this.image,
   });
 
+  @override
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
