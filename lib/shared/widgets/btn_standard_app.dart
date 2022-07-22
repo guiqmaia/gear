@@ -43,10 +43,10 @@ class BtnStandardApp extends StatelessWidget {
           if (pageRoute == null) {
             Navigator.of(context).pop(context);
           } else {
-            Navigator.of(context).push(
+            Navigator.of(context).push( 
               MaterialPageRoute(
-                builder: (context) => pageRoute,
-              ),
+                builder: (context) => pageRoute, 
+              ), 
             );
           }
         },

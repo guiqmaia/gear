@@ -11,14 +11,14 @@ import '../../product_signup/Widgets/default_image_container.dart';
 import '../../../shared/widgets/text_field_app.dart';
 import '../../../shared/widgets/top_bar_app.dart';
 
-class BodyCategorySignup extends StatefulWidget {
-  const BodyCategorySignup({Key? key}) : super(key: key);
+class Bodycategoriesignup extends StatefulWidget {
+  const Bodycategoriesignup({Key? key}) : super(key: key);
 
   @override
-  State<BodyCategorySignup> createState() => _BodyCategorySignupState();
+  State<Bodycategoriesignup> createState() => _BodycategoriesignupState();
 }
 
-class _BodyCategorySignupState extends State<BodyCategorySignup> {
+class _BodycategoriesignupState extends State<Bodycategoriesignup> {
   File? fileImg;
   Uint8List? imgCategory;
   Future pickImage() async {

@@ -1,16 +1,17 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
+import 'package:gear/infra/models/category_model.dart';
 
 import '../../../core/app_assets.dart';
 import '../../product/product_page.dart';
 
 class ContainerCategoryInventory extends StatefulWidget {
-  final String categoryTitle;
-  final dynamic categoryImg;
+  final CategoryModel categoryModel;
 
   const ContainerCategoryInventory({
     Key? key,
-    required this.categoryTitle,
-    required this.categoryImg,
+    required this.categoryModel,
   }) : super(key: key);
 
   @override
@@ -20,7 +21,6 @@ class ContainerCategoryInventory extends StatefulWidget {
 
 class _ContainerCategoryInventoryState
     extends State<ContainerCategoryInventory> {
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -28,8 +28,7 @@ class _ContainerCategoryInventoryState
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) =>
-                ProductPage(categoryTitle: widget.categoryTitle),
+            builder: (context) => ProductPage(category: widget.categoryModel),
           ),
         );
       },
@@ -52,8 +51,8 @@ class _ContainerCategoryInventoryState
         ),
         child: Column(
           children: [
-            Image.asset(
-              widget.categoryImg,
+            Image.memory(
+              widget.categoryModel.image,
               height: MediaQuery.of(context).size.height * 0.15,
             ),
             const SizedBox(height: 13),
@@ -67,7 +66,7 @@ class _ContainerCategoryInventoryState
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Text(
-                widget.categoryTitle,
+                widget.categoryModel.name,
                 style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w500,

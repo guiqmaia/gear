@@ -8,7 +8,7 @@ class ProductModel implements DefaultModel {
   int? id;
   String name;
   double price;
-  String category;
+  int categoryId;
   int quantity;
   Uint8List image;
 
@@ -16,7 +16,7 @@ class ProductModel implements DefaultModel {
     this.id,
     required this.name,
     required this.price,
-    required this.category,
+    required this.categoryId,
     required this.quantity,
     required this.image,
   });
@@ -27,7 +27,7 @@ class ProductModel implements DefaultModel {
       'id': id,
       'name': name,
       'price': price,
-      'category': category,
+      'categoryId': categoryId,
       'quantity': quantity,
       'image': image,
     };
@@ -38,7 +38,7 @@ class ProductModel implements DefaultModel {
       id: map['id'] as int,
       name: map['name'] as String,
       price: map['price'] as double,
-      category: map['category'] as String,
+      categoryId: map['categoryId'] as int,
       quantity: map['quantity'] as int,
       image: map['image'] as Uint8List,
     );

@@ -17,7 +17,7 @@ class CategoryPage extends StatelessWidget {
       ),
       bottomNavigationBar: BtnStandardApp(
         title: 'Nova categoria',
-        pageRoute: const CategorySignupPage(),
+        pageRoute: const categoriesignupPage(),
         widthBtn: MediaQuery.of(context).size.width,
       ),
     );

@@ -17,6 +17,7 @@ class _ColumnBtnHomeState extends State<ColumnBtnHome> {
   static bool isCreated = false;
 
   Future createListProducts() async {
+    await CreateDatabaseProducts().createCategories();
     await CreateDatabaseProducts().createSodas();
     await CreateDatabaseProducts().createBeers();
     await CreateDatabaseProducts().createWines();

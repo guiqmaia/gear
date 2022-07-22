@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/services.dart';
 
 import '../../core/app_assets.dart';
+import '../models/category_model.dart';
 import '../models/product_model.dart';
 import 'gear_database.dart';
 
@@ -16,11 +17,25 @@ class CreateDatabaseProducts {
       imgAsset = bytes!.buffer.asUint8List();
     } catch (e) {
       // ignore: avoid_print
-      print('Falha em puxar a imagem: $e');
+      print('Falha em buscar a imagem: $e');
     }
   }
 
-  List<String> namesSodas = ['Coca-cola', 'Fanta', 'Sprite', 'Pepsi'];
+  List<String> namescategories = [
+    'Refrigerante',
+    'Cerveja',
+    'Vinho',
+    'Destilado',
+    'Energético',
+    'Água',
+  ];
+
+  List<String> namesSodas = [
+    'Coca-cola',
+    'Fanta',
+    'Sprite',
+    'Pepsi',
+  ];
   List<String> namesBeers = [
     'Mary Wells',
     'Dear Paula',
@@ -39,8 +54,15 @@ class CreateDatabaseProducts {
     'Beefeater',
     'White Horse'
   ];
-  List<String> namesEnergyDrink = ['RedBull', 'Monster', 'Baly'];
-  List<String> namesWater = ['Água - Sem gás', 'Água - com gás'];
+  List<String> namesEnergyDrink = [
+    'RedBull',
+    'Monster',
+    'Baly',
+  ];
+  List<String> namesWater = [
+    'Água - Sem gás',
+    'Água - com gás',
+  ];
 
   List<double> priceSodas = [5.6, 4.3, 4.5, 5.8];
   List<double> priceBeers = [11.7, 12.8, 10.5, 9.5];
@@ -49,15 +71,6 @@ class CreateDatabaseProducts {
   List<double> priceEnergyDrink = [18.7, 15.6, 12.0];
   List<double> priceWater = [5.0, 6.5];
 
-  List<String> categoryProducts = [
-    'Refrigerante',
-    'Cerveja',
-    'Vinho',
-    'Destilado',
-    'Energético',
-    'Água'
-  ];
-
   List<int> quantitySodas = [35, 10, 20, 25];
   List<int> quantityBeers = [20, 10, 20, 25];
   List<int> quantityWines = [10, 12, 12, 15];
@@ -65,10 +78,36 @@ class CreateDatabaseProducts {
   List<int> quantityEnergyDrink = [30, 25, 25];
   List<int> quantityWater = [150, 70];
 
+  Future<CategoryModel> createCategoryModel(
+    String name,
+    String? imgPath,
+  ) async {
+    await pickImageAsset(imgPath);
+
+    CategoryModel categoryModelProduct = CategoryModel(
+      name: name,
+      image: imgAsset!,
+    );
+
+    return categoryModelProduct;
+  }
+
+  createCategories() async {
+    for (int i = 0; i < namescategories.length; i++) {
+      await GearDatabase.instance.insert(
+        'Category',
+        await createCategoryModel(
+          namescategories[i],
+          listCategory[i],
+        ),
+      );
+    }
+  }
+
   Future<ProductModel> createProductModel(
     String name,
     double price,
-    String category,
+    int categoryId,
     int quantity,
     String? imgPath,
   ) async {
@@ -77,7 +116,7 @@ class CreateDatabaseProducts {
     ProductModel productModelProduct = ProductModel(
       name: name,
       price: price,
-      category: category,
+      categoryId: categoryId,
       quantity: quantity,
       image: imgAsset!,
     );
@@ -92,7 +131,7 @@ class CreateDatabaseProducts {
         await createProductModel(
           namesSodas[i],
           priceSodas[i],
-          categoryProducts[0],
+          1,
           quantitySodas[i],
           listSodas[i],
         ),
@@ -107,7 +146,7 @@ class CreateDatabaseProducts {
         await createProductModel(
           namesBeers[i],
           priceBeers[i],
-          categoryProducts[1],
+          2,
           quantityBeers[i],
           listBeers[i],
         ),
@@ -122,7 +161,7 @@ class CreateDatabaseProducts {
         await createProductModel(
           namesWines[i],
           priceWines[i],
-          categoryProducts[2],
+          3,
           quantityWines[i],
           listWines[i],
         ),
@@ -137,7 +176,7 @@ class CreateDatabaseProducts {
         await createProductModel(
           namesDistilled[i],
           priceDistilled[i],
-          categoryProducts[3],
+          4,
           quantityDistilled[i],
           listDistilled[i],
         ),
@@ -152,7 +191,7 @@ class CreateDatabaseProducts {
         await createProductModel(
           namesEnergyDrink[i],
           priceEnergyDrink[i],
-          categoryProducts[4],
+          5,
           quantityEnergyDrink[i],
           listEnergyDrink[i],
         ),
@@ -167,7 +206,7 @@ class CreateDatabaseProducts {
         await createProductModel(
           namesWater[i],
           priceWater[i],
-          categoryProducts[5],
+          6,
           quantityWater[i],
           listWater[i],
         ),

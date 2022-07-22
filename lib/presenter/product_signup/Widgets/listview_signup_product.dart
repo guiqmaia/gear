@@ -140,7 +140,7 @@ class _ListViewSingupProductState extends State<ListViewSingupProduct> {
               ProductModel productModel = ProductModel(
                 name: widget.nameController.text,
                 price: double.parse(widget.priceController.text),
-                category: widget.categoryController.text,
+                categoryId: int.parse(widget.categoryController.text),
                 quantity: int.parse(widget.quantityController.text),
                 image: photo!,
               );
@@ -148,13 +148,6 @@ class _ListViewSingupProductState extends State<ListViewSingupProduct> {
               if (!widget.mounted) return;
               Navigator.of(context).pop();
               Navigator.of(context).pop();
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => ProductPage(
-                    categoryTitle: widget.categoryController.text,
-                  ),
-                ),
-              );
             },
             child: const Text(
               'Cadastrar',

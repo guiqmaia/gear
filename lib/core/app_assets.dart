@@ -51,12 +51,36 @@ String imgSparklingWater = 'assets/images/sparkling_water.jpg';
 
 // listas produtos
 List<String> listSodas = [imgCocaCola, imgFanta, imgSprite, imgPepsi];
-List<String> listBeers = [imgMaryWellsBeer, imgDearPaulaBeer, imgRedSonjaBeer, imgStannisPilsner];
-List<String> listWines = [imgCasaValduga, imgCasaPerini, imgCabrizRose, imgCabrizWhite];
-List<String> listDistilled = [imgBacardi, imgAbsolut, imgBeefeater, imgWhiteHorse];
+List<String> listBeers = [
+  imgMaryWellsBeer,
+  imgDearPaulaBeer,
+  imgRedSonjaBeer,
+  imgStannisPilsner
+];
+List<String> listWines = [
+  imgCasaValduga,
+  imgCasaPerini,
+  imgCabrizRose,
+  imgCabrizWhite
+];
+List<String> listDistilled = [
+  imgBacardi,
+  imgAbsolut,
+  imgBeefeater,
+  imgWhiteHorse
+];
 List<String> listEnergyDrink = [imgRedBull, imgMonster, imgBaly];
 List<String> listWater = [imgWater, imgSparklingWater];
 
+//Lista Categoria
+List<String> listCategory = [
+  imgSodas,
+  imgBeer,
+  imgWines,
+  imgDistilled,
+  imgEnergyDrink,
+  imgWaterBottle
+];
 
 //Ilustrações
 String imgEmail = 'assets/images/email.png';
