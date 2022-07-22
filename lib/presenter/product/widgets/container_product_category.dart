@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/product_model.dart';
 import '../../edit_product/edit_product_page.dart';
@@ -11,6 +10,7 @@ class ContainerProductCategory extends StatefulWidget {
   final int productQuantity;
   final int productCode;
   final dynamic productImg;
+  final String categoryTitle;
   List<ProductModel>? products;
 
   ContainerProductCategory({
@@ -20,6 +20,7 @@ class ContainerProductCategory extends StatefulWidget {
     required this.productQuantity,
     required this.productCode,
     required this.productImg,
+    required this.categoryTitle,
     required this.products,
   }) : super(key: key);
 
@@ -190,7 +191,10 @@ class _ContainerProductCategoryState extends State<ContainerProductCategory> {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const EditProductPage(),
+                          builder: (context) => EditProductPage(
+                            productCode: widget.productCode,
+                            categoryTitle: widget.categoryTitle,
+                          ),
                         ),
                       );
                     },
