@@ -1,3 +1,4 @@
+import 'package:gear/core/app_getit.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../models/product_model.dart';
@@ -87,24 +88,25 @@ class GearDatabase {
     return user;
   }
 
-  // Future<UserModel> updateUser(UserModel user) async {
-    
-  //   int? id;
-  //   String name;
-  //   String cpf;
-  //   String birthday;
-  //   String company;
-  //   String cnpj;
-  //   String telephone;
-  //   String mobileNumber;
-  //   String cep;
-  //   String adress;
-  //   String email;
-  //   String password;
+  Future update(UserModel user) async {
+    final db = await GearDatabase.instance.database;
 
-  //   Database db = await GearDatabase.instance.database;
+    UserModel user = UserModel(
+      name: logedUser.name,
+      cpf: logedUser.cpf,
+      birthday: logedUser.birthday,
+      company: logedUser.company,
+      cnpj: logedUser.cnpj,
+      telephone: logedUser.telephone,
+      mobileNumber: logedUser.mobileNumber,
+      cep: logedUser.cep,
+      adress: logedUser.adress,
+      email: logedUser.email,
+      password: logedUser.password,
+    );
 
-  // }
+    db.update('user', user.toMap(), where: '${'cpf =' + logedUser.cpf}');
+  }
 
   Future delete(int productCode) async {
     final db = await instance.database;
