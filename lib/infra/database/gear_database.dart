@@ -51,7 +51,10 @@ class GearDatabase {
 
   Future<DefaultModel> insert(String table, DefaultModel model) async {
     final db = await instance.database;
-    db.insert(table, model.toMap());
+    db.insert(
+      table,
+      model.toMap(),
+    );
     return model;
   }
 
@@ -63,13 +66,16 @@ class GearDatabase {
     List<ProductModel> listProducts = [];
 
     for (int i = 0; i < list.length; i++) {
-      listProducts.add(ProductModel(
+      listProducts.add(
+        ProductModel(
           id: list[i]['id'],
           name: list[i]['name'],
           price: list[i]['price'],
           category: list[i]['category'],
           quantity: list[i]['quantity'],
-          image: list[i]['image']));
+          image: list[i]['image'],
+        ),
+      );
     }
     return listProducts;
   }
@@ -77,7 +83,7 @@ class GearDatabase {
   Future<UserModel> selectUser(login, password) async {
     final db = await instance.database;
     List<Map<String, dynamic>> list = await db.rawQuery(
-        'SELECT * FROM user WHERE email = $login AND password = $password');
+        'SELECT * FROM user WHERE email = "$login" AND password = "$password"');
     UserModel user = UserModel.fromMap(list[0]);
     return user;
   }
