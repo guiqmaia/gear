@@ -37,7 +37,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
   String? categoryValue;
 
   Future<List<DropdownMenuItem<String>>> getDropdownItems(category) async {
-    listProduct = await GearDatabase.instance.select(category);
+    listProduct = await GearDatabase.instance.selectAll(category);
 
     listProduct!.forEach(
       (entry) {

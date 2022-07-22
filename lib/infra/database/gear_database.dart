@@ -24,59 +24,66 @@ class GearDatabase {
       path,
       version: 1,
       onCreate: (Database db, int version) async {
-        await db.execute('''CREATE TABLE IF NOT EXISTS product (
-              id INTEGER PRIMARY KEY AUTOINCREMENT, 
-              name VACHAR(45) NOT NULL, 
-              price DOUBLE NOT NULL, 
-              category VACHAR(45) NOT NULL, 
-              quantity INT NOT NULL, 
-              image BLOB NULL)''');
-
-        await db.execute('''CREATE TABLE IF NOT EXISTS user (
-              id INTEGER PRIMARY KEY AUTOINCREMENT, 
-              name VACHAR(70) NOT NULL, 
-              cpf VARCHAR(20) NOT NULL,
-              birthday VARCHAR(14) NOT NULL, 
-              company VACHAR(45) NOT NULL, 
-              cnpj VARCHAR(45) NOT NULL, 
-              telephone VARCHAR(45) NULL,
-              mobileNumber VACHAR(45) NOT NULL, 
-              cep VACHAR(45) NOT NULL, 
-              adress VACHAR(70) NOT NULL,
-              email VARCHAR(70) NOT NULL,
-              password VARCHAR(40) NOT NULL)''');
+        await createTableProduct(db);
+        await createTableUser(db);
       },
     );
   }
 
+  Future<void> createTableProduct(Database db) {
+    return db.execute('''CREATE TABLE IF NOT EXISTS product (
+            id INTEGER PRIMARY KEY AUTOINCREMENT, 
+            name VACHAR(45) NOT NULL, 
+            price DOUBLE NOT NULL, 
+            category VACHAR(45) NOT NULL, 
+            quantity INT NOT NULL, 
+            image BLOB NULL)''');
+  }
+
+  Future<void> createTableUser(Database db) {
+    return db.execute('''CREATE TABLE IF NOT EXISTS user (
+            id INTEGER PRIMARY KEY AUTOINCREMENT, 
+            name VACHAR(70) NOT NULL, 
+            cpf VARCHAR(20) NOT NULL,
+            birthday VARCHAR(14) NOT NULL, 
+            company VACHAR(45) NOT NULL, 
+            cnpj VARCHAR(45) NOT NULL, 
+            telephone VARCHAR(45) NULL,
+            mobileNumber VACHAR(45) NOT NULL, 
+            cep VACHAR(45) NOT NULL, 
+            adress VACHAR(70) NOT NULL,
+            email VARCHAR(70) NOT NULL,
+            password VARCHAR(40) NOT NULL)''');
+  }
+
   Future<DefaultModel> insert(String table, DefaultModel model) async {
     final db = await instance.database;
-    db.insert(
-      table,
-      model.toMap(),
-    );
+    db.insert(table, model.toMap());
     return model;
   }
 
-  Future<List<ProductModel>> select(category) async {
+  // Future<List<T>> operation<T>(T model, String sql) async {
+  //   final db = await instance.database;
+  //   List<Map<String, dynamic>> list = await db.rawQuery(sql);
+  //   List<T> listProducts = [];
+
+  //   for (int i = 0; i < list.length; i++) {
+  //     listProducts.add(model.fromMap(list[i]));
+  //   }
+
+  //   return listProducts;
+  // }
+
+  Future<List<ProductModel>> selectAll(category) async {
     final db = await instance.database;
-    List<Map> list = await db
-        // ignore: prefer_interpolation_to_compose_strings
-        .rawQuery('${'SELECT * FROM product WHERE category = "' + category}"');
+    List<Map<String, dynamic>> list =
+        await db.rawQuery('SELECT * FROM product WHERE category = "$category"');
     List<ProductModel> listProducts = [];
 
     for (int i = 0; i < list.length; i++) {
-      listProducts.add(
-        ProductModel(
-          id: list[i]['id'],
-          name: list[i]['name'],
-          price: list[i]['price'],
-          category: list[i]['category'],
-          quantity: list[i]['quantity'],
-          image: list[i]['image'],
-        ),
-      );
+      listProducts.add(ProductModel.fromMap(list[i]));
     }
+
     return listProducts;
   }
 
@@ -88,10 +95,10 @@ class GearDatabase {
     return user;
   }
 
-  Future delete(int productCode) async {
+  Future delete(table, int id) async {
     final db = await instance.database;
     db.rawDelete(
-      'DELETE FROM product WHERE id = $productCode',
+      'DELETE FROM $table WHERE id = $id',
     );
   }
 
