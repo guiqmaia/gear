@@ -28,17 +28,17 @@ class TopBarApp extends StatelessWidget {
         ),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           IconButton(
-            onPressed: () {
-              Navigator.of(context).pop(context);
-            },
             icon: Icon(
               Icons.arrow_back_rounded,
               color: isProfile ? Colors.black : Colors.white,
               size: 30,
             ),
+            onPressed: () {
+              Navigator.of(context).pop(context);
+            },
           ),
           Text(
             title,

@@ -27,20 +27,33 @@ class NamePhotoProfile extends StatelessWidget {
                 right: 0,
                 child: CircleAvatar(
                   backgroundColor: Colors.black,
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.create_sharp,
-                      color: greenNeon,
-                      size: 20,
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => EditProfilePage(),
-                        ),
-                      );
-                    },
-                  ),
+                  // child: IconButton(
+                  //   icon: Icon(
+                  //     Icons.create_sharp,
+                  //     color: greenNeon,
+                  //     size: 20,
+                  //   ),
+                  //   onPressed: () {
+                  //     Navigator.of(context).push(
+                  //       MaterialPageRoute(
+                  //         builder: (context) => EditProfilePage(),
+                  //       ),
+                  //     );
+                  //   },
+                  // ),
+                  child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const EditProfilePage(),
+                          ),
+                        );
+                      },
+                      child: Icon(
+                        Icons.create_sharp,
+                        color: greenNeon,
+                        size: 20,
+                      )),
                 ),
               ),
             ],
