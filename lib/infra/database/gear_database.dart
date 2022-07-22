@@ -18,7 +18,7 @@ class GearDatabase {
 
   Future<Database> _initDB() async {
     var databasesPath = await getDatabasesPath();
-    String path = '${databasesPath}/teste.db';
+    String path = '$databasesPath/teste.db';
     return await openDatabase(
       path,
       version: 1,
@@ -86,6 +86,25 @@ class GearDatabase {
     UserModel user = UserModel.fromMap(list[0]);
     return user;
   }
+
+  // Future<UserModel> updateUser(UserModel user) async {
+    
+  //   int? id;
+  //   String name;
+  //   String cpf;
+  //   String birthday;
+  //   String company;
+  //   String cnpj;
+  //   String telephone;
+  //   String mobileNumber;
+  //   String cep;
+  //   String adress;
+  //   String email;
+  //   String password;
+
+  //   Database db = await GearDatabase.instance.database;
+
+  // }
 
   Future delete(int productCode) async {
     final db = await instance.database;
