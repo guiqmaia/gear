@@ -21,10 +21,10 @@ class BodyCategorySignup extends StatefulWidget {
 class _BodyCategorySignupState extends State<BodyCategorySignup> {
   File? fileImg;
   Uint8List? imgCategory;
+
   Future pickImage() async {
     try {
-      final fileImg =
-          await ImagePicker().pickImage(source: ImageSource.gallery);
+      final fileImg = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (fileImg == null) return;
       final imageTemp = File(fileImg.path);
       // ignore: avoid_print

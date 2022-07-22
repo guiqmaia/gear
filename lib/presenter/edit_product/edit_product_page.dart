@@ -6,15 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:image_picker/image_picker.dart';
-
 import 'package:gear/presenter/category/category_page.dart';
-import 'package:gear/presenter/product/product_page.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../core/app_assets.dart';
 import '../../infra/database/gear_database.dart';
 import '../../shared/widgets/text_field_app.dart';
 import '../../shared/widgets/top_bar_app.dart';
+import '../product/product_page.dart';
 import '../product_signup/Widgets/default_image_container.dart';
 
 class EditProductPage extends StatefulWidget {
@@ -54,7 +53,7 @@ class _EditProductPageState extends State<EditProductPage> {
     }
   }
 
-  Future updateProduct() async {
+  Future updateNameProduct() async {
     if (newNameController.text != '') {
       await GearDatabase.instance.updateProduct(
         widget.productCode,
@@ -62,24 +61,30 @@ class _EditProductPageState extends State<EditProductPage> {
         '"${newNameController.text}"',
       );
     }
+  }
 
+  Future updatePriceProduct() async {
     if (newPriceController.text != '') {
       await GearDatabase.instance.updateProduct(
         widget.productCode,
         'price',
-        newPriceController.text,
+        double.parse(newPriceController.text),
       );
     }
+  }
 
+  Future updateQuantityProduct() async {
     if (newQuantityController.text != '') {
       await GearDatabase.instance.updateProduct(
         widget.productCode,
         'quantity',
-        newQuantityController.text,
+        int.parse(newQuantityController.text),
       );
     }
+  }
 
-    if (photo != null) {
+  Future updateImgProduct() async {
+    if (img != null) {
       await GearDatabase.instance.updateProduct(
         widget.productCode,
         'image',
@@ -154,9 +159,16 @@ class _EditProductPageState extends State<EditProductPage> {
               ),
               child: TextButton(
                 onPressed: () async {
-                  updateProduct();
-                  Navigator.of(context).pop();
-                  Navigator.of(context).pop();
+                  updateNameProduct();
+                  updatePriceProduct();
+                  updateQuantityProduct();
+                  updateImgProduct();
+
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const CategoryPage(),
+                    ),
+                  );
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => ProductPage(

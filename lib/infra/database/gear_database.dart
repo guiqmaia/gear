@@ -19,7 +19,7 @@ class GearDatabase {
 
   Future<Database> _initDB() async {
     var databasesPath = await getDatabasesPath();
-    String path = '$databasesPath/geartest.db';
+    String path = '$databasesPath/geardatabasetest.db';
     return await openDatabase(
       path,
       version: 1,
@@ -37,7 +37,7 @@ class GearDatabase {
             price DOUBLE NOT NULL, 
             category VACHAR(45) NOT NULL, 
             quantity INT NOT NULL, 
-            image BLOB NULL)''');
+            image BLOB NOT NULL)''');
   }
 
   Future<void> createTableUser(Database db) {
