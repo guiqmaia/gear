@@ -1,6 +1,9 @@
 import 'dart:convert';
 
-class UserModel {
+import 'package:gear/infra/models/default_model.dart';
+
+class UserModel implements DefaultModel {
+  @override
   int? id;
   String name;
   String cpf;
@@ -29,6 +32,7 @@ class UserModel {
     required this.password,
   });
 
+  @override
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,

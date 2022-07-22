@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gear/presenter/profile/profile_page.dart';
-import 'package:gear/presenter/shared/widgets/top_bar_app.dart';
+
 
 import 'widgets/edit_profile_body.dart';
 

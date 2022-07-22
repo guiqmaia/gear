@@ -94,6 +94,9 @@ class _EditProfileBodyState extends State<EditProfileBody> {
               isObscured: false,
               isEnabled: true,
             ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.03,
+            ),
             BtnStandardApp(
               onPressed: () async {
                 telephoneController ??= logedUser.telephone;

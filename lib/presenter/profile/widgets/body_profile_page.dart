@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../home/home_page.dart';
-import '../../shared/widgets/btn_standard_app.dart';
-import '../../shared/widgets/top_bar_app.dart';
+import '../../../shared/widgets/btn_standard_app.dart';
+import '../../../shared/widgets/top_bar_app.dart';
 import 'container_info_page.dart';
 import 'name_photo_profile.dart';
 

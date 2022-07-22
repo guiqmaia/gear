@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:gear/shared/widgets/text_field_app.dart';
+import 'package:gear/shared/widgets/top_bar_app.dart';
 
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/product_model.dart';
 import '../../category/category_page.dart';
-import '../../shared/widgets/text_field_app.dart';
-import '../../shared/widgets/top_bar_app.dart';
 import 'container_product_category.dart';
 
 class BodyProductPage extends StatefulWidget {

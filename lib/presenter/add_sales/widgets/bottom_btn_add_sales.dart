@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../core/app_assets.dart';
 import '../../sales/sales_page.dart';
 import '../../sales/widgets/sale_register_container.dart';
-import '../../shared/widgets/btn_standard_app.dart';
+import '../../../shared/widgets/btn_standard_app.dart';
 
 class BottomBtnSales extends StatefulWidget {
   const BottomBtnSales({
