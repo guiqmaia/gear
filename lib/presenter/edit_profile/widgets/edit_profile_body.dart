@@ -1,15 +1,15 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
-import 'package:gear/core/app_getit.dart';
-import 'package:gear/infra/database/gear_database.dart';
-import 'package:gear/infra/models/user_model.dart';
-import 'package:gear/presenter/home/home_page.dart';
 import 'package:gear/presenter/profile/profile_page.dart';
-import 'package:gear/presenter/profile/widgets/body_profile_page.dart';
-import 'package:gear/presenter/shared/widgets/btn_standard_app.dart';
-import 'package:gear/presenter/shared/widgets/text_field_app.dart';
-import 'package:gear/presenter/shared/widgets/text_field_app_formatted.dart';
 import 'package:gear/presenter/shared/widgets/top_bar_app.dart';
+
+import '../../../core/app_getit.dart';
+import '../../../infra/database/gear_database.dart';
+import '../../../infra/models/user_model.dart';
+import '../../profile/widgets/body_profile_page.dart';
+import '../../shared/widgets/btn_standard_app.dart';
+import '../../shared/widgets/text_field_app.dart';
+import '../../shared/widgets/text_field_app_formatted.dart';
 
 class EditProfileBody extends StatefulWidget {
   const EditProfileBody({Key? key}) : super(key: key);
@@ -32,9 +32,9 @@ class _EditProfileBodyState extends State<EditProfileBody> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const TopBarApp(
+            TopBarApp(
               title: 'Edit Profile',
-              pageRoute: ProfilePage(),
+              pageRoute: BodyProfilePage(),
               isProfile: true,
             ),
             TextFieldApp(
@@ -116,9 +116,8 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                 await GearDatabase.instance.update(user);
               },
               title: 'Concluir Edição',
-              widthBtn: MediaQuery.of(context).size.width * 0.85,
-              pageRoute: const HomePage(),
-              
+              widthBtn: MediaQuery.of(context).size.width,
+              pageRoute: const BodyProfilePage(),
             ),
           ],
         ),

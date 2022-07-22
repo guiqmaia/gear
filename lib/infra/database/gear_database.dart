@@ -90,21 +90,6 @@ class GearDatabase {
 
   Future update(UserModel user) async {
     final db = await GearDatabase.instance.database;
-
-    UserModel user = UserModel(
-      name: logedUser.name,
-      cpf: logedUser.cpf,
-      birthday: logedUser.birthday,
-      company: logedUser.company,
-      cnpj: logedUser.cnpj,
-      telephone: logedUser.telephone,
-      mobileNumber: logedUser.mobileNumber,
-      cep: logedUser.cep,
-      adress: logedUser.adress,
-      email: logedUser.email,
-      password: logedUser.password,
-    );
-
     db.update('user', user.toMap(), where: '${'cpf =' + logedUser.cpf}');
   }
 
