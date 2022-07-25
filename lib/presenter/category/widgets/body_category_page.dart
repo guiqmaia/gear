@@ -19,12 +19,12 @@ class BodyCategoryPage extends StatelessWidget {
           pageRoute: HomePage(),
           isProfile: false,
         ),
+        const SizedBox(height: 10),
         TextFieldApp(
           labelItem: 'Pesquisar',
           typeController: searchController,
           isObscured: false,
         ),
-        const SizedBox(height: 10),
         const WrapContainerCategory(),
       ],
     );

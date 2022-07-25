@@ -33,13 +33,13 @@ class _WrapContainerCategoryState extends State<WrapContainerCategory> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(15.0),
+      padding: const EdgeInsets.symmetric(horizontal: 15.0),
       child: isLoading
           ? const CircularProgressIndicator()
           : GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                mainAxisSpacing: 20,
+                mainAxisSpacing: 15,
               ),
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,

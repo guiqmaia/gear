@@ -119,7 +119,7 @@ class GearDatabase {
     );
   }
 
-  Future updateUser(column, change) async {
+  updateUser(cpf, column, change) async {
     final db = await instance.database;
 
     await db.rawUpdate(
