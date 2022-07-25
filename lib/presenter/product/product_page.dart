@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
 import '../../core/app_assets.dart';
+import '../../infra/models/category_model.dart';
 import '../product_signup/product_signup_page.dart';
 import '../../shared/widgets/btn_standard_app.dart';
 import 'widgets/body_product_page.dart';
 
 class ProductPage extends StatelessWidget {
-  final String categoryTitle;
+  final CategoryModel category;
 
   const ProductPage({
     Key? key,
-    required this.categoryTitle,
+    required this.category,
   }) : super(key: key);
 
   @override
@@ -19,7 +20,7 @@ class ProductPage extends StatelessWidget {
       backgroundColor: backgroundGrey,
       body: SingleChildScrollView(
         child: BodyProductPage(
-          categoryTitle: categoryTitle,
+          category: category,
         ),
       ),
       bottomNavigationBar: BtnStandardApp(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../core/app_getit.dart';
+import '../../../infra/database/create_database_products.dart';
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/user_model.dart';
 import '../../home/home_page.dart';
@@ -22,6 +23,7 @@ class BtnLogin extends StatefulWidget {
 
 class _BtnLoginState extends State<BtnLogin> {
   Future<void> verifyLogin() async {
+    await CreateDatabaseProducts().createCategories();
     UserModel user = await GearDatabase.instance.selectUser(
       widget.loginController.text,
       widget.passwordController.text,
@@ -33,6 +35,7 @@ class _BtnLoginState extends State<BtnLogin> {
           Navigator.of(context).push(
             MaterialPageRoute(builder: (context) => const HomePage()),
           );
+
           logedUser = user;
         },
       );

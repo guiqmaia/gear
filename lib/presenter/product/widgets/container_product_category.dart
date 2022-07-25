@@ -26,15 +26,15 @@ class ContainerProductCategory extends StatefulWidget {
 
   @override
   State<ContainerProductCategory> createState() =>
-      _ContainerProductCategoryState();
+      _ContainerProductcategoriestate();
 }
 
-class _ContainerProductCategoryState extends State<ContainerProductCategory> {
+class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
   bool isLoading = false;
 
   deleteProduct() async {
     widget.products =
-        await GearDatabase.instance.delete("product", widget.productCode);
+        await GearDatabase.instance.delete('product', widget.productCode);
     setState(() => isLoading = true);
   }
 
