@@ -8,7 +8,6 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
-import '../../../shared/widgets/btn_standard_app.dart';
 import '../../category/category_page.dart';
 import '../../product_signup/Widgets/default_image_container.dart';
 import '../../../shared/widgets/text_field_app.dart';
@@ -74,9 +73,7 @@ class _BodyCategoriySignupState extends State<BodyCategorySignup> {
               vertical: 3,
             ),
             child: TextButton(
-              onPressed: () {
-                pickImage();
-              },
+              onPressed: () => pickImage(),
               child: const Text(
                 'Selecionar imagem',
                 style: TextStyle(
@@ -114,12 +111,12 @@ class _BodyCategoriySignupState extends State<BodyCategorySignup> {
                   image: imgCategory!,
                 );
                 await GearDatabase.instance.insert("category", categoryModel);
-                if (mounted) return;
+                if (!mounted) return;
                 Navigator.of(context).pop();
                 Navigator.of(context).pop();
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: ((context) => const CategoryPage()),
+                    builder: (context) => const CategoryPage(),
                   ),
                 );
               },

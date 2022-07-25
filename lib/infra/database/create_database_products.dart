@@ -95,7 +95,7 @@ class CreateDatabaseProducts {
   createCategories() async {
     for (int i = 0; i < namescategories.length; i++) {
       await GearDatabase.instance.insert(
-        'Category',
+        'category',
         await createCategoryModel(
           namescategories[i],
           listCategory[i],
