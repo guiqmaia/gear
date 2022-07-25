@@ -69,21 +69,18 @@ class _EditProfilePageState extends State<EditProfilePage> {
             TextFieldAppFormatted(
               labelItem: 'Telefone atual: ${logedUser.telephone}',
               typeController: telephoneController,
-              isEnabled: true,
               formater: TelefoneInputFormatter(),
               textInputType: TextInputType.number,
             ),
             TextFieldAppFormatted(
               labelItem: 'Celular atual: ${logedUser.mobileNumber}',
               typeController: mobileNumberController,
-              isEnabled: true,
               formater: TelefoneInputFormatter(),
               textInputType: TextInputType.number,
             ),
             TextFieldAppFormatted(
               labelItem: 'CEP atual: ${logedUser.cep}',
               typeController: cepController,
-              isEnabled: true,
               formater: CepInputFormatter(),
               textInputType: TextInputType.number,
             ),
@@ -91,25 +88,26 @@ class _EditProfilePageState extends State<EditProfilePage> {
               labelItem: 'Endereço atual: ${logedUser.adress}',
               typeController: adressController,
               isObscured: false,
-              isEnabled: true,
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.03,
             ),
             BtnStandardApp(
-              onPressed: () async {
+              title: 'Concluir Edição',
+              widthBtn: MediaQuery.of(context).size.width,
+              onPressed: () {
                 telephoneController ??= logedUser.telephone;
                 mobileNumberController ??= logedUser.mobileNumber;
                 cepController ??= logedUser.cep;
                 adressController ??= logedUser.adress;
-                await GearDatabase.instance.updateUser('telephone', telephoneController);
-                await GearDatabase.instance.updateUser('mobileNumber', telephoneController);
-                await GearDatabase.instance.updateUser('cep', cepController);
-                await GearDatabase.instance.updateUser('adress', adressController);
+                GearDatabase.instance
+                    .updateUser('telephone', telephoneController.text);
+                GearDatabase.instance
+                    .updateUser('mobileNumber', telephoneController.text);
+                GearDatabase.instance.updateUser('cep', cepController.text);
+                GearDatabase.instance
+                    .updateUser('adress', adressController.text);
               },
-              title: 'Concluir Edição',
-              widthBtn: MediaQuery.of(context).size.width,
-              pageRoute: null,
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/edit_profile_page/edit_profile_page_dadada.dart';
 import '../../../core/app_getit.dart';
 
 import '../../../core/app_assets.dart';
@@ -32,7 +33,13 @@ class NamePhotoProfile extends StatelessWidget {
                       color: greenNeon,
                       size: 20,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: ((context) => const EditProfilePage()),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),
