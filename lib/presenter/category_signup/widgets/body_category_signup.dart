@@ -3,24 +3,29 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gear/infra/models/category_model.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
+import '../../../infra/database/gear_database.dart';
+import '../../../shared/widgets/btn_standard_app.dart';
 import '../../category/category_page.dart';
 import '../../product_signup/Widgets/default_image_container.dart';
 import '../../../shared/widgets/text_field_app.dart';
 import '../../../shared/widgets/top_bar_app.dart';
 
-class Bodycategoriesignup extends StatefulWidget {
-  const Bodycategoriesignup({Key? key}) : super(key: key);
+class BodyCategorySignup extends StatefulWidget {
+  const BodyCategorySignup({Key? key}) : super(key: key);
 
   @override
-  State<Bodycategoriesignup> createState() => _BodycategoriesignupState();
+  State<BodyCategorySignup> createState() => _BodyCategoriySignupState();
 }
 
-class _BodycategoriesignupState extends State<Bodycategoriesignup> {
+class _BodyCategoriySignupState extends State<BodyCategorySignup> {
+  TextEditingController nameController = TextEditingController();
   File? fileImg;
   Uint8List? imgCategory;
+
   Future pickImage() async {
     try {
       final fileImg =
@@ -52,7 +57,7 @@ class _BodycategoriesignupState extends State<Bodycategoriesignup> {
           const SizedBox(height: 20),
           TextFieldApp(
             labelItem: 'Nome',
-            typeController: null,
+            typeController: nameController,
             isObscured: false,
           ),
           Container(
@@ -88,6 +93,45 @@ class _BodycategoriesignupState extends State<Bodycategoriesignup> {
             child: fileImg != null
                 ? Image.memory(imgCategory!)
                 : const DefaulImageContainer(),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: const Color.fromRGBO(202, 254, 72, 1),
+            ),
+            margin: const EdgeInsets.symmetric(
+              horizontal: 15,
+              vertical: 10,
+            ),
+            width: MediaQuery.of(context).size.width * 0.9,
+            padding: const EdgeInsets.symmetric(
+              vertical: 3,
+            ),
+            child: TextButton(
+              onPressed: () async {
+                CategoryModel categoryModel = CategoryModel(
+                  name: nameController.text,
+                  image: imgCategory!,
+                );
+                await GearDatabase.instance.insert("category", categoryModel);
+                if (mounted) return;
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: ((context) => const CategoryPage()),
+                  ),
+                );
+              },
+              child: const Text(
+                'Cadastrar',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ),
         ],
       ),

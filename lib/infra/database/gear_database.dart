@@ -20,7 +20,7 @@ class GearDatabase {
 
   Future<Database> _initDB() async {
     var databasesPath = await getDatabasesPath();
-    String dbName = "idoajoisfj.db";
+    String dbName = "iafbaifba.db";
     String path = '$databasesPath/$dbName';
     return await openDatabase(
       path,
@@ -82,7 +82,9 @@ class GearDatabase {
     List<ProductModel> listProducts = [];
 
     for (int i = 0; i < list.length; i++) {
-      listProducts.add(ProductModel.fromMap(list[i]));
+      listProducts.add(
+        ProductModel.fromMap(list[i]),
+      );
     }
 
     return listProducts;
@@ -107,6 +109,14 @@ class GearDatabase {
         'SELECT * FROM user WHERE email = "$login" AND password = "$password"');
     UserModel user = UserModel.fromMap(list[0]);
     return user;
+  }
+
+  Future updateProduct(id, column, change) async {
+    final db = await instance.database;
+
+    await db.rawUpdate(
+      'UPDATE product SET $column = $change WHERE id = $id',
+    );
   }
 
   Future delete(table, int id) async {

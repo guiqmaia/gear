@@ -71,6 +71,7 @@ class _BodyProductPageState extends State<BodyProductPage> {
                     productCode: product.id!,
                     productImg: product.image,
                     products: products,
+                    categoryTitle: widget.category.name,
                   );
                 },
               ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/product_model.dart';
+import '../../edit_product/edit_product_page.dart';
 
 class ContainerProductCategory extends StatefulWidget {
   final String productName;
@@ -9,6 +10,7 @@ class ContainerProductCategory extends StatefulWidget {
   final int productQuantity;
   final int productCode;
   final dynamic productImg;
+  final String categoryTitle;
   List<ProductModel>? products;
 
   ContainerProductCategory({
@@ -18,6 +20,7 @@ class ContainerProductCategory extends StatefulWidget {
     required this.productQuantity,
     required this.productCode,
     required this.productImg,
+    required this.categoryTitle,
     required this.products,
   }) : super(key: key);
 
@@ -46,7 +49,7 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
           vertical: 8,
         ),
         padding: const EdgeInsets.symmetric(
-          horizontal: 10,
+          horizontal: 9,
           vertical: 11,
         ),
         decoration: BoxDecoration(
@@ -63,17 +66,8 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            InkWell(
-              child: const Icon(
-                Icons.cancel_outlined,
-                size: 19,
-              ),
-              onTap: () {
-                deleteProduct();
-              },
-            ),
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Image.memory(
@@ -177,6 +171,37 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
                   ),
                 ],
               ),
+            ),
+            PopupMenuButton(
+              position: PopupMenuPosition.under,
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                PopupMenuItem<String>(
+                  value: 'Deletar',
+                  child: InkWell(
+                    onTap: () {
+                      deleteProduct();
+                      Navigator.pop(context, 'Deletar');
+                    },
+                    child: const Text('Deletar'),
+                  ),
+                ),
+                PopupMenuItem<String>(
+                  value: 'Editar',
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => EditProductPage(
+                            productCode: widget.productCode,
+                            categoryTitle: widget.categoryTitle,
+                          ),
+                        ),
+                      );
+                    },
+                    child: const Text('Editar'),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
