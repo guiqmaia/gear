@@ -100,13 +100,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 mobileNumberController ??= logedUser.mobileNumber;
                 cepController ??= logedUser.cep;
                 adressController ??= logedUser.adress;
+                GearDatabase.instance.updateUser(
+                    logedUser.cpf, 'telephone', telephoneController.text);
+                GearDatabase.instance.updateUser(
+                    logedUser.cpf, 'mobileNumber', telephoneController.text);
                 GearDatabase.instance
-                    .updateUser('telephone', telephoneController.text);
+                    .updateUser(logedUser.cpf, 'cep', cepController.text);
                 GearDatabase.instance
-                    .updateUser('mobileNumber', telephoneController.text);
-                GearDatabase.instance.updateUser('cep', cepController.text);
-                GearDatabase.instance
-                    .updateUser('adress', adressController.text);
+                    .updateUser(logedUser.cpf, 'adress', adressController.text);
               },
             ),
           ],
