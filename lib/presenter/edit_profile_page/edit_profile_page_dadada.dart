@@ -35,80 +35,78 @@ class _EditProfilePageState extends State<EditProfilePage> {
               pageRoute: BodyProfilePage(),
               isProfile: false,
             ),
-            // TextFieldApp(
-            //   labelItem: 'Nome: ${logedUser.name}',
-            //   typeController: necessaryController,
-            //   isObscured: false,
-            //   isEnabled: false,
-            // ),
-            // TextFieldApp(
-            //   labelItem: 'Data de Nascimento: ${logedUser.birthday}',
-            //   typeController: necessaryController,
-            //   isObscured: false,
-            //   isEnabled: false,
-            // ),
-            // TextFieldApp(
-            //   labelItem: 'CPF: ${logedUser.cpf}',
-            //   typeController: necessaryController,
-            //   isObscured: false,
-            //   isEnabled: false,
-            // ),
-            // TextFieldApp(
-            //   labelItem: 'Nome da Empresa: ${logedUser.company}',
-            //   typeController: necessaryController,
-            //   isObscured: false,
-            //   isEnabled: false,
-            // ),
-            // TextFieldApp(
-            //   labelItem: 'CNPJ: ${logedUser.cnpj}',
-            //   typeController: necessaryController,
-            //   isObscured: false,
-            //   isEnabled: false,
-            // ),
-            // TextFieldAppFormatted(
-            //   labelItem: 'Telefone atual: ${logedUser.telephone}',
-            //   typeController: telephoneController,
-            //   isEnabled: true,
-            //   formater: TelefoneInputFormatter(),
-            //   textInputType: TextInputType.number,
-            // ),
-            // TextFieldAppFormatted(
-            //   labelItem: 'Celular atual: ${logedUser.mobileNumber}',
-            //   typeController: mobileNumberController,
-            //   isEnabled: true,
-            //   formater: TelefoneInputFormatter(),
-            //   textInputType: TextInputType.number,
-            // ),
-            // TextFieldAppFormatted(
-            //   labelItem: 'CEP atual: ${logedUser.cep}',
-            //   typeController: cepController,
-            //   isEnabled: true,
-            //   formater: CepInputFormatter(),
-            //   textInputType: TextInputType.number,
-            // ),
-            // TextFieldApp(
-            //   labelItem: 'Endereço atual: ${logedUser.adress}',
-            //   typeController: adressController,
-            //   isObscured: false,
-            //   isEnabled: true,
-            // ),
+            TextFieldApp(
+              labelItem: 'Nome: ${logedUser.name}',
+              typeController: necessaryController,
+              isObscured: false,
+              isEnabled: false,
+            ),
+            TextFieldApp(
+              labelItem: 'Data de Nascimento: ${logedUser.birthday}',
+              typeController: necessaryController,
+              isObscured: false,
+              isEnabled: false,
+            ),
+            TextFieldApp(
+              labelItem: 'CPF: ${logedUser.cpf}',
+              typeController: necessaryController,
+              isObscured: false,
+              isEnabled: false,
+            ),
+            TextFieldApp(
+              labelItem: 'Nome da Empresa: ${logedUser.company}',
+              typeController: necessaryController,
+              isObscured: false,
+              isEnabled: false,
+            ),
+            TextFieldApp(
+              labelItem: 'CNPJ: ${logedUser.cnpj}',
+              typeController: necessaryController,
+              isObscured: false,
+              isEnabled: false,
+            ),
+            TextFieldAppFormatted(
+              labelItem: 'Telefone atual: ${logedUser.telephone}',
+              typeController: telephoneController,
+              formater: TelefoneInputFormatter(),
+              textInputType: TextInputType.number,
+            ),
+            TextFieldAppFormatted(
+              labelItem: 'Celular atual: ${logedUser.mobileNumber}',
+              typeController: mobileNumberController,
+              formater: TelefoneInputFormatter(),
+              textInputType: TextInputType.number,
+            ),
+            TextFieldAppFormatted(
+              labelItem: 'CEP atual: ${logedUser.cep}',
+              typeController: cepController,
+              formater: CepInputFormatter(),
+              textInputType: TextInputType.number,
+            ),
+            TextFieldApp(
+              labelItem: 'Endereço atual: ${logedUser.adress}',
+              typeController: adressController,
+              isObscured: false,
+            ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.03,
             ),
             BtnStandardApp(
-              // onPressed: () async {
-              //   telephoneController ??= logedUser.telephone;
-              //   mobileNumberController ??= logedUser.mobileNumber;
-              //   cepController ??= logedUser.cep;
-              //   adressController ??= logedUser.adress;
-              //   await GearDatabase.instance.updateUser('telephone', telephoneController);
-              //   await GearDatabase.instance.updateUser('mobileNumber', telephoneController);
-              //   await GearDatabase.instance.updateUser('cep', cepController);
-              //   await GearDatabase.instance.updateUser('adress', adressController);
-              // },
               title: 'Concluir Edição',
               widthBtn: MediaQuery.of(context).size.width,
-              pageRoute: null,
+              onPressed: () {
+                telephoneController ??= logedUser.telephone;
+                mobileNumberController ??= logedUser.mobileNumber;
+                cepController ??= logedUser.cep;
+                adressController ??= logedUser.adress;
+                GearDatabase.instance
+                    .updateUser('telephone', telephoneController.text);
+                GearDatabase.instance
+                    .updateUser('mobileNumber', telephoneController.text);
+                GearDatabase.instance.updateUser('cep', cepController.text);
+                GearDatabase.instance
+                    .updateUser('adress', adressController.text);
+              },
             ),
           ],
         ),

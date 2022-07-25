@@ -1,6 +1,6 @@
 import 'package:gear/infra/models/category_model.dart';
-import 'package:gear/infra/models/default_model.dart';
 import 'package:gear/core/app_getit.dart';
+import 'package:gear/infra/models/default_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../models/product_model.dart';
@@ -119,15 +119,17 @@ class GearDatabase {
     );
   }
 
-  Future update(UserModel user) async {
-    final db = await GearDatabase.instance.database;
-    db.update('user', user.toMap(), where: '${'cpf =' + logedUser.cpf}');
+  Future updateUser(column, change) async {
+    final db = await instance.database;
+
+    await db.rawUpdate(
+        'UPDATE user SET $column = $change WHERE cpf = ${logedUser.cpf}');
   }
 
-  Future delete(int productCode) async {
+  Future delete(table, int id) async {
     final db = await instance.database;
     db.rawDelete(
-      'DELETE FROM product WHERE id = $productCode',
+      'DELETE FROM product WHERE id = $id',
     );
   }
 

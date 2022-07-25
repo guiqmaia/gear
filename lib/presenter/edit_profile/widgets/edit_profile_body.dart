@@ -114,7 +114,8 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                 email: logedUser.email,
                 password: logedUser.password,
               );
-              await GearDatabase.instance.update(user);
+              await GearDatabase.instance
+                  .updateUser('telephone', user.telephone);
             },
             title: 'Concluir Edição',
             widthBtn: MediaQuery.of(context).size.width,

@@ -33,7 +33,7 @@ class TextFieldApp extends StatelessWidget {
         controller: typeController,
         decoration: InputDecoration(
           label: Text(labelItem),
-          enabled: isEnabled ? true : false
+          enabled: isEnabled,
         ),
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/edit_profile/edit_profile_page.dart';
+import 'package:gear/presenter/edit_profile_page/edit_profile_page_dadada.dart';
 import '../../../core/app_getit.dart';
 
 import '../../../core/app_assets.dart';
@@ -27,33 +27,20 @@ class NamePhotoProfile extends StatelessWidget {
                 right: 0,
                 child: CircleAvatar(
                   backgroundColor: Colors.black,
-                  // child: IconButton(
-                  //   icon: Icon(
-                  //     Icons.create_sharp,
-                  //     color: greenNeon,
-                  //     size: 20,
-                  //   ),
-                  //   onPressed: () {
-                  //     Navigator.of(context).push(
-                  //       MaterialPageRoute(
-                  //         builder: (context) => EditProfilePage(),
-                  //       ),
-                  //     );
-                  //   },
-                  // ),
-                  child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => const EditProfilePage(),
-                          ),
-                        );
-                      },
-                      child: Icon(
-                        Icons.create_sharp,
-                        color: greenNeon,
-                        size: 20,
-                      )),
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.create_sharp,
+                      color: greenNeon,
+                      size: 20,
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: ((context) => const EditProfilePage()),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
             ],
