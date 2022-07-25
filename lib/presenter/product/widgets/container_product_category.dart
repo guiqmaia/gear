@@ -173,23 +173,10 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
               ),
             ),
             PopupMenuButton(
-              position: PopupMenuPosition.under,
-              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-                PopupMenuItem<String>(
-                  value: 'Deletar',
-                  child: InkWell(
-                    onTap: () {
-                      deleteProduct();
-                      Navigator.pop(context, 'Deletar');
-                    },
-                    child: const Text('Deletar'),
-                  ),
-                ),
-                PopupMenuItem<String>(
-                  value: 'Editar',
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(
+              onSelected: (String selectedOption) {
+                selectedOption == 'Deletar'
+                    ? deleteProduct()
+                    : Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => EditProductPage(
                             productCode: widget.productCode,
@@ -197,9 +184,16 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
                           ),
                         ),
                       );
-                    },
-                    child: const Text('Editar'),
-                  ),
+              },
+              position: PopupMenuPosition.under,
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                const PopupMenuItem<String>(
+                  value: 'Deletar',
+                  child: Text('Deletar'),
+                ),
+                const PopupMenuItem<String>(
+                  value: 'Editar',
+                  child: Text('Editar'),
                 ),
               ],
             ),
