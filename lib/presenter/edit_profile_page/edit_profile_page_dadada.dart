@@ -1,12 +1,13 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
-import 'package:gear/core/app_getit.dart';
-import 'package:gear/infra/database/gear_database.dart';
-import 'package:gear/presenter/profile/widgets/body_profile_page.dart';
-import 'package:gear/shared/widgets/btn_standard_app.dart';
-import 'package:gear/shared/widgets/text_field_app.dart';
-import 'package:gear/shared/widgets/text_field_app_formatted.dart';
-import 'package:gear/shared/widgets/top_bar_app.dart';
+
+import '../../core/app_getit.dart';
+import '../../infra/database/gear_database.dart';
+import '../../shared/widgets/btn_standard_app.dart';
+import '../../shared/widgets/text_field_app.dart';
+import '../../shared/widgets/text_field_app_formatted.dart';
+import '../../shared/widgets/top_bar_app.dart';
+import '../profile/widgets/body_profile_page.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({Key? key}) : super(key: key);
