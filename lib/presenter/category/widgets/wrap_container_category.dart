@@ -34,21 +34,23 @@ class _WrapContainerCategoryState extends State<WrapContainerCategory> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(15.0),
-      child: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisSpacing: 20,
-        ),
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: categories.length,
-        itemBuilder: (context, index) {
-          CategoryModel category = categories[index];
-          return ContainerCategoryInventory(
-            categoryModel: category,
-          );
-        },
-      ),
+      child: isLoading
+          ? const CircularProgressIndicator()
+          : GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 20,
+              ),
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: categories.length,
+              itemBuilder: (context, index) {
+                CategoryModel category = categories[index];
+                return ContainerCategoryInventory(
+                  categoryModel: category,
+                );
+              },
+            ),
     );
   }
 }
