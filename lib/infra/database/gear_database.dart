@@ -1,3 +1,4 @@
+import 'package:gear/core/app_getit.dart';
 import 'package:gear/infra/models/default_model.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -102,6 +103,14 @@ class GearDatabase {
 
     await db.rawUpdate(
       'UPDATE product SET $column = $change WHERE id = $id',
+    );
+  }
+
+  Future updateUser(column, change) async {
+    final db = await instance.database;
+
+    await db.rawUpdate(
+      'UPDATE user SET $column = $change WHERE cpf = ${logedUser.cpf}'
     );
   }
 
