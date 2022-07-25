@@ -1,3 +1,4 @@
+import 'package:gear/infra/models/category_model.dart';
 import 'package:gear/core/app_getit.dart';
 import 'package:gear/infra/models/default_model.dart';
 import 'package:sqflite/sqflite.dart';
@@ -20,26 +21,31 @@ class GearDatabase {
 
   Future<Database> _initDB() async {
     var databasesPath = await getDatabasesPath();
-    String path = '$databasesPath/geardatabasetest.db';
+    String dbName = "jgsdlah.db";
+    String path = '$databasesPath/$dbName';
     return await openDatabase(
       path,
       version: 1,
       onCreate: (Database db, int version) async {
-        await createTableProduct(db);
+        await createTableCategory(db);
+        print('object');
+        await createTableProduct(db, path);
         await createTableUser(db);
       },
     );
   }
 
-  Future<void> createTableProduct(Database db) {
-    return db.execute('''CREATE TABLE IF NOT EXISTS product (
+  Future<void> createTableProduct(Database db, String path) =>
+      db.execute('''CREATE TABLE IF NOT EXISTS product (
             id INTEGER PRIMARY KEY AUTOINCREMENT, 
             name VACHAR(45) NOT NULL, 
             price DOUBLE NOT NULL, 
-            category VACHAR(45) NOT NULL, 
             quantity INT NOT NULL, 
-            image BLOB NOT NULL)''');
-  }
+            image BLOB NOT NULL,
+            categoryId INT UNSIGNED NOT NULL,
+            CONSTRAINT fk_product_category
+              FOREIGN KEY (categoryId)
+              REFERENCES "$path.category (id)")''');
 
   Future<void> createTableUser(Database db) {
     return db.execute('''CREATE TABLE IF NOT EXISTS user (
@@ -57,28 +63,23 @@ class GearDatabase {
             password VARCHAR(40) NOT NULL)''');
   }
 
+  Future<void> createTableCategory(Database db) {
+    return db.execute('''CREATE TABLE IF NOT EXISTS category (
+            id INTEGER PRIMARY KEY AUTOINCREMENT, 
+            name VACHAR(50) NOT NULL,
+            image BLOB NOT NULL)''');
+  }
+
   Future<DefaultModel> insert(String table, DefaultModel model) async {
     final db = await instance.database;
     db.insert(table, model.toMap());
     return model;
   }
 
-  // Future<List<T>> operation<T>(T model, String sql) async {
-  //   final db = await instance.database;
-  //   List<Map<String, dynamic>> list = await db.rawQuery(sql);
-  //   List<T> listProducts = [];
-
-  //   for (int i = 0; i < list.length; i++) {
-  //     listProducts.add(model.fromMap(list[i]));
-  //   }
-
-  //   return listProducts;
-  // }
-
-  Future<List<ProductModel>> selectAll(category) async {
+  Future<List<ProductModel>> selectProductsByCategory(int categoryId) async {
     final db = await instance.database;
-    List<Map<String, dynamic>> list =
-        await db.rawQuery('SELECT * FROM product WHERE category = "$category"');
+    List<Map<String, dynamic>> list = await db
+        .rawQuery('SELECT * FROM product WHERE categoryId = $categoryId');
     List<ProductModel> listProducts = [];
 
     for (int i = 0; i < list.length; i++) {
@@ -86,14 +87,26 @@ class GearDatabase {
         ProductModel.fromMap(list[i]),
       );
     }
-
     return listProducts;
+  }
+
+  Future<List<CategoryModel>> selectCategories() async {
+    final db = await instance.database;
+    List<Map<String, dynamic>> list =
+        await db.rawQuery('SELECT * FROM category');
+    List<CategoryModel> listCategories = [];
+
+    for (int i = 0; i < list.length; i++) {
+      listCategories.add(CategoryModel.fromMap(list[i]));
+    }
+
+    return listCategories;
   }
 
   Future<UserModel> selectUser(login, password) async {
     final db = await instance.database;
     List<Map<String, dynamic>> list = await db.rawQuery(
-        'SELECT * FROM user WHERE email = "$login" AND password = "$password"');
+        '${'SELECT * FROM user WHERE email = "' + login + '" AND password = "' + password}"');
     UserModel user = UserModel.fromMap(list[0]);
     return user;
   }
@@ -110,14 +123,13 @@ class GearDatabase {
     final db = await instance.database;
 
     await db.rawUpdate(
-      'UPDATE user SET $column = $change WHERE cpf = ${logedUser.cpf}'
-    );
+        'UPDATE user SET $column = $change WHERE cpf = ${logedUser.cpf}');
   }
 
   Future delete(table, int id) async {
     final db = await instance.database;
-    db.rawDelete(
-      'DELETE FROM $table WHERE id = $id',
+    await db.rawDelete(
+      'DELETE FROM product WHERE id = $id',
     );
   }
 

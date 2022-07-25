@@ -1,42 +1,56 @@
 import 'package:flutter/material.dart';
+import 'package:gear/infra/database/gear_database.dart';
+import 'package:gear/infra/models/category_model.dart';
 
-import '../../../core/app_assets.dart';
 import 'container_category_inventory.dart';
 
-class WrapContainerCategory extends StatelessWidget {
+class WrapContainerCategory extends StatefulWidget {
   const WrapContainerCategory({Key? key}) : super(key: key);
 
   @override
+  State<WrapContainerCategory> createState() => _WrapContainerCategoryState();
+}
+
+class _WrapContainerCategoryState extends State<WrapContainerCategory> {
+  List<CategoryModel> categories = [];
+
+  bool isLoading = false;
+
+  TextEditingController searchController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    refreshCategories();
+  }
+
+  Future refreshCategories() async {
+    setState(() => isLoading = true);
+    categories = await GearDatabase.instance.selectCategories();
+    setState(() => isLoading = false);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Wrap(
-      spacing: 20,
-      runSpacing: 20,
-      children: [
-        ContainerCategoryInventory(
-          categoryImg: imgSodas,
-          categoryTitle: 'Refrigerante',
-        ),
-        ContainerCategoryInventory(
-          categoryImg: imgBeer,
-          categoryTitle: 'Cerveja',
-        ),
-        ContainerCategoryInventory(
-          categoryImg: imgWines,
-          categoryTitle: 'Vinho',
-        ),
-        ContainerCategoryInventory(
-          categoryImg: imgDistilled,
-          categoryTitle: 'Destilado',
-        ),
-        ContainerCategoryInventory(
-          categoryImg: imgEnergyDrink,
-          categoryTitle: 'Energético',
-        ),
-        ContainerCategoryInventory(
-          categoryImg: imgWaterBottle,
-          categoryTitle: 'Água',
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(15.0),
+      child: isLoading
+          ? const CircularProgressIndicator()
+          : GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 20,
+              ),
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: categories.length,
+              itemBuilder: (context, index) {
+                CategoryModel category = categories[index];
+                return ContainerCategoryInventory(
+                  categoryModel: category,
+                );
+              },
+            ),
     );
   }
 }

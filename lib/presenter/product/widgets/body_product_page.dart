@@ -1,20 +1,21 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:gear/infra/models/category_model.dart';
+import 'package:gear/shared/widgets/text_field_app.dart';
+import 'package:gear/shared/widgets/top_bar_app.dart';
 
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/product_model.dart';
 import '../../category/category_page.dart';
-import '../../../shared/widgets/text_field_app.dart';
-import '../../../shared/widgets/top_bar_app.dart';
 import 'container_product_category.dart';
 
 class BodyProductPage extends StatefulWidget {
-  final String categoryTitle;
+  final CategoryModel category;
 
   const BodyProductPage({
     Key? key,
-    required this.categoryTitle,
+    required this.category,
   }) : super(key: key);
 
   @override
@@ -34,7 +35,8 @@ class _BodyProductPageState extends State<BodyProductPage> {
 
   Future refreshProducts() async {
     setState(() => isLoading = true);
-    products = await GearDatabase.instance.selectAll(widget.categoryTitle);
+    products = await GearDatabase.instance
+        .selectProductsByCategory(widget.category.id!);
     setState(() => isLoading = false);
   }
 
@@ -44,7 +46,7 @@ class _BodyProductPageState extends State<BodyProductPage> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         TopBarApp(
-          title: widget.categoryTitle,
+          title: widget.category.name,
           pageRoute: const CategoryPage(),
           isProfile: false,
         ),
@@ -69,7 +71,7 @@ class _BodyProductPageState extends State<BodyProductPage> {
                     productCode: product.id!,
                     productImg: product.image,
                     products: products,
-                    categoryTitle: widget.categoryTitle,
+                    categoryTitle: widget.category.name,
                   );
                 },
               ),

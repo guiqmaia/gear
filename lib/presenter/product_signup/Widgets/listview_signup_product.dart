@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gear/infra/models/category_model.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
@@ -35,15 +36,27 @@ class ListViewSingupProduct extends StatefulWidget {
 
 class _ListViewSingupProductState extends State<ListViewSingupProduct> {
   String? dropdownValue;
+  List<CategoryModel> categories = [];
+  List<DropdownMenuItem<String>> list = [];
 
-  List<DropdownMenuItem<String>> list = const [
-    DropdownMenuItem(value: 'Refrigerante', child: Text('Refrigerante')),
-    DropdownMenuItem(value: 'Cerveja', child: Text('Cerveja')),
-    DropdownMenuItem(value: 'Vinho', child: Text('Vinho')),
-    DropdownMenuItem(value: 'Destilado', child: Text('Destilado')),
-    DropdownMenuItem(value: 'Energético', child: Text('Energético')),
-    DropdownMenuItem(value: 'Água', child: Text('Água')),
-  ];
+  @override
+  void initState() {
+    super.initState();
+    refreshCategories();
+  }
+
+  Future refreshCategories() async {
+    categories = await GearDatabase.instance.selectCategories();
+    for (CategoryModel categoryModel in categories) {
+      list.add(
+        DropdownMenuItem(
+          value: categoryModel.id.toString(),
+          child: Text(categoryModel.name),
+        ),
+      );
+    }
+    setState(() {});
+  }
 
   Uint8List? photo;
   File? image;
@@ -140,21 +153,14 @@ class _ListViewSingupProductState extends State<ListViewSingupProduct> {
               ProductModel productModel = ProductModel(
                 name: widget.nameController.text,
                 price: double.parse(widget.priceController.text),
-                category: widget.categoryController.text,
+                categoryId: int.parse(widget.categoryController.text),
                 quantity: int.parse(widget.quantityController.text),
                 image: photo!,
               );
-              await GearDatabase.instance.insert("product", productModel);
+              await GearDatabase.instance.insert('product', productModel);
               if (!widget.mounted) return;
               Navigator.of(context).pop();
               Navigator.of(context).pop();
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => ProductPage(
-                    categoryTitle: widget.categoryController.text,
-                  ),
-                ),
-              );
             },
             child: const Text(
               'Cadastrar',

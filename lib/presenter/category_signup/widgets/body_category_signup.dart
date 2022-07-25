@@ -3,9 +3,11 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gear/infra/models/category_model.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
+import '../../../infra/database/gear_database.dart';
 import '../../category/category_page.dart';
 import '../../product_signup/Widgets/default_image_container.dart';
 import '../../../shared/widgets/text_field_app.dart';
@@ -15,16 +17,18 @@ class BodyCategorySignup extends StatefulWidget {
   const BodyCategorySignup({Key? key}) : super(key: key);
 
   @override
-  State<BodyCategorySignup> createState() => _BodyCategorySignupState();
+  State<BodyCategorySignup> createState() => _BodyCategoriySignupState();
 }
 
-class _BodyCategorySignupState extends State<BodyCategorySignup> {
+class _BodyCategoriySignupState extends State<BodyCategorySignup> {
+  TextEditingController nameController = TextEditingController();
   File? fileImg;
   Uint8List? imgCategory;
 
   Future pickImage() async {
     try {
-      final fileImg = await ImagePicker().pickImage(source: ImageSource.gallery);
+      final fileImg =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
       if (fileImg == null) return;
       final imageTemp = File(fileImg.path);
       // ignore: avoid_print
@@ -52,7 +56,7 @@ class _BodyCategorySignupState extends State<BodyCategorySignup> {
           const SizedBox(height: 20),
           TextFieldApp(
             labelItem: 'Nome',
-            typeController: null,
+            typeController: nameController,
             isObscured: false,
           ),
           Container(
@@ -69,9 +73,7 @@ class _BodyCategorySignupState extends State<BodyCategorySignup> {
               vertical: 3,
             ),
             child: TextButton(
-              onPressed: () {
-                pickImage();
-              },
+              onPressed: () => pickImage(),
               child: const Text(
                 'Selecionar imagem',
                 style: TextStyle(
@@ -88,6 +90,45 @@ class _BodyCategorySignupState extends State<BodyCategorySignup> {
             child: fileImg != null
                 ? Image.memory(imgCategory!)
                 : const DefaulImageContainer(),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: const Color.fromRGBO(202, 254, 72, 1),
+            ),
+            margin: const EdgeInsets.symmetric(
+              horizontal: 15,
+              vertical: 10,
+            ),
+            width: MediaQuery.of(context).size.width * 0.9,
+            padding: const EdgeInsets.symmetric(
+              vertical: 3,
+            ),
+            child: TextButton(
+              onPressed: () async {
+                CategoryModel categoryModel = CategoryModel(
+                  name: nameController.text,
+                  image: imgCategory!,
+                );
+                await GearDatabase.instance.insert("category", categoryModel);
+                if (!mounted) return;
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const CategoryPage(),
+                  ),
+                );
+              },
+              child: const Text(
+                'Cadastrar',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ),
         ],
       ),
