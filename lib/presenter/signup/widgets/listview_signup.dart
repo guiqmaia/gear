@@ -1,11 +1,12 @@
 import 'package:brasil_fields/brasil_fields.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gear/shared/widgets/text_field_app.dart';
+import 'package:gear/shared/widgets/text_field_app_formatted.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/user_model.dart';
-import '../../../shared/widgets/text_field_app.dart';
-import '../../../shared/widgets/text_field_app_formatted.dart';
 
 class ListViewSignUp extends StatefulWidget {
   const ListViewSignUp({
@@ -146,7 +147,7 @@ class _ListViewSignUpState extends State<ListViewSignUp> {
                 email: widget.loginController.text,
                 password: widget.passwordController.text,
               );
-              await GearDatabase.instance.insert("user", userModel);
+              await GearDatabase.instance.insert('user', userModel);
 
               if (!mounted) return;
 

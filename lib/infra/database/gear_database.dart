@@ -1,5 +1,6 @@
 import 'package:gear/infra/models/category_model.dart';
 import 'package:gear/infra/models/default_model.dart';
+import 'package:gear/core/app_getit.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../models/product_model.dart';
@@ -86,7 +87,6 @@ class GearDatabase {
         ProductModel.fromMap(list[i]),
       );
     }
-
     return listProducts;
   }
 
@@ -106,7 +106,7 @@ class GearDatabase {
   Future<UserModel> selectUser(login, password) async {
     final db = await instance.database;
     List<Map<String, dynamic>> list = await db.rawQuery(
-        'SELECT * FROM user WHERE email = "$login" AND password = "$password"');
+        '${'SELECT * FROM user WHERE email = "' + login + '" AND password = "' + password}"');
     UserModel user = UserModel.fromMap(list[0]);
     return user;
   }
@@ -119,10 +119,15 @@ class GearDatabase {
     );
   }
 
-  Future delete(table, int id) async {
+  Future update(UserModel user) async {
+    final db = await GearDatabase.instance.database;
+    db.update('user', user.toMap(), where: '${'cpf =' + logedUser.cpf}');
+  }
+
+  Future delete(int productCode) async {
     final db = await instance.database;
     db.rawDelete(
-      'DELETE FROM $table WHERE id = $id',
+      'DELETE FROM product WHERE id = $productCode',
     );
   }
 

@@ -6,12 +6,14 @@ class RowFormatters extends StatelessWidget {
   final TextInputFormatter? formatter;
   TextEditingController controller;
   TextInputType keyboardType;
+  bool? isEnabled;
 
   RowFormatters({
     Key? key,
     required this.label,
     required this.controller,
     required this.keyboardType,
+    this.isEnabled = true,
     this.formatter,
   }) : super(key: key);
 
@@ -20,6 +22,7 @@ class RowFormatters extends StatelessWidget {
     return TextField(
       decoration: InputDecoration(
         label: Text(label),
+        enabled: isEnabled!
       ),
       controller: controller,
       keyboardType: keyboardType,

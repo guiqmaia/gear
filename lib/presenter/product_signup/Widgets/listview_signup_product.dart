@@ -144,7 +144,7 @@ class _ListViewSingupProductState extends State<ListViewSingupProduct> {
                 quantity: int.parse(widget.quantityController.text),
                 image: photo!,
               );
-              await GearDatabase.instance.insert("product", productModel);
+              await GearDatabase.instance.insert('product', productModel);
               if (!widget.mounted) return;
               Navigator.of(context).pop();
               Navigator.of(context).pop();
