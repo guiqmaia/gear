@@ -1,14 +1,10 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 
-import '../../../shared/widgets/text_field_app.dart';
-import '../../../shared/widgets/text_field_app_formatted.dart';
+import '../../../../shared/widgets/text_field_app.dart';
+import '../../../../shared/widgets/text_field_app_formatted.dart';
 
 class WrapTextFieldEditUser extends StatelessWidget {
-  TextEditingController telephoneController;
-  TextEditingController mobileNumberController;
-  TextEditingController cepController;
-  TextEditingController adressController;
   WrapTextFieldEditUser({
     Key? key,
     required this.telephoneController,
@@ -17,6 +13,10 @@ class WrapTextFieldEditUser extends StatelessWidget {
     required this.adressController,
   }) : super(key: key);
 
+  TextEditingController telephoneController;
+  TextEditingController mobileNumberController;
+  TextEditingController cepController;
+  TextEditingController adressController;
   @override
   Widget build(BuildContext context) {
     return Wrap(

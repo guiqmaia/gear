@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/edit_profile_page/edit_profile_page_dadada.dart';
-import '../../../core/app_getit.dart';
 
 import '../../../core/app_assets.dart';
+import '../../../core/app_getit.dart';
+import '../../edit_profile_page/edit_profile_page.dart';
 
 class NamePhotoProfile extends StatelessWidget {
   const NamePhotoProfile({Key? key}) : super(key: key);
