@@ -36,7 +36,7 @@ class NamePhotoProfile extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: ((context) => EditProfilePage()),
+                          builder: ((context) => const EditProfilePage()),
                         ),
                       );
                     },

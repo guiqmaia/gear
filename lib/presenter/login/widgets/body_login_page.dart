@@ -24,7 +24,7 @@ class BodyLoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ContainerText(),
+            const ContainerText(),
             TextFieldApp(
               labelItem: 'Email',
               typeController: loginController,

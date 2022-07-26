@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/category_model.dart';
-
 import 'container_category_inventory.dart';
 
 class WrapContainerCategory extends StatefulWidget {

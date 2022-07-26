@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../login/login_page.dart';
-import '../../home/home_page.dart';
-import '../../home/widgets/body_home_page.dart';
-import '../../profile/profile_page.dart';
 
 import '../../../../core/app_getit.dart';
 import '../../../../infra/database/gear_database.dart';
 import '../../../core/app_assets.dart';
-import '../../profile/widgets/body_profile_page.dart';
+import '../../home/home_page.dart';
 
 class BtnEditUser extends StatefulWidget {
   final TextEditingController telephoneController;

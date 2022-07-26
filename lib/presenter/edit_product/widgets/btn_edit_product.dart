@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
-import '../../product/product_page.dart';
 
 class BtnEditProduct extends StatefulWidget {
   const BtnEditProduct({

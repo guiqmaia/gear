@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'liders_product.dart';
+import 'product_leaders.dart';
 
 class ContainerRankingSales extends StatelessWidget {
   const ContainerRankingSales({Key? key}) : super(key: key);

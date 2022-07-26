@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../core/app_assets.dart';
 
+import '../../core/app_assets.dart';
 import 'widgets/body_edit_profile.dart';
 
 class EditProfilePage extends StatelessWidget {

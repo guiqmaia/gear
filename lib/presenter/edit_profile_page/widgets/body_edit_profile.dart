@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/edit_profile_page/widgets/non_changable_container.dart';
-import 'package:gear/presenter/edit_profile_page/widgets/non_editable_container_list.dart';
+import 'non_editable_container_list.dart';
 import '../../../core/app_getit.dart';
 import 'btn_edit_user.dart';
 import 'wrap_textfield_edit_user.dart';

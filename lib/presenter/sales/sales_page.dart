@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../add_sales/add_sales_page.dart';
 import '../../shared/widgets/btn_standard_app.dart';
+import '../add_sales/add_sales_page.dart';
 import 'widgets/body_sales_page.dart';
 
 class SalesPage extends StatefulWidget {

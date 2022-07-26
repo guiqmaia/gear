@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gear/core/app_assets.dart';
 
 class NonChangableContainer extends StatelessWidget {
   NonChangableContainer({Key? key, required this.param, required this.info})
