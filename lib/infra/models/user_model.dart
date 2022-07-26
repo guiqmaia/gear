@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:gear/infra/models/default_model.dart';
+import 'default_model.dart';
 
 class UserModel implements DefaultModel {
   @override

@@ -11,14 +11,12 @@ class BtnEditProduct extends StatefulWidget {
     required this.newPriceController,
     required this.newQuantityController,
     required this.productCode,
-    required this.categoryTitle,
   }) : super(key: key);
 
   final TextEditingController newNameController;
   final TextEditingController newPriceController;
   final TextEditingController newQuantityController;
   final int productCode;
-  final String categoryTitle;
 
   @override
   State<BtnEditProduct> createState() => _BtnEditProductState();
@@ -28,6 +26,7 @@ class _BtnEditProductState extends State<BtnEditProduct> {
   Future updateNameProduct() async {
     if (widget.newNameController.text != '') {
       await GearDatabase.instance.updateProduct(
+        'product',
         widget.productCode,
         'name',
         '"${widget.newNameController.text}"',
@@ -38,6 +37,7 @@ class _BtnEditProductState extends State<BtnEditProduct> {
   Future updatePriceProduct() async {
     if (widget.newPriceController.text != '') {
       await GearDatabase.instance.updateProduct(
+        'product',
         widget.productCode,
         'price',
         double.parse(widget.newPriceController.text),
@@ -48,6 +48,7 @@ class _BtnEditProductState extends State<BtnEditProduct> {
   Future updateQuantityProduct() async {
     if (widget.newQuantityController.text != '') {
       await GearDatabase.instance.updateProduct(
+        'product',
         widget.productCode,
         'quantity',
         int.parse(widget.newQuantityController.text),

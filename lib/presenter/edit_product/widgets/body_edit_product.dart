@@ -39,7 +39,6 @@ class _BodyEditProductState extends State<BodyEditProduct> {
           newQuantityController: newQuantityController,
         ),
         BtnEditProduct(
-          categoryTitle: widget.categoryTitle,
           productCode: widget.productCode,
           newNameController: newNameController,
           newPriceController: newPriceController,
