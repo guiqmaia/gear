@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../infra/database/gear_database.dart';
+import '../../../infra/models/category_model.dart';
 import '../../../infra/models/product_model.dart';
 import '../../../shared/widgets/dropdown_input.dart';
 import '../../../shared/widgets/text_field_app.dart';
@@ -32,26 +33,59 @@ class WrapTextFieldSale extends StatefulWidget {
 }
 
 class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
-  List<ProductModel>? listProduct;
-  List<DropdownMenuItem<String>>? dropDownItems = [];
+  List<ProductModel> products = [];
+  List<CategoryModel> categories = [];
+  List<DropdownMenuItem<String>> dropDownItemsCategories = [];
+  List<DropdownMenuItem<String>> dropDownItemsProducts = [];
   String? categoryValue;
+  ProductModel? product;
 
-  Future<List<DropdownMenuItem<String>>> getDropdownItems(category) async {
-    listProduct =
-        await GearDatabase.instance.selectProductsByCategory(category);
+  @override
+  void initState() {
+    super.initState();
+    refreshCategories();
+  }
 
-    listProduct!.forEach(
-      (entry) {
-        var newDropdown = DropdownMenuItem(
-          child: Text('${entry.name}'),
-          value: '{$entry.name}',
-        );
+  Future refreshCategories() async {
+    categories = await GearDatabase.instance.selectCategories();
+    for (CategoryModel categoryModel in categories) {
+      dropDownItemsCategories.add(
+        DropdownMenuItem(
+          value: categoryModel.id.toString(),
+          child: Text(categoryModel.name),
+          onTap: () {
+            widget.codeController.text = '';
+            widget.priceController.text = '';
+            refreshProducts(categoryModel.id!);
+          },
+        ),
+      );
+    }
+    setState(() {});
+  }
 
-        dropDownItems!.add(newDropdown);
-      },
-    );
+  Future refreshProducts(int categoryId) async {
+    dropDownItemsProducts = [];
+    products = await GearDatabase.instance.selectProductsByCategory(categoryId);
+    for (ProductModel productModel in products) {
+      dropDownItemsProducts.add(
+        DropdownMenuItem(
+          value: productModel.id.toString(),
+          child: Text(productModel.name),
+          onTap: () {
+            getProductById(productModel.id!);
+          },
+        ),
+      );
+    }
+    setState(() {});
+  }
 
-    return dropDownItems!;
+  Future getProductById(int id) async {
+    product = await GearDatabase.instance.selectProductById(id);
+    widget.codeController.text = product!.id.toString();
+    widget.priceController.text = product!.price.toString();
+    setState(() {});
   }
 
   @override
@@ -59,26 +93,16 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
     return Wrap(
       children: [
         DropDownInput(
-          dropdownList: const [
-            DropdownMenuItem(
-                value: 'Refrigerante', child: Text('Refrigerante')),
-            DropdownMenuItem(value: 'Cerveja', child: Text('Cerveja')),
-            DropdownMenuItem(value: 'Vinho', child: Text('Vinho')),
-            DropdownMenuItem(value: 'Destilado', child: Text('Destilado')),
-            DropdownMenuItem(value: 'Energético', child: Text('Energético')),
-            DropdownMenuItem(value: 'Água', child: Text('Água')),
-          ],
+          dropdownList: dropDownItemsCategories,
           labelDropdown: 'Categoria',
           iconDropdown: Icons.sell_rounded,
           selectedValueController: widget.categoryController,
         ),
         DropDownInput(
-          dropdownList: const [
-            DropdownMenuItem(value: 'Produto', child: Text('Produto')),
-          ],
+          dropdownList: dropDownItemsProducts,
           labelDropdown: 'Produto',
           iconDropdown: Icons.description_rounded,
-          selectedValueController: widget.categoryController,
+          selectedValueController: widget.productController,
         ),
         TextFieldApp(
           labelItem: 'Código do produto',

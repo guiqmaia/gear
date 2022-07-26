@@ -90,6 +90,14 @@ class GearDatabase {
     return listProducts;
   }
 
+  Future<ProductModel> selectProductById(int id) async {
+    final db = await instance.database;
+    List<Map<String, dynamic>> list =
+        await db.rawQuery('SELECT * FROM product WHERE id = $id');
+    ProductModel productModel = ProductModel.fromMap(list[0]);
+    return productModel;
+  }
+
   Future<List<CategoryModel>> selectCategories() async {
     final db = await instance.database;
     List<Map<String, dynamic>> list =
