@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../core/app_assets.dart';
 import '../../shared/widgets/btn_standard_app.dart';
 import '../add_sales/add_sales_page.dart';
 import 'widgets/body_sales_page.dart';
@@ -15,7 +16,7 @@ class _SalesPageState extends State<SalesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(240, 239, 244, 1),
+      backgroundColor: backgroundGrey,
       body: const BodyCashRegister(),
       bottomNavigationBar: BtnStandardApp(
         title: 'Adicionar venda',

@@ -25,4 +25,3 @@ class _BodyHomePageState extends State<BodyHomePage> {
     );
   }
 }
-

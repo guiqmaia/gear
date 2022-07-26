@@ -1,9 +1,14 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/statistics/widget/product_leaders.dart';
 
 import '../../../core/app_assets.dart';
+import '../../../infra/database/gear_database.dart';
+import '../../../infra/models/sale_model.dart';
+import '../../../shared/widgets/btn_standard_app.dart';
 import '../../sales/sales_page.dart';
 import '../../sales/widgets/sale_register_container.dart';
-import '../../../shared/widgets/btn_standard_app.dart';
 
 class BottomBtnSales extends StatefulWidget {
   const BottomBtnSales({
@@ -42,7 +47,7 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
     );
     setState(
       () {
-        salesList.add(newSale);
+        //salesList.add(newSale);
       },
     );
   }
@@ -56,7 +61,18 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
           title: 'Finalizar venda',
           pageRoute: const SalesPage(),
           widthBtn: MediaQuery.of(context).size.width * 0.45,
-          onPressed: () {},
+          onPressed: () async {
+            SaleModel saleModel = SaleModel(
+              productId: int.parse(widget.codeController.text),
+              productPrice: double.parse(widget.priceController.text),
+              productQuantity: int.parse(widget.categoryController.text),
+              pay: widget.payController.text,
+            );
+            await GearDatabase.instance.insert('sale', saleModel);
+            //if (!widget.mounted) return;
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+          },
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
