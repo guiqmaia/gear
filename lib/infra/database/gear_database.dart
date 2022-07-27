@@ -21,7 +21,7 @@ class GearDatabase {
 
   Future<Database> _initDB() async {
     var databasesPath = await getDatabasesPath();
-    String dbName = "testsalessss.db";
+    String dbName = "gurui.db";
     String path = '$databasesPath/$dbName';
     return await openDatabase(
       path,
@@ -77,6 +77,7 @@ class GearDatabase {
             price DOUBLE NOT NULL,
             quantity INT NOT NULL,
             pay VARCHAR(50) NOT NULL,
+            date DATE,
             CONSTRAINT fk_sale_product
               FOREIGN KEY (productiD)
               REFERENCES "$path.product (id)")''');

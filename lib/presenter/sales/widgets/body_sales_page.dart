@@ -62,6 +62,7 @@ class _BodyCashRegisterState extends State<BodyCashRegister> {
                     product: product.name,
                     productImg: product.image,
                     payment: sale.pay,
+                    dateTime: sale.date,
                   );
                 },
               ),

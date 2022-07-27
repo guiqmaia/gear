@@ -8,6 +8,7 @@ class SaleRegisterContainer extends StatelessWidget {
   final String product;
   final dynamic productImg;
   final String payment;
+  final DateTime dateTime;
 
   const SaleRegisterContainer({
     Key? key,
@@ -16,6 +17,7 @@ class SaleRegisterContainer extends StatelessWidget {
     required this.product,
     required this.productImg,
     required this.payment,
+    required this.dateTime,
   }) : super(key: key);
 
   @override
@@ -68,7 +70,8 @@ class SaleRegisterContainer extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.035),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.035),
                       Text(
                         payment,
                         style: TextStyle(

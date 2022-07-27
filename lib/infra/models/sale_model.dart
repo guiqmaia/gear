@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 import 'default_model.dart';
@@ -9,6 +10,7 @@ class SaleModel implements DefaultModel {
   double price;
   int quantity;
   String pay;
+  DateTime date;
 
   SaleModel({
     this.id,
@@ -16,34 +18,34 @@ class SaleModel implements DefaultModel {
     required this.price,
     required this.quantity,
     required this.pay,
+    required this.date,
   });
 
+  @override
   Map<String, dynamic> toMap() {
-    final result = <String, dynamic>{};
-
-    if (id != null) {
-      result.addAll({'id': id});
-    }
-    result.addAll({'productId': productId});
-    result.addAll({'price': price});
-    result.addAll({'quantity': quantity});
-    result.addAll({'pay': pay});
-
-    return result;
+    return <String, dynamic>{
+      'id': id,
+      'productId': productId,
+      'price': price,
+      'quantity': quantity,
+      'pay': pay,
+      'date': date.millisecondsSinceEpoch,
+    };
   }
 
   factory SaleModel.fromMap(Map<String, dynamic> map) {
     return SaleModel(
-      id: map['id']?.toInt(),
-      productId: map['productId']?.toInt() ?? 0,
-      price: map['price']?.toDouble() ?? 0.0,
-      quantity: map['quantity']?.toInt() ?? 0,
-      pay: map['pay'] ?? '',
+      id: map['id'] != null ? map['id'] as int : null,
+      productId: map['productId'] as int,
+      price: map['price'] as double,
+      quantity: map['quantity'] as int,
+      pay: map['pay'] as String,
+      date: DateTime.fromMillisecondsSinceEpoch(map['date'] as int),
     );
   }
 
   String toJson() => json.encode(toMap());
 
   factory SaleModel.fromJson(String source) =>
-      SaleModel.fromMap(json.decode(source));
+      SaleModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }
