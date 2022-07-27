@@ -37,7 +37,7 @@ class _ColumnBtnHomeState extends State<ColumnBtnHome> {
           fontSize: 21,
           fontColorBtn: greenNeon,
           backgroundColorBtn: Colors.black,
-          pageRoute: const SalesPage(),
+          pageRoute: SalesPage(),
         ),
         Container(
           decoration: BoxDecoration(

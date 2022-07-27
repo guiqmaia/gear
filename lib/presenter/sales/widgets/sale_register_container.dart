@@ -2,34 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../core/app_assets.dart';
 
-List<SaleRegisterContainer> salesList = [
-  SaleRegisterContainer(
-    price: 'R\$ 25,00',
-    quantity: 5,
-    product: 'Soda',
-    productImg: imgSodaAntarctica,
-    payment: 'Débito',
-  ),
-  SaleRegisterContainer(
-    price: 'R\$ 50,00',
-    quantity: 10,
-    product: 'Coca-cola',
-    productImg: imgCocaCola,
-    payment: 'Crédito',
-  ),
-  SaleRegisterContainer(
-    price: 'R\$ 120,50',
-    quantity: 1,
-    product: 'White Horse',
-    productImg: imgWhiteHorse,
-    payment: 'PIX',
-  ),
-];
-
-List get getLista {
-  return salesList;
-}
-
 class SaleRegisterContainer extends StatelessWidget {
   final String price;
   final dynamic quantity;
@@ -73,38 +45,42 @@ class SaleRegisterContainer extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.asset(
-                  productImg,
-                  height: 60,
+          Expanded(
+            child: Row(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.memory(
+                    productImg,
+                    height: MediaQuery.of(context).size.height * 0.09,
+                  ),
                 ),
-              ),
-              const SizedBox(width: 15),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    product,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w500,
-                    ),
+                SizedBox(width: MediaQuery.of(context).size.width * 0.03),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        product,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      SizedBox(height: MediaQuery.of(context).size.height * 0.035),
+                      Text(
+                        payment,
+                        style: TextStyle(
+                          color: Colors.grey.shade700,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 15),
-                  Text(
-                    payment,
-                    style: TextStyle(
-                      color: Colors.grey.shade700,
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -119,14 +95,14 @@ class SaleRegisterContainer extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
-                  price,
+                  'R\$ $price',
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 17,
                   ),
                 ),
               ),
-              const SizedBox(height: 15),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.03),
               Row(
                 children: [
                   Text(
