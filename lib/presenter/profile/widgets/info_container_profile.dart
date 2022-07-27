@@ -9,7 +9,6 @@ class InfoContainerProfile extends StatelessWidget {
 
   const InfoContainerProfile({
     Key? key,
-    required TextStyle style,
     required this.titleInfo,
     required this.info,
     required this.iconInfo,
@@ -18,60 +17,56 @@ class InfoContainerProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 30,
+      width: MediaQuery.of(context).size.width * 0.9,
+      padding: const EdgeInsets.symmetric(
+        horizontal: 35,
+        vertical: 12,
       ),
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 15,
-          vertical: 18,
-        ),
-        margin: const EdgeInsets.symmetric(vertical: 10),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.black,
-          boxShadow: const [
-            BoxShadow(
-                color: Colors.black38,
-                spreadRadius: 2,
-                blurRadius: 10,
-                offset: Offset(5, 5)),
-          ],
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              titleInfo,
-              style: const TextStyle(
-                fontSize: 15,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+        color: Colors.black,
+        boxShadow: [
+          BoxShadow(
+              color: Colors.grey.shade300,
+              spreadRadius: 0,
+              blurRadius: 10,
+              offset: Offset(5, 5)),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            titleInfo,
+            style: const TextStyle(
+              fontSize: 12,
+              color: Colors.white,
+            ),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.01,
+          ),
+          Row(
+            children: [
+              Icon(
+                iconInfo,
+                color: greenNeon,
+                size: 15,
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              children: [
-                Icon(
-                  iconInfo,
-                  color: greenNeon,
-                  size: 28,
+              SizedBox(width: MediaQuery.of(context).size.width * 0.025),
+              Text(
+                info,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
                 ),
-                const SizedBox(width: 10),
-                Text(
-                  info,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 15,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

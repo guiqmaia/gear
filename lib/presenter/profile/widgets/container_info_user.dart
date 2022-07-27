@@ -8,46 +8,29 @@ class ContainerInfoUser extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 20,
-      ),
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      width: MediaQuery.of(context).size.width * 0.9,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Wrap(
-        children: [
-          InfoContainerProfile(
-              titleInfo: "Nome:",
-              info: logedUser.name,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 15,
-              ),
-              iconInfo: Icons.person_outline),
-          InfoContainerProfile(
-              titleInfo: "Data de Nascimento:",
-              info: logedUser.birthday,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 15,
-              ),
-              iconInfo: Icons.date_range_rounded),
-          InfoContainerProfile(
-            titleInfo: "CPF:",
-            info: logedUser.cpf,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 15,
-            ),
-            iconInfo: Icons.location_on_outlined,
-          ),
-        ],
-      ),
+    return Wrap(
+      alignment: WrapAlignment.center,
+      children: [
+        const Divider(
+          indent: 25,
+          endIndent: 25,
+          thickness: 1,
+          height: 10,
+        ),
+        InfoContainerProfile(
+            titleInfo: "Nome",
+            info: logedUser.name,
+            iconInfo: Icons.person_outline),
+        InfoContainerProfile(
+            titleInfo: "Data de Nascimento",
+            info: logedUser.birthday,
+            iconInfo: Icons.date_range_rounded),
+        InfoContainerProfile(
+          titleInfo: "CPF",
+          info: logedUser.cpf,
+          iconInfo: Icons.location_on_outlined,
+        ),
+      ],
     );
   }
 }
