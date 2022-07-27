@@ -5,7 +5,7 @@ class DropDownInput extends StatefulWidget {
   final String labelDropdown;
   final IconData iconDropdown;
   String? selectedValue;
-  TextEditingController selectedValueController = TextEditingController();
+  final TextEditingController selectedValueController;
 
   DropDownInput({
     Key? key,
@@ -41,11 +41,10 @@ class _DropDownInputState extends State<DropDownInput> {
           filled: true,
           fillColor: Colors.white,
         ),
-        onChanged: (selectedValue) {
-          setState(
-            () =>
-                widget.selectedValueController.text = selectedValue.toString(),
-          );
+        onChanged: (String? selectedValue) {
+          setState(() {
+            widget.selectedValueController.text = selectedValue!;
+          });
         },
         items: widget.dropdownList,
       ),

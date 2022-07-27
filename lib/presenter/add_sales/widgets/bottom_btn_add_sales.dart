@@ -63,20 +63,26 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
           ),
           child: TextButton(
             onPressed: () async {
-              SaleModel saleModel = SaleModel(
-                productId: int.parse(widget.codeController.text),
-                price: double.parse(widget.totalController.text),
-                quantity: int.parse(widget.quantityController.text),
-                pay: widget.payController.text,
-              );
-              await GearDatabase.instance.insert('sale', saleModel);
-              //if (!mounted) return;
-              Navigator.of(context).pop();
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const SalesPage(),
-                ),
-              );
+              if (widget.codeController.text.isNotEmpty) {
+                SaleModel saleModel = SaleModel(
+                  productId: int.parse(widget.codeController.text),
+                  price: double.parse(widget.totalController.text),
+                  quantity: int.parse(widget.quantityController.text),
+                  pay: widget.payController.text,
+                );
+                await GearDatabase.instance.insert('sale', saleModel);
+
+                if (!mounted) return;
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const SalesPage(),
+                  ),
+                );
+              } else {
+                Navigator.of(context).pop();
+              }
             },
             child: const Text(
               'Finalizar venda',
