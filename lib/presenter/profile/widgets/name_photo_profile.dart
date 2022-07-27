@@ -16,11 +16,20 @@ class NamePhotoProfile extends StatelessWidget {
           Stack(
             children: [
               CircleAvatar(
-                radius: 80,
-                backgroundImage: Image.asset(
-                  imgStore,
-                  fit: BoxFit.cover,
-                ).image,
+                radius: 95,
+                backgroundColor: Colors.black,
+                child: CircleAvatar(
+                  radius: 89,
+                  backgroundColor: Colors.white,
+                  child: CircleAvatar(
+                    radius: 85,
+                    backgroundColor: Colors.white,
+                    backgroundImage: Image.asset(
+                      imgStore,
+                      fit: BoxFit.cover,
+                    ).image,
+                  ),
+                ),
               ),
               Positioned(
                 bottom: 0,
