@@ -58,8 +58,8 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           value: categoryModel.id.toString(),
           child: Text(categoryModel.name),
           onTap: () {
-            widget.codeController.text = '';
-            widget.priceController.text = '';
+            widget.codeController.clear();
+            widget.priceController.clear();
             refreshProducts(categoryModel.id!);
           },
         ),
@@ -69,7 +69,6 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
   }
 
   Future refreshProducts(int categoryId) async {
-    dropDownItemsProducts = [];
     products = await GearDatabase.instance.selectProductsByCategory(categoryId);
     for (ProductModel productModel in products) {
       dropDownItemsProducts.add(
@@ -96,9 +95,8 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
   double? descount;
   int? id;
 
-  Future refreshTotal(price, quantity, descount, id) async {
-    await GearDatabase.instance.selectProductById(id);
-    widget.total = (price * quantity) - descount;
+  refreshTotal(quantity, descount) {
+    widget.total = (product!.price * quantity) * (1 - descount / 100);
     widget.totalController.text = widget.total.toString();
     setState(() {});
   }
@@ -107,11 +105,14 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
   Widget build(BuildContext context) {
     return Wrap(
       children: [
-        DropDownInput(
-          dropdownList: dropDownItemsCategories,
-          labelDropdown: 'Categoria',
-          iconDropdown: Icons.sell_rounded,
-          selectedValueController: widget.categoryController,
+        IgnorePointer(
+          ignoring: product != null ? true : false,
+          child: DropDownInput(
+            dropdownList: dropDownItemsCategories,
+            labelDropdown: 'Categoria',
+            iconDropdown: Icons.sell_rounded,
+            selectedValueController: widget.categoryController,
+          ),
         ),
         DropDownInput(
           dropdownList: dropDownItemsProducts,
@@ -123,18 +124,21 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           labelItem: 'Código do produto',
           typeController: widget.codeController,
           isObscured: false,
+          isEnabled: product == null,
         ),
         TextFieldApp(
           labelItem: 'Preço do produto',
           typeController: widget.priceController,
           isObscured: false,
+          isEnabled: product == null,
         ),
         TextFieldApp(
-          labelItem: 'Desconto (R\$)',
+          labelItem: 'Desconto (%)',
           typeController: widget.descountController,
           isObscured: false,
           onChanged: (text) {
             descount = double.parse(text);
+            refreshTotal(quantity, descount);
           },
         ),
         TextFieldApp(
@@ -143,6 +147,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           isObscured: false,
           onChanged: (text) {
             quantity = int.parse(text);
+            refreshTotal(quantity, descount);
           },
         ),
         DropDownInput(
@@ -166,8 +171,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           children: [
             TextButton(
               onPressed: () {
-                refreshTotal(double.parse(widget.priceController.text),
-                    quantity, descount, int.parse(widget.codeController.text));
+                refreshTotal(quantity, descount);
               },
               style: TextButton.styleFrom(
                 padding: const EdgeInsets.symmetric(

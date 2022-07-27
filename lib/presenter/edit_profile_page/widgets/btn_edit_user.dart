@@ -34,10 +34,10 @@ class _BtnEditUserState extends State<BtnEditUser> {
         'telephone',
         '"${widget.telephoneController.text}"',
       );
+      setState(() {
+        logedUser.telephone = widget.telephoneController.text;
+      });
     }
-    setState(() {
-      logedUser.telephone = widget.telephoneController.text;
-    });
   }
 
   Future updateMobileNumberUser() async {
@@ -48,10 +48,10 @@ class _BtnEditUserState extends State<BtnEditUser> {
         'mobileNumber',
         '"${widget.mobileNumberController.text}"',
       );
+      setState(() {
+        logedUser.mobileNumber = widget.mobileNumberController.text;
+      });
     }
-    setState(() {
-      logedUser.mobileNumber = widget.mobileNumberController.text;
-    });
   }
 
   Future updateCepUser() async {
@@ -62,10 +62,10 @@ class _BtnEditUserState extends State<BtnEditUser> {
         'adress',
         '"${widget.adressController.text}"',
       );
+      setState(() {
+        logedUser.adress = widget.adressController.text;
+      });
     }
-    setState(() {
-      logedUser.adress = widget.adressController.text;
-    });
   }
 
   Future updateAdressUser() async {
@@ -76,10 +76,10 @@ class _BtnEditUserState extends State<BtnEditUser> {
         'cep',
         '"${widget.cepController.text}"',
       );
+      setState(() {
+        logedUser.cep = widget.cepController.text;
+      });
     }
-    setState(() {
-      logedUser.cep = widget.cepController.text;
-    });
   }
 
   @override
