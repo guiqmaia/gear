@@ -138,6 +138,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           isObscured: false,
           onChanged: (text) {
             descount = double.parse(text);
+            refreshTotal(quantity, descount);
           },
         ),
         TextFieldApp(
@@ -146,6 +147,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           isObscured: false,
           onChanged: (text) {
             quantity = int.parse(text);
+            refreshTotal(quantity, descount);
           },
         ),
         DropDownInput(
