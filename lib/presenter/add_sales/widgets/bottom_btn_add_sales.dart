@@ -84,6 +84,12 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
                 );
               } else {
                 Navigator.of(context).pop();
+                Navigator.of(context).pop();
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const SalesPage(),
+                  ),
+                );
               }
             },
             child: const Text(
