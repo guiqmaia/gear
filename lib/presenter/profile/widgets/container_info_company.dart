@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/app_assets.dart';
 import '../../../core/app_getit.dart';
 import 'info_container_profile.dart';
 
