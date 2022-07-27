@@ -193,7 +193,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
                 vertical: 10,
               ),
               padding: const EdgeInsets.symmetric(
-                horizontal: 20,
+                horizontal: 10,
                 vertical: 15,
               ),
               decoration: BoxDecoration(

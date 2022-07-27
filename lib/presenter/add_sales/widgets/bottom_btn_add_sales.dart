@@ -33,7 +33,6 @@ class BottomBtnSales extends StatefulWidget {
 }
 
 class _BottomBtnSalesState extends State<BottomBtnSales> {
-  
   void cleanController() {
     widget.categoryController.clear();
     widget.codeController.clear();
@@ -71,7 +70,7 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
                 pay: widget.payController.text,
               );
               await GearDatabase.instance.insert('sale', saleModel);
-              if (!mounted) return;
+              //if (!mounted) return;
               Navigator.of(context).pop();
               Navigator.of(context).push(
                 MaterialPageRoute(
