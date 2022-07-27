@@ -104,6 +104,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
   @override
   Widget build(BuildContext context) {
     return Wrap(
+      alignment: WrapAlignment.center,
       children: [
         IgnorePointer(
           ignoring: product != null ? true : false,
@@ -166,54 +167,40 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           endIndent: 15,
           color: Colors.black,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            TextButton(
-              onPressed: () {
-                refreshTotal(quantity, descount);
-              },
-              style: TextButton.styleFrom(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 30,
-                  vertical: 15,
+        Container(
+          width: MediaQuery.of(context).size.width * 0.91,
+          margin: const EdgeInsets.symmetric(
+            vertical: 10,
+          ),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 20,
+          ),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                'Total: ',
+                style: TextStyle(
+                  fontSize: 19,
+                  fontWeight: FontWeight.bold,
                 ),
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                ),
-                primary: greenNeon,
-                backgroundColor: Colors.black,
-                textStyle: const TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w500,
-                ),
               ),
-              child: const Text('Calcular total'),
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.35,
-              margin: const EdgeInsets.symmetric(
-                horizontal: 15,
-                vertical: 10,
-              ),
-              padding: const EdgeInsets.symmetric(
-                horizontal: 10,
-                vertical: 15,
-              ),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Text(
-                widget.total == null ? '' : 'R\$ ${widget.total}',
+              Text(
+                widget.total == null
+                    ? ''
+                    : 'R\$ ${widget.total!.toStringAsFixed(2)}',
                 style: const TextStyle(
-                  fontSize: 17,
+                  fontSize: 18,
                   fontWeight: FontWeight.w500,
                 ),
-                textAlign: TextAlign.center,
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );
