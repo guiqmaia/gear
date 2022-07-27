@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:gear/infra/models/sale_model.dart';
-
 import '../../../shared/widgets/top_bar_app.dart';
 import '../../sales/sales_page.dart';
 import 'wrap_textfield_add_sale.dart';

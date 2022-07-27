@@ -1,14 +1,10 @@
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/statistics/widget/product_leaders.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/sale_model.dart';
 import '../../../shared/widgets/btn_standard_app.dart';
 import '../../sales/sales_page.dart';
-import '../../sales/widgets/sale_register_container.dart';
 
 class BottomBtnSales extends StatefulWidget {
   const BottomBtnSales({
@@ -37,19 +33,15 @@ class BottomBtnSales extends StatefulWidget {
 }
 
 class _BottomBtnSalesState extends State<BottomBtnSales> {
-  salesAdd() {
-    var newSale = SaleRegisterContainer(
-      price: widget.priceController.toString(),
-      quantity: widget.quantityController.toString(),
-      product: widget.productController.toString(),
-      productImg: imgSodas,
-      payment: widget.payController.toString(),
-    );
-    setState(
-      () {
-        //salesList.add(newSale);
-      },
-    );
+  
+  void cleanController() {
+    widget.categoryController.clear();
+    widget.codeController.clear();
+    widget.productController.clear();
+    widget.priceController.clear();
+    widget.descountController.clear();
+    widget.quantityController.clear();
+    widget.totalController.clear();
   }
 
   @override
@@ -57,22 +49,45 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        BtnStandardApp(
-          title: 'Finalizar venda',
-          pageRoute: const SalesPage(),
-          widthBtn: MediaQuery.of(context).size.width * 0.45,
-          onPressed: () async {
-            SaleModel saleModel = SaleModel(
-              productId: int.parse(widget.codeController.text),
-              productPrice: double.parse(widget.priceController.text),
-              productQuantity: int.parse(widget.categoryController.text),
-              pay: widget.payController.text,
-            );
-            await GearDatabase.instance.insert('sale', saleModel);
-            //if (!widget.mounted) return;
-            Navigator.of(context).pop();
-            Navigator.of(context).pop();
-          },
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: greenNeon,
+          ),
+          margin: const EdgeInsets.symmetric(
+            horizontal: 15,
+            vertical: 10,
+          ),
+          width: MediaQuery.of(context).size.width * 0.45,
+          padding: const EdgeInsets.symmetric(
+            vertical: 3,
+          ),
+          child: TextButton(
+            onPressed: () async {
+              SaleModel saleModel = SaleModel(
+                productId: int.parse(widget.codeController.text),
+                price: double.parse(widget.totalController.text),
+                quantity: int.parse(widget.quantityController.text),
+                pay: widget.payController.text,
+              );
+              await GearDatabase.instance.insert('sale', saleModel);
+              if (!mounted) return;
+              Navigator.of(context).pop();
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const SalesPage(),
+                ),
+              );
+            },
+            child: const Text(
+              'Finalizar venda',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -84,7 +99,17 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
                 backgroundColor: Colors.black,
                 child: IconButton(
                   tooltip: 'Adicione',
-                  onPressed: () {},
+                  onPressed: () async {
+                    SaleModel saleModel = SaleModel(
+                      productId: int.parse(widget.codeController.text),
+                      price: double.parse(widget.totalController.text),
+                      quantity: int.parse(widget.quantityController.text),
+                      pay: widget.payController.text,
+                    );
+                    await GearDatabase.instance.insert('sale', saleModel);
+                    if (!mounted) return;
+                    cleanController();
+                  },
                   icon: Icon(
                     Icons.add,
                     color: greenNeon,
@@ -101,13 +126,7 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
                 child: IconButton(
                   tooltip: 'Limpar',
                   onPressed: () {
-                    widget.categoryController.clear();
-                    widget.codeController.clear();
-                    widget.productController.clear();
-                    widget.priceController.clear();
-                    widget.descountController.clear();
-                    widget.quantityController.clear();
-                    widget.totalController.clear();
+                    cleanController();
                   },
                   icon: const Icon(
                     Icons.clear_all_rounded,

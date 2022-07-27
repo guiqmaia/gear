@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'default_model.dart';
 
@@ -7,15 +6,15 @@ class SaleModel implements DefaultModel {
   @override
   int? id;
   int productId;
-  double productPrice;
-  int productQuantity;
+  double price;
+  int quantity;
   String pay;
 
   SaleModel({
     this.id,
     required this.productId,
-    required this.productPrice,
-    required this.productQuantity,
+    required this.price,
+    required this.quantity,
     required this.pay,
   });
 
@@ -26,8 +25,8 @@ class SaleModel implements DefaultModel {
       result.addAll({'id': id});
     }
     result.addAll({'productId': productId});
-    result.addAll({'productPrice': productPrice});
-    result.addAll({'productQuantity': productQuantity});
+    result.addAll({'price': price});
+    result.addAll({'quantity': quantity});
     result.addAll({'pay': pay});
 
     return result;
@@ -37,8 +36,8 @@ class SaleModel implements DefaultModel {
     return SaleModel(
       id: map['id']?.toInt(),
       productId: map['productId']?.toInt() ?? 0,
-      productPrice: map['productPrice']?.toDouble() ?? 0.0,
-      productQuantity: map['productQuantity']?.toInt() ?? 0,
+      price: map['price']?.toDouble() ?? 0.0,
+      quantity: map['quantity']?.toInt() ?? 0,
       pay: map['pay'] ?? '',
     );
   }

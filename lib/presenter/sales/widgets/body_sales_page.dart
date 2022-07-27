@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gear/infra/models/product_model.dart';
-import 'package:gear/presenter/statistics/widget/product_leaders.dart';
 
 import '../../../infra/database/gear_database.dart';
+import '../../../infra/models/product_model.dart';
 import '../../../infra/models/sale_model.dart';
 import '../../../shared/widgets/top_bar_app.dart';
 import '../../home/home_page.dart';
@@ -22,12 +21,18 @@ class _BodyCashRegisterState extends State<BodyCashRegister> {
 
   bool isLoading = false;
 
+  @override
+  void initState() {
+    super.initState();
+    refreshSales();
+  }
+
   Future refreshSales() async {
     setState(() => isLoading = true);
-    salesList =
-        await GearDatabase.instance.selectSale();
+    salesList = await GearDatabase.instance.selectSale();
     for (SaleModel sale in salesList) {
-       productsList.add(await GearDatabase.instance.selectProductById(sale.productId));
+      productsList
+          .add(await GearDatabase.instance.selectProductById(sale.productId));
     }
     setState(() => isLoading = false);
   }
@@ -52,8 +57,8 @@ class _BodyCashRegisterState extends State<BodyCashRegister> {
                   SaleModel sale = salesList[index];
                   ProductModel product = productsList[index];
                   return SaleRegisterContainer(
-                    price: sale.productPrice.toString(),
-                    quantity: sale.productQuantity,
+                    price: sale.price.toString(),
+                    quantity: sale.quantity,
                     product: product.name,
                     productImg: product.image,
                     payment: sale.pay,

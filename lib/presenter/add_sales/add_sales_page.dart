@@ -20,6 +20,7 @@ class _AddSalesPageState extends State<AddSalesPage> {
   final quantityController = TextEditingController();
   final payController = TextEditingController();
   final totalController = TextEditingController();
+  
 
   @override
   Widget build(BuildContext context) {
