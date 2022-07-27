@@ -54,8 +54,8 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           value: categoryModel.id.toString(),
           child: Text(categoryModel.name),
           onTap: () {
-            widget.codeController.text = '';
-            widget.priceController.text = '';
+            widget.codeController.clear();
+            widget.priceController.clear();
             refreshProducts(categoryModel.id!);
           },
         ),
@@ -65,7 +65,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
   }
 
   Future refreshProducts(int categoryId) async {
-    dropDownItemsProducts = [];
+    dropDownItemsProducts.clear();
     products = await GearDatabase.instance.selectProductsByCategory(categoryId);
     for (ProductModel productModel in products) {
       dropDownItemsProducts.add(
