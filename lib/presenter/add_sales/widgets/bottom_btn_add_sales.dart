@@ -41,6 +41,7 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
     widget.descountController.clear();
     widget.quantityController.clear();
     widget.totalController.clear();
+    setState(() {});
   }
 
   @override
@@ -69,6 +70,7 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
                   price: double.parse(widget.totalController.text),
                   quantity: int.parse(widget.quantityController.text),
                   pay: widget.payController.text,
+                  date: DateTime.now(),
                 );
                 await GearDatabase.instance.insert('sale', saleModel);
 
@@ -110,6 +112,7 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
                       price: double.parse(widget.totalController.text),
                       quantity: int.parse(widget.quantityController.text),
                       pay: widget.payController.text,
+                      date: DateTime.now(),
                     );
                     await GearDatabase.instance.insert('sale', saleModel);
                     if (!mounted) return;
