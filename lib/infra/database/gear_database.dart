@@ -3,6 +3,7 @@ import 'package:sqflite/sqflite.dart';
 import '../models/category_model.dart';
 import '../models/default_model.dart';
 import '../models/product_model.dart';
+import '../models/sale_model.dart';
 import '../models/user_model.dart';
 
 class GearDatabase {
@@ -20,16 +21,16 @@ class GearDatabase {
 
   Future<Database> _initDB() async {
     var databasesPath = await getDatabasesPath();
-    String dbName = "jgdgjhdar.db";
+    String dbName = "iufsiuab.db";
     String path = '$databasesPath/$dbName';
     return await openDatabase(
       path,
       version: 1,
       onCreate: (Database db, int version) async {
         await createTableCategory(db);
-        print('object');
         await createTableProduct(db, path);
         await createTableUser(db);
+        await createTableSale(db, path);
       },
     );
   }
@@ -69,9 +70,22 @@ class GearDatabase {
             image BLOB NOT NULL)''');
   }
 
+  Future<void> createTableSale(Database db, String path) {
+    return db.execute('''CREATE TABLE IF NOT EXISTS sale (
+            id INTEGER PRIMARY KEY AUTOINCREMENT, 
+            productId INT NOT NULL,
+            price DOUBLE NOT NULL,
+            quantity INT NOT NULL,
+            pay VARCHAR(50) NOT NULL,
+            CONSTRAINT fk_sale_product
+              FOREIGN KEY (productiD)
+              REFERENCES "$path.product (id)")''');
+  }
+
   Future<DefaultModel> insert(String table, DefaultModel model) async {
     final db = await instance.database;
     db.insert(table, model.toMap());
+    print(model);
     return model;
   }
 
@@ -116,6 +130,19 @@ class GearDatabase {
         '${'SELECT * FROM user WHERE email = "' + login + '" AND password = "' + password}"');
     UserModel user = UserModel.fromMap(list[0]);
     return user;
+  }
+
+  Future selectSale() async {
+    final db = await instance.database;
+    List<Map<String, dynamic>> list = await db.rawQuery('SELECT * FROM sale');
+    List<SaleModel> saleList = [];
+
+    for (int i = 0; i < list.length; i++) {
+      saleList.add(
+        SaleModel.fromMap(list[i]),
+      );
+    }
+    return saleList;
   }
 
   Future updateProduct(table, id, column, change) async {

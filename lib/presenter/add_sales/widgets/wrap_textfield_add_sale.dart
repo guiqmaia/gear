@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:onboarding/onboarding.dart';
+
+import 'package:gear/core/app_assets.dart';
 
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/category_model.dart';
@@ -7,7 +10,7 @@ import '../../../shared/widgets/dropdown_input.dart';
 import '../../../shared/widgets/text_field_app.dart';
 
 class WrapTextFieldSale extends StatefulWidget {
-  const WrapTextFieldSale({
+  WrapTextFieldSale({
     Key? key,
     required this.categoryController,
     required this.codeController,
@@ -27,6 +30,7 @@ class WrapTextFieldSale extends StatefulWidget {
   final TextEditingController quantityController;
   final TextEditingController payController;
   final TextEditingController totalController;
+  double? total;
 
   @override
   State<WrapTextFieldSale> createState() => _WrapTextFieldSaleState();
@@ -65,7 +69,6 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
   }
 
   Future refreshProducts(int categoryId) async {
-    dropDownItemsProducts.clear();
     products = await GearDatabase.instance.selectProductsByCategory(categoryId);
     for (ProductModel productModel in products) {
       dropDownItemsProducts.add(
@@ -88,15 +91,28 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
     setState(() {});
   }
 
+  int? quantity;
+  double? descount;
+  int? id;
+
+  refreshTotal(quantity, descount) {
+    widget.total = (product!.price * quantity) * (1 - descount / 100);
+    widget.totalController.text = widget.total.toString();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Wrap(
       children: [
-        DropDownInput(
-          dropdownList: dropDownItemsCategories,
-          labelDropdown: 'Categoria',
-          iconDropdown: Icons.sell_rounded,
-          selectedValueController: widget.categoryController,
+        IgnorePointer(
+          ignoring: product != null ? true : false,
+          child: DropDownInput(
+            dropdownList: dropDownItemsCategories,
+            labelDropdown: 'Categoria',
+            iconDropdown: Icons.sell_rounded,
+            selectedValueController: widget.categoryController,
+          ),
         ),
         DropDownInput(
           dropdownList: dropDownItemsProducts,
@@ -108,21 +124,29 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           labelItem: 'Código do produto',
           typeController: widget.codeController,
           isObscured: false,
+          isEnabled: product == null,
         ),
         TextFieldApp(
           labelItem: 'Preço do produto',
           typeController: widget.priceController,
           isObscured: false,
+          isEnabled: product == null,
         ),
         TextFieldApp(
-          labelItem: 'Desconto',
+          labelItem: 'Desconto (R\$)',
           typeController: widget.descountController,
           isObscured: false,
+          onChanged: (text) {
+            descount = double.parse(text);
+          },
         ),
         TextFieldApp(
           labelItem: 'Quantidade',
           typeController: widget.quantityController,
           isObscured: false,
+          onChanged: (text) {
+            quantity = int.parse(text);
+          },
         ),
         DropDownInput(
           dropdownList: const [
@@ -140,10 +164,54 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           endIndent: 15,
           color: Colors.black,
         ),
-        TextFieldApp(
-          labelItem: 'Total',
-          typeController: widget.totalController,
-          isObscured: false,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            TextButton(
+              onPressed: () {
+                refreshTotal(quantity, descount);
+              },
+              style: TextButton.styleFrom(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 30,
+                  vertical: 15,
+                ),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+                primary: greenNeon,
+                backgroundColor: Colors.black,
+                textStyle: const TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              child: const Text('Calcular total'),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.35,
+              margin: const EdgeInsets.symmetric(
+                horizontal: 15,
+                vertical: 10,
+              ),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10,
+                vertical: 15,
+              ),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Text(
+                widget.total == null ? '' : 'R\$ ${widget.total}',
+                style: const TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.w500,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
         ),
       ],
     );
