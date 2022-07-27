@@ -57,7 +57,7 @@ class _BodyCashRegisterState extends State<BodyCashRegister> {
                   SaleModel sale = salesList[index];
                   ProductModel product = productsList[index];
                   return SaleRegisterContainer(
-                    price: sale.price.toString(),
+                    price: sale.price.toStringAsFixed(2),
                     quantity: sale.quantity,
                     product: product.name,
                     productImg: product.image,

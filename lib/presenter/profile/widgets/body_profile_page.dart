@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/login/login_page.dart';
 
 import '../../home/home_page.dart';
 import '../../../shared/widgets/btn_standard_app.dart';
@@ -24,6 +25,7 @@ class BodyProfilePage extends StatelessWidget {
           const ContainerInfo(),
           BtnStandardApp(
             title: "Sair",
+            pageRoute: const LoginPage(),
             widthBtn: MediaQuery.of(context).size.width * 0.9,
           ),
         ],

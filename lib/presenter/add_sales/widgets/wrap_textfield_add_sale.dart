@@ -130,7 +130,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           isObscured: false,
         ),
         TextFieldApp(
-          labelItem: 'Desconto (R\$)',
+          labelItem: 'Desconto (%)',
           typeController: widget.descountController,
           isObscured: false,
           onChanged: (text) {
