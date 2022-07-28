@@ -7,10 +7,12 @@ String imgBlack = 'assets/images/black.jpg';
 String imgUser = 'assets/images/user.png';
 String imgPlanner = 'assets/images/planner.jpg';
 String imgCoins = 'assets/images/coins.jpg';
+String imgInventory = 'assets/images/inventory.jpg';
 
 // icons
 String iconFacebook = 'assets/icons/facebook.png';
 String iconGoogle = 'assets/icons/google.png';
+String iconUserAnon = 'assets/images/user_anon.png';
 
 // sodas
 String imgSodas = 'assets/images/soda.png';

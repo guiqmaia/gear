@@ -11,7 +11,7 @@ class StackTopHome extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width * 0.9,
       margin: EdgeInsets.only(
-        top: MediaQuery.of(context).size.height * 0.05,
+        top: MediaQuery.of(context).size.height * 0.06,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -38,9 +38,10 @@ class StackTopHome extends StatelessWidget {
             ],
           ),
           CircleAvatar(
-            radius: 32,
+            radius: 34,
+            backgroundColor: Colors.white,
             backgroundImage: Image.asset(
-              imgStore,
+              iconUserAnon,
               fit: BoxFit.cover,
             ).image,
           ),

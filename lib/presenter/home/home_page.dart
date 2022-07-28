@@ -62,10 +62,12 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: greenNeon,
-        unselectedItemColor: Colors.white,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.black,
         onTap: _onItemTapped,
-        backgroundColor: Colors.black,
+        backgroundColor: backgroundGrey,
+        showUnselectedLabels: false,
+        elevation: 25,
       ),
     );
   }

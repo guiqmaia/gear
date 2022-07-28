@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:onboarding/onboarding.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../infra/database/create_database_products.dart';
-import '../../../shared/widgets/btn_standard_app.dart';
 import '../../category/category_page.dart';
 import '../../sales/sales_page.dart';
 
@@ -29,18 +27,61 @@ class _ColumnBtnHomeState extends State<ColumnBtnHome> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      child: Wrap(
         children: [
-          // BtnStandardApp(
-          //   title: "CAIXA",
-          //   widthBtn: MediaQuery.of(context).size.width * 0.9,
-          //   heightBtn: MediaQuery.of(context).size.height * 0.1,
-          //   fontSize: 21,
-          //   fontColorBtn: greenNeon,
-          //   backgroundColorBtn: Colors.black,
-          //   pageRoute: const SalesPage(),
-          // ),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.black,
+              image: DecorationImage(
+                image: Image.asset('assets/images/bar_chart.png').image,
+                fit: BoxFit.cover,
+                opacity: 0.7,
+              ),
+            ),
+            margin: const EdgeInsets.symmetric(
+              horizontal: 15,
+              vertical: 10,
+            ),
+            width: MediaQuery.of(context).size.width * 0.9,
+            height: MediaQuery.of(context).size.height * 0.2,
+            padding: const EdgeInsets.symmetric(
+              vertical: 3,
+              horizontal: 10,
+            ),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      Icons.arrow_upward_rounded,
+                      color: greenNeon,
+                    ),
+                    Text(
+                      'R\$ 1500,00',
+                      style: TextStyle(
+                        color: backgroundGrey,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.arrow_downward_rounded,
+                      color: Colors.red,
+                    ),
+                    Text(
+                      'R\$ 1500,00',
+                      style: TextStyle(
+                        color: backgroundGrey,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
@@ -55,7 +96,7 @@ class _ColumnBtnHomeState extends State<ColumnBtnHome> {
               vertical: 10,
             ),
             width: MediaQuery.of(context).size.width * 0.9,
-            height: MediaQuery.of(context).size.height * 0.3,
+            height: MediaQuery.of(context).size.height * 0.2,
             padding: const EdgeInsets.symmetric(
               vertical: 3,
               horizontal: 10,
@@ -71,7 +112,7 @@ class _ColumnBtnHomeState extends State<ColumnBtnHome> {
               style: const ButtonStyle(
                 alignment: Alignment.centerLeft,
               ),
-              child: Text(
+              child: const Text(
                 'CAIXA',
                 style: TextStyle(
                   color: Colors.black,
@@ -84,16 +125,21 @@ class _ColumnBtnHomeState extends State<ColumnBtnHome> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: greenNeon,
+              image: DecorationImage(
+                image: AssetImage(imgInventory),
+                fit: BoxFit.cover,
+                opacity: 0.7,
+              ),
             ),
             margin: const EdgeInsets.symmetric(
               horizontal: 15,
               vertical: 10,
             ),
             width: MediaQuery.of(context).size.width * 0.9,
-            height: MediaQuery.of(context).size.height * 0.1,
+            height: MediaQuery.of(context).size.height * 0.2,
             padding: const EdgeInsets.symmetric(
               vertical: 3,
+              horizontal: 10,
             ),
             child: TextButton(
               onPressed: () async {
@@ -117,11 +163,14 @@ class _ColumnBtnHomeState extends State<ColumnBtnHome> {
                   );
                 }
               },
+              style: const ButtonStyle(
+                alignment: Alignment.centerLeft,
+              ),
               child: const Text(
                 'ESTOQUE',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 21,
+                  fontSize: 35,
                   fontWeight: FontWeight.bold,
                 ),
               ),
