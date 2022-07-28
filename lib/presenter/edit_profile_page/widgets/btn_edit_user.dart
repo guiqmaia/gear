@@ -28,7 +28,7 @@ class BtnEditUser extends StatefulWidget {
 class _BtnEditUserState extends State<BtnEditUser> {
   Future updateTelephoneUser() async {
     if (widget.telephoneController.text != '') {
-      await GearDatabase.instance.updateProduct(
+      await GearDatabase.instance.update(
         'user',
         widget.userId,
         'telephone',
@@ -42,7 +42,7 @@ class _BtnEditUserState extends State<BtnEditUser> {
 
   Future updateMobileNumberUser() async {
     if (widget.mobileNumberController.text != '') {
-      await GearDatabase.instance.updateProduct(
+      await GearDatabase.instance.update(
         'user',
         widget.userId,
         'mobileNumber',
@@ -56,7 +56,7 @@ class _BtnEditUserState extends State<BtnEditUser> {
 
   Future updateCepUser() async {
     if (widget.adressController.text != '') {
-      await GearDatabase.instance.updateProduct(
+      await GearDatabase.instance.update(
         'user',
         widget.userId,
         'adress',
@@ -70,7 +70,7 @@ class _BtnEditUserState extends State<BtnEditUser> {
 
   Future updateAdressUser() async {
     if (widget.cepController.text != '') {
-      await GearDatabase.instance.updateProduct(
+      await GearDatabase.instance.update(
         'user',
         widget.userId,
         'cep',
@@ -81,6 +81,7 @@ class _BtnEditUserState extends State<BtnEditUser> {
       });
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -96,11 +97,10 @@ class _BtnEditUserState extends State<BtnEditUser> {
       ),
       child: TextButton(
         onPressed: () {
+          updateAdressUser();
+          updateCepUser();
           updateTelephoneUser();
           updateMobileNumberUser();
-          updateCepUser();
-          updateAdressUser();
-
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: ((context) => const HomePage()),

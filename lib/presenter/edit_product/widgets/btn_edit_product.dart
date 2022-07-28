@@ -24,7 +24,7 @@ class BtnEditProduct extends StatefulWidget {
 class _BtnEditProductState extends State<BtnEditProduct> {
   Future updateNameProduct() async {
     if (widget.newNameController.text != '') {
-      await GearDatabase.instance.updateProduct(
+      await GearDatabase.instance.update(
         'product',
         widget.productCode,
         'name',
@@ -35,7 +35,7 @@ class _BtnEditProductState extends State<BtnEditProduct> {
 
   Future updatePriceProduct() async {
     if (widget.newPriceController.text != '') {
-      await GearDatabase.instance.updateProduct(
+      await GearDatabase.instance.update(
         'product',
         widget.productCode,
         'price',
@@ -46,7 +46,7 @@ class _BtnEditProductState extends State<BtnEditProduct> {
 
   Future updateQuantityProduct() async {
     if (widget.newQuantityController.text != '') {
-      await GearDatabase.instance.updateProduct(
+      await GearDatabase.instance.update(
         'product',
         widget.productCode,
         'quantity',

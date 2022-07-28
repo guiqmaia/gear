@@ -28,10 +28,11 @@ class InfoContainerProfile extends StatelessWidget {
         color: Colors.black,
         boxShadow: [
           BoxShadow(
-              color: Colors.grey.shade300,
-              spreadRadius: 0,
-              blurRadius: 10,
-              offset: Offset(5, 5)),
+            color: Colors.grey.shade300,
+            spreadRadius: 0,
+            blurRadius: 10,
+            offset: const Offset(5, 5),
+          ),
         ],
       ),
       child: Column(
@@ -61,7 +62,8 @@ class InfoContainerProfile extends StatelessWidget {
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w400,
+                  letterSpacing: 0.4,
                 ),
               ),
             ],

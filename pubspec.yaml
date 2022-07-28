@@ -47,6 +47,7 @@ dependencies:
   brasil_fields: ^1.4.5
   graphic: ^0.10.5
   intl: ^0.17.0
+  hooks_riverpod: ^1.0.4
 
 dev_dependencies:
   flutter_test:

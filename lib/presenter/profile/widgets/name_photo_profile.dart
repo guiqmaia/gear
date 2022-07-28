@@ -16,16 +16,16 @@ class NamePhotoProfile extends StatelessWidget {
           Stack(
             children: [
               CircleAvatar(
-                radius: 95,
+                radius: 59,
                 backgroundColor: Colors.black,
                 child: CircleAvatar(
-                  radius: 89,
+                  radius: 55,
                   backgroundColor: Colors.white,
                   child: CircleAvatar(
-                    radius: 85,
+                    radius: 50,
                     backgroundColor: Colors.white,
                     backgroundImage: Image.asset(
-                      imgStore,
+                      imgUser,
                       fit: BoxFit.cover,
                     ).image,
                   ),
@@ -33,7 +33,7 @@ class NamePhotoProfile extends StatelessWidget {
               ),
               Positioned(
                 bottom: 0,
-                right: 0,
+                right: 12,
                 child: CircleAvatar(
                   backgroundColor: Colors.black,
                   child: IconButton(
@@ -54,8 +54,8 @@ class NamePhotoProfile extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.03,
           ),
           Text(
             logedUser.company,

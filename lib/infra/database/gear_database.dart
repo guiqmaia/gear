@@ -21,7 +21,7 @@ class GearDatabase {
 
   Future<Database> _initDB() async {
     var databasesPath = await getDatabasesPath();
-    String dbName = "gurui.db";
+    String dbName = "salesss.db";
     String path = '$databasesPath/$dbName';
     return await openDatabase(
       path,
@@ -86,7 +86,6 @@ class GearDatabase {
   Future<DefaultModel> insert(String table, DefaultModel model) async {
     final db = await instance.database;
     db.insert(table, model.toMap());
-    print(model);
     return model;
   }
 
@@ -147,7 +146,7 @@ class GearDatabase {
     return saleList;
   }
 
-  Future updateProduct(table, id, column, change) async {
+  Future update(table, id, column, change) async {
     final db = await instance.database;
 
     await db.rawUpdate(
