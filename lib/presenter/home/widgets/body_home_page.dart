@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'column_btn_home.dart';
-import 'stack_top_home.dart';
+import 'wrap_container_home.dart';
+import 'container_top_home.dart';
 
 class BodyHomePage extends StatefulWidget {
   const BodyHomePage({Key? key}) : super(key: key);
@@ -16,10 +16,10 @@ class _BodyHomePageState extends State<BodyHomePage> {
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          StackTopHome(),
-          SizedBox(height: 30),
-          ColumnBtnHome(),
+        children: [
+          const ContainerTopHome(),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+          const WrapContainerHome(),
         ],
       ),
     );

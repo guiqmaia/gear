@@ -5,14 +5,14 @@ import '../../../infra/database/create_database_products.dart';
 import '../../category/category_page.dart';
 import '../../sales/sales_page.dart';
 
-class ColumnBtnHome extends StatefulWidget {
-  const ColumnBtnHome({Key? key}) : super(key: key);
+class WrapContainerHome extends StatefulWidget {
+  const WrapContainerHome({Key? key}) : super(key: key);
 
   @override
-  State<ColumnBtnHome> createState() => _ColumnBtnHomeState();
+  State<WrapContainerHome> createState() => _WrapContainerHomeState();
 }
 
-class _ColumnBtnHomeState extends State<ColumnBtnHome> {
+class _WrapContainerHomeState extends State<WrapContainerHome> {
   static bool isCreated = false;
 
   Future createListProducts() async {
@@ -32,11 +32,13 @@ class _ColumnBtnHomeState extends State<ColumnBtnHome> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Colors.black,
+              color: backgroundGrey,
               image: DecorationImage(
-                image: Image.asset('assets/images/bar_chart.png').image,
-                fit: BoxFit.cover,
-                opacity: 0.7,
+                image: Image.asset('assets/images/bar_chart2.png').image,
+                fit: BoxFit.none,
+                alignment: Alignment.topRight,
+                scale: 2.3,
+                //opacity: 0.7,
               ),
             ),
             margin: const EdgeInsets.symmetric(
@@ -55,26 +57,30 @@ class _ColumnBtnHomeState extends State<ColumnBtnHome> {
                   children: [
                     Icon(
                       Icons.arrow_upward_rounded,
-                      color: greenNeon,
+                      color: Colors.green.shade600,
+                      size: 40,
                     ),
-                    Text(
+                    const Text(
                       'R\$ 1500,00',
                       style: TextStyle(
-                        color: backgroundGrey,
+                        color: Colors.black,
+                        fontSize: 25,
                       ),
                     ),
                   ],
                 ),
                 Row(
-                  children: [
-                    const Icon(
+                  children: const [
+                    Icon(
                       Icons.arrow_downward_rounded,
                       color: Colors.red,
+                      size: 40,
                     ),
                     Text(
                       'R\$ 1500,00',
                       style: TextStyle(
-                        color: backgroundGrey,
+                        color: Colors.black,
+                        fontSize: 25,
                       ),
                     ),
                   ],
