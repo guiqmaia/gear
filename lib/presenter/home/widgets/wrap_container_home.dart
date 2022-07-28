@@ -14,6 +14,7 @@ class WrapContainerHome extends StatefulWidget {
 
 class _WrapContainerHomeState extends State<WrapContainerHome> {
   static bool isCreated = false;
+  bool isVisible = true;
 
   Future createListProducts() async {
     await CreateDatabaseProducts().createSodas();
@@ -48,43 +49,52 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
             width: MediaQuery.of(context).size.width * 0.9,
             height: MediaQuery.of(context).size.height * 0.2,
             padding: const EdgeInsets.symmetric(
-              vertical: 3,
-              horizontal: 10,
+              vertical: 15,
+              horizontal: 20,
             ),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.arrow_upward_rounded,
-                      color: Colors.green.shade600,
-                      size: 40,
-                    ),
-                    const Text(
-                      'R\$ 1500,00',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 25,
+                isVisible
+                    ? const Text(
+                        'R\$ 1500,00',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 25,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      )
+                    : const Text(
+                        'R\$ *******',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 25,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: const [
-                    Icon(
-                      Icons.arrow_downward_rounded,
-                      color: Colors.red,
-                      size: 40,
-                    ),
-                    Text(
-                      'R\$ 1500,00',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 25,
-                      ),
-                    ),
-                  ],
-                ),
+                const SizedBox(height: 10),
+                InkWell(
+                    onTap: () {
+                      setState(() {
+                        if (isVisible == true) {
+                          isVisible = false;
+                        } else {
+                          isVisible = true;
+                        }
+                      });
+                    },
+                    child: isVisible
+                        ? const Icon(
+                            Icons.visibility_outlined,
+                            color: Colors.black38,
+                            size: 35,
+                          )
+                        : const Icon(
+                            Icons.visibility_off_outlined,
+                            color: Colors.black38,
+                            size: 35,
+                          )),
               ],
             ),
           ),
