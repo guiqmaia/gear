@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/product_model.dart';
@@ -18,6 +19,9 @@ class BodyCashRegister extends StatefulWidget {
 class _BodyCashRegisterState extends State<BodyCashRegister> {
   List<SaleModel> salesList = [];
   List<ProductModel> productsList = [];
+  DateFormat dividerDateFormat = DateFormat('dd/MM/yyyy');
+  DateTime dateTime = DateTime.now();
+  bool first = true;
 
   bool isLoading = false;
 
@@ -35,6 +39,19 @@ class _BodyCashRegisterState extends State<BodyCashRegister> {
           .add(await GearDatabase.instance.selectProductById(sale.productId));
     }
     setState(() => isLoading = false);
+  }
+
+  bool verifyDate(SaleModel saleModel) {
+    if (first == true) {
+      first = !first;
+      return true;
+    }
+    if (DateFormat.yMd().format(saleModel.date) !=
+        DateFormat.yMd().format(dateTime)) {
+      dateTime = saleModel.date;
+      return true;
+    }
+    return false;
   }
 
   @override
@@ -56,13 +73,45 @@ class _BodyCashRegisterState extends State<BodyCashRegister> {
                 itemBuilder: (context, index) {
                   SaleModel sale = salesList[index];
                   ProductModel product = productsList[index];
-                  return SaleRegisterContainer(
-                    price: sale.price.toStringAsFixed(2),
-                    quantity: sale.quantity,
-                    product: product.name,
-                    productImg: product.image,
-                    payment: sale.pay,
-                    dateTime: sale.date,
+                  return Column(
+                    children: [
+                      Visibility(
+                        visible: verifyDate(sale),
+                        child: Row(
+                          children: <Widget>[
+                            Expanded(
+                              child: Container(
+                                margin: const EdgeInsets.only(
+                                    left: 10.0, right: 20.0),
+                                child: const Divider(
+                                  color: Colors.black,
+                                  height: 36,
+                                ),
+                              ),
+                            ),
+                            Text(dividerDateFormat.format(sale.date)),
+                            Expanded(
+                              child: Container(
+                                margin: const EdgeInsets.only(
+                                    left: 20.0, right: 10.0),
+                                child: const Divider(
+                                  color: Colors.black,
+                                  height: 36,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SaleRegisterContainer(
+                        price: sale.price.toStringAsFixed(2),
+                        quantity: sale.quantity,
+                        product: product.name,
+                        productImg: product.image,
+                        payment: sale.pay,
+                        dateTime: sale.date,
+                      ),
+                    ],
                   );
                 },
               ),
