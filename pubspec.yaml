@@ -46,12 +46,13 @@ dependencies:
   get_it: ^7.2.0
   brasil_fields: ^1.4.5
   graphic: ^0.10.5
+  intl: ^0.17.0
   hooks_riverpod: ^1.0.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  intl: ^0.17.0
+  
 
 
   # The "flutter_lints" package below contains a set of recommended lints to
