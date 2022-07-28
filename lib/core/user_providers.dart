@@ -1,6 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../core/app_getit.dart';
+import 'app_getit.dart';
 
 final userId = Provider<int>((ref) => logedUser.id!);
 final userName = Provider<String>((ref) => logedUser.name);

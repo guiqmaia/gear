@@ -22,7 +22,7 @@ class _ContainerCategoryInventoryState
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 7),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
         onTap: () {
@@ -34,7 +34,7 @@ class _ContainerCategoryInventoryState
         },
         child: Container(
           padding: const EdgeInsets.symmetric(
-            vertical: 18,
+            vertical: 6.75,
           ),
           decoration: BoxDecoration(
             color: Colors.white,

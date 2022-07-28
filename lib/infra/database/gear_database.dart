@@ -134,7 +134,8 @@ class GearDatabase {
 
   Future selectSale() async {
     final db = await instance.database;
-    List<Map<String, dynamic>> list = await db.rawQuery('SELECT * FROM sale');
+    List<Map<String, dynamic>> list =
+        await db.rawQuery('SELECT * FROM sale ORDER by date DESC');
     List<SaleModel> saleList = [];
 
     for (int i = 0; i < list.length; i++) {
