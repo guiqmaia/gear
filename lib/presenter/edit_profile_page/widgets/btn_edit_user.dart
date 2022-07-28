@@ -26,58 +26,16 @@ class BtnEditUser extends StatefulWidget {
 }
 
 class _BtnEditUserState extends State<BtnEditUser> {
-  Future updateTelephoneUser() async {
-    if (widget.telephoneController.text != '') {
-      await GearDatabase.instance.updateProduct(
-        'user',
-        widget.userId,
-        'telephone',
-        '"${widget.telephoneController.text}"',
+  Future updateUser(table, column, change, id, logedUser) async {
+    if (change != '') {
+      await GearDatabase.instance.update(
+        table,
+        id,
+        column,
+        change,
       );
       setState(() {
-        logedUser.telephone = widget.telephoneController.text;
-      });
-    }
-  }
-
-  Future updateMobileNumberUser() async {
-    if (widget.mobileNumberController.text != '') {
-      await GearDatabase.instance.updateProduct(
-        'user',
-        widget.userId,
-        'mobileNumber',
-        '"${widget.mobileNumberController.text}"',
-      );
-      setState(() {
-        logedUser.mobileNumber = widget.mobileNumberController.text;
-      });
-    }
-  }
-
-  Future updateCepUser() async {
-    if (widget.adressController.text != '') {
-      await GearDatabase.instance.updateProduct(
-        'user',
-        widget.userId,
-        'adress',
-        '"${widget.adressController.text}"',
-      );
-      setState(() {
-        logedUser.adress = widget.adressController.text;
-      });
-    }
-  }
-
-  Future updateAdressUser() async {
-    if (widget.cepController.text != '') {
-      await GearDatabase.instance.updateProduct(
-        'user',
-        widget.userId,
-        'cep',
-        '"${widget.cepController.text}"',
-      );
-      setState(() {
-        logedUser.cep = widget.cepController.text;
+        logedUser = change;
       });
     }
   }
@@ -96,11 +54,34 @@ class _BtnEditUserState extends State<BtnEditUser> {
       ),
       child: TextButton(
         onPressed: () {
-          updateTelephoneUser();
-          updateMobileNumberUser();
-          updateCepUser();
-          updateAdressUser();
-
+          updateUser(
+            'user',
+            widget.userId,
+            'telephone',
+            '"${widget.telephoneController.text}"',
+            logedUser.telephone,
+          );
+          updateUser(
+            'user',
+            widget.userId,
+            'mobileNumber',
+            '"${widget.mobileNumberController.text}"',
+            logedUser.mobileNumber,
+          );
+          updateUser(
+            'user',
+            widget.userId,
+            'cep',
+            '"${widget.cepController.text}"',
+            logedUser.cep,
+          );
+          updateUser(
+            'user',
+            widget.userId,
+            'adress',
+            '"${widget.adressController.text}"',
+            logedUser.adress,
+          );
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: ((context) => const HomePage()),
