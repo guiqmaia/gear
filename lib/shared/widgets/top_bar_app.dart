@@ -19,7 +19,6 @@ class TopBarApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.maxFinite,
-      margin: const EdgeInsets.only(bottom: 5),
       padding: const EdgeInsets.only(bottom: 10, top: 28, right: 40, left: 20),
       decoration: const BoxDecoration(
         color: Colors.black,
