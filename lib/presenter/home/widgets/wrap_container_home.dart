@@ -44,7 +44,7 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
             ),
             margin: const EdgeInsets.symmetric(
               horizontal: 15,
-              vertical: 10,
+              vertical: 20,
             ),
             width: MediaQuery.of(context).size.width * 0.9,
             height: MediaQuery.of(context).size.height * 0.2,
@@ -101,18 +101,14 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              image: DecorationImage(
-                image: AssetImage(imgCoins),
-                fit: BoxFit.cover,
-                opacity: 0.7,
-              ),
+              color: const Color.fromRGBO(244, 144, 140, 1),
             ),
             margin: const EdgeInsets.symmetric(
               horizontal: 15,
               vertical: 10,
             ),
             width: MediaQuery.of(context).size.width * 0.9,
-            height: MediaQuery.of(context).size.height * 0.2,
+            height: MediaQuery.of(context).size.height * 0.18,
             padding: const EdgeInsets.symmetric(
               vertical: 3,
               horizontal: 10,
@@ -125,14 +121,11 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
                   ),
                 );
               },
-              style: const ButtonStyle(
-                alignment: Alignment.centerLeft,
-              ),
               child: const Text(
                 'CAIXA',
                 style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 35,
+                  color: Colors.black87,
+                  fontSize: 32,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -141,18 +134,14 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              image: DecorationImage(
-                image: AssetImage(imgInventory),
-                fit: BoxFit.cover,
-                opacity: 0.7,
-              ),
+              color: const Color.fromRGBO(204, 225, 52, 1),
             ),
             margin: const EdgeInsets.symmetric(
               horizontal: 15,
               vertical: 10,
             ),
             width: MediaQuery.of(context).size.width * 0.9,
-            height: MediaQuery.of(context).size.height * 0.2,
+            height: MediaQuery.of(context).size.height * 0.18,
             padding: const EdgeInsets.symmetric(
               vertical: 3,
               horizontal: 10,
@@ -179,14 +168,11 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
                   );
                 }
               },
-              style: const ButtonStyle(
-                alignment: Alignment.centerLeft,
-              ),
               child: const Text(
                 'ESTOQUE',
                 style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 35,
+                  color: Colors.black87,
+                  fontSize: 32,
                   fontWeight: FontWeight.bold,
                 ),
               ),
