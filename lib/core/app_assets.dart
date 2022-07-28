@@ -5,6 +5,8 @@ String imgBusinessMan = 'assets/images/empresario.jpeg';
 String imgStore = 'assets/images/fotoConveniencia.png';
 String imgBlack = 'assets/images/black.jpg';
 String imgUser = 'assets/images/user.png';
+String imgPlanner = 'assets/images/planner.jpg';
+String imgCoins = 'assets/images/coins.jpg';
 
 // icons
 String iconFacebook = 'assets/icons/facebook.png';
