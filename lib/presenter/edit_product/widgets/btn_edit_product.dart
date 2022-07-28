@@ -22,18 +22,35 @@ class BtnEditProduct extends StatefulWidget {
 }
 
 class _BtnEditProductState extends State<BtnEditProduct> {
-  Future updateProduct(
-    table,
-    column,
-    change,
-    id,
-  ) async {
-    if (change != '') {
+  Future updateNameProduct() async {
+    if (widget.newNameController.text != '') {
       await GearDatabase.instance.update(
-        table,
-        id,
-        column,
-        change,
+        'product',
+        widget.productCode,
+        'name',
+        '"${widget.newNameController.text}"',
+      );
+    }
+  }
+
+  Future updatePriceProduct() async {
+    if (widget.newPriceController.text != '') {
+      await GearDatabase.instance.update(
+        'product',
+        widget.productCode,
+        'price',
+        double.parse(widget.newPriceController.text),
+      );
+    }
+  }
+
+  Future updateQuantityProduct() async {
+    if (widget.newQuantityController.text != '') {
+      await GearDatabase.instance.update(
+        'product',
+        widget.productCode,
+        'quantity',
+        int.parse(widget.newQuantityController.text),
       );
     }
   }
@@ -52,24 +69,9 @@ class _BtnEditProductState extends State<BtnEditProduct> {
       ),
       child: TextButton(
         onPressed: () {
-          updateProduct(
-            'product',
-            widget.productCode,
-            'name',
-            '"${widget.newNameController.text}"',
-          );
-          updateProduct(
-            'product',
-            widget.productCode,
-            'price',
-            double.parse(widget.newPriceController.text),
-          );
-          updateProduct(
-            'product',
-            widget.productCode,
-            'quantity',
-            int.parse(widget.newQuantityController.text),
-          );
+          updateNameProduct();
+          updatePriceProduct();
+          updateQuantityProduct();
 
           Navigator.of(context).pop();
           Navigator.of(context).pop();
