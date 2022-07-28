@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:onboarding/onboarding.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../core/app_getit.dart';
