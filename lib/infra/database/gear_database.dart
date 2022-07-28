@@ -145,7 +145,7 @@ class GearDatabase {
     return saleList;
   }
 
-  Future updateProduct(table, id, column, change) async {
+  Future update(table, id, column, change) async {
     final db = await instance.database;
 
     await db.rawUpdate(
