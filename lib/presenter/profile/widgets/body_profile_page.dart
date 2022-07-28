@@ -28,7 +28,7 @@ class BodyProfilePage extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.03,
           ),
           const ContainerInfo(),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.015),
           BtnStandardApp(
             title: "Sair",
             pageRoute: const LoginPage(),
