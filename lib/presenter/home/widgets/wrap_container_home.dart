@@ -44,7 +44,7 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
             ),
             margin: const EdgeInsets.symmetric(
               horizontal: 15,
-              vertical: 20,
+              vertical: 10,
             ),
             width: MediaQuery.of(context).size.width * 0.9,
             height: MediaQuery.of(context).size.height * 0.2,
@@ -53,7 +53,6 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
               horizontal: 20,
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 isVisible
@@ -105,7 +104,7 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
             ),
             margin: const EdgeInsets.symmetric(
               horizontal: 15,
-              vertical: 10,
+              vertical: 15,
             ),
             width: MediaQuery.of(context).size.width * 0.9,
             height: MediaQuery.of(context).size.height * 0.18,
