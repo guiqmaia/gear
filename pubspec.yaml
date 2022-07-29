@@ -48,6 +48,8 @@ dependencies:
   graphic: ^0.10.5
   intl: ^0.17.0
   hooks_riverpod: ^1.0.4
+  url_launcher: ^6.1.5
+  google_sign_in: ^5.4.0
 
 dev_dependencies:
   flutter_test:
