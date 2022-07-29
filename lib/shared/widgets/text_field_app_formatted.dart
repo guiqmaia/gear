@@ -9,6 +9,7 @@ class TextFieldAppFormatted extends StatelessWidget {
   TextInputFormatter? formater;
   TextInputType textInputType;
   bool? isEnabled;
+  int? requiredLength;
 
   TextFieldAppFormatted({
     Key? key,
@@ -17,6 +18,7 @@ class TextFieldAppFormatted extends StatelessWidget {
     required this.textInputType,
     this.isEnabled = true,
     this.formater,
+    this.requiredLength,
   }) : super(key: key);
 
   @override
@@ -37,6 +39,7 @@ class TextFieldAppFormatted extends StatelessWidget {
         controller: typeController,
         keyboardType: textInputType,
         isEnabled: isEnabled! ? true : false,
+        requiredLength: requiredLength,
       ),
     );
   }

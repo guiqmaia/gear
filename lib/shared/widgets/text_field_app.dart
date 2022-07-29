@@ -7,6 +7,7 @@ class TextFieldApp extends StatelessWidget {
   bool isEnabled;
   bool isVisible = true;
   Function(String)? onChanged;
+  int? requiredLength;
 
   TextFieldApp({
     Key? key,
@@ -15,7 +16,7 @@ class TextFieldApp extends StatelessWidget {
     required this.isObscured,
     this.isEnabled = true,
     this.onChanged,
-
+    this.requiredLength,
   }) : super(key: key);
 
   @override
@@ -32,10 +33,20 @@ class TextFieldApp extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
       ),
-      child: TextField(
+      child: TextFormField(
         obscureText: isObscured ? true : false,
         controller: typeController,
         onChanged: onChanged,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return 'Este campo é obrigatório';
+          } else if (requiredLength != null) {
+            if (value.length < requiredLength!) {
+              return 'Quantidade de caracteres insuficientes';
+            }
+          }
+          return null;
+        },
         decoration: InputDecoration(
           label: Text(labelItem),
           enabled: isEnabled,
