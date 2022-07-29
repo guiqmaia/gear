@@ -8,6 +8,7 @@ String imgUser = 'assets/images/user.png';
 String imgPlanner = 'assets/images/planner.jpg';
 String imgCoins = 'assets/images/coins.jpg';
 String imgInventory = 'assets/images/inventory.jpg';
+String imgGraphic = 'assets/images/bar_chart2.png';
 
 // icons
 String iconFacebook = 'assets/icons/facebook.png';

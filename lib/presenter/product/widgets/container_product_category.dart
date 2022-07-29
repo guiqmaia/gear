@@ -170,7 +170,7 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
                         EditProductPage.route,
                         arguments: {
                           'category': widget.categoryTitle,
-                          'code': widget.productCode,
+                          'code': widget.productModel.id,
                         },
                       );
               },

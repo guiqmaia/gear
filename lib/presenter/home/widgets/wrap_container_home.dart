@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/app_assets.dart';
-import '../../../infra/database/create_database_products.dart';
 import '../../category/category_page.dart';
 import '../../sales/sales_page.dart';
 
@@ -25,7 +24,7 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
               borderRadius: BorderRadius.circular(10),
               color: backgroundGrey,
               image: DecorationImage(
-                image: Image.asset('assets/images/bar_chart2.png').image,
+                image: Image.asset(imgGraphic).image,
                 fit: BoxFit.none,
                 alignment: Alignment.topRight,
                 scale: 2.3,
@@ -60,7 +59,7 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
                     isVisible
                         ? Icons.visibility_outlined
                         : Icons.visibility_off_outlined,
-                    color: Colors.black38,
+                    color: blue,
                     size: 35,
                   ),
                 ),
