@@ -44,7 +44,6 @@ class _BodySignUpState extends State<BodySignUp> {
         children: [
           const TopBarApp(
             title: 'Cadastre-se',
-            pageRoute: null,
             isProfile: true,
           ),
           SizedBox(

@@ -23,7 +23,6 @@ class _BodySignupPageState extends State<BodySignupPage> {
       children: [
         const TopBarApp(
           title: 'Cadastrar Produto',
-          pageRoute: HomePage(),
           isProfile: false,
         ),
         Expanded(

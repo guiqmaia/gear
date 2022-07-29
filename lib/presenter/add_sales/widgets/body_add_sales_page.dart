@@ -33,7 +33,6 @@ class BodySalesPage extends StatelessWidget {
       children: [
         const TopBarApp(
           title: 'Adicionar venda',
-          pageRoute: SalesPage(),
           isProfile: false,
         ),
         WrapTextFieldSale(

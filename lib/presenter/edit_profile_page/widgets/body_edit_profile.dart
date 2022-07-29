@@ -25,7 +25,6 @@ class _BodyEditProfileState extends State<BodyEditProfile> {
         children: [
           const TopBarApp(
             title: 'Editar Perfil',
-            pageRoute: null,
             isProfile: true,
           ),
           const NonEditableContainerList(),

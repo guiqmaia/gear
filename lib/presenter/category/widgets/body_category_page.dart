@@ -16,7 +16,6 @@ class BodyCategoryPage extends StatelessWidget {
       children: [
         const TopBarApp(
           title: 'Estoque',
-          pageRoute: HomePage(),
           isProfile: false,
         ),
         const SizedBox(height: 10),

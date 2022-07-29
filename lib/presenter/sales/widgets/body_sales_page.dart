@@ -62,7 +62,6 @@ class _BodyCashRegisterState extends State<BodyCashRegister> {
       children: [
         const TopBarApp(
           title: 'Caixa',
-          pageRoute: HomePage(),
           isProfile: false,
         ),
         const RecentSalesContainer(),

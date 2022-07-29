@@ -47,7 +47,6 @@ class _BodyProductPageState extends State<BodyProductPage> {
       children: [
         TopBarApp(
           title: widget.category.name,
-          pageRoute: const CategoryPage(),
           isProfile: false,
         ),
         const SizedBox(height: 10),

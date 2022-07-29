@@ -17,8 +17,8 @@ class BodyProfilePage extends StatelessWidget {
         children: [
           const TopBarApp(
             title: "Perfil",
-            pageRoute: HomePage(),
             isProfile: true,
+            hasBack: false,
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.05,
