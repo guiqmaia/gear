@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../signup/signup.dart';
+import '../../signup/signup_page.dart';
 import 'btn_login.dart';
 import 'icons_btn_login.dart';
 
@@ -35,9 +35,7 @@ class _ColumnUserLoginWithState extends State<ColumnUserLoginWith> {
           ),
           TextButton(
             onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const Signup()),
-              );
+              Navigator.of(context).pushNamed(SignupPage.route);
             },
             child: const Text('Cadastre-se'),
           ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
+import '../../product/product_page.dart';
 
 class BtnEditProduct extends StatefulWidget {
   const BtnEditProduct({
@@ -72,7 +73,10 @@ class _BtnEditProductState extends State<BtnEditProduct> {
           updateNameProduct();
           updatePriceProduct();
           updateQuantityProduct();
+
           Navigator.of(context).pop();
+          Navigator.of(context).pop();
+          Navigator.of(context).pushNamed(ProductPage.route);
         },
         child: const Text(
           'Editar',

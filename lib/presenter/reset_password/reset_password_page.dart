@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import '../../core/app_assets.dart';
 import 'widgets/body_reset_password.dart';
 
-class ResetPassword extends StatelessWidget {
+class ResetPasswordPage extends StatelessWidget {
   final emailController = TextEditingController();
 
-  ResetPassword({Key? key}) : super(key: key);
+  ResetPasswordPage({Key? key}) : super(key: key);
+
+  static const route = '/login/reset-password';
 
   @override
   Widget build(BuildContext context) {

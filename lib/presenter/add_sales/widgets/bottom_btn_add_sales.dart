@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/sale_model.dart';
-import '../../../shared/widgets/btn_standard_app.dart';
 import '../../sales/sales_page.dart';
 
 class BottomBtnSales extends StatefulWidget {
@@ -77,19 +76,11 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
                 if (!mounted) return;
                 Navigator.of(context).pop();
                 Navigator.of(context).pop();
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const SalesPage(),
-                  ),
-                );
+                Navigator.of(context).pushNamed(SalesPage.route);
               } else {
                 Navigator.of(context).pop();
                 Navigator.of(context).pop();
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const SalesPage(),
-                  ),
-                );
+                Navigator.of(context).pushNamed(SalesPage.route);
               }
             },
             child: const Text(

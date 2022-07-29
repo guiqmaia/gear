@@ -8,6 +8,8 @@ import 'widgets/body_category_page.dart';
 class CategoryPage extends StatelessWidget {
   const CategoryPage({Key? key}) : super(key: key);
 
+  static const route = '/category';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +19,7 @@ class CategoryPage extends StatelessWidget {
       ),
       bottomNavigationBar: BtnStandardApp(
         title: 'Nova categoria',
-        pageRoute: const CategorySignupPage(),
+        pageRoute: CategorySignupPage.route,
         widthBtn: MediaQuery.of(context).size.width,
       ),
     );

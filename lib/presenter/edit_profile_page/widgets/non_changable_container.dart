@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class NonChangableContainer extends StatelessWidget {
-  NonChangableContainer({Key? key, required this.param, required this.info})
-      : super(key: key);
+  NonChangableContainer({
+    Key? key,
+    required this.param,
+    required this.info,
+  }) : super(key: key);
 
   String param;
   String info;

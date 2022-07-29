@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../reset_password/reset_password.dart';
+import '../../reset_password/reset_password_page.dart';
 import 'my_checked_box.dart';
 
 class ContainerUserOptions extends StatefulWidget {
@@ -34,7 +34,7 @@ class _ContainerUserOptionsState extends State<ContainerUserOptions> {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => ResetPassword(),
+                  builder: (context) => ResetPasswordPage(),
                 ),
               );
             },

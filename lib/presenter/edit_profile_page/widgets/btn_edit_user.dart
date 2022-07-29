@@ -82,7 +82,6 @@ class _BtnEditUserState extends State<BtnEditUser> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -101,11 +100,7 @@ class _BtnEditUserState extends State<BtnEditUser> {
           updateCepUser();
           updateTelephoneUser();
           updateMobileNumberUser();
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: ((context) => const HomePage()),
-            ),
-          );
+          Navigator.of(context).pushNamed(HomePage.route);
         },
         child: const Text(
           'Editar',

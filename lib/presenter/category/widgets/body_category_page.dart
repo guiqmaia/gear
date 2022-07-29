@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../shared/widgets/text_field_app.dart';
 import '../../../shared/widgets/top_bar_app.dart';
-import '../../home/home_page.dart';
 import 'wrap_container_category.dart';
 
 class BodyCategoryPage extends StatelessWidget {

@@ -84,11 +84,7 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
             ),
             child: TextButton(
               onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const SalesPage(),
-                  ),
-                );
+                Navigator.of(context).pushNamed(SalesPage.route);
               },
               child: const Text(
                 'CAIXA',
@@ -117,11 +113,7 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
             ),
             child: TextButton(
               onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const CategoryPage(),
-                  ),
-                );
+                Navigator.of(context).pushNamed(CategoryPage.route);
               },
               child: const Text(
                 'ESTOQUE',

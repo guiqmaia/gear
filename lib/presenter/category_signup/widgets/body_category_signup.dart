@@ -84,8 +84,11 @@ class _BodyCategoriySignupState extends State<BodyCategorySignup> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 20),
-            width: MediaQuery.of(context).size.width,
+            margin: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 10,
+            ),
+            width: MediaQuery.of(context).size.width * 0.9,
             child: fileImg != null
                 ? Image.memory(imgCategory!)
                 : const DefaulImageContainer(),
@@ -93,7 +96,7 @@ class _BodyCategoriySignupState extends State<BodyCategorySignup> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: const Color.fromRGBO(202, 254, 72, 1),
+              color: greenNeon,
             ),
             margin: const EdgeInsets.symmetric(
               horizontal: 15,
@@ -113,11 +116,7 @@ class _BodyCategoriySignupState extends State<BodyCategorySignup> {
                 if (!mounted) return;
                 Navigator.of(context).pop();
                 Navigator.of(context).pop();
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const CategoryPage(),
-                  ),
-                );
+                Navigator.of(context).pushNamed(CategoryPage.route);
               },
               child: const Text(
                 'Cadastrar',

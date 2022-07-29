@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 import '../../core/app_assets.dart';
 import 'widgets/body_sign_up.dart';
 
-class Signup extends StatefulWidget {
-  const Signup({Key? key}) : super(key: key);
+class SignupPage extends StatefulWidget {
+  const SignupPage({Key? key}) : super(key: key);
+
+  static const route = '/signup';
 
   @override
-  State<Signup> createState() => _SignupState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
-class _SignupState extends State<Signup> {
+class _SignupPageState extends State<SignupPage> {
   final nameController = TextEditingController();
   final cpfController = TextEditingController();
   final bithdayDateController = TextEditingController();

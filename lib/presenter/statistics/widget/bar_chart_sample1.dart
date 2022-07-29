@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import '../../../core/app_assets.dart';
 
 import '../../../core/app_getit.dart';
 
@@ -52,17 +53,19 @@ class BarChartSample1State extends State<BarChartSample1> {
                     const Text(
                       'Balanço Semanal',
                       style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold),
+                        color: Colors.black,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     const SizedBox(height: 4),
                     Text(
                       logedUser.company,
                       style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     Expanded(
                       child: BarChart(
@@ -83,7 +86,7 @@ class BarChartSample1State extends State<BarChartSample1> {
     int x,
     double y, {
     bool isTouched = false,
-    Color barColor = const Color.fromRGBO(202, 254, 72, 1),
+    Color barColor = const Color.fromRGBO(204, 225, 52, 1),
     double width = 22,
     List<int> showTooltips = const [],
   }) {
@@ -92,11 +95,11 @@ class BarChartSample1State extends State<BarChartSample1> {
       barRods: [
         BarChartRodData(
           toY: isTouched ? y + 1 : y,
-          color: isTouched ? const Color.fromRGBO(202, 254, 72, 1) : barColor,
+          color: isTouched ? const Color.fromRGBO(244, 144, 140, 1) : barColor,
           width: width,
           borderSide: isTouched
               ? const BorderSide(
-                  color: Color.fromRGBO(202, 254, 72, 0.85), width: 1)
+                  color: Color.fromRGBO(244, 144, 140, 1), width: 1.2)
               : const BorderSide(color: Colors.white, width: 0),
           backDrawRodData: BackgroundBarChartRodData(
             show: true,
@@ -137,7 +140,7 @@ class BarChartSample1State extends State<BarChartSample1> {
     return BarChartData(
       barTouchData: BarTouchData(
         touchTooltipData: BarTouchTooltipData(
-          tooltipBgColor: Colors.blueGrey,
+          tooltipBgColor: blue.withOpacity(0.8),
           getTooltipItem: (group, groupIndex, rod, rodIndex) {
             String weekDay;
             switch (group.x.toInt()) {
@@ -169,14 +172,14 @@ class BarChartSample1State extends State<BarChartSample1> {
               '$weekDay\n',
               const TextStyle(
                 color: Colors.white,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w500,
                 fontSize: 18,
               ),
               children: <TextSpan>[
                 TextSpan(
-                  text: (rod.toY - 1).toString(),
-                  style: const TextStyle(
-                    color: Colors.yellow,
+                  text: 'R\$ ${(rod.toY - 1).toString()}',
+                  style: TextStyle(
+                    color: greenNeon,
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),
@@ -232,8 +235,9 @@ class BarChartSample1State extends State<BarChartSample1> {
     const style = TextStyle(
       color: Colors.black,
       fontWeight: FontWeight.bold,
-      fontSize: 14,
+      fontSize: 15,
     );
+
     Widget text;
     switch (value.toInt()) {
       case 0:

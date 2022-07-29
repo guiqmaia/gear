@@ -61,11 +61,7 @@ class TopBarApp extends StatelessWidget {
                 )
               : InkWell(
                   onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const ProfilePage(),
-                      ),
-                    );
+                    Navigator.of(context).pushNamed(ProfilePage.route);
                   },
                   child: CircleAvatar(
                     radius: 26,

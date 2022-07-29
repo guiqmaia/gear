@@ -7,6 +7,8 @@ import 'widgets/bottom_btn_add_sales.dart';
 class AddSalesPage extends StatefulWidget {
   const AddSalesPage({Key? key}) : super(key: key);
 
+  static const route = '/sales/add';
+
   @override
   State<AddSalesPage> createState() => _AddSalesPageState();
 }
