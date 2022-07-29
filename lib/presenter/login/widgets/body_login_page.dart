@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../shared/widgets/text_field_app.dart';
+import '../login_providers.dart';
 import 'column_user_login_with.dart';
 import 'container_text.dart';
 import 'container_user_options.dart';
 
-class BodyLoginPage extends StatelessWidget {
+class BodyLoginPage extends HookConsumerWidget {
   bool isVisible = false;
 
   BodyLoginPage({
     Key? key,
     required this.isVisible,
-    required this.loginController,
-    required this.passwordController,
   }) : super(key: key);
 
-  final TextEditingController loginController;
-  final TextEditingController passwordController;
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final loginController = ref.watch(loginControllerProvider.state);
+    final passwordController = ref.watch(passwordControllerProvider.state);
+
     return Center(
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -30,19 +30,16 @@ class BodyLoginPage extends StatelessWidget {
             const ContainerText(),
             TextFieldApp(
               labelItem: 'Email',
-              typeController: loginController,
+              typeController: loginController.state,
               isObscured: false,
             ),
             TextFieldApp(
               labelItem: 'Senha',
-              typeController: passwordController,
+              typeController: passwordController.state,
               isObscured: true,
             ),
             const ContainerUserOptions(),
-            ColumnUserLoginWith(
-              loginController: loginController,
-              passwordController: passwordController,
-            ),
+            ColumnUserLoginWith(),
           ],
         ),
       ),

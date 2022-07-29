@@ -1,89 +1,97 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../../core/app_getit.dart';
 import '../../../../infra/database/gear_database.dart';
 import '../../../core/app_assets.dart';
 import '../../home/home_page.dart';
+import '../../login/login_providers.dart';
 
-class BtnEditUser extends StatefulWidget {
-  final TextEditingController telephoneController;
-  final TextEditingController mobileNumberController;
-  final TextEditingController cepController;
-  final TextEditingController adressController;
-  final int userId;
-
-  const BtnEditUser({
-    Key? key,
-    required this.telephoneController,
-    required this.mobileNumberController,
-    required this.cepController,
-    required this.adressController,
-    required this.userId,
-  }) : super(key: key);
+class BtnEditUser extends StatefulHookConsumerWidget {
+  const BtnEditUser({Key? key}) : super(key: key);
 
   @override
-  State<BtnEditUser> createState() => _BtnEditUserState();
+  ConsumerState<BtnEditUser> createState() => _BtnEditUserState();
 }
 
-class _BtnEditUserState extends State<BtnEditUser> {
-  Future updateTelephoneUser() async {
-    if (widget.telephoneController.text != '') {
+class _BtnEditUserState extends ConsumerState<BtnEditUser> {
+  Future updateTelephoneUser(
+      TextEditingController telephoneControllerProvider) async {
+    final userModel = ref.watch(userModelProvider.state);
+
+    if (telephoneControllerProvider.text != '') {
       await GearDatabase.instance.update(
         'user',
-        widget.userId,
+        userModel.state.id,
         'telephone',
-        '"${widget.telephoneController.text}"',
+        '"${telephoneControllerProvider.text}"',
       );
       setState(() {
-        logedUser.telephone = widget.telephoneController.text;
+        userModel.state.telephone = telephoneControllerProvider.text;
+        telephoneControllerProvider.clear();
       });
     }
   }
 
-  Future updateMobileNumberUser() async {
-    if (widget.mobileNumberController.text != '') {
+  Future updateMobileNumberUser(
+      TextEditingController mobileControllerProvider) async {
+    final userModel = ref.watch(userModelProvider.state);
+
+    if (mobileControllerProvider.text != '') {
       await GearDatabase.instance.update(
         'user',
-        widget.userId,
+        userModel.state.id,
         'mobileNumber',
-        '"${widget.mobileNumberController.text}"',
+        '"${mobileControllerProvider.text}"',
       );
       setState(() {
-        logedUser.mobileNumber = widget.mobileNumberController.text;
+        userModel.state.mobileNumber = mobileControllerProvider.text;
+        mobileControllerProvider.clear();
       });
     }
   }
 
-  Future updateCepUser() async {
-    if (widget.adressController.text != '') {
+  Future updateAdressUser(
+      TextEditingController adressControllerProvider) async {
+    final userModel = ref.watch(userModelProvider.state);
+
+    if (adressControllerProvider.text != '') {
       await GearDatabase.instance.update(
         'user',
-        widget.userId,
+        userModel.state.id,
         'adress',
-        '"${widget.adressController.text}"',
+        '"${adressControllerProvider.text}"',
       );
       setState(() {
-        logedUser.adress = widget.adressController.text;
+        userModel.state.adress = adressControllerProvider.text;
+        adressControllerProvider.clear();
       });
     }
   }
 
-  Future updateAdressUser() async {
-    if (widget.cepController.text != '') {
+  Future updateCepUser(TextEditingController cepControllerProvider) async {
+    final userModel = ref.watch(userModelProvider.state);
+
+    if (cepControllerProvider.text != '') {
       await GearDatabase.instance.update(
         'user',
-        widget.userId,
+        userModel.state.id,
         'cep',
-        '"${widget.cepController.text}"',
+        '"${cepControllerProvider.text}"',
       );
       setState(() {
-        logedUser.cep = widget.cepController.text;
+        userModel.state.cep = cepControllerProvider.text;
+        cepControllerProvider.clear();
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final telephoneController = ref.watch(telephoneControllerProvider.state);
+    final mobileNumberController = ref.watch(mobileControllerProvider.state);
+    final cepController = ref.watch(cepControllerProvider.state);
+    final adressController = ref.watch(adressControllerProvider.state);
+
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -96,10 +104,10 @@ class _BtnEditUserState extends State<BtnEditUser> {
       ),
       child: TextButton(
         onPressed: () {
-          updateAdressUser();
-          updateCepUser();
-          updateTelephoneUser();
-          updateMobileNumberUser();
+          updateCepUser(cepController.state);
+          updateAdressUser(adressController.state);
+          updateTelephoneUser(telephoneController.state);
+          updateMobileNumberUser(mobileNumberController.state);
           Navigator.of(context).pushNamed(HomePage.route);
         },
         child: const Text(

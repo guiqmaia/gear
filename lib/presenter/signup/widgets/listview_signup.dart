@@ -1,47 +1,33 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/user_model.dart';
 import '../../../shared/widgets/text_field_app.dart';
 import '../../../shared/widgets/text_field_app_formatted.dart';
+import '../../login/login_providers.dart';
 
-class ListViewSignUp extends StatefulWidget {
-  const ListViewSignUp({
-    Key? key,
-    required this.nameController,
-    required this.bithdayDateController,
-    required this.bussinessNameController,
-    required this.cnpjController,
-    required this.cpfController,
-    required this.phoneController,
-    required this.cellphoneController,
-    required this.cepController,
-    required this.adressController,
-    required this.loginController,
-    required this.passwordController,
-  }) : super(key: key);
-
-  final TextEditingController nameController;
-  final TextEditingController bithdayDateController;
-  final TextEditingController bussinessNameController;
-  final TextEditingController cnpjController;
-  final TextEditingController cpfController;
-  final TextEditingController phoneController;
-  final TextEditingController cellphoneController;
-  final TextEditingController cepController;
-  final TextEditingController adressController;
-  final TextEditingController loginController;
-  final TextEditingController passwordController;
+class ListViewSignUp extends HookConsumerWidget {
+  const ListViewSignUp({Key? key}) : super(key: key);
 
   @override
-  State<ListViewSignUp> createState() => _ListViewSignUpState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final nameController = ref.watch(nameControllerProvider.state);
+    final cpfController = ref.watch(cpfControllerProvider.state);
+    final birthdayController = ref.watch(birthdayControllerProvider.state);
+    final businessNameController =
+        ref.watch(businessNameControllerProvider.state);
+    final cnpjController = ref.watch(cnpjControllerProvider.state);
+    final telephoneController = ref.watch(telephoneControllerProvider.state);
+    final mobileNumberController = ref.watch(mobileControllerProvider.state);
+    final cepController = ref.watch(cepControllerProvider.state);
+    final adressController = ref.watch(adressControllerProvider.state);
+    final loginController = ref.watch(loginControllerProvider.state);
+    final passwordController = ref.watch(passwordControllerProvider.state);
+    final userModel = ref.watch(userModelProvider.state);
 
-class _ListViewSignUpState extends State<ListViewSignUp> {
-  @override
-  Widget build(BuildContext context) {
     return ListView(
       shrinkWrap: true,
       scrollDirection: Axis.vertical,
@@ -49,52 +35,52 @@ class _ListViewSignUpState extends State<ListViewSignUp> {
         TextFieldApp(
           labelItem: 'Nome Completo',
           isObscured: false,
-          typeController: widget.nameController,
+          typeController: nameController.state,
         ),
         TextFieldAppFormatted(
           labelItem: 'CPF',
-          typeController: widget.cpfController,
+          typeController: cpfController.state,
           formater: CpfInputFormatter(),
           textInputType: TextInputType.number,
         ),
         TextFieldAppFormatted(
           labelItem: 'Data de Nascimento',
-          typeController: widget.bithdayDateController,
+          typeController: birthdayController.state,
           formater: DataInputFormatter(),
           textInputType: TextInputType.number,
         ),
         TextFieldApp(
           labelItem: 'Nome do Negócio',
-          typeController: widget.bussinessNameController,
+          typeController: businessNameController.state,
           isObscured: false,
         ),
         TextFieldAppFormatted(
           labelItem: 'CNPJ',
-          typeController: widget.cnpjController,
+          typeController: cnpjController.state,
           formater: CnpjInputFormatter(),
           textInputType: TextInputType.number,
         ),
         TextFieldAppFormatted(
           labelItem: 'Telefone',
-          typeController: widget.phoneController,
+          typeController: telephoneController.state,
           formater: TelefoneInputFormatter(),
           textInputType: TextInputType.number,
         ),
         TextFieldAppFormatted(
           labelItem: 'Celular',
-          typeController: widget.cellphoneController,
+          typeController: mobileNumberController.state,
           formater: TelefoneInputFormatter(),
           textInputType: TextInputType.number,
         ),
         TextFieldAppFormatted(
           labelItem: 'CEP',
-          typeController: widget.cepController,
+          typeController: cepController.state,
           formater: CepInputFormatter(),
           textInputType: TextInputType.number,
         ),
         TextFieldApp(
           labelItem: 'Endereço',
-          typeController: widget.adressController,
+          typeController: adressController.state,
           isObscured: false,
         ),
         const Padding(
@@ -110,12 +96,12 @@ class _ListViewSignUpState extends State<ListViewSignUp> {
         ),
         TextFieldApp(
           labelItem: 'Email',
-          typeController: widget.loginController,
+          typeController: loginController.state,
           isObscured: false,
         ),
         TextFieldApp(
           labelItem: 'Senha',
-          typeController: widget.passwordController,
+          typeController: passwordController.state,
           isObscured: true,
         ),
         Container(
@@ -133,23 +119,20 @@ class _ListViewSignUpState extends State<ListViewSignUp> {
           ),
           child: TextButton(
             onPressed: () async {
-              UserModel userModel = UserModel(
-                name: widget.nameController.text,
-                cpf: widget.cpfController.text,
-                birthday: widget.bithdayDateController.text,
-                company: widget.bussinessNameController.text,
-                cnpj: widget.cnpjController.text,
-                telephone: widget.phoneController.text,
-                mobileNumber: widget.cellphoneController.text,
-                cep: widget.cepController.text,
-                adress: widget.adressController.text,
-                email: widget.loginController.text,
-                password: widget.passwordController.text,
+              UserModel user = UserModel(
+                name: nameController.state.text,
+                cpf: cpfController.state.text,
+                birthday: birthdayController.state.text,
+                company: businessNameController.state.text,
+                cnpj: cnpjController.state.text,
+                telephone: telephoneController.state.text,
+                mobileNumber: mobileNumberController.state.text,
+                cep: cepController.state.text,
+                adress: adressController.state.text,
+                email: loginController.state.text,
+                password: passwordController.state.text,
               );
-              await GearDatabase.instance.insert('user', userModel);
-
-              if (!mounted) return;
-
+              await GearDatabase.instance.insert('user', user);
               Navigator.of(context).pop(context);
             },
             child: const Text(

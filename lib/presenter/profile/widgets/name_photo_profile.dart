@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/app_assets.dart';
-import '../../../core/app_getit.dart';
 import '../../edit_profile_page/edit_profile_page.dart';
+import '../../login/login_providers.dart';
 
-class NamePhotoProfile extends StatelessWidget {
+class NamePhotoProfile extends HookConsumerWidget {
   const NamePhotoProfile({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final userModel = ref.watch(userModelProvider.state);
+
     return Column(
       children: [
         Stack(
@@ -52,7 +55,7 @@ class NamePhotoProfile extends StatelessWidget {
           height: MediaQuery.of(context).size.height * 0.03,
         ),
         Text(
-          logedUser.company,
+          userModel.state.company,
           style: const TextStyle(
             color: Colors.black,
             fontSize: 25,
@@ -60,7 +63,7 @@ class NamePhotoProfile extends StatelessWidget {
           ),
         ),
         Text(
-          logedUser.cnpj,
+          userModel.state.cnpj,
           style: const TextStyle(
             color: Colors.black,
             fontSize: 17.5,

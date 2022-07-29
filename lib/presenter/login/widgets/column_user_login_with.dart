@@ -4,21 +4,9 @@ import '../../signup/signup_page.dart';
 import 'btn_login.dart';
 import 'icons_btn_login.dart';
 
-class ColumnUserLoginWith extends StatefulWidget {
-  final TextEditingController loginController;
-  final TextEditingController passwordController;
+class ColumnUserLoginWith extends StatelessWidget {
+  const ColumnUserLoginWith({Key? key}) : super(key: key);
 
-  const ColumnUserLoginWith({
-    Key? key,
-    required this.loginController,
-    required this.passwordController,
-  }) : super(key: key);
-
-  @override
-  State<ColumnUserLoginWith> createState() => _ColumnUserLoginWithState();
-}
-
-class _ColumnUserLoginWithState extends State<ColumnUserLoginWith> {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -26,13 +14,13 @@ class _ColumnUserLoginWithState extends State<ColumnUserLoginWith> {
         children: [
           const IconsBtnLogin(),
           const Padding(
-            padding: EdgeInsets.only(bottom: 10, top: 10),
+            padding: EdgeInsets.only(
+              bottom: 10,
+              top: 10,
+            ),
             child: Text('Entrar com'),
           ),
-          BtnLogin(
-            loginController: widget.loginController,
-            passwordController: widget.passwordController,
-          ),
+          const BtnLoginPage(),
           TextButton(
             onPressed: () {
               Navigator.of(context).pushNamed(SignupPage.route);

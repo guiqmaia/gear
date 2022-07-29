@@ -1,17 +1,18 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../core/app_assets.dart';
+import '../../login/login_providers.dart';
 
-import '../../../core/app_getit.dart';
-
-class BarChartSample1 extends StatefulWidget {
+class BarChartSample1 extends StatefulHookConsumerWidget {
   const BarChartSample1({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => BarChartSample1State();
+  ConsumerState<StatefulHookConsumerWidget> createState() =>
+      BarChartSample1State();
 }
 
-class BarChartSample1State extends State<BarChartSample1> {
+class BarChartSample1State extends ConsumerState<BarChartSample1> {
   final Color barBackgroundColor = const Color(0xff72d8bf);
   final Duration animDuration = const Duration(milliseconds: 250);
 
@@ -21,6 +22,8 @@ class BarChartSample1State extends State<BarChartSample1> {
 
   @override
   Widget build(BuildContext context) {
+    final userModel = ref.watch(userModelProvider.state);
+
     return AspectRatio(
       aspectRatio: 1,
       child: Container(
@@ -60,7 +63,7 @@ class BarChartSample1State extends State<BarChartSample1> {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      logedUser.company,
+                      userModel.state.company,
                       style: const TextStyle(
                         color: Colors.black,
                         fontSize: 15,

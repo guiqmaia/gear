@@ -1,34 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import '../../login/login_providers.dart';
 import 'non_changable_container.dart';
 
-import '../../../core/app_getit.dart';
-
-class NonEditableContainerList extends StatelessWidget {
+class NonEditableContainerList extends HookConsumerWidget {
   const NonEditableContainerList({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final userModel = ref.watch(userModelProvider.state);
+
     return Column(
       children: [
         NonChangableContainer(
           param: 'Nome',
-          info: logedUser.name,
+          info: userModel.state.name,
         ),
         NonChangableContainer(
           param: 'CPF',
-          info: logedUser.cpf,
+          info: userModel.state.cpf,
         ),
         NonChangableContainer(
           param: 'Data de Nascimento',
-          info: logedUser.birthday,
+          info: userModel.state.birthday,
         ),
         NonChangableContainer(
           param: 'Nome da Empresa',
-          info: logedUser.company,
+          info: userModel.state.company,
         ),
         NonChangableContainer(
           param: 'CNPJ',
-          info: logedUser.cnpj,
+          info: userModel.state.cnpj,
         ),
       ],
     );

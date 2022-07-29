@@ -1,59 +1,63 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/app_assets.dart';
-import '../../../core/app_getit.dart';
 import '../../../infra/database/create_database_products.dart';
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/user_model.dart';
 import '../../home/home_page.dart';
+import '../login_providers.dart';
 
-class BtnLogin extends StatefulWidget {
-  final TextEditingController loginController;
-  final TextEditingController passwordController;
-
-  const BtnLogin({
-    Key? key,
-    required this.loginController,
-    required this.passwordController,
-  }) : super(key: key);
+class BtnLoginPage extends StatefulHookConsumerWidget {
+  const BtnLoginPage({Key? key}) : super(key: key);
 
   @override
-  State<BtnLogin> createState() => _BtnLoginState();
+  ConsumerState<BtnLoginPage> createState() => _BtnLoginPageState();
 }
 
-Future createDbData() async {
-  await CreateDatabaseProducts().createSodas();
-  await CreateDatabaseProducts().createBeers();
-  await CreateDatabaseProducts().createWines();
-  await CreateDatabaseProducts().createDistilled();
-  await CreateDatabaseProducts().createEnergyDrink();
-  await CreateDatabaseProducts().createWater();
-  await CreateDatabaseProducts().createCategories();
-}
+class _BtnLoginPageState extends ConsumerState<BtnLoginPage> {
+  Future createDbData() async {
+    await CreateDatabaseProducts().createSodas();
+    await CreateDatabaseProducts().createBeers();
+    await CreateDatabaseProducts().createWines();
+    await CreateDatabaseProducts().createDistilled();
+    await CreateDatabaseProducts().createEnergyDrink();
+    await CreateDatabaseProducts().createWater();
+    await CreateDatabaseProducts().createCategories();
+  }
 
-class _BtnLoginState extends State<BtnLogin> {
-  Future<void> verifyLogin() async {
+  Future<void> verifyLogin(
+    TextEditingController loginControllerProvider,
+    TextEditingController passwordControllerProvider,
+  ) async {
     await createDbData();
+
+    final userModel = ref.watch(userModelProvider.state);
+
     UserModel user = await GearDatabase.instance.selectUser(
-      widget.loginController.text,
-      widget.passwordController.text,
+      loginControllerProvider.text,
+      passwordControllerProvider.text,
     );
 
-    if (user.email == widget.loginController.text) {
-      setState(
-        () {
+    setState(
+      () {
+        if (user.email == loginControllerProvider.text) {
           Navigator.of(context).pushReplacementNamed(HomePage.route);
-          logedUser = user;
-        },
-      );
-    }
-    widget.loginController.clear();
-    widget.passwordController.clear();
+          userModel.state = user;
+        }
+      },
+    );
+
+    loginControllerProvider.clear();
+    passwordControllerProvider.clear();
   }
 
   @override
   Widget build(BuildContext context) {
+    final loginController = ref.watch(loginControllerProvider.state);
+    final passwordController = ref.watch(passwordControllerProvider.state);
+
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -69,7 +73,10 @@ class _BtnLoginState extends State<BtnLogin> {
       ),
       child: TextButton(
         onPressed: () {
-          verifyLogin();
+          verifyLogin(
+            loginController.state,
+            passwordController.state,
+          );
         },
         child: const Text(
           'Entrar',

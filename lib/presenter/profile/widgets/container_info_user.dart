@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../core/app_getit.dart';
+import '../../login/login_providers.dart';
 import 'info_container_profile.dart';
 
-class ContainerInfoUser extends StatelessWidget {
+class ContainerInfoUser extends HookConsumerWidget {
   const ContainerInfoUser({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final userModel = ref.watch(userModelProvider.state);
+
     return Wrap(
       alignment: WrapAlignment.center,
       children: [
@@ -19,17 +22,17 @@ class ContainerInfoUser extends StatelessWidget {
         ),
         InfoContainerProfile(
           titleInfo: "Nome",
-          info: logedUser.name,
+          info: userModel.state.name,
           iconInfo: Icons.person_outline,
         ),
         InfoContainerProfile(
           titleInfo: "Data de Nascimento",
-          info: logedUser.birthday,
+          info: userModel.state.birthday,
           iconInfo: Icons.date_range_rounded,
         ),
         InfoContainerProfile(
           titleInfo: "CPF",
-          info: logedUser.cpf,
+          info: userModel.state.cpf,
           iconInfo: Icons.location_on_outlined,
         ),
       ],

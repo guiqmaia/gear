@@ -19,7 +19,7 @@ import '../presenter/statistics/statistics_page.dart';
 
 Map<String, WidgetBuilder> appRoutes = {
   SplashPage.route: (context) => const SplashPage(),
-  LoginPage.route: (context) => const LoginPage(),
+  LoginPage.route: (context) => LoginPage(),
   ResetPasswordPage.route: (context) => ResetPasswordPage(),
   SignupPage.route: (context) => const SignupPage(),
   HomePage.route: (context) => const HomePage(),

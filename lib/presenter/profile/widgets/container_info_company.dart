@@ -1,33 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../core/app_getit.dart';
+import '../../login/login_providers.dart';
 import 'info_container_profile.dart';
 
-class ContainerInfoCompany extends StatelessWidget {
+class ContainerInfoCompany extends HookConsumerWidget {
   const ContainerInfoCompany({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final userModel = ref.watch(userModelProvider.state);
+
     return Wrap(
       children: [
         InfoContainerProfile(
           titleInfo: "Telefone",
-          info: logedUser.telephone,
+          info: userModel.state.telephone,
           iconInfo: Icons.local_phone_outlined,
         ),
         InfoContainerProfile(
           titleInfo: "CEP",
-          info: logedUser.cep,
+          info: userModel.state.cep,
           iconInfo: Icons.location_searching,
         ),
         InfoContainerProfile(
           titleInfo: "Endereço",
-          info: logedUser.adress,
+          info: userModel.state.adress,
           iconInfo: Icons.location_on_outlined,
         ),
         InfoContainerProfile(
           titleInfo: "Email",
-          info: logedUser.email,
+          info: userModel.state.email,
           iconInfo: Icons.email_outlined,
         ),
       ],
