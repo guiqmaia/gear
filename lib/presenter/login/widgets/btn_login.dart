@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/app_assets.dart';
@@ -21,9 +22,19 @@ class BtnLogin extends StatefulWidget {
   State<BtnLogin> createState() => _BtnLoginState();
 }
 
+Future createDbData() async {
+  await CreateDatabaseProducts().createSodas();
+  await CreateDatabaseProducts().createBeers();
+  await CreateDatabaseProducts().createWines();
+  await CreateDatabaseProducts().createDistilled();
+  await CreateDatabaseProducts().createEnergyDrink();
+  await CreateDatabaseProducts().createWater();
+  await CreateDatabaseProducts().createCategories();
+}
+
 class _BtnLoginState extends State<BtnLogin> {
   Future<void> verifyLogin() async {
-    await CreateDatabaseProducts().createCategories();
+    await createDbData();
     UserModel user = await GearDatabase.instance.selectUser(
       widget.loginController.text,
       widget.passwordController.text,

@@ -13,17 +13,7 @@ class WrapContainerHome extends StatefulWidget {
 }
 
 class _WrapContainerHomeState extends State<WrapContainerHome> {
-  static bool isCreated = false;
   bool isVisible = true;
-
-  Future createListProducts() async {
-    await CreateDatabaseProducts().createSodas();
-    await CreateDatabaseProducts().createBeers();
-    await CreateDatabaseProducts().createWines();
-    await CreateDatabaseProducts().createDistilled();
-    await CreateDatabaseProducts().createEnergyDrink();
-    await CreateDatabaseProducts().createWater();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,45 +45,25 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                isVisible
-                    ? const Text(
-                        'R\$ 1500,00',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 25,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      )
-                    : const Text(
-                        'R\$ *******',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 25,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
+                Text(
+                  isVisible ? 'R\$ 1500,00' : '*******',
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 25,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
                 const SizedBox(height: 10),
                 InkWell(
-                    onTap: () {
-                      setState(() {
-                        if (isVisible == true) {
-                          isVisible = false;
-                        } else {
-                          isVisible = true;
-                        }
-                      });
-                    },
-                    child: isVisible
-                        ? const Icon(
-                            Icons.visibility_outlined,
-                            color: Color.fromRGBO(46, 67, 86, 1),
-                            size: 35,
-                          )
-                        : const Icon(
-                            Icons.visibility_off_outlined,
-                            color: Color.fromRGBO(46, 67, 86, 1),
-                            size: 35,
-                          )),
+                  onTap: () => setState(() => isVisible = !isVisible),
+                  child: Icon(
+                    isVisible
+                        ? Icons.visibility_outlined
+                        : Icons.visibility_off_outlined,
+                    color: Colors.black38,
+                    size: 35,
+                  ),
+                ),
               ],
             ),
           ),
@@ -142,18 +112,8 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
               horizontal: 10,
             ),
             child: TextButton(
-              onPressed: () async {
-                if (!isCreated) {
-                  setState(
-                    () {
-                      createListProducts();
-                      isCreated = true;
-                      Navigator.of(context).pushNamed(CategoryPage.route);
-                    },
-                  );
-                } else {
-                  Navigator.of(context).pushNamed(CategoryPage.route);
-                }
+              onPressed: () {
+                Navigator.of(context).pushNamed(CategoryPage.route);
               },
               child: const Text(
                 'ESTOQUE',

@@ -6,9 +6,11 @@ import '../../presenter/profile/profile_page.dart';
 class TopBarApp extends StatelessWidget {
   final String title;
   final bool isProfile;
+  final bool hasBack;
 
   const TopBarApp({
     Key? key,
+    this.hasBack = true,
     required this.title,
     required this.isProfile,
   }) : super(key: key);
@@ -36,12 +38,14 @@ class TopBarApp extends StatelessWidget {
           IconButton(
             icon: Icon(
               Icons.arrow_back_rounded,
-              color: isProfile ? blue : Colors.white,
+              color: !hasBack ? blue : Colors.white,
               size: 30,
             ),
-            onPressed: () {
-              Navigator.of(context).pop(context);
-            },
+            onPressed: hasBack
+                ? () {
+                    Navigator.of(context).pop(context);
+                  }
+                : () {},
           ),
           Text(
             title,

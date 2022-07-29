@@ -22,6 +22,7 @@ class _BodyStatisticsPageState extends State<BodyStatisticsPage> {
           const TopBarApp(
             title: 'Estatísticas',
             isProfile: true,
+            hasBack: false,
           ),
           Container(
             margin: const EdgeInsets.symmetric(

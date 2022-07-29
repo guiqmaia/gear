@@ -6,8 +6,11 @@ import 'container_text.dart';
 import 'container_user_options.dart';
 
 class BodyLoginPage extends StatelessWidget {
-  const BodyLoginPage({
+  bool isVisible = false;
+
+  BodyLoginPage({
     Key? key,
+    required this.isVisible,
     required this.loginController,
     required this.passwordController,
   }) : super(key: key);

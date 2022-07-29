@@ -5,6 +5,7 @@ class TextFieldApp extends StatelessWidget {
   final dynamic typeController;
   bool isObscured = true;
   bool isEnabled;
+  bool isVisible = true;
   Function(String)? onChanged;
 
   TextFieldApp({
@@ -14,6 +15,7 @@ class TextFieldApp extends StatelessWidget {
     required this.isObscured,
     this.isEnabled = true,
     this.onChanged,
+
   }) : super(key: key);
 
   @override
@@ -37,6 +39,7 @@ class TextFieldApp extends StatelessWidget {
         decoration: InputDecoration(
           label: Text(labelItem),
           enabled: isEnabled,
+          // suffixIcon: isVisible ?  Icon(Icons.visibility_off) : Icon(Icons.visibility),
         ),
       ),
     );

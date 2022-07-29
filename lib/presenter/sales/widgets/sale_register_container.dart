@@ -1,27 +1,25 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
+import 'package:gear/infra/models/product_model.dart';
+import 'package:gear/infra/models/sale_model.dart';
 
 import '../../../core/app_assets.dart';
 
 class SaleRegisterContainer extends StatelessWidget {
-  final String price;
-  final dynamic quantity;
-  final String product;
-  final dynamic productImg;
-  final String payment;
-  final DateTime dateTime;
+  final SaleModel saleModel;
+  final ProductModel productModel;
 
   const SaleRegisterContainer({
     Key? key,
-    required this.price,
-    required this.quantity,
-    required this.product,
-    required this.productImg,
-    required this.payment,
-    required this.dateTime,
+    required this.saleModel,
+    required this.productModel,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String price = saleModel.price.toStringAsFixed(2);
+
     return Container(
       width: MediaQuery.of(context).size.width * 0.9,
       margin: EdgeInsets.symmetric(
@@ -53,7 +51,7 @@ class SaleRegisterContainer extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Image.memory(
-                    productImg,
+                    productModel.image,
                     height: MediaQuery.of(context).size.height * 0.09,
                   ),
                 ),
@@ -63,7 +61,7 @@ class SaleRegisterContainer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        product,
+                        productModel.name,
                         style: const TextStyle(
                           color: Colors.black,
                           fontSize: 20,
@@ -73,7 +71,7 @@ class SaleRegisterContainer extends StatelessWidget {
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.035),
                       Text(
-                        payment,
+                        saleModel.pay,
                         style: TextStyle(
                           color: Colors.grey.shade700,
                           fontSize: 14,
@@ -109,7 +107,7 @@ class SaleRegisterContainer extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    quantity > 1 ? 'unidades: ' : 'unidade: ',
+                    saleModel.quantity > 1 ? 'unidades: ' : 'unidade: ',
                     style: const TextStyle(
                       color: Colors.black,
                       fontSize: 15,
@@ -125,7 +123,7 @@ class SaleRegisterContainer extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(
-                      '$quantity',
+                      saleModel.quantity.toString(),
                       style: const TextStyle(
                         color: Colors.black,
                         fontSize: 17,

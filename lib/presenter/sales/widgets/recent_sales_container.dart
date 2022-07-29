@@ -30,7 +30,6 @@ class RecentSalesContainer extends StatelessWidget {
           fontSize: 18,
         ),
       ),
-      
     );
   }
 }

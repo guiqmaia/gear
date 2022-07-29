@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/app_assets.dart';
 
@@ -14,7 +15,7 @@ class IconsBtnLogin extends StatelessWidget {
           customBorder: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(25),
           ),
-          onTap: () {},
+          onTap: _launchUrlGoogle,
           child: CircleAvatar(
             backgroundColor: Colors.white,
             radius: 30,
@@ -28,7 +29,7 @@ class IconsBtnLogin extends StatelessWidget {
           customBorder: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(25),
           ),
-          onTap: () {},
+          onTap: _launchUrlFacebook,
           child: CircleAvatar(
             backgroundColor: Colors.white,
             radius: 30,
@@ -42,3 +43,18 @@ class IconsBtnLogin extends StatelessWidget {
     );
   }
 }
+
+final Uri _urlGoogle = Uri.parse('https://www.google.com.br/');
+
+Future<void> _launchUrlGoogle() async {
+  if (!await launchUrl(_urlGoogle)){
+    throw 'Could not launch $_urlGoogle';
+  }
+}
+
+final Uri _urlFacebook = Uri.parse('https://pt-br.facebook.com/');
+Future<void> _launchUrlFacebook() async {
+  if (!await launchUrl(_urlFacebook)) {
+    throw 'Could not launch $_urlFacebook';
+  }}
+

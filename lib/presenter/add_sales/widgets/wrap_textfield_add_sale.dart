@@ -43,6 +43,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
   List<DropdownMenuItem<String>> dropDownItemsProducts = [];
   String? categoryValue;
   ProductModel? product;
+  CategoryModel? category;
 
   @override
   void initState() {
@@ -60,6 +61,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           onTap: () {
             widget.codeController.clear();
             widget.priceController.clear();
+            category = categoryModel;
             refreshProducts(categoryModel.id!);
           },
         ),
@@ -96,7 +98,9 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
   int? id;
 
   refreshTotal(quantity, descount) {
-    widget.total = (product!.price * quantity) * (1 - descount / 100);
+    descount != null
+        ? widget.total = (product!.price * quantity) * (1 - descount / 100)
+        : widget.total = (product!.price * quantity);
     widget.totalController.text = widget.total.toString();
     setState(() {});
   }
@@ -107,7 +111,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
       alignment: WrapAlignment.center,
       children: [
         IgnorePointer(
-          ignoring: product != null ? true : false,
+          ignoring: category != null ? true : false,
           child: DropDownInput(
             dropdownList: dropDownItemsCategories,
             labelDropdown: 'Categoria',

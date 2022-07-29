@@ -63,13 +63,8 @@ class _BodyProductPageState extends State<BodyProductPage> {
                 itemBuilder: (context, index) {
                   ProductModel product = products[index];
                   return ContainerProductCategory(
-                    productName: product.name,
-                    productPrice: product.price.toString(),
-                    productQuantity: product.quantity,
-                    productCode: product.id!,
-                    productImg: product.image,
-                    products: products,
                     categoryTitle: widget.category.name,
+                    productModel: product,
                   );
                 },
               ),

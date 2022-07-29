@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: backgroundGrey,
       body: BodyLoginPage(
         loginController: loginController,
-        passwordController: passwordController,
+        passwordController: passwordController, isVisible: true,
       ),
     );
   }
