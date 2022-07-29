@@ -1,27 +1,18 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/product_model.dart';
 import '../../edit_product/edit_product_page.dart';
 
 class ContainerProductCategory extends StatefulWidget {
-  final String productName;
-  final String productPrice;
-  final int productQuantity;
-  final int productCode;
-  final dynamic productImg;
+  final ProductModel productModel;
   final String categoryTitle;
-  List<ProductModel>? products;
 
-  ContainerProductCategory({
+  const ContainerProductCategory({
     Key? key,
-    required this.productName,
-    required this.productPrice,
-    required this.productQuantity,
-    required this.productCode,
-    required this.productImg,
     required this.categoryTitle,
-    required this.products,
+    required this.productModel,
   }) : super(key: key);
 
   @override
@@ -33,8 +24,7 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
   bool isLoading = false;
 
   deleteProduct() async {
-    widget.products =
-        await GearDatabase.instance.delete('product', widget.productCode);
+    await GearDatabase.instance.delete('product', widget.productModel.id!);
     setState(() => isLoading = true);
   }
 
@@ -71,7 +61,7 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Image.memory(
-                widget.productImg,
+                widget.productModel.image,
                 height: MediaQuery.of(context).size.height * 0.1,
                 fit: BoxFit.cover,
               ),
@@ -85,7 +75,7 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
                     children: [
                       Expanded(
                         child: Text(
-                          widget.productName,
+                          widget.productModel.name,
                           overflow: TextOverflow.fade,
                           style: const TextStyle(
                             fontSize: 18,
@@ -103,7 +93,7 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Text(
-                          'R\$ ${widget.productPrice}',
+                          'R\$ ${widget.productModel.price}',
                           style: const TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.w500,
@@ -129,14 +119,14 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
                           Container(
                             padding: const EdgeInsets.all(8),
                             decoration: BoxDecoration(
-                              color: Colors.purple.withOpacity(0.2),
+                              color: pink.withOpacity(0.3),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             child: Text(
-                              '${widget.productCode}',
-                              style: const TextStyle(
-                                color: Colors.purple,
-                                fontWeight: FontWeight.w500,
+                              '${widget.productModel.id}',
+                              style: TextStyle(
+                                color: pink,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
@@ -158,7 +148,7 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
                               borderRadius: BorderRadius.circular(15),
                             ),
                             child: Text(
-                              '${widget.productQuantity}',
+                              '${widget.productModel.quantity}',
                               style: const TextStyle(
                                 color: Colors.red,
                                 fontWeight: FontWeight.w500,
@@ -179,7 +169,7 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
                     : Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => EditProductPage(
-                            productCode: widget.productCode,
+                            productCode: widget.productModel.id!,
                             categoryTitle: widget.categoryTitle,
                           ),
                         ),

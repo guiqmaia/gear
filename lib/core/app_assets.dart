@@ -91,5 +91,8 @@ List<String> listCategory = [
 String imgEmail = 'assets/images/email.png';
 
 // colors
-Color greenNeon = const Color.fromRGBO(202, 254, 72, 1);
+Color greenNeon = const Color.fromRGBO(204, 225, 52, 1);
 Color backgroundGrey = const Color.fromRGBO(240, 239, 244, 1);
+Color blue = const Color.fromRGBO(46, 67, 86, 1);
+Color pink =  const Color.fromRGBO(244, 144, 140, 1);
+Color yellow = const Color.fromRGBO(251, 213, 2, 1); 

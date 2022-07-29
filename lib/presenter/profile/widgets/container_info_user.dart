@@ -18,13 +18,15 @@ class ContainerInfoUser extends StatelessWidget {
           height: 10,
         ),
         InfoContainerProfile(
-            titleInfo: "Nome",
-            info: logedUser.name,
-            iconInfo: Icons.person_outline),
+          titleInfo: "Nome",
+          info: logedUser.name,
+          iconInfo: Icons.person_outline,
+        ),
         InfoContainerProfile(
-            titleInfo: "Data de Nascimento",
-            info: logedUser.birthday,
-            iconInfo: Icons.date_range_rounded),
+          titleInfo: "Data de Nascimento",
+          info: logedUser.birthday,
+          iconInfo: Icons.date_range_rounded,
+        ),
         InfoContainerProfile(
           titleInfo: "CPF",
           info: logedUser.cpf,

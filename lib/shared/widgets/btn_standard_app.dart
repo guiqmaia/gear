@@ -18,7 +18,7 @@ class BtnStandardApp extends StatelessWidget {
     this.heightBtn,
     this.fontSize = 18,
     this.onPressed,
-    this.backgroundColorBtn = const Color.fromRGBO(202, 254, 72, 1),
+    this.backgroundColorBtn = const Color.fromRGBO(204, 225, 52, 1),
     this.fontColorBtn = Colors.black,
   }) : super(key: key);
 

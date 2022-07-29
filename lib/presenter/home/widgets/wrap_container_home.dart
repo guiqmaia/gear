@@ -13,7 +13,6 @@ class WrapContainerHome extends StatefulWidget {
 }
 
 class _WrapContainerHomeState extends State<WrapContainerHome> {
-  static bool isCreated = false;
   bool isVisible = true;
 
   @override
@@ -56,15 +55,7 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
                 ),
                 const SizedBox(height: 10),
                 InkWell(
-                  onTap: () {
-                    setState(() {
-                      if (isVisible == true) {
-                        isVisible = false;
-                      } else {
-                        isVisible = true;
-                      }
-                    });
-                  },
+                  onTap: () => setState(() => isVisible = !isVisible),
                   child: Icon(
                     isVisible
                         ? Icons.visibility_outlined

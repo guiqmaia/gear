@@ -15,13 +15,13 @@ class NamePhotoProfile extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 75,
-              backgroundColor: Colors.black,
+              backgroundColor: blue,
               child: CircleAvatar(
                 radius: 70,
                 backgroundColor: backgroundGrey,
                 child: CircleAvatar(
                   radius: 65,
-                  backgroundColor: Colors.white,
+                  backgroundColor: backgroundGrey,
                   backgroundImage: Image.asset(
                     imgUser,
                     fit: BoxFit.cover,
@@ -33,7 +33,7 @@ class NamePhotoProfile extends StatelessWidget {
               bottom: 0,
               right: 0,
               child: CircleAvatar(
-                backgroundColor: Colors.black,
+                backgroundColor: blue,
                 child: IconButton(
                   icon: Icon(
                     Icons.create_sharp,

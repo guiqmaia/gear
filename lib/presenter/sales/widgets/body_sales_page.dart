@@ -18,7 +18,7 @@ class BodyCashRegister extends StatefulWidget {
 
 class _BodyCashRegisterState extends State<BodyCashRegister> {
   List<SaleModel> salesList = [];
-  List<ProductModel> productsList = [];
+  List<ProductModel> products = [];
   DateFormat dividerDateFormat = DateFormat('dd/MM/yyyy');
   DateTime dateTime = DateTime.now();
   bool first = true;
@@ -35,11 +35,13 @@ class _BodyCashRegisterState extends State<BodyCashRegister> {
     setState(() => isLoading = true);
     salesList = await GearDatabase.instance.selectSale();
     for (SaleModel sale in salesList) {
-      productsList
-          .add(await GearDatabase.instance.selectProductById(sale.productId));
+      findProduct(sale.productId);
     }
     setState(() => isLoading = false);
   }
+
+  void findProduct(int id) async =>
+      products.add(await GearDatabase.instance.selectProductById(id));
 
   bool verifyDate(SaleModel saleModel) {
     if (first == true) {
@@ -72,7 +74,6 @@ class _BodyCashRegisterState extends State<BodyCashRegister> {
                 itemCount: salesList.length,
                 itemBuilder: (context, index) {
                   SaleModel sale = salesList[index];
-                  ProductModel product = productsList[index];
                   return Column(
                     children: [
                       Visibility(
@@ -104,12 +105,8 @@ class _BodyCashRegisterState extends State<BodyCashRegister> {
                         ),
                       ),
                       SaleRegisterContainer(
-                        price: sale.price.toStringAsFixed(2),
-                        quantity: sale.quantity,
-                        product: product.name,
-                        productImg: product.image,
-                        payment: sale.pay,
-                        dateTime: sale.date,
+                        saleModel: sale,
+                        productModel: products[index],
                       ),
                     ],
                   );

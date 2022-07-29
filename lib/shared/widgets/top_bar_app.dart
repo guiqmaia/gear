@@ -19,9 +19,14 @@ class TopBarApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.maxFinite,
-      padding: const EdgeInsets.only(bottom: 10, top: 28, right: 40, left: 20),
+      padding: const EdgeInsets.only(
+        bottom: 10,
+        top: 28,
+        right: 40,
+        left: 20,
+      ),
       decoration: const BoxDecoration(
-        color: Colors.black,
+        color: Color.fromRGBO(46, 67, 86, 1),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(30),
           bottomRight: Radius.circular(30),
@@ -33,7 +38,7 @@ class TopBarApp extends StatelessWidget {
           IconButton(
             icon: Icon(
               Icons.arrow_back_rounded,
-              color: isProfile ? Colors.black : Colors.white,
+              color: isProfile ? blue : Colors.white,
               size: 30,
             ),
             onPressed: () {
@@ -49,8 +54,8 @@ class TopBarApp extends StatelessWidget {
             ),
           ),
           isProfile
-              ? const CircleAvatar(
-                  backgroundColor: Colors.black,
+              ? CircleAvatar(
+                  backgroundColor: blue,
                 )
               : InkWell(
                   onTap: () {
@@ -62,7 +67,8 @@ class TopBarApp extends StatelessWidget {
                   },
                   child: CircleAvatar(
                     radius: 26,
-                    backgroundImage: Image.asset(imgStore).image,
+                    backgroundColor: Colors.white,
+                    backgroundImage: Image.asset(iconUserAnon).image,
                   ),
                 ),
         ],

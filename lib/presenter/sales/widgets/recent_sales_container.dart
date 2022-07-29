@@ -18,7 +18,7 @@ class RecentSalesContainer extends StatelessWidget {
         vertical: 12,
       ),
       decoration: BoxDecoration(
-        color: greenNeon,
+        color: pink,
         borderRadius: BorderRadius.circular(20),
       ),
       child: const Text(
@@ -30,7 +30,6 @@ class RecentSalesContainer extends StatelessWidget {
           fontSize: 18,
         ),
       ),
-      
     );
   }
 }
