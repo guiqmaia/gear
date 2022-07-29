@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:gear/infra/models/default_model.dart';
+import 'default_model.dart';
 
 class CategoryModel implements DefaultModel {
   @override

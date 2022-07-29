@@ -5,13 +5,11 @@ import '../../presenter/profile/profile_page.dart';
 
 class TopBarApp extends StatelessWidget {
   final String title;
-  final dynamic pageRoute;
   final bool isProfile;
 
   const TopBarApp({
     Key? key,
     required this.title,
-    required this.pageRoute,
     required this.isProfile,
   }) : super(key: key);
 
@@ -59,11 +57,7 @@ class TopBarApp extends StatelessWidget {
                 )
               : InkWell(
                   onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const ProfilePage(),
-                      ),
-                    );
+                    Navigator.of(context).pushNamed(ProfilePage.route);
                   },
                   child: CircleAvatar(
                     radius: 26,

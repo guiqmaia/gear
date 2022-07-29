@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gear/infra/models/category_model.dart';
+import '../../../infra/models/category_model.dart';
 
 import '../../../core/app_assets.dart';
 import '../../product/product_page.dart';
@@ -26,10 +26,9 @@ class _ContainerCategoryInventoryState
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
         onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => ProductPage(category: widget.categoryModel),
-            ),
+          Navigator.of(context).pushNamed(
+            ProductPage.route,
+            arguments: widget.categoryModel,
           );
         },
         child: Container(

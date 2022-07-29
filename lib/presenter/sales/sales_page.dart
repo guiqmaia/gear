@@ -8,6 +8,8 @@ import 'widgets/body_sales_page.dart';
 class SalesPage extends StatelessWidget {
   const SalesPage({Key? key}) : super(key: key);
 
+  static const route = '/sales';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +19,7 @@ class SalesPage extends StatelessWidget {
       ),
       bottomNavigationBar: BtnStandardApp(
         title: 'Adicionar venda',
-        pageRoute: const AddSalesPage(),
+        pageRoute: AddSalesPage.route,
         widthBtn: MediaQuery.of(context).size.width,
       ),
     );

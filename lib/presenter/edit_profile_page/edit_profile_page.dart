@@ -6,6 +6,8 @@ import 'widgets/body_edit_profile.dart';
 class EditProfilePage extends StatelessWidget {
   const EditProfilePage({Key? key}) : super(key: key);
 
+  static const route = '/profile/edit';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

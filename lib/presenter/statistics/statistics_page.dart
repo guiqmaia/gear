@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'widget/body_statistics_page.dart';
 
-class ResultsPage extends StatelessWidget {
-  const ResultsPage({Key? key}) : super(key: key);
+class StatisticsPage extends StatelessWidget {
+  const StatisticsPage({Key? key}) : super(key: key);
+
+  static const route = '/statistics';
 
   @override
   Widget build(BuildContext context) {

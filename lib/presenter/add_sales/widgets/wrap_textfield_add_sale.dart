@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:onboarding/onboarding.dart';
 
-import 'package:gear/core/app_assets.dart';
+import '../../../core/app_assets.dart';
 
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/category_model.dart';

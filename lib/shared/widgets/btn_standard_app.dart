@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../presenter/login/login_page.dart';
+
 class BtnStandardApp extends StatelessWidget {
   final String title;
   final dynamic pageRoute;
@@ -9,17 +11,19 @@ class BtnStandardApp extends StatelessWidget {
   final Color backgroundColorBtn;
   final Color fontColorBtn;
   Function? onPressed;
+  bool isReplacement;
 
   BtnStandardApp({
     Key? key,
     required this.title,
-    required this.widthBtn,
     this.pageRoute,
+    required this.widthBtn,
     this.heightBtn,
     this.fontSize = 18,
-    this.onPressed,
     this.backgroundColorBtn = const Color.fromRGBO(204, 225, 52, 1),
     this.fontColorBtn = Colors.black,
+    this.onPressed,
+    this.isReplacement = false,
   }) : super(key: key);
 
   @override
@@ -40,14 +44,10 @@ class BtnStandardApp extends StatelessWidget {
       ),
       child: TextButton(
         onPressed: () {
-          if (pageRoute == null) {
-            Navigator.of(context).pop(context);
+          if (isReplacement) {
+            Navigator.of(context).pushReplacementNamed(pageRoute);
           } else {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => pageRoute,
-              ),
-            );
+            Navigator.of(context).pushNamed(pageRoute);
           }
         },
         child: Text(

@@ -6,6 +6,8 @@ import 'widgets/body_login_page.dart';
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
+  static const route = '/login';
+
   @override
   State<LoginPage> createState() => _LoginPageState();
 }

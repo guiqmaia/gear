@@ -32,10 +32,7 @@ class _BtnLoginState extends State<BtnLogin> {
     if (user.email == widget.loginController.text) {
       setState(
         () {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const HomePage()),
-          );
-
+          Navigator.of(context).pushReplacementNamed(HomePage.route);
           logedUser = user;
         },
       );

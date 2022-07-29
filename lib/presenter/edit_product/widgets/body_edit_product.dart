@@ -29,7 +29,6 @@ class _BodyEditProductState extends State<BodyEditProduct> {
       children: [
         const TopBarApp(
           title: 'Editar produto',
-          pageRoute: null,
           isProfile: false,
         ),
         SizedBox(height: MediaQuery.of(context).size.height * 0.03),

@@ -5,6 +5,8 @@ import 'widgets/body_profile_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
+  
+  static const route = '/profile';
 
   @override
   Widget build(BuildContext context) {

@@ -4,9 +4,7 @@ import 'non_changable_container.dart';
 import '../../../core/app_getit.dart';
 
 class NonEditableContainerList extends StatelessWidget {
-  const NonEditableContainerList({
-    Key? key,
-  }) : super(key: key);
+  const NonEditableContainerList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

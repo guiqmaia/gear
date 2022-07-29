@@ -177,13 +177,12 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
               onSelected: (String selectedOption) {
                 selectedOption == 'Deletar'
                     ? deleteProduct()
-                    : Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => EditProductPage(
-                            productCode: widget.productCode,
-                            categoryTitle: widget.categoryTitle,
-                          ),
-                        ),
+                    : Navigator.of(context).pushNamed(
+                        EditProductPage.route,
+                        arguments: {
+                          'category': widget.categoryTitle,
+                          'code': widget.productCode,
+                        },
                       );
               },
               position: PopupMenuPosition.under,

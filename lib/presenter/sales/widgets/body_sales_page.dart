@@ -5,7 +5,6 @@ import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/product_model.dart';
 import '../../../infra/models/sale_model.dart';
 import '../../../shared/widgets/top_bar_app.dart';
-import '../../home/home_page.dart';
 import 'recent_sales_container.dart';
 import 'sale_register_container.dart';
 
@@ -60,7 +59,6 @@ class _BodyCashRegisterState extends State<BodyCashRegister> {
       children: [
         const TopBarApp(
           title: 'Caixa',
-          pageRoute: HomePage(),
           isProfile: false,
         ),
         const RecentSalesContainer(),

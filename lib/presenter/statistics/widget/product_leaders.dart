@@ -33,12 +33,12 @@ class ProductLeader extends StatelessWidget {
           ),
           Container(
             padding: const EdgeInsets.symmetric(
-              horizontal: 10,
+              horizontal: 15,
               vertical: 5,
             ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: greenNeon,
+              color: greenNeon.withOpacity(0.9),
             ),
             child: Text(
               value,

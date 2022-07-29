@@ -7,7 +7,6 @@ import '../../../infra/models/category_model.dart';
 import '../../../infra/models/product_model.dart';
 import '../../../shared/widgets/text_field_app.dart';
 import '../../../shared/widgets/top_bar_app.dart';
-import '../../category/category_page.dart';
 import 'container_product_category.dart';
 
 class BodyProductPage extends StatefulWidget {
@@ -47,7 +46,6 @@ class _BodyProductPageState extends State<BodyProductPage> {
       children: [
         TopBarApp(
           title: widget.category.name,
-          pageRoute: const CategoryPage(),
           isProfile: false,
         ),
         const SizedBox(height: 10),

@@ -6,6 +6,8 @@ import 'widgets/animation.dart';
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
 
+  static const route = '/';
+
   @override
   State<SplashPage> createState() => _SplashPageState();
 }
@@ -15,11 +17,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     Future.delayed(const Duration(seconds: 3)).then(
       (value) => {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => const LoginPage(),
-          ),
-        ),
+        Navigator.of(context).pushReplacementNamed(LoginPage.route),
       },
     );
     super.initState();
