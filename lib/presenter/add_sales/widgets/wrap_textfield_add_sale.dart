@@ -98,7 +98,9 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
   int? id;
 
   refreshTotal(quantity, descount) {
-    widget.total = (product!.price * quantity) * (1 - descount / 100);
+    descount != null
+        ? widget.total = (product!.price * quantity) * (1 - descount / 100)
+        : widget.total = (product!.price * quantity);
     widget.totalController.text = widget.total.toString();
     setState(() {});
   }
