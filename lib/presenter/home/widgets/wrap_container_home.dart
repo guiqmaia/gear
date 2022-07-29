@@ -86,12 +86,12 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
                     child: isVisible
                         ? const Icon(
                             Icons.visibility_outlined,
-                            color: Colors.black38,
+                            color: Color.fromRGBO(46, 67, 86, 1),
                             size: 35,
                           )
                         : const Icon(
                             Icons.visibility_off_outlined,
-                            color: Colors.black38,
+                            color: Color.fromRGBO(46, 67, 86, 1),
                             size: 35,
                           )),
               ],

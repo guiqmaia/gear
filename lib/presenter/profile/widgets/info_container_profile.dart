@@ -25,7 +25,7 @@ class InfoContainerProfile extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
-        color: Colors.black,
+        color: blue,
         boxShadow: [
           BoxShadow(
             color: Colors.grey.shade300,

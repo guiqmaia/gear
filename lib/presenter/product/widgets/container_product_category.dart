@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/product_model.dart';
 import '../../edit_product/edit_product_page.dart';
@@ -129,14 +130,14 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
                           Container(
                             padding: const EdgeInsets.all(8),
                             decoration: BoxDecoration(
-                              color: Colors.purple.withOpacity(0.2),
+                              color: pink.withOpacity(0.3),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             child: Text(
                               '${widget.productCode}',
-                              style: const TextStyle(
-                                color: Colors.purple,
-                                fontWeight: FontWeight.w500,
+                              style: TextStyle(
+                                color: pink,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
