@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class NonChangableContainer extends StatelessWidget {
-  NonChangableContainer({
+  const NonChangableContainer({
     Key? key,
     required this.param,
     required this.info,
   }) : super(key: key);
 
-  String param;
-  String info;
+  final String param;
+  final String info;
 
   @override
   Widget build(BuildContext context) {

@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class TextFieldApp extends StatelessWidget {
   final String labelItem;
   final dynamic typeController;
-  bool isObscured = true;
-  bool isEnabled;
-  bool isVisible = true;
-  Function(String)? onChanged;
-  int? requiredLength;
+  final bool isObscured;
+  final bool isEnabled;
+  final bool isVisible = true;
+  final Function(String)? onChanged;
+  final int? requiredLength;
 
-  TextFieldApp({
+  const TextFieldApp({
     Key? key,
     required this.labelItem,
     required this.typeController,

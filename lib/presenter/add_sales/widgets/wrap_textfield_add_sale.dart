@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:onboarding/onboarding.dart';
-
-import '../../../core/app_assets.dart';
 
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/category_model.dart';
@@ -10,7 +7,7 @@ import '../../../shared/widgets/dropdown_input.dart';
 import '../../../shared/widgets/text_field_app.dart';
 
 class WrapTextFieldSale extends StatefulWidget {
-  WrapTextFieldSale({
+  const WrapTextFieldSale({
     Key? key,
     required this.categoryController,
     required this.codeController,
@@ -30,7 +27,6 @@ class WrapTextFieldSale extends StatefulWidget {
   final TextEditingController quantityController;
   final TextEditingController payController;
   final TextEditingController totalController;
-  double? total;
 
   @override
   State<WrapTextFieldSale> createState() => _WrapTextFieldSaleState();
@@ -44,6 +40,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
   String? categoryValue;
   ProductModel? product;
   CategoryModel? category;
+  double? total;
 
   @override
   void initState() {
@@ -99,9 +96,9 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
 
   refreshTotal(quantity, descount) {
     descount != null
-        ? widget.total = (product!.price * quantity) * (1 - descount / 100)
-        : widget.total = (product!.price * quantity);
-    widget.totalController.text = widget.total.toString();
+        ? total = (product!.price * quantity) * (1 - descount / 100)
+        : total = (product!.price * quantity);
+    widget.totalController.text = total.toString();
     setState(() {});
   }
 
@@ -195,9 +192,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
                 ),
               ),
               Text(
-                widget.total == null
-                    ? ''
-                    : 'R\$ ${widget.total!.toStringAsFixed(2)}',
+                total == null ? '' : 'R\$ ${total!.toStringAsFixed(2)}',
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,

@@ -8,12 +8,7 @@ import 'container_text.dart';
 import 'container_user_options.dart';
 
 class BodyLoginPage extends HookConsumerWidget {
-  bool isVisible = false;
-
-  BodyLoginPage({
-    Key? key,
-    required this.isVisible,
-  }) : super(key: key);
+  const BodyLoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -39,7 +34,7 @@ class BodyLoginPage extends HookConsumerWidget {
               isObscured: true,
             ),
             const ContainerUserOptions(),
-            ColumnUserLoginWith(),
+            const ColumnUserLoginWith(),
           ],
         ),
       ),

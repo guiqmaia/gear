@@ -28,11 +28,11 @@ class ListViewSignUp extends HookConsumerWidget {
     final passwordController = ref.watch(passwordControllerProvider.state);
     final userModel = ref.watch(userModelProvider.state);
 
-    final _formKey = GlobalKey<FormState>();
+    final formKey = GlobalKey<FormState>();
 
     return SingleChildScrollView(
       child: Form(
-        key: _formKey,
+        key: formKey,
         child: Column(
           children: [
             TextFieldApp(
@@ -128,7 +128,7 @@ class ListViewSignUp extends HookConsumerWidget {
               ),
               child: TextButton(
                 onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
+                  if (formKey.currentState!.validate()) {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                       content: Text('Cadastro realizado com sucesso'),
                     ));
