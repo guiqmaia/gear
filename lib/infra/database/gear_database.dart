@@ -129,7 +129,7 @@ class GearDatabase {
   Future<UserModel> selectUser(login, password) async {
     final db = await instance.database;
     List<Map<String, dynamic>> list = await db.rawQuery(
-        '${'${'SELECT * FROM user WHERE email = "' + login}" AND password = "' + password}"');
+        'SELECT * FROM user WHERE email = "$login" AND password = "$password"');
     UserModel user = UserModel.fromMap(list[0]);
     return user;
   }

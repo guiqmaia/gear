@@ -12,9 +12,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundGrey,
-      body: BodyLoginPage(
-        isVisible: true,
-      ),
+      body: const BodyLoginPage(),
     );
   }
 }

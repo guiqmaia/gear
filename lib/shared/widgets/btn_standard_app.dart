@@ -8,10 +8,10 @@ class BtnStandardApp extends StatelessWidget {
   final double fontSize;
   final Color backgroundColorBtn;
   final Color fontColorBtn;
-  Function? onPressed;
-  bool isReplacement;
+  final Function? onPressed;
+  final bool isReplacement;
 
-  BtnStandardApp({
+  const BtnStandardApp({
     Key? key,
     required this.title,
     this.pageRoute,

@@ -41,7 +41,6 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
           vertical: 8,
         ),
         padding: const EdgeInsets.symmetric(
-          horizontal: 8,
           vertical: 11,
         ),
         decoration: BoxDecoration(

@@ -4,12 +4,12 @@ import 'package:flutter/services.dart';
 class RowFormatters extends StatelessWidget {
   final String label;
   final TextInputFormatter? formatter;
-  TextEditingController controller;
-  TextInputType keyboardType;
-  bool? isEnabled;
-  int? requiredLength;
+  final TextEditingController controller;
+  final TextInputType keyboardType;
+  final bool? isEnabled;
+  final int? requiredLength;
 
-  RowFormatters({
+  const RowFormatters({
     Key? key,
     required this.label,
     required this.controller,
@@ -24,21 +24,22 @@ class RowFormatters extends StatelessWidget {
     return TextFormField(
       decoration: InputDecoration(
         label: Text(label),
-        enabled: isEnabled!
+        enabled: isEnabled!,
+        border: const OutlineInputBorder(),
       ),
       controller: controller,
       keyboardType: keyboardType,
       validator: (value) {
-          if (value!.isEmpty) {
-            return 'Este campo é obrigatório';
-          } else if (requiredLength != null) {
-            if (value.length < requiredLength!) {
-              return 'Quantidade de caracteres insuficientes';
-            }
-            return null;
+        if (value!.isEmpty) {
+          return 'Este campo é obrigatório';
+        } else if (requiredLength != null) {
+          if (value.length < requiredLength!) {
+            return 'Quantidade de caracteres insuficientes';
           }
           return null;
-        },
+        }
+        return null;
+      },
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly,
         formatter!,

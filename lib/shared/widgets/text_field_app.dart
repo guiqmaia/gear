@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class TextFieldApp extends StatelessWidget {
   final String labelItem;
   final dynamic typeController;
-  bool isObscured = true;
-  bool isEnabled;
-  bool isVisible = true;
-  Function(String)? onChanged;
-  int? requiredLength;
+  final bool isObscured;
+  final bool isEnabled;
+  final bool isVisible = true;
+  final Function(String)? onChanged;
+  final int? requiredLength;
 
-  TextFieldApp({
+  const TextFieldApp({
     Key? key,
     required this.labelItem,
     required this.typeController,
@@ -25,9 +25,6 @@ class TextFieldApp extends StatelessWidget {
       margin: const EdgeInsets.symmetric(
         horizontal: 15,
         vertical: 10,
-      ),
-      padding: const EdgeInsets.symmetric(
-        horizontal: 16,
       ),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -49,6 +46,7 @@ class TextFieldApp extends StatelessWidget {
         },
         decoration: InputDecoration(
           label: Text(labelItem),
+          border: const OutlineInputBorder(),
           enabled: isEnabled,
           // suffixIcon: isVisible ?  Icon(Icons.visibility_off) : Icon(Icons.visibility),
         ),
