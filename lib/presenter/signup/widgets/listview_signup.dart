@@ -1,5 +1,6 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/login/login_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/app_assets.dart';
@@ -129,8 +130,17 @@ class ListViewSignUp extends HookConsumerWidget {
               child: TextButton(
                 onPressed: () async {
                   if (formKey.currentState!.validate()) {
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text('Cadastro realizado com sucesso'),
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      backgroundColor: Colors.grey.shade400,
+                      content: const Text(
+                        'Cadastro Realizado Com Sucesso',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 100,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ));
                     UserModel user = UserModel(
                       name: nameController.state.text,
@@ -146,7 +156,28 @@ class ListViewSignUp extends HookConsumerWidget {
                       password: passwordController.state.text,
                     );
                     await GearDatabase.instance.insert('user', user);
-                    Navigator.of(context).pop(context);
+                    Navigator.of(context).pushReplacementNamed(LoginPage.route);
+                    nameController.state.clear();
+                    cpfController.state.clear();
+                    birthdayController.state.clear();
+                    businessNameController.state.clear();
+                    cnpjController.state.clear();
+                    telephoneController.state.clear();
+                    mobileNumberController.state.clear();
+                    cepController.state.clear();
+                    adressController.state.clear();
+                    loginController.state.clear();
+                    passwordController.state.clear();
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      padding: const EdgeInsets.all(25),
+                      backgroundColor: Colors.grey.shade100,
+                      content: const Text(
+                        'Algumas informações estão incorretas',
+                        style: TextStyle(color: Colors.black),
+                        textAlign: TextAlign.center,
+                      ),
+                    ));
                   }
                 },
                 child: const Text(

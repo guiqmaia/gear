@@ -22,7 +22,11 @@ class RowFormatters extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      decoration: InputDecoration(label: Text(label), enabled: isEnabled!),
+      decoration: InputDecoration(
+        label: Text(label),
+        enabled: isEnabled!,
+        border: const OutlineInputBorder(),
+      ),
       controller: controller,
       keyboardType: keyboardType,
       validator: (value) {

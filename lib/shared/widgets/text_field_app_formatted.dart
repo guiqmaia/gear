@@ -28,7 +28,6 @@ class TextFieldAppFormatted extends StatelessWidget {
         horizontal: 15,
         vertical: 10,
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),

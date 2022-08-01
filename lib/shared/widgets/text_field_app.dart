@@ -26,9 +26,6 @@ class TextFieldApp extends StatelessWidget {
         horizontal: 15,
         vertical: 10,
       ),
-      padding: const EdgeInsets.symmetric(
-        horizontal: 16,
-      ),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -49,6 +46,7 @@ class TextFieldApp extends StatelessWidget {
         },
         decoration: InputDecoration(
           label: Text(labelItem),
+          border: const OutlineInputBorder(),
           enabled: isEnabled,
           // suffixIcon: isVisible ?  Icon(Icons.visibility_off) : Icon(Icons.visibility),
         ),
