@@ -130,18 +130,6 @@ class ListViewSignUp extends HookConsumerWidget {
               child: TextButton(
                 onPressed: () async {
                   if (formKey.currentState!.validate()) {
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      backgroundColor: Colors.grey.shade400,
-                      content: const Text(
-                        'Cadastro Realizado Com Sucesso',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 100,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ));
                     UserModel user = UserModel(
                       name: nameController.state.text,
                       cpf: cpfController.state.text,
@@ -169,15 +157,14 @@ class ListViewSignUp extends HookConsumerWidget {
                     loginController.state.clear();
                     passwordController.state.clear();
                   } else {
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      padding: const EdgeInsets.all(25),
-                      backgroundColor: Colors.grey.shade100,
-                      content: const Text(
-                        'Algumas informações estão incorretas',
-                        style: TextStyle(color: Colors.black),
-                        textAlign: TextAlign.center,
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text(
+                          'Algumas informações estão incorretas',
+                          textAlign: TextAlign.center,
+                        ),
                       ),
-                    ));
+                    );
                   }
                 },
                 child: const Text(
