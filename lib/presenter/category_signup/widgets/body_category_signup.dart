@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gear/presenter/category_signup/widgets/focus_node_category_signup_page.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
@@ -57,6 +58,7 @@ class _BodyCategoriySignupState extends State<BodyCategorySignup> {
             labelItem: 'Nome',
             typeController: nameController,
             isObscured: false,
+            focus: focusNameCategorySignUpPage,
           ),
           Container(
             decoration: BoxDecoration(

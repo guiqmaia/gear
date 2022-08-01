@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:onboarding/onboarding.dart';
-
-import '../../../core/app_assets.dart';
+import 'package:gear/presenter/add_sales/widgets/focus_node_add_sales.dart';
 
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/category_model.dart';
@@ -129,18 +127,22 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           labelItem: 'Código do produto',
           typeController: widget.codeController,
           isObscured: false,
-          isEnabled: product == null,
+          focus: focusNodeCodeAddSalesPage,
+          nextFocus: focusPriceAddSalesPage,
         ),
         TextFieldApp(
           labelItem: 'Preço do produto',
           typeController: widget.priceController,
           isObscured: false,
-          isEnabled: product == null,
+          focus: focusPriceAddSalesPage,
+          nextFocus: focusDiscountAddSalesPage,
         ),
         TextFieldApp(
           labelItem: 'Desconto (%)',
           typeController: widget.descountController,
           isObscured: false,
+          focus: focusDiscountAddSalesPage,
+          nextFocus: focusQuantityAddSalesPage,
           onChanged: (text) {
             descount = double.parse(text);
             refreshTotal(quantity, descount);
@@ -150,6 +152,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           labelItem: 'Quantidade',
           typeController: widget.quantityController,
           isObscured: false,
+          focus: focusQuantityAddSalesPage,
           onChanged: (text) {
             quantity = int.parse(text);
             refreshTotal(quantity, descount);

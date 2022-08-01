@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/product/widgets/focus_node_product_page.dart';
 
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/category_model.dart';
@@ -53,6 +54,7 @@ class _BodyProductPageState extends State<BodyProductPage> {
           labelItem: 'Pesquisar',
           typeController: searchController,
           isObscured: false,
+          focus: focusSerchProductPage,
         ),
         isLoading
             ? const CircularProgressIndicator()

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/category/widgets/focus_node_category_page.dart';
 
 import '../../../shared/widgets/text_field_app.dart';
 import '../../../shared/widgets/top_bar_app.dart';
@@ -22,6 +23,7 @@ class BodyCategoryPage extends StatelessWidget {
           labelItem: 'Pesquisar',
           typeController: searchController,
           isObscured: false,
+          focus: focusSearchCategoryPage,
         ),
         const WrapContainerCategory(),
       ],

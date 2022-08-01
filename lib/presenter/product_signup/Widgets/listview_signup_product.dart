@@ -3,11 +3,12 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../../infra/models/category_model.dart';
+import 'package:gear/presenter/product_signup/Widgets/focus_node_product_signup.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
+import '../../../infra/models/category_model.dart';
 import '../../../infra/models/product_model.dart';
 import '../../../shared/widgets/dropdown_input.dart';
 import '../../../shared/widgets/text_field_app.dart';
@@ -83,11 +84,15 @@ class _ListViewSingupProductState extends State<ListViewSingupProduct> {
           labelItem: 'Nome',
           typeController: widget.nameController,
           isObscured: false,
+          focus: focusNameProductSignUpPage,
+          nextFocus: focusPriceProductSignUpPage,
         ),
         TextFieldApp(
           labelItem: 'Preço',
           typeController: widget.priceController,
           isObscured: false,
+          focus: focusPriceProductSignUpPage,
+          nextFocus: focusQuantityProductSignUpPage,
         ),
         DropDownInput(
           dropdownList: list,
@@ -100,6 +105,7 @@ class _ListViewSingupProductState extends State<ListViewSingupProduct> {
           labelItem: 'Quantidade',
           typeController: widget.quantityController,
           isObscured: false,
+          focus: focusQuantityProductSignUpPage,
         ),
         Container(
           decoration: BoxDecoration(
