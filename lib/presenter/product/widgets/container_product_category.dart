@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../infra/models/category_model.dart';
+
 import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/product_model.dart';
@@ -7,12 +9,12 @@ import '../../edit_product/edit_product_page.dart';
 
 class ContainerProductCategory extends StatefulWidget {
   final ProductModel productModel;
-  final String categoryTitle;
+  final CategoryModel category;
 
   const ContainerProductCategory({
     Key? key,
-    required this.categoryTitle,
     required this.productModel,
+    required this.category,
   }) : super(key: key);
 
   @override
@@ -168,7 +170,7 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
                     : Navigator.of(context).pushNamed(
                         EditProductPage.route,
                         arguments: {
-                          'category': widget.categoryTitle,
+                          'category': widget.category,
                           'code': widget.productModel.id,
                         },
                       );

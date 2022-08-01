@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
@@ -10,17 +11,18 @@ import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/category_model.dart';
 import '../../../shared/widgets/text_field_app.dart';
 import '../../../shared/widgets/top_bar_app.dart';
-import '../../category/category_page.dart';
+import '../../category/widgets/wrap_container_category.dart';
 import '../../product_signup/Widgets/default_image_container.dart';
 
-class BodyCategorySignup extends StatefulWidget {
+class BodyCategorySignup extends StatefulHookConsumerWidget {
   const BodyCategorySignup({Key? key}) : super(key: key);
 
   @override
-  State<BodyCategorySignup> createState() => _BodyCategoriySignupState();
+  ConsumerState<BodyCategorySignup> createState() =>
+      _BodyCategoriySignupState();
 }
 
-class _BodyCategoriySignupState extends State<BodyCategorySignup> {
+class _BodyCategoriySignupState extends ConsumerState<BodyCategorySignup> {
   TextEditingController nameController = TextEditingController();
   File? fileImg;
   Uint8List? imgCategory;
@@ -112,11 +114,12 @@ class _BodyCategoriySignupState extends State<BodyCategorySignup> {
                   name: nameController.text,
                   image: imgCategory!,
                 );
+                
+                ref.watch(categoryNotifier.notifier).addCategory(categoryModel);
+                
                 await GearDatabase.instance.insert("category", categoryModel);
                 if (!mounted) return;
                 Navigator.of(context).pop();
-                Navigator.of(context).pop();
-                Navigator.of(context).pushNamed(CategoryPage.route);
               },
               child: const Text(
                 'Cadastrar',

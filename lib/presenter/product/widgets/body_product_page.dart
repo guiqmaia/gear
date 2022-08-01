@@ -1,15 +1,20 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/category_model.dart';
+
 import '../../../infra/models/product_model.dart';
 import '../../../shared/widgets/text_field_app.dart';
 import '../../../shared/widgets/top_bar_app.dart';
+import '../product_providers.dart';
 import 'container_product_category.dart';
 
-class BodyProductPage extends StatefulWidget {
+final productNotifier =
+    StateNotifierProvider<ProductNotifier, List<ProductModel>>(
+  (ref) => ProductNotifier(),
+);
+
+class BodyProductPage extends HookConsumerWidget {
   final CategoryModel category;
 
   const BodyProductPage({
@@ -18,56 +23,38 @@ class BodyProductPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<BodyProductPage> createState() => _BodyProductPageState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final products = ref.watch(productNotifier);
+    final searchController = ref.watch(searchControllerProvider.state);
 
-class _BodyProductPageState extends State<BodyProductPage> {
-  List<ProductModel> products = [];
-  bool isLoading = false;
-  TextEditingController searchController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    refreshProducts();
-  }
-
-  Future refreshProducts() async {
-    setState(() => isLoading = true);
-    products = await GearDatabase.instance
-        .selectProductsByCategory(widget.category.id!);
-    setState(() => isLoading = false);
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         TopBarApp(
-          title: widget.category.name,
+          title: category.name,
           isProfile: false,
         ),
         const SizedBox(height: 10),
         TextFieldApp(
           labelItem: 'Pesquisar',
-          typeController: searchController,
+          typeController: searchController.state,
           isObscured: false,
         ),
-        isLoading
-            ? const CircularProgressIndicator()
-            : ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: products.length,
-                itemBuilder: (context, index) {
-                  ProductModel product = products[index];
-                  return ContainerProductCategory(
-                    categoryTitle: widget.category.name,
-                    productModel: product,
-                  );
-                },
-              ),
+        Visibility(
+          visible: products.isNotEmpty,
+          replacement: const CircularProgressIndicator(),
+          child: ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: products.length,
+            itemBuilder: (context, index) {
+              return ContainerProductCategory(
+                category: category,
+                productModel: products[index],
+              );
+            },
+          ),
+        ),
       ],
     );
   }

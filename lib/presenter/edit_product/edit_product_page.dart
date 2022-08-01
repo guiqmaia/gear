@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
+import '../../infra/models/category_model.dart';
+
 import '../../core/app_assets.dart';
 import 'widgets/body_edit_product.dart';
 
 class EditProductPage extends StatelessWidget {
-  final String categoryTitle;
+  final CategoryModel category;
   final int productCode;
 
   const EditProductPage({
     Key? key,
-    required this.categoryTitle,
+    required this.category,
     required this.productCode,
   }) : super(key: key);
 
@@ -21,7 +23,7 @@ class EditProductPage extends StatelessWidget {
       backgroundColor: backgroundGrey,
       body: SingleChildScrollView(
         child: BodyEditProduct(
-          categoryTitle: categoryTitle,
+          category: category,
           productCode: productCode,
         ),
       ),

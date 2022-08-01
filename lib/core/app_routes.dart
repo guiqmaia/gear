@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../infra/models/category_model.dart';
 
+import '../infra/models/category_model.dart';
 import '../presenter/add_sales/add_sales_page.dart';
 import '../presenter/category/category_page.dart';
 import '../presenter/category_signup/category_signup_page.dart';
@@ -41,7 +41,7 @@ Map<String, WidgetBuilder> appRoutes = {
         ModalRoute.of(context)!.settings.arguments as Map;
 
     return EditProductPage(
-      categoryTitle: parametersEditProduct['category'],
+      category: parametersEditProduct['category'],
       productCode: parametersEditProduct['code'],
     );
   }

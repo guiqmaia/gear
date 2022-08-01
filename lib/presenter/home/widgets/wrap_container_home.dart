@@ -45,7 +45,7 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  isVisible ? 'R\$ 1500,00' : '*******',
+                  isVisible ? 'R\$ 1500,00' : 'R\$ ******',
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 25,
