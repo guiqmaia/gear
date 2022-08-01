@@ -26,13 +26,12 @@ class ListViewSignUp extends HookConsumerWidget {
     final adressController = ref.watch(adressControllerProvider.state);
     final loginController = ref.watch(loginControllerProvider.state);
     final passwordController = ref.watch(passwordControllerProvider.state);
-    final userModel = ref.watch(userModelProvider.state);
 
-    final _formKey = GlobalKey<FormState>();
+    final formKey = GlobalKey<FormState>();
 
     return SingleChildScrollView(
       child: Form(
-        key: _formKey,
+        key: formKey,
         child: Column(
           children: [
             TextFieldApp(
@@ -93,7 +92,10 @@ class ListViewSignUp extends HookConsumerWidget {
               isObscured: false,
             ),
             const Padding(
-              padding: EdgeInsets.only(top: 20, bottom: 20),
+              padding: EdgeInsets.only(
+                top: 20,
+                bottom: 20,
+              ),
               child: Text(
                 'Informações de Login',
                 textAlign: TextAlign.center,
@@ -122,16 +124,17 @@ class ListViewSignUp extends HookConsumerWidget {
                 horizontal: 15,
                 vertical: 10,
               ),
-              width: MediaQuery.of(context).size.width * 0.7,
+              width: MediaQuery.of(context).size.width * 0.9,
               padding: const EdgeInsets.symmetric(
                 vertical: 3,
               ),
               child: TextButton(
                 onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
+                  if (formKey.currentState!.validate()) {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                       content: Text('Cadastro realizado com sucesso'),
                     ));
+
                     UserModel user = UserModel(
                       name: nameController.state.text,
                       cpf: cpfController.state.text,
@@ -145,7 +148,9 @@ class ListViewSignUp extends HookConsumerWidget {
                       email: loginController.state.text,
                       password: passwordController.state.text,
                     );
+
                     await GearDatabase.instance.insert('user', user);
+
                     Navigator.of(context).pop(context);
                   }
                 },

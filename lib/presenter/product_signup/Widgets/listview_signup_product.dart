@@ -3,37 +3,27 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../../infra/models/category_model.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
+import '../../../infra/models/category_model.dart';
 import '../../../infra/models/product_model.dart';
 import '../../../shared/widgets/dropdown_input.dart';
 import '../../../shared/widgets/text_field_app.dart';
+import '../../product/product_providers.dart';
 import 'default_image_container.dart';
 
-class ListViewSingupProduct extends StatefulWidget {
-  const ListViewSingupProduct({
-    Key? key,
-    required this.nameController,
-    required this.priceController,
-    required this.categoryController,
-    required this.quantityController,
-    required this.mounted,
-  }) : super(key: key);
-
-  final TextEditingController nameController;
-  final TextEditingController priceController;
-  final TextEditingController categoryController;
-  final TextEditingController quantityController;
-  final bool mounted;
+class ListViewSingupProduct extends StatefulHookConsumerWidget {
+  const ListViewSingupProduct({Key? key}) : super(key: key);
 
   @override
-  State<ListViewSingupProduct> createState() => _ListViewSingupProductState();
+  ConsumerState<ListViewSingupProduct> createState() =>
+      _ListViewSingupProductState();
 }
 
-class _ListViewSingupProductState extends State<ListViewSingupProduct> {
+class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
   String? dropdownValue;
   List<CategoryModel> categories = [];
   List<DropdownMenuItem<String>> list = [];
@@ -76,17 +66,23 @@ class _ListViewSingupProductState extends State<ListViewSingupProduct> {
 
   @override
   Widget build(BuildContext context) {
+    final nameProductController =
+        ref.watch(nameProductControllerProvider.state);
+    final priceController = ref.watch(priceControllerProvider.state);
+    final categoryController = ref.watch(categoryControllerProvider.state);
+    final quantityController = ref.watch(quantityControllerProvider.state);
+
     return ListView(
       physics: const BouncingScrollPhysics(),
       children: [
         TextFieldApp(
           labelItem: 'Nome',
-          typeController: widget.nameController,
+          typeController: nameProductController.state,
           isObscured: false,
         ),
         TextFieldApp(
           labelItem: 'Preço',
-          typeController: widget.priceController,
+          typeController: priceController.state,
           isObscured: false,
         ),
         DropDownInput(
@@ -94,11 +90,11 @@ class _ListViewSingupProductState extends State<ListViewSingupProduct> {
           labelDropdown: 'Escolha a Categoria',
           iconDropdown: Icons.tag,
           selectedValue: dropdownValue,
-          selectedValueController: widget.categoryController,
+          selectedValueController: categoryController.state,
         ),
         TextFieldApp(
           labelItem: 'Quantidade',
-          typeController: widget.quantityController,
+          typeController: quantityController.state,
           isObscured: false,
         ),
         Container(
@@ -141,23 +137,26 @@ class _ListViewSingupProductState extends State<ListViewSingupProduct> {
           ),
           child: TextButton(
             onPressed: () async {
-              if (int.parse(widget.quantityController.text) < 0) {
+              if (int.parse(quantityController.state.text) < 0) {
                 return;
               }
 
-              if (double.parse(widget.priceController.text) < 0) {
+              if (double.parse(priceController.state.text) < 0) {
                 return;
               }
 
               ProductModel productModel = ProductModel(
-                name: widget.nameController.text,
-                price: double.parse(widget.priceController.text),
-                categoryId: int.parse(widget.categoryController.text),
-                quantity: int.parse(widget.quantityController.text),
+                name: nameProductController.state.text,
+                price: double.parse(priceController.state.text),
+                categoryId: int.parse(categoryController.state.text),
+                quantity: int.parse(quantityController.state.text),
                 image: photo!,
               );
+
               await GearDatabase.instance.insert('product', productModel);
-              if (!widget.mounted) return;
+
+              if (!mounted) return;
+
               Navigator.of(context).pop();
               Navigator.of(context).pop();
             },
