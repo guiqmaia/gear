@@ -1,50 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/sales/widgets/body_sales_page.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/sale_model.dart';
+import '../../../infra/providers/sale_providers.dart';
 import '../../sales/sales_page.dart';
 
-class BottomBtnSales extends StatefulWidget {
-  const BottomBtnSales({
-    Key? key,
-    required this.categoryController,
-    required this.codeController,
-    required this.productController,
-    required this.priceController,
-    required this.descountController,
-    required this.quantityController,
-    required this.payController,
-    required this.totalController,
-  }) : super(key: key);
-
-  final TextEditingController categoryController;
-  final TextEditingController codeController;
-  final TextEditingController productController;
-  final TextEditingController priceController;
-  final TextEditingController descountController;
-  final TextEditingController quantityController;
-  final TextEditingController payController;
-  final TextEditingController totalController;
+class BottomBtnSales extends StatefulHookConsumerWidget {
+  const BottomBtnSales({Key? key}) : super(key: key);
 
   @override
-  State<BottomBtnSales> createState() => _BottomBtnSalesState();
+  ConsumerState<BottomBtnSales> createState() => _BottomBtnSalesState();
 }
 
-class _BottomBtnSalesState extends State<BottomBtnSales> {
-  void cleanController() {
-    widget.categoryController.clear();
-    widget.codeController.clear();
-    widget.productController.clear();
-    widget.priceController.clear();
-    widget.descountController.clear();
-    widget.quantityController.clear();
-    widget.totalController.clear();
-    setState(() {});
-  }
-
+class _BottomBtnSalesState extends ConsumerState<BottomBtnSales> {
   @override
   Widget build(BuildContext context) {
+    final codeController = ref.watch(productCodeControllerProvider.state);
+    final quantityController = ref.watch(quantityControllerProvider.state);
+    final paymentController = ref.watch(paymentControllerProvider.state);
+    final totalController = ref.watch(totalControllerProvider.state);
+    final priceController = ref.watch(priceControllerProvider.state);
+    final discountController = ref.watch(discountControllerProvider.state);
+
+    void cleanController() {
+      codeController.state.clear();
+      priceController.state.clear();
+      discountController.state.clear();
+      quantityController.state.clear();
+      setState(() {});
+    }
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -63,20 +51,21 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
           ),
           child: TextButton(
             onPressed: () async {
-              if (widget.codeController.text.isNotEmpty) {
+              if (codeController.state.text.isNotEmpty) {
                 SaleModel saleModel = SaleModel(
-                  productId: int.parse(widget.codeController.text),
-                  price: double.parse(widget.totalController.text),
-                  quantity: int.parse(widget.quantityController.text),
-                  pay: widget.payController.text,
+                  productId: int.parse(codeController.state.text),
+                  price: double.parse(totalController.state.text),
+                  quantity: int.parse(quantityController.state.text),
+                  pay: paymentController.state.text,
                   date: DateTime.now(),
                 );
                 await GearDatabase.instance.insert('sale', saleModel);
 
                 if (!mounted) return;
+                
                 Navigator.of(context).pop();
-                Navigator.of(context).pop();
-                Navigator.of(context).pushNamed(SalesPage.route);
+                ref.watch(saleNotifier.notifier).addSalesContainer(saleModel);
+
               } else {
                 Navigator.of(context).pop();
                 Navigator.of(context).pop();
@@ -105,14 +94,16 @@ class _BottomBtnSalesState extends State<BottomBtnSales> {
                   tooltip: 'Adicione',
                   onPressed: () async {
                     SaleModel saleModel = SaleModel(
-                      productId: int.parse(widget.codeController.text),
-                      price: double.parse(widget.totalController.text),
-                      quantity: int.parse(widget.quantityController.text),
-                      pay: widget.payController.text,
+                      productId: int.parse(codeController.state.text),
+                      price: double.parse(totalController.state.text),
+                      quantity: int.parse(quantityController.state.text),
+                      pay: paymentController.state.text,
                       date: DateTime.now(),
                     );
                     await GearDatabase.instance.insert('sale', saleModel);
+
                     if (!mounted) return;
+                    
                     cleanController();
                   },
                   icon: Icon(

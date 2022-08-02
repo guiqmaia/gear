@@ -5,7 +5,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 
 import '../../../core/app_assets.dart';
-import '../../../infra/models/category_model.dart';
 import '../../product/product_page.dart';
 
 class ContainerCategoryInventory extends HookConsumerWidget {
@@ -31,7 +30,7 @@ class ContainerCategoryInventory extends HookConsumerWidget {
         },
         child: Container(
           padding: const EdgeInsets.symmetric(
-            vertical: 5,
+            vertical: 18,
           ),
           decoration: BoxDecoration(
             color: Colors.white,

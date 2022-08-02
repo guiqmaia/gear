@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../../infra/database/gear_database.dart';
 import '../../../core/app_assets.dart';
 import '../../home/home_page.dart';
-import '../../login/login_providers.dart';
+import '../../../infra/providers/login_providers.dart';
 
 class BtnEditUser extends StatefulHookConsumerWidget {
   const BtnEditUser({Key? key}) : super(key: key);

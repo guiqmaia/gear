@@ -6,7 +6,7 @@ import '../../../infra/database/create_database_products.dart';
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/user_model.dart';
 import '../../home/home_page.dart';
-import '../login_providers.dart';
+import '../../../infra/providers/login_providers.dart';
 
 class BtnLoginPage extends StatefulHookConsumerWidget {
   const BtnLoginPage({Key? key}) : super(key: key);

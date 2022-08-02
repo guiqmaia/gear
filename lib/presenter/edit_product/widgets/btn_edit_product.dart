@@ -6,7 +6,7 @@ import '../../../infra/models/category_model.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
-import '../../product/product_providers.dart';
+import '../../../infra/providers/product_providers.dart';
 
 class BtnEditProduct extends HookConsumerWidget {
   const BtnEditProduct({

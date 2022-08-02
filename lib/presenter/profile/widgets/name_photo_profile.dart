@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/app_assets.dart';
 import '../../edit_profile_page/edit_profile_page.dart';
-import '../../login/login_providers.dart';
+import '../../../infra/providers/login_providers.dart';
 
 class NamePhotoProfile extends HookConsumerWidget {
   const NamePhotoProfile({Key? key}) : super(key: key);

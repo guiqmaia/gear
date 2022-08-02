@@ -1,155 +1,148 @@
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/category/widgets/wrap_container_category.dart';
+import 'package:gear/presenter/product/widgets/body_product_page.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../infra/database/gear_database.dart';
-import '../../../infra/models/category_model.dart';
 import '../../../infra/models/product_model.dart';
+import '../../../infra/providers/sale_providers.dart';
 import '../../../shared/widgets/dropdown_input.dart';
 import '../../../shared/widgets/text_field_app.dart';
 
-class WrapTextFieldSale extends StatefulWidget {
-  const WrapTextFieldSale({
-    Key? key,
-    required this.categoryController,
-    required this.codeController,
-    required this.productController,
-    required this.priceController,
-    required this.descountController,
-    required this.quantityController,
-    required this.payController,
-    required this.totalController,
-  }) : super(key: key);
-
-  final TextEditingController categoryController;
-  final TextEditingController codeController;
-  final TextEditingController productController;
-  final TextEditingController priceController;
-  final TextEditingController descountController;
-  final TextEditingController quantityController;
-  final TextEditingController payController;
-  final TextEditingController totalController;
+class WrapTextFieldSale extends StatefulHookConsumerWidget {
+  const WrapTextFieldSale({Key? key}) : super(key: key);
 
   @override
-  State<WrapTextFieldSale> createState() => _WrapTextFieldSaleState();
+  ConsumerState<WrapTextFieldSale> createState() => _WrapTextFieldSaleState();
 }
 
-class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
-  List<ProductModel> products = [];
-  List<CategoryModel> categories = [];
-  List<DropdownMenuItem<String>> dropDownItemsCategories = [];
-  List<DropdownMenuItem<String>> dropDownItemsProducts = [];
-  String? categoryValue;
-  ProductModel? product;
-  CategoryModel? category;
-  double? total;
-
-  @override
-  void initState() {
-    super.initState();
-    refreshCategories();
-  }
-
-  Future refreshCategories() async {
-    categories = await GearDatabase.instance.selectCategories();
-    for (CategoryModel categoryModel in categories) {
-      dropDownItemsCategories.add(
-        DropdownMenuItem(
-          value: categoryModel.id.toString(),
-          child: Text(categoryModel.name),
-          onTap: () {
-            widget.codeController.clear();
-            widget.priceController.clear();
-            category = categoryModel;
-            refreshProducts(categoryModel.id!);
-          },
-        ),
-      );
-    }
-    setState(() {});
-  }
-
-  Future refreshProducts(int categoryId) async {
-    products = await GearDatabase.instance.selectProductsByCategory(categoryId);
-    for (ProductModel productModel in products) {
-      dropDownItemsProducts.add(
-        DropdownMenuItem(
-          value: productModel.id.toString(),
-          child: Text(productModel.name),
-          onTap: () {
-            getProductById(productModel.id!);
-          },
-        ),
-      );
-    }
-    setState(() {});
-  }
-
-  Future getProductById(int id) async {
-    product = await GearDatabase.instance.selectProductById(id);
-    widget.codeController.text = product!.id.toString();
-    widget.priceController.text = product!.price.toString();
-    setState(() {});
-  }
-
-  int? quantity;
-  double? descount;
-  int? id;
-
-  refreshTotal(quantity, descount) {
-    descount != null
-        ? total = (product!.price * quantity) * (1 - descount / 100)
-        : total = (product!.price * quantity);
-    widget.totalController.text = total.toString();
-    setState(() {});
-  }
-
+class _WrapTextFieldSaleState extends ConsumerState<WrapTextFieldSale> {
   @override
   Widget build(BuildContext context) {
+    final categoryController = ref.watch(categoryControllerProvider.state);
+    final productController = ref.watch(productControllerProvider.state);
+    final codeController = ref.watch(productCodeControllerProvider.state);
+    final quantityController = ref.watch(quantityControllerProvider.state);
+    final paymentController = ref.watch(paymentControllerProvider.state);
+    final priceController = ref.watch(priceControllerProvider.state);
+    final discountController = ref.watch(discountControllerProvider.state);
+    final totalController = ref.watch(totalControllerProvider.state);
+
+    final listCategories = ref.watch(categoryNotifier);
+    final listProducts = ref.watch(productNotifier);
+
+    double? total;
+    int? quantity;
+    double? discount;
+
+    ProductModel? product;
+
+    Future getProductById(int id) async {
+      product = await GearDatabase.instance.selectProductById(id);
+      codeController.state.text = product!.id.toString();
+      priceController.state.text = product!.price.toString();
+    }
+
+    refreshTotal(quantity, discount) {
+      discount != null || discount != 0
+          ? total = (product!.price * quantity!) * (1 - discount / 100)
+          : total = (product!.price * quantity!);
+      totalController.state.text = total.toString();
+    }
+
     return Wrap(
       alignment: WrapAlignment.center,
       children: [
-        IgnorePointer(
-          ignoring: category != null ? true : false,
-          child: DropDownInput(
-            dropdownList: dropDownItemsCategories,
-            labelDropdown: 'Categoria',
-            iconDropdown: Icons.sell_rounded,
-            selectedValueController: widget.categoryController,
+        Visibility(
+          visible: listCategories.isNotEmpty,
+          replacement: const CircularProgressIndicator(),
+          child: Container(
+            width: double.maxFinite,
+            margin: const EdgeInsets.symmetric(vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: DropdownButtonFormField(
+              decoration: InputDecoration(
+                labelText: 'Categoria',
+                border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                filled: true,
+                fillColor: Colors.white,
+              ),
+              onChanged: (String? selectedValue) {
+                // setState(() {
+                //   widget.selectedValueController.text = selectedValue!;
+                // });
+              },
+              items: listCategories.map((category) {
+                return DropdownMenuItem<String>(child: Text(category.name));
+              }).toList(),
+            ),
           ),
         ),
-        DropDownInput(
-          dropdownList: dropDownItemsProducts,
-          labelDropdown: 'Produto',
-          iconDropdown: Icons.description_rounded,
-          selectedValueController: widget.productController,
+        Container(
+          width: double.maxFinite,
+          margin: const EdgeInsets.symmetric(vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: DropdownButtonFormField(
+            decoration: InputDecoration(
+              labelText: 'Produtos',
+              prefixIcon: const Icon(
+                Icons.description_rounded,
+                color: Colors.black,
+              ),
+              border: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              filled: true,
+              fillColor: Colors.white,
+            ),
+            onChanged: (String? selectedValue) {
+              // setState(() {
+              //   widget.selectedValueController.text = selectedValue!;
+              // });
+            },
+            items: listProducts.map((product) {
+                return DropdownMenuItem<String>(child: Text(product.name));
+              }).toList(),
+          ),
         ),
+        // DropDownInput(
+        //   dropdownList: listProducts,
+        //   labelDropdown: 'Produto',
+        //   iconDropdown: Icons.description_rounded,
+        //   selectedValueController: productController.state,
+        // ),
         TextFieldApp(
           labelItem: 'Código do produto',
-          typeController: widget.codeController,
+          typeController: codeController.state,
           isObscured: false,
           isEnabled: product == null,
         ),
         TextFieldApp(
           labelItem: 'Preço do produto',
-          typeController: widget.priceController,
+          typeController: priceController.state,
           isObscured: false,
           isEnabled: product == null,
         ),
         TextFieldApp(
           labelItem: 'Desconto (%)',
-          typeController: widget.descountController,
+          typeController: discountController.state,
           isObscured: false,
           onChanged: (text) {
-            descount = double.parse(text);
-            refreshTotal(quantity, descount);
+            discount = double.parse(text);
+            refreshTotal(quantity, discount);
           },
         ),
         TextFieldApp(
           labelItem: 'Quantidade',
-          typeController: widget.quantityController,
+          typeController: quantityController.state,
           isObscured: false,
           onChanged: (text) {
             quantity = int.parse(text);
-            refreshTotal(quantity, descount);
+            refreshTotal(quantity, discount);
           },
         ),
         DropDownInput(
@@ -161,7 +154,7 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
           ],
           labelDropdown: 'Modo de pagamento',
           iconDropdown: Icons.credit_card_rounded,
-          selectedValueController: widget.payController,
+          selectedValueController: paymentController.state,
         ),
         const Divider(
           indent: 15,

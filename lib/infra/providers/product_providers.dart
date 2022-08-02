@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import '../../infra/models/category_model.dart';
-import '../../infra/models/product_model.dart';
+import '../models/category_model.dart';
+import '../models/product_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../infra/database/gear_database.dart';
+import '../database/gear_database.dart';
 
 class CategoryNotifier extends StateNotifier<List<CategoryModel>> {
   CategoryNotifier() : super([]) {

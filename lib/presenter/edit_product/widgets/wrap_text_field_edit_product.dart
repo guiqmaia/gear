@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../product/product_providers.dart';
+import '../../../infra/providers/product_providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../shared/widgets/text_field_app.dart';

@@ -14,8 +14,8 @@ class SalesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundGrey,
-      body: const SingleChildScrollView(
-        child: BodyCashRegister(),
+      body: SingleChildScrollView(
+        child: BodySalesPage(),
       ),
       bottomNavigationBar: BtnStandardApp(
         title: 'Adicionar venda',

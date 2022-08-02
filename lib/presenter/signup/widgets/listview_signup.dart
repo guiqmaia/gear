@@ -8,7 +8,7 @@ import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/user_model.dart';
 import '../../../shared/widgets/text_field_app.dart';
 import '../../../shared/widgets/text_field_app_formatted.dart';
-import '../../login/login_providers.dart';
+import '../../../infra/providers/login_providers.dart';
 
 class ListViewSignUp extends HookConsumerWidget {
   const ListViewSignUp({Key? key}) : super(key: key);

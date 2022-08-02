@@ -6,7 +6,7 @@ import '../../../infra/models/category_model.dart';
 import '../../../infra/models/product_model.dart';
 import '../../../shared/widgets/text_field_app.dart';
 import '../../../shared/widgets/top_bar_app.dart';
-import '../product_providers.dart';
+import '../../../infra/providers/product_providers.dart';
 import 'container_product_category.dart';
 
 final productNotifier =

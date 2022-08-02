@@ -22,7 +22,7 @@ class GearDatabase {
   Future<Database> _initDB() async {
     var databasesPath = await getDatabasesPath();
 
-    String dbName = "iajsiajs.db";
+    String dbName = "oksoaks.db";
 
     String path = '$databasesPath/$dbName';
     return await openDatabase(
@@ -122,7 +122,7 @@ class GearDatabase {
     for (int i = 0; i < list.length; i++) {
       listCategories.add(CategoryModel.fromMap(list[i]));
     }
-
+    print(listCategories.toString());
     return listCategories;
   }
 
