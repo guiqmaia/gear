@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'package:gear/presenter/add_sales/widgets/focus_node_add_sales.dart';
-=======
->>>>>>> 4033bf7ee179d0901992effdd151c16c196c8ece
 
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/category_model.dart';

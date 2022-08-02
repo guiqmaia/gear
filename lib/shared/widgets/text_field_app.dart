@@ -51,6 +51,7 @@ class TextFieldApp extends StatelessWidget {
         },
         decoration: InputDecoration(
           label: Text(labelItem),
+          border: const OutlineInputBorder(),
         ),
       ),
     );
