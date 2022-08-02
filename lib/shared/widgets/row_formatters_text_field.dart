@@ -33,7 +33,9 @@ class RowFormatters extends StatelessWidget {
       decoration: InputDecoration(
         label: Text(label),
         enabled: isEnabled!,
-        border: const OutlineInputBorder(),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25),
+        ),
       ),
       controller: controller,
       keyboardType: keyboardType,
@@ -52,6 +54,7 @@ class RowFormatters extends StatelessWidget {
         FilteringTextInputFormatter.digitsOnly,
         formatter!,
       ],
+
     );
   }
 }

@@ -155,7 +155,7 @@ class ListViewSignUp extends HookConsumerWidget {
                 onPressed: () async {
                   if (formKey.currentState!.validate()) {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text('Cadastro realizado com sucesso'),
+                      content: Text('Cadastro realizado com sucesso', textAlign: TextAlign.center,),
                     ));
 
 
