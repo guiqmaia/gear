@@ -21,12 +21,12 @@ class _BodyCashRegisterState extends State<BodyCashRegister> {
   DateFormat dividerDateFormat = DateFormat('dd/MM/yyyy');
   DateTime dateTime = DateTime.now();
   bool first = true;
-
   bool isLoading = false;
 
   @override
   void initState() {
     super.initState();
+    products.clear();
     refreshSales();
   }
 
@@ -39,8 +39,10 @@ class _BodyCashRegisterState extends State<BodyCashRegister> {
     setState(() => isLoading = false);
   }
 
-  void findProduct(int id) async =>
-      products.add(await GearDatabase.instance.selectProductById(id));
+  void findProduct(int id) async {
+    products.add(await GearDatabase.instance.selectProductById(id));
+    setState(() {});
+  }
 
   bool verifyDate(SaleModel saleModel) {
     if (first == true) {
