@@ -4,7 +4,9 @@ import 'package:intl/intl.dart';
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/product_model.dart';
 import '../../../infra/models/sale_model.dart';
+import '../../../shared/widgets/btn_standard_app.dart';
 import '../../../shared/widgets/top_bar_app.dart';
+import '../../add_sales/add_sales_page.dart';
 import 'recent_sales_container.dart';
 import 'sale_register_container.dart';
 
@@ -57,60 +59,69 @@ class _BodyCashRegisterState extends State<BodyCashRegister> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const TopBarApp(
-          title: 'Caixa',
-          isProfile: false,
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const TopBarApp(
+              title: 'Caixa',
+              isProfile: false,
+            ),
+            const RecentSalesContainer(),
+            isLoading
+                ? const CircularProgressIndicator()
+                : ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: salesList.length,
+                    itemBuilder: (context, index) {
+                      SaleModel sale = salesList[index];
+                      return Column(
+                        children: [
+                          Visibility(
+                            visible: verifyDate(sale),
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Container(
+                                    margin: const EdgeInsets.only(
+                                        left: 10.0, right: 20.0),
+                                    child: const Divider(
+                                      color: Colors.black,
+                                      height: 36,
+                                    ),
+                                  ),
+                                ),
+                                Text(dividerDateFormat.format(sale.date)),
+                                Expanded(
+                                  child: Container(
+                                    margin: const EdgeInsets.only(
+                                        left: 20.0, right: 10.0),
+                                    child: const Divider(
+                                      color: Colors.black,
+                                      height: 36,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SaleRegisterContainer(
+                            saleModel: sale,
+                            productModel: products[index],
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+          ],
         ),
-        const RecentSalesContainer(),
-        isLoading
-            ? const CircularProgressIndicator()
-            : ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: salesList.length,
-                itemBuilder: (context, index) {
-                  SaleModel sale = salesList[index];
-                  return Column(
-                    children: [
-                      Visibility(
-                        visible: verifyDate(sale),
-                        child: Row(
-                          children: <Widget>[
-                            Expanded(
-                              child: Container(
-                                margin: const EdgeInsets.only(
-                                    left: 10.0, right: 20.0),
-                                child: const Divider(
-                                  color: Colors.black,
-                                  height: 36,
-                                ),
-                              ),
-                            ),
-                            Text(dividerDateFormat.format(sale.date)),
-                            Expanded(
-                              child: Container(
-                                margin: const EdgeInsets.only(
-                                    left: 20.0, right: 10.0),
-                                child: const Divider(
-                                  color: Colors.black,
-                                  height: 36,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SaleRegisterContainer(
-                        saleModel: sale,
-                        productModel: products[index],
-                      ),
-                    ],
-                  );
-                },
-              ),
-      ],
+      ),
+      bottomNavigationBar: BtnStandardApp(
+        title: 'Adicionar venda',
+        pageRoute: AddSalesPage.route,
+        widthBtn: MediaQuery.of(context).size.width,
+      ),
     );
   }
 }

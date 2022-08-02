@@ -82,7 +82,7 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
               horizontal: 10,
             ),
             child: TextButton(
-              onPressed: () {
+              onPressed: () async{
                 Navigator.of(context).pushNamed(SalesPage.route);
               },
               child: const Text(
