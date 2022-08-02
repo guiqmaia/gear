@@ -18,7 +18,7 @@ class SaleRegisterContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String price = saleModel.price.toStringAsFixed(2);
+    String price = saleModel.price.toStringAsFixed(2).replaceAll('.', ',');
 
     return Container(
       width: MediaQuery.of(context).size.width * 0.9,
@@ -96,7 +96,7 @@ class SaleRegisterContainer extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
-                  'R\$ $price',
+                  'R\$ ${saleModel.price.toStringAsFixed(2).replaceAll('.', ',')}',
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 17,

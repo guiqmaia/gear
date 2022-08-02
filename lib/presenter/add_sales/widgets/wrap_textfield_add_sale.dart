@@ -87,7 +87,8 @@ class _WrapTextFieldSaleState extends State<WrapTextFieldSale> {
   Future getProductById(int id) async {
     product = await GearDatabase.instance.selectProductById(id);
     widget.codeController.text = product!.id.toString();
-    widget.priceController.text = product!.price.toString();
+    widget.priceController.text =
+        product!.price.toStringAsFixed(2).replaceAll('.', ',');
     setState(() {});
   }
 

@@ -8,7 +8,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
-import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/category_model.dart';
 import '../../../shared/widgets/text_field_app.dart';
 import '../../../shared/widgets/top_bar_app.dart';
@@ -116,10 +115,9 @@ class _BodyCategoriySignupState extends ConsumerState<BodyCategorySignup> {
                   name: nameController.text,
                   image: imgCategory!,
                 );
-                
+
                 ref.watch(categoryNotifier.notifier).addCategory(categoryModel);
-                
-                await GearDatabase.instance.insert("category", categoryModel);
+
                 if (!mounted) return;
                 Navigator.of(context).pop();
               },

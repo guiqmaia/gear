@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/splash/splash_page.dart';
 
 import 'core/app_routes.dart';
 import 'presenter/home/home_page.dart';
@@ -9,7 +10,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: HomePage.route,
+      initialRoute: SplashPage.route,
       title: 'Gear',
       debugShowCheckedModeBanner: false,
       routes: appRoutes,

@@ -94,7 +94,7 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Text(
-                          'R\$ ${widget.productModel.price}',
+                          'R\$ ${widget.productModel.price.toStringAsFixed(2).replaceAll('.', ',')}',
                           style: const TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.w500,
