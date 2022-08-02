@@ -1,41 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/edit_product/widgets/focus_node_edit_product_page.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../shared/widgets/text_field_app.dart';
+import '../../product/product_providers.dart';
+import 'focus_node_edit_product_page.dart';
 
-class WrapTextFieldEditProduct extends StatelessWidget {
-  const WrapTextFieldEditProduct({
-    Key? key,
-    required this.newNameController,
-    required this.newPriceController,
-    required this.newQuantityController,
-  }) : super(key: key);
-
-  final TextEditingController newNameController;
-  final TextEditingController newPriceController;
-  final TextEditingController newQuantityController;
+class WrapTextFieldEditProduct extends HookConsumerWidget {
+  const WrapTextFieldEditProduct({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final newNameController = ref.watch(nameProductControllerProvider.state);
+    final newPriceController = ref.watch(priceControllerProvider.state);
+    final newQuantityController = ref.watch(quantityControllerProvider.state);
+
     return Wrap(
       children: [
         TextFieldApp(
           labelItem: 'Nome',
-          typeController: newNameController,
+          typeController: newNameController.state,
           isObscured: false,
           focus: focusNameEditProductPage,
           nextFocus: focusPriceEditProductPage,
         ),
         TextFieldApp(
           labelItem: 'Preço',
-          typeController: newPriceController,
+          typeController: newPriceController.state,
           isObscured: false,
           focus: focusPriceEditProductPage,
           nextFocus: focusQuantityEditProductPage,
         ),
         TextFieldApp(
           labelItem: 'Quantidade',
-          typeController: newQuantityController,
+          typeController: newQuantityController.state,
           isObscured: false,
           focus: focusQuantityEditProductPage,
         ),

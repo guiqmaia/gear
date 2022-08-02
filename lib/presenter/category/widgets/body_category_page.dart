@@ -8,7 +8,7 @@ import 'wrap_container_category.dart';
 class BodyCategoryPage extends StatelessWidget {
   BodyCategoryPage({Key? key}) : super(key: key);
 
-  final TextEditingController searchController = TextEditingController();
+  TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class BodyCategoryPage extends StatelessWidget {
           isObscured: false,
           focus: focusSearchCategoryPage,
         ),
-        const WrapContainerCategory(),
+        WrapContainerCategory(),
       ],
     );
   }

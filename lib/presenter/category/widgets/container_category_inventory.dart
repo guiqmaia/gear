@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import '../../../infra/models/category_model.dart';
+import '../../product/widgets/body_product_page.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
 
 import '../../../core/app_assets.dart';
+import '../../../infra/models/category_model.dart';
 import '../../product/product_page.dart';
 
-class ContainerCategoryInventory extends StatefulWidget {
+class ContainerCategoryInventory extends HookConsumerWidget {
   final CategoryModel categoryModel;
 
   const ContainerCategoryInventory({
@@ -13,27 +17,21 @@ class ContainerCategoryInventory extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<ContainerCategoryInventory> createState() =>
-      _ContainerCategoryInventoryState();
-}
-
-class _ContainerCategoryInventoryState
-    extends State<ContainerCategoryInventory> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 12),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
         onTap: () {
+          ref.watch(productNotifier.notifier).getAllProducts(categoryModel);
           Navigator.of(context).pushNamed(
             ProductPage.route,
-            arguments: widget.categoryModel,
+            arguments: categoryModel,
           );
         },
         child: Container(
           padding: const EdgeInsets.symmetric(
-            vertical: 15,
+            vertical: 5,
           ),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -50,7 +48,7 @@ class _ContainerCategoryInventoryState
           child: Column(
             children: [
               Image.memory(
-                widget.categoryModel.image,
+                categoryModel.image,
                 height: MediaQuery.of(context).size.height * 0.15,
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
@@ -64,7 +62,7 @@ class _ContainerCategoryInventoryState
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
-                  widget.categoryModel.name,
+                  categoryModel.name,
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w500,

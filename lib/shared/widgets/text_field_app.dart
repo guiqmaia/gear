@@ -4,7 +4,6 @@ class TextFieldApp extends StatelessWidget {
   final String labelItem;
   final dynamic typeController;
   bool isObscured = true;
-  bool isVisible = true;
   FocusNode focus;
   FocusNode? nextFocus;
   Function(String)? onChanged;
@@ -17,7 +16,6 @@ class TextFieldApp extends StatelessWidget {
     required this.isObscured,
     required this.focus,
     this.nextFocus,
-    
     this.onChanged,
     this.requiredLength,
   }) : super(key: key);
@@ -29,16 +27,13 @@ class TextFieldApp extends StatelessWidget {
         horizontal: 15,
         vertical: 10,
       ),
-      padding: const EdgeInsets.symmetric(
-        horizontal: 16,
-      ),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextFormField(
         focusNode: focus,
-        onFieldSubmitted: (value){
+        onFieldSubmitted: (value) {
           nextFocus?.requestFocus();
         },
         obscureText: isObscured ? true : false,

@@ -32,21 +32,22 @@ class RowFormatters extends StatelessWidget {
       },
       decoration: InputDecoration(
         label: Text(label),
-        enabled: isEnabled!
+        enabled: isEnabled!,
+        border: const OutlineInputBorder(),
       ),
       controller: controller,
       keyboardType: keyboardType,
       validator: (value) {
-          if (value!.isEmpty) {
-            return 'Este campo é obrigatório';
-          } else if (requiredLength != null) {
-            if (value.length < requiredLength!) {
-              return 'Quantidade de caracteres insuficientes';
-            }
-            return null;
+        if (value!.isEmpty) {
+          return 'Este campo é obrigatório';
+        } else if (requiredLength != null) {
+          if (value.length < requiredLength!) {
+            return 'Quantidade de caracteres insuficientes';
           }
           return null;
-        },
+        }
+        return null;
+      },
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly,
         formatter!,

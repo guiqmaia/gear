@@ -4,10 +4,10 @@ class DropDownInput extends StatefulWidget {
   final List<DropdownMenuItem<String>> dropdownList;
   final String labelDropdown;
   final IconData iconDropdown;
-  String? selectedValue;
+  final String? selectedValue;
   final TextEditingController selectedValueController;
 
-  DropDownInput({
+  const DropDownInput({
     Key? key,
     required this.dropdownList,
     required this.labelDropdown,
