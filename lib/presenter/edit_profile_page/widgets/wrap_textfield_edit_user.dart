@@ -1,5 +1,6 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/edit_profile_page/widgets/focus_node_edit_profile_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../shared/widgets/text_field_app.dart';
@@ -23,23 +24,30 @@ class WrapTextFieldEditUser extends HookConsumerWidget {
           typeController: telephoneController.state,
           formater: TelefoneInputFormatter(),
           textInputType: TextInputType.number,
+          focus: focusPhoneEditProfilePage,
+          nextFocus: focusCellPhoneEditProfilePage,
         ),
         TextFieldAppFormatted(
           labelItem: 'Celular',
           typeController: mobileNumberController.state,
           formater: TelefoneInputFormatter(),
           textInputType: TextInputType.number,
+          focus: focusCellPhoneEditProfilePage,
+          nextFocus: focusCepEditProfilePage,
         ),
         TextFieldAppFormatted(
           labelItem: 'CEP',
           typeController: cepController.state,
           formater: CepInputFormatter(),
           textInputType: TextInputType.number,
+          focus: focusCepEditProfilePage,
+          nextFocus: focusAddressEditeProfilePage,
         ),
         TextFieldApp(
           labelItem: 'Endereço',
           typeController: adressController.state,
           isObscured: false,
+          focus: focusAddressEditeProfilePage,
         ),
       ],
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/reset_password/widgets/focus_node_reset_password.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../shared/widgets/btn_standard_app.dart';
@@ -45,6 +46,7 @@ class BodyResetPassword extends StatelessWidget {
               labelItem: 'Email',
               typeController: emailController,
               isObscured: false,
+              focus: focusEmailResetPassword,
             ),
             BtnStandardApp(
               title: 'Enviar',

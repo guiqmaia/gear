@@ -4,24 +4,32 @@ import 'package:flutter/services.dart';
 class RowFormatters extends StatelessWidget {
   final String label;
   final TextInputFormatter? formatter;
-  final TextEditingController controller;
-  final TextInputType keyboardType;
-  final bool? isEnabled;
-  final int? requiredLength;
+  TextEditingController controller;
+  TextInputType keyboardType;
+  bool? isEnabled;
+  int? requiredLength;
+  FocusNode focus;
+  FocusNode? nextFocus;
 
-  const RowFormatters({
+  RowFormatters({
     Key? key,
     required this.label,
+    this.formatter,
     required this.controller,
     required this.keyboardType,
     this.isEnabled = true,
-    this.formatter,
     this.requiredLength,
+    required this.focus,
+    this.nextFocus,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      focusNode: focus,
+      onFieldSubmitted: (values){
+        nextFocus?.requestFocus();
+      },
       decoration: InputDecoration(
         label: Text(label),
         enabled: isEnabled!,

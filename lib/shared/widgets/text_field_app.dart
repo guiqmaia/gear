@@ -3,18 +3,19 @@ import 'package:flutter/material.dart';
 class TextFieldApp extends StatelessWidget {
   final String labelItem;
   final dynamic typeController;
-  final bool isObscured;
-  final bool isEnabled;
-  final bool isVisible = true;
-  final Function(String)? onChanged;
-  final int? requiredLength;
+  bool isObscured = true;
+  FocusNode focus;
+  FocusNode? nextFocus;
+  Function(String)? onChanged;
+  int? requiredLength;
 
-  const TextFieldApp({
+  TextFieldApp({
     Key? key,
     required this.labelItem,
     required this.typeController,
     required this.isObscured,
-    this.isEnabled = true,
+    required this.focus,
+    this.nextFocus,
     this.onChanged,
     this.requiredLength,
   }) : super(key: key);
@@ -31,6 +32,10 @@ class TextFieldApp extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextFormField(
+        focusNode: focus,
+        onFieldSubmitted: (value) {
+          nextFocus?.requestFocus();
+        },
         obscureText: isObscured ? true : false,
         controller: typeController,
         onChanged: onChanged,
@@ -47,8 +52,6 @@ class TextFieldApp extends StatelessWidget {
         decoration: InputDecoration(
           label: Text(labelItem),
           border: const OutlineInputBorder(),
-          enabled: isEnabled,
-          // suffixIcon: isVisible ?  Icon(Icons.visibility_off) : Icon(Icons.visibility),
         ),
       ),
     );

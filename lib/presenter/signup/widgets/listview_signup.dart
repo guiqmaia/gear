@@ -1,6 +1,7 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:gear/presenter/login/login_page.dart';
+import 'package:gear/presenter/signup/widgets/focus_node_signup.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/app_assets.dart';
@@ -39,6 +40,8 @@ class ListViewSignUp extends HookConsumerWidget {
               labelItem: 'Nome Completo',
               isObscured: false,
               typeController: nameController.state,
+              focus: focusNameSignUp,
+              nextFocus: focusCpfSignUp,
             ),
             TextFieldAppFormatted(
               labelItem: 'CPF',
@@ -46,6 +49,8 @@ class ListViewSignUp extends HookConsumerWidget {
               formater: CpfInputFormatter(),
               textInputType: TextInputType.number,
               requiredLength: 11,
+              focus: focusCpfSignUp,
+              nextFocus: focusBirthdayDateSignUp,
             ),
             TextFieldAppFormatted(
               labelItem: 'Data de Nascimento',
@@ -53,11 +58,15 @@ class ListViewSignUp extends HookConsumerWidget {
               formater: DataInputFormatter(),
               textInputType: TextInputType.number,
               requiredLength: 8,
+              focus: focusBirthdayDateSignUp,
+              nextFocus: focusCompanyNameSignUp,
             ),
             TextFieldApp(
               labelItem: 'Nome do Negócio',
               typeController: businessNameController.state,
               isObscured: false,
+              focus: focusCompanyNameSignUp,
+              nextFocus: focusCnpjSignUp,
             ),
             TextFieldAppFormatted(
               labelItem: 'CNPJ',
@@ -65,6 +74,8 @@ class ListViewSignUp extends HookConsumerWidget {
               formater: CnpjInputFormatter(),
               textInputType: TextInputType.number,
               requiredLength: 14,
+              focus: focusCnpjSignUp,
+              nextFocus: focusPhoneSignUp,
             ),
             TextFieldAppFormatted(
               labelItem: 'Telefone',
@@ -72,6 +83,8 @@ class ListViewSignUp extends HookConsumerWidget {
               formater: TelefoneInputFormatter(),
               textInputType: TextInputType.number,
               requiredLength: 10,
+              focus: focusPhoneSignUp,
+              nextFocus: focusCellPhoneSignUp,
             ),
             TextFieldAppFormatted(
               labelItem: 'Celular',
@@ -79,6 +92,8 @@ class ListViewSignUp extends HookConsumerWidget {
               formater: TelefoneInputFormatter(),
               textInputType: TextInputType.number,
               requiredLength: 10,
+              focus: focusCellPhoneSignUp,
+              nextFocus: focusCepSignUp,
             ),
             TextFieldAppFormatted(
               labelItem: 'CEP',
@@ -86,11 +101,15 @@ class ListViewSignUp extends HookConsumerWidget {
               formater: CepInputFormatter(),
               textInputType: TextInputType.number,
               requiredLength: 8,
+              focus: focusCepSignUp,
+              nextFocus: focusAddressSignUp,
             ),
             TextFieldApp(
               labelItem: 'Endereço',
               typeController: adressController.state,
               isObscured: false,
+              focus: focusAddressSignUp,
+              nextFocus: focusEmailSignUp,
             ),
             const Padding(
               padding: EdgeInsets.only(
@@ -110,11 +129,14 @@ class ListViewSignUp extends HookConsumerWidget {
               labelItem: 'Email',
               typeController: loginController.state,
               isObscured: false,
+              focus: focusEmailSignUp,
+              nextFocus: focusPasswordSignUp,
             ),
             TextFieldApp(
               labelItem: 'Senha',
               typeController: passwordController.state,
               isObscured: true,
+              focus: focusPasswordSignUp,
             ),
             Container(
               decoration: BoxDecoration(
@@ -132,7 +154,6 @@ class ListViewSignUp extends HookConsumerWidget {
               child: TextButton(
                 onPressed: () async {
                   if (formKey.currentState!.validate()) {
-
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                       content: Text('Cadastro realizado com sucesso'),
                     ));
