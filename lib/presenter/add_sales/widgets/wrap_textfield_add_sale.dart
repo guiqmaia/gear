@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/category/widgets/wrap_container_category.dart';
-import 'package:gear/presenter/product/widgets/body_product_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../infra/database/gear_database.dart';
+import '../../../infra/models/category_model.dart';
 import '../../../infra/models/product_model.dart';
 import '../../../infra/providers/sale_providers.dart';
 import '../../../shared/widgets/dropdown_input.dart';
 import '../../../shared/widgets/text_field_app.dart';
+import '../../category/widgets/wrap_container_category.dart';
 
 class WrapTextFieldSale extends StatefulHookConsumerWidget {
   const WrapTextFieldSale({Key? key}) : super(key: key);
@@ -29,19 +29,40 @@ class _WrapTextFieldSaleState extends ConsumerState<WrapTextFieldSale> {
     final totalController = ref.watch(totalControllerProvider.state);
 
     final listCategories = ref.watch(categoryNotifier);
-    final listProducts = ref.watch(productNotifier);
+
+    int? categoryId;
+    List<CategoryModel>? categoryIdList;
+
+    Future getCategoryId(String selectedValue) async {
+      categoryIdList =
+          await GearDatabase.instance.selectCategoriesIdByName(selectedValue);
+
+      for (CategoryModel categoryModel in categoryIdList!) {
+        categoryId = categoryModel.id;
+      }
+    }
+
+    List<ProductModel>? listProducts;
+
+    Future refreshProducts(int categoryId) async {
+      listProducts =
+          await GearDatabase.instance.selectProductsByCategory(categoryId);
+      return listProducts;
+    }
+
+    ProductModel? product;
+
+    Future getProductById() async {
+      for (ProductModel product in listProducts!) {
+        product = await GearDatabase.instance.selectProductById(product.id!);
+      }
+      codeController.state.text = product!.id.toString();
+      priceController.state.text = product.price.toString();
+    }
 
     double? total;
     int? quantity;
     double? discount;
-
-    ProductModel? product;
-
-    Future getProductById(int id) async {
-      product = await GearDatabase.instance.selectProductById(id);
-      codeController.state.text = product!.id.toString();
-      priceController.state.text = product!.price.toString();
-    }
 
     refreshTotal(quantity, discount) {
       discount != null || discount != 0
@@ -63,6 +84,10 @@ class _WrapTextFieldSaleState extends ConsumerState<WrapTextFieldSale> {
             child: DropdownButtonFormField(
               decoration: InputDecoration(
                 labelText: 'Categoria',
+                prefixIcon: const Icon(
+                  Icons.sell_rounded,
+                  color: Colors.black,
+                ),
                 border: OutlineInputBorder(
                   borderSide: BorderSide.none,
                   borderRadius: BorderRadius.circular(10),
@@ -71,50 +96,60 @@ class _WrapTextFieldSaleState extends ConsumerState<WrapTextFieldSale> {
                 fillColor: Colors.white,
               ),
               onChanged: (String? selectedValue) {
-                // setState(() {
-                //   widget.selectedValueController.text = selectedValue!;
-                // });
+                setState(() {
+                  categoryController.state.text = selectedValue!;
+                });
+                getCategoryId(selectedValue!);
+                refreshProducts(categoryId!);
               },
               items: listCategories.map((category) {
-                return DropdownMenuItem<String>(child: Text(category.name));
+                return DropdownMenuItem<String>(
+                  value: category.name,
+                  child: Text(category.name),
+                );
               }).toList(),
             ),
           ),
         ),
-        Container(
-          width: double.maxFinite,
-          margin: const EdgeInsets.symmetric(vertical: 10),
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: DropdownButtonFormField(
-            decoration: InputDecoration(
-              labelText: 'Produtos',
-              prefixIcon: const Icon(
-                Icons.description_rounded,
-                color: Colors.black,
+        FutureBuilder(
+          future: refreshProducts(categoryId!),
+          builder: (context, snapshot) {
+            return Container(
+              width: double.maxFinite,
+              margin: const EdgeInsets.symmetric(vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: DropdownButtonFormField(
+                decoration: InputDecoration(
+                  labelText: 'Produtos',
+                  prefixIcon: const Icon(
+                    Icons.description_rounded,
+                    color: Colors.black,
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+                onChanged: (String? selectedValue) {
+                  setState(() {
+                    productController.state.text = selectedValue!;
+                  });
+                },
+                onTap: () {
+                  getProductById();
+                },
+                items: listProducts!.map((product) {
+                  return DropdownMenuItem<String>(
+                    value: product.name,
+                    child: Text(product.name),
+                  );
+                }).toList(),
               ),
-              border: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              filled: true,
-              fillColor: Colors.white,
-            ),
-            onChanged: (String? selectedValue) {
-              // setState(() {
-              //   widget.selectedValueController.text = selectedValue!;
-              // });
-            },
-            items: listProducts.map((product) {
-                return DropdownMenuItem<String>(child: Text(product.name));
-              }).toList(),
-          ),
+            );
+          },
         ),
-        // DropDownInput(
-        //   dropdownList: listProducts,
-        //   labelDropdown: 'Produto',
-        //   iconDropdown: Icons.description_rounded,
-        //   selectedValueController: productController.state,
-        // ),
         TextFieldApp(
           labelItem: 'Código do produto',
           typeController: codeController.state,

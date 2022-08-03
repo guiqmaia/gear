@@ -3,7 +3,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../database/gear_database.dart';
-import '../models/category_model.dart';
 import '../models/product_model.dart';
 import '../models/sale_model.dart';
 
@@ -69,55 +68,4 @@ final paymentControllerProvider =
 final totalControllerProvider =
     StateProvider<TextEditingController>((ref) => TextEditingController());
 
-class AddSaleNotifier extends StateNotifier<List<CategoryModel>> {
-  AddSaleNotifier() : super([]) {
-    refreshCategories();
-  }
 
-  List<DropdownMenuItem<String>> dropDownItemsCategories = [];
-  CategoryModel? category;
-
-  Future<List<CategoryModel>> refreshCategories() async {
-    state = await GearDatabase.instance.selectCategories();
-    return state;
-    // for (CategoryModel categoryModel in state) {
-    //   return dropDownItemsCategories.add(
-    //     DropdownMenuItem(
-    //       value: categoryModel.id.toString(),
-    //       child: Text(categoryModel.name),
-    //       onTap: () {
-    //         category = categoryModel;
-    //         refreshProducts(categoryModel.id!);
-    //       },
-    //     ),
-    //   );
-  // }
-  }
-
-  List<DropdownMenuItem<String>> dropDownItemsProducts = [];
-
-  Future refreshProducts(int categoryId) async {
-    List<ProductModel> products =
-        await GearDatabase.instance.selectProductsByCategory(categoryId);
-
-    for (ProductModel productModel in products) {
-      return dropDownItemsProducts.add(
-        DropdownMenuItem(
-          value: productModel.id.toString(),
-          child: Text(productModel.name),
-          onTap: () {
-            getProductById(productModel.id!);
-          },
-        ),
-      );
-    }
-  }
-
-  ProductModel? product;
-
-  Future getProductById(int id) async {
-    product = await GearDatabase.instance.selectProductById(id);
-    // productCodeControllerProvider.state = product!.id.toString();
-    // priceControllerProvider.state = product!.price.toString();
-  }
-}
