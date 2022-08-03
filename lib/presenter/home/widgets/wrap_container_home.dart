@@ -21,8 +21,8 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
         children: [
           Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: backgroundGrey,
+              borderRadius: BorderRadius.circular(25),
+              color: Colors.grey.shade200,
               image: DecorationImage(
                 image: Image.asset(imgGraphic).image,
                 fit: BoxFit.none,
@@ -36,7 +36,7 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
               vertical: 10,
             ),
             width: MediaQuery.of(context).size.width * 0.9,
-            height: MediaQuery.of(context).size.height * 0.2,
+            height: MediaQuery.of(context).size.height * 0.3,
             padding: const EdgeInsets.symmetric(
               vertical: 15,
               horizontal: 20,
@@ -44,15 +44,17 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const Text('Seu saldo'),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.010),
                 Text(
-                  isVisible ? 'R\$ 1500,00' : 'R\$ ******',
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 25,
+                  isVisible ? 'R\$ 1500,00' : 'R\$ ••••••',
+                  style: TextStyle(
+                    color: Colors.grey.shade700,
+                    fontSize: 20,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.005),
                 InkWell(
                   onTap: () => setState(() => isVisible = !isVisible),
                   child: Icon(
@@ -68,27 +70,29 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
           ),
           Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: const Color.fromRGBO(244, 144, 140, 1),
+              borderRadius: BorderRadius.circular(25),
+              // color: const Color.fromRGBO(244, 144, 140, 1),
+              color: blue,
             ),
             margin: const EdgeInsets.symmetric(
               horizontal: 15,
               vertical: 15,
             ),
             width: MediaQuery.of(context).size.width * 0.9,
-            height: MediaQuery.of(context).size.height * 0.18,
+            height: MediaQuery.of(context).size.height * 0.16,
             padding: const EdgeInsets.symmetric(
               vertical: 3,
               horizontal: 10,
             ),
             child: TextButton(
-              onPressed: () async{
+              onPressed: () async {
                 Navigator.of(context).pushNamed(SalesPage.route);
               },
               child: const Text(
                 'CAIXA',
                 style: TextStyle(
-                  color: Colors.black87,
+                  // color: Colors.black87,
+                  color: Colors.white,
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
                 ),
@@ -97,7 +101,7 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
           ),
           Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(25),
               color: const Color.fromRGBO(204, 225, 52, 1),
             ),
             margin: const EdgeInsets.symmetric(
@@ -105,7 +109,7 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
               vertical: 10,
             ),
             width: MediaQuery.of(context).size.width * 0.9,
-            height: MediaQuery.of(context).size.height * 0.18,
+            height: MediaQuery.of(context).size.height * 0.16,
             padding: const EdgeInsets.symmetric(
               vertical: 3,
               horizontal: 10,
