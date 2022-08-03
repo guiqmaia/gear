@@ -34,7 +34,7 @@ class TextFieldAppFormatted extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(25),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: RowFormatters(
         label: labelItem,

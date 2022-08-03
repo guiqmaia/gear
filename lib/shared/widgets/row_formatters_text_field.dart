@@ -34,7 +34,7 @@ class RowFormatters extends StatelessWidget {
         label: Text(label),
         enabled: isEnabled!,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(25),
+          borderRadius: BorderRadius.circular(10),
         ),
       ),
       controller: controller,
