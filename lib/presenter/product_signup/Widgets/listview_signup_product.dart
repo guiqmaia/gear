@@ -15,7 +15,6 @@ import '../../../shared/widgets/dropdown_input.dart';
 import '../../../shared/widgets/text_field_app.dart';
 import 'default_image_container.dart';
 
-
 class ListViewSingupProduct extends StatefulHookConsumerWidget {
   const ListViewSingupProduct({Key? key}) : super(key: key);
 
@@ -72,6 +71,12 @@ class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
     final priceController = ref.watch(priceControllerProvider.state);
     final categoryController = ref.watch(categoryControllerProvider.state);
     final quantityController = ref.watch(quantityControllerProvider.state);
+
+    void clearController() {
+      nameProductController.state.clear();
+      priceController.state.clear();
+      quantityController.state.clear();
+    }
 
     return ListView(
       physics: const BouncingScrollPhysics(),
@@ -157,6 +162,8 @@ class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
               await GearDatabase.instance.insert('product', productModel);
 
               if (!mounted) return;
+
+              clearController();
 
               Navigator.of(context).pop();
               Navigator.of(context).pop();

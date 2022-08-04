@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gear/infra/models/category_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../infra/database/gear_database.dart';
@@ -17,6 +16,28 @@ class WrapTextFieldSale extends StatefulHookConsumerWidget {
 }
 
 class _WrapTextFieldSaleState extends ConsumerState<WrapTextFieldSale> {
+  List<ProductModel> listProducts = [];
+  double? total;
+
+  Future<List<ProductModel>> refreshProducts(int id) async {
+    listProducts = await GearDatabase.instance.selectProductsByCategory(id);
+    return listProducts;
+  }
+
+  void refreshTotal(
+    qntController,
+    discController,
+    priceController,
+    totalController,
+  ) {
+    discController != null || discController != 0
+        ? total = (double.parse(priceController) * int.parse(qntController)) *
+            (1 - (double.parse(discController) / 100))
+        : total = (double.parse(priceController) * int.parse(qntController));
+    totalController = total.toString();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     final categoryController = ref.watch(categoryControllerProvider.state);
@@ -29,43 +50,6 @@ class _WrapTextFieldSaleState extends ConsumerState<WrapTextFieldSale> {
     final totalController = ref.watch(totalControllerProvider.state);
 
     final listCategories = ref.watch(categoryNotifier);
-
-    List<DropdownMenuItem<String>> list = [];
-    late Future<List<ProductModel>> listProducts;
-
-    Future<List<ProductModel>> refreshProducts() async {
-      for (CategoryModel model in listCategories) {
-        listProducts =
-            (await GearDatabase.instance.selectProductsByCategory(model.id!)) as Future<List<ProductModel>>;
-      }
-      return listProducts;
-    }
-
-    // Future refreshProducts(CategoryModel model) async {
-    //   listProducts =
-    //       await GearDatabase.instance.selectProductsByCategory(model.id!);
-    // }
-
-    ProductModel? product;
-
-    // Future getProductById() async {
-    //   for (ProductModel product in listProducts!) {
-    //     product = await GearDatabase.instance.selectProductById(product.id!);
-    //   }
-    //   codeController.state.text = product!.id.toString();
-    //   priceController.state.text = product.price.toString();
-    // }
-
-    double? total;
-    int? quantity;
-    double? discount;
-
-    refreshTotal(quantity, discount) {
-      discount != null || discount != 0
-          ? total = (product!.price * quantity!) * (1 - discount / 100)
-          : total = (product!.price * quantity!);
-      totalController.state.text = total.toString();
-    }
 
     return Wrap(
       alignment: WrapAlignment.center,
@@ -92,109 +76,83 @@ class _WrapTextFieldSaleState extends ConsumerState<WrapTextFieldSale> {
                 fillColor: Colors.white,
               ),
               onChanged: (String? selectedValue) {
-                setState(() {
-                  categoryController.state.text = selectedValue!;
-                });
-              },
-              onTap: () {
-                refreshProducts();
-                setState(() {});
+                categoryController.state.text = selectedValue!;
               },
               items: listCategories.map((category) {
                 return DropdownMenuItem<String>(
-                  value: category.name,
+                  value: category.id.toString(),
                   child: Text(category.name),
+                  onTap: () {
+                    setState(() {
+                      refreshProducts(category.id!);
+                    });
+                  },
                 );
               }).toList(),
             ),
           ),
         ),
-        FutureBuilder(
-          future: listProducts,
-          builder: (context, AsyncSnapshot<List<ProductModel>> snapshot) {
-            if (snapshot.hasData) {
-              return Container(
-                width: double.maxFinite,
-                margin: const EdgeInsets.symmetric(vertical: 10),
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: DropdownButtonFormField(
-                  decoration: InputDecoration(
-                    labelText: 'Produtos',
-                    prefixIcon: const Icon(
-                      Icons.description_rounded,
-                      color: Colors.black,
-                    ),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                  ),
-                  onChanged: (String? selectedValue) {
-                    setState(() {
-                      productController.state.text = selectedValue!;
-                    });
-                  },
-                  onTap: () {
-                    //getProductById();
-                  },
-                  items: snapshot.data!.map((product) {
-                    return DropdownMenuItem<String>(
-                      value: product.name,
-                      child: Text(product.name),
-                    );
-                  }).toList(),
+        IgnorePointer(
+          ignoring: listProducts.isEmpty ? true : false,
+          child: Container(
+            width: double.maxFinite,
+            margin: const EdgeInsets.symmetric(vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: DropdownButtonFormField(
+              decoration: InputDecoration(
+                labelText: 'Produtos',
+                prefixIcon: const Icon(
+                  Icons.description_rounded,
+                  color: Colors.black,
                 ),
-              );
-            }
-
-            return IgnorePointer(
-              child: Container(
-                width: double.maxFinite,
-                margin: const EdgeInsets.symmetric(vertical: 10),
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: DropdownButtonFormField(
-                  decoration: InputDecoration(
-                    labelText: 'Produtos',
-                    prefixIcon: const Icon(
-                      Icons.description_rounded,
-                      color: Colors.black,
-                    ),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                  ),
-                  onChanged: (String? selectedValue) {},
-                  onTap: () {},
-                  items: list,
+                border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(10),
                 ),
+                filled: true,
+                fillColor: Colors.white,
               ),
-            );
-          },
+              onChanged: (String? selectedValue) {
+                setState(() {
+                  productController.state.text = selectedValue!;
+                });
+              },
+              items: listProducts.map((product) {
+                return DropdownMenuItem<String>(
+                  value: product.name,
+                  child: Text(product.name),
+                  onTap: () {
+                    codeController.state.text = product.id.toString();
+                    priceController.state.text = product.price.toString();
+                  },
+                );
+              }).toList(),
+            ),
+          ),
         ),
         TextFieldApp(
           labelItem: 'Código do produto',
           typeController: codeController.state,
           isObscured: false,
-          isEnabled: product == null,
+          //isEnabled: product == null,
         ),
         TextFieldApp(
           labelItem: 'Preço do produto',
           typeController: priceController.state,
           isObscured: false,
-          isEnabled: product == null,
+          //isEnabled: product == null,
         ),
         TextFieldApp(
           labelItem: 'Desconto (%)',
           typeController: discountController.state,
           isObscured: false,
           onChanged: (text) {
-            discount = double.parse(text);
-            refreshTotal(quantity, discount);
+            refreshTotal(
+              quantityController.state.text,
+              discountController.state.text,
+              priceController.state.text,
+              totalController.state.text,
+            );
           },
         ),
         TextFieldApp(
@@ -202,8 +160,12 @@ class _WrapTextFieldSaleState extends ConsumerState<WrapTextFieldSale> {
           typeController: quantityController.state,
           isObscured: false,
           onChanged: (text) {
-            quantity = int.parse(text);
-            refreshTotal(quantity, discount);
+           refreshTotal(
+              quantityController.state.text,
+              discountController.state.text,
+              priceController.state.text,
+              totalController.state.text,
+            );
           },
         ),
         DropDownInput(
