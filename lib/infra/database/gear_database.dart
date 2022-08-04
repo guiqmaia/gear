@@ -22,7 +22,7 @@ class GearDatabase {
   Future<Database> _initDB() async {
     var databasesPath = await getDatabasesPath();
 
-    String dbName = "oaksoaks.db";
+    String dbName = "ldkfdlk.db";
 
     String path = '$databasesPath/$dbName';
     return await openDatabase(
@@ -117,18 +117,6 @@ class GearDatabase {
     final db = await instance.database;
     List<Map<String, dynamic>> list =
         await db.rawQuery('SELECT * FROM category');
-    List<CategoryModel> listCategories = [];
-
-    for (int i = 0; i < list.length; i++) {
-      listCategories.add(CategoryModel.fromMap(list[i]));
-    }
-    return listCategories;
-  }
-
-  Future<List<CategoryModel>> selectCategoriesIdByName(String name) async {
-    final db = await instance.database;
-    List<Map<String, dynamic>> list =
-        await db.rawQuery('SELECT id FROM category WHERE name = "$name"');
     List<CategoryModel> listCategories = [];
 
     for (int i = 0; i < list.length; i++) {
