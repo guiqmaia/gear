@@ -29,7 +29,7 @@ class InfoContainerProfile extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Colors.grey.shade300,
-            spreadRadius: 0,
+            spreadRadius: 10,
             blurRadius: 10,
             offset: const Offset(5, 5),
           ),
@@ -59,6 +59,9 @@ class InfoContainerProfile extends StatelessWidget {
               SizedBox(width: MediaQuery.of(context).size.width * 0.025),
               Text(
                 info,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                softWrap: false,
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16,

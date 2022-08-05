@@ -6,19 +6,23 @@ import 'row_formatters_text_field.dart';
 class TextFieldAppFormatted extends StatelessWidget {
   final String labelItem;
   final dynamic typeController;
-  final TextInputFormatter? formater;
-  final TextInputType textInputType;
-  final bool? isEnabled;
-  final int? requiredLength;
+  TextInputFormatter? formater;
+  TextInputType textInputType;
+  bool? isEnabled;
+  int? requiredLength;
+  FocusNode focus;
+  FocusNode? nextFocus;
 
-  const TextFieldAppFormatted({
+  TextFieldAppFormatted({
     Key? key,
     required this.labelItem,
     required this.typeController,
+    this.formater,
     required this.textInputType,
     this.isEnabled = true,
-    this.formater,
     this.requiredLength,
+    required this.focus,
+    this.nextFocus,
   }) : super(key: key);
 
   @override
@@ -39,6 +43,9 @@ class TextFieldAppFormatted extends StatelessWidget {
         keyboardType: textInputType,
         isEnabled: isEnabled! ? true : false,
         requiredLength: requiredLength,
+        focus: focus,
+        nextFocus: nextFocus,
+
       ),
     );
   }

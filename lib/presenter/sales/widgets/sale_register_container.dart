@@ -18,7 +18,7 @@ class SaleRegisterContainer extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    String price = saleModel.price.toStringAsFixed(2);
+    String price = saleModel.price.toStringAsFixed(2).replaceAll('.', ',');
     final productModel =
         ref.watch(saleNotifier.notifier).getProductById(saleModel);
 

@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gear/presenter/product_signup/Widgets/focus_node_product_signup.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -85,11 +86,15 @@ class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
           labelItem: 'Nome',
           typeController: nameProductController.state,
           isObscured: false,
+          focus: focusNameProductSignUpPage,
+          nextFocus: focusPriceProductSignUpPage,
         ),
         TextFieldApp(
           labelItem: 'Preço',
           typeController: priceController.state,
           isObscured: false,
+          focus: focusPriceProductSignUpPage,
+          nextFocus: focusQuantityProductSignUpPage,
         ),
         DropDownInput(
           dropdownList: list,
@@ -102,6 +107,7 @@ class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
           labelItem: 'Quantidade',
           typeController: quantityController.state,
           isObscured: false,
+          focus: focusQuantityProductSignUpPage,
         ),
         Container(
           decoration: BoxDecoration(

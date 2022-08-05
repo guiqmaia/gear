@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import 'focus_node_add_sales.dart';
+
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/product_model.dart';
 import '../../../infra/providers/sale_providers.dart';
@@ -97,7 +99,7 @@ class _WrapTextFieldSaleState extends ConsumerState<WrapTextFieldSale> {
             ),
           ),
         ),
-       IgnorePointer(
+        IgnorePointer(
           ignoring: listProducts.isNotEmpty ? false : true,
           child: Container(
             width: double.maxFinite,
@@ -139,18 +141,22 @@ class _WrapTextFieldSaleState extends ConsumerState<WrapTextFieldSale> {
           labelItem: 'Código do produto',
           typeController: codeController.state,
           isObscured: false,
-          //isEnabled: product == null,
+          focus: focusNodeCodeAddSalesPage,
+          nextFocus: focusPriceAddSalesPage,
         ),
         TextFieldApp(
           labelItem: 'Preço do produto',
           typeController: priceController.state,
           isObscured: false,
-          //isEnabled: product == null,
+          focus: focusPriceAddSalesPage,
+          nextFocus: focusDiscountAddSalesPage,
         ),
         TextFieldApp(
           labelItem: 'Desconto (%)',
           typeController: discountController.state,
           isObscured: false,
+          focus: focusDiscountAddSalesPage,
+          nextFocus: focusQuantityAddSalesPage,
           onChanged: (text) {
             refreshTotal(
               quantityController.state,
@@ -164,6 +170,7 @@ class _WrapTextFieldSaleState extends ConsumerState<WrapTextFieldSale> {
           labelItem: 'Quantidade',
           typeController: quantityController.state,
           isObscured: false,
+          focus: focusQuantityAddSalesPage,
           onChanged: (text) {
             refreshTotal(
               quantityController.state,

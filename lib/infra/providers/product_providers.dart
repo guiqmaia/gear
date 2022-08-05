@@ -19,8 +19,9 @@ class CategoryNotifier extends StateNotifier<List<CategoryModel>> {
     return StateProvider<CategoryModel>((ref) => model);
   }
 
-  void addCategory(CategoryModel category) {
-    state = [...state, category];
+  Future<void> addCategory(CategoryModel category) async {
+    await GearDatabase.instance.insert("category", category);
+    state = await GearDatabase.instance.selectCategories();
   }
 }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/presenter/login/widgets/focus_node_login_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../shared/widgets/text_field_app.dart';
@@ -27,11 +28,14 @@ class BodyLoginPage extends HookConsumerWidget {
               labelItem: 'Email',
               typeController: loginController.state,
               isObscured: false,
+              focus: focusEmailLoginPage,
+              nextFocus: focusPasswordLoginPage,
             ),
             TextFieldApp(
               labelItem: 'Senha',
               typeController: passwordController.state,
               isObscured: true,
+              focus: focusPasswordLoginPage,
             ),
             const ContainerUserOptions(),
             const ColumnUserLoginWith(),
