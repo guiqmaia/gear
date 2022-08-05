@@ -7,12 +7,12 @@ class TopBarApp extends StatelessWidget {
   final String title;
   final bool isProfile;
   final bool hasBack;
-
+  
   const TopBarApp({
     Key? key,
-    this.hasBack = true,
     required this.title,
     required this.isProfile,
+    this.hasBack = true,
   }) : super(key: key);
 
   @override

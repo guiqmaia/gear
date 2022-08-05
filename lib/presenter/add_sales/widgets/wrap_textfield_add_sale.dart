@@ -21,20 +21,25 @@ class _WrapTextFieldSaleState extends ConsumerState<WrapTextFieldSale> {
 
   Future<List<ProductModel>> refreshProducts(int id) async {
     listProducts = await GearDatabase.instance.selectProductsByCategory(id);
+    setState(() {});
     return listProducts;
   }
 
   void refreshTotal(
-    qntController,
-    discController,
-    priceController,
-    totalController,
+    TextEditingController qntController,
+    TextEditingController discController,
+    TextEditingController priceController,
+    TextEditingController totalController,
   ) {
-    discController != null || discController != 0
-        ? total = (double.parse(priceController) * int.parse(qntController)) *
-            (1 - (double.parse(discController) / 100))
-        : total = (double.parse(priceController) * int.parse(qntController));
-    totalController = total.toString();
+    if (discController.text == '' || discController.text == 0) {
+      total =
+          (double.parse(priceController.text) * int.parse(qntController.text));
+    } else {
+      total =
+          (double.parse(priceController.text) * int.parse(qntController.text)) *
+              (1 - (double.parse(discController.text) / 100));
+    }
+    totalController.text = total.toString();
     setState(() {});
   }
 
@@ -92,8 +97,8 @@ class _WrapTextFieldSaleState extends ConsumerState<WrapTextFieldSale> {
             ),
           ),
         ),
-        IgnorePointer(
-          ignoring: listProducts.isEmpty ? true : false,
+       IgnorePointer(
+          ignoring: listProducts.isNotEmpty ? false : true,
           child: Container(
             width: double.maxFinite,
             margin: const EdgeInsets.symmetric(vertical: 10),
@@ -148,10 +153,10 @@ class _WrapTextFieldSaleState extends ConsumerState<WrapTextFieldSale> {
           isObscured: false,
           onChanged: (text) {
             refreshTotal(
-              quantityController.state.text,
-              discountController.state.text,
-              priceController.state.text,
-              totalController.state.text,
+              quantityController.state,
+              discountController.state,
+              priceController.state,
+              totalController.state,
             );
           },
         ),
@@ -160,11 +165,11 @@ class _WrapTextFieldSaleState extends ConsumerState<WrapTextFieldSale> {
           typeController: quantityController.state,
           isObscured: false,
           onChanged: (text) {
-           refreshTotal(
-              quantityController.state.text,
-              discountController.state.text,
-              priceController.state.text,
-              totalController.state.text,
+            refreshTotal(
+              quantityController.state,
+              discountController.state,
+              priceController.state,
+              totalController.state,
             );
           },
         ),
@@ -182,6 +187,8 @@ class _WrapTextFieldSaleState extends ConsumerState<WrapTextFieldSale> {
         const Divider(
           indent: 15,
           endIndent: 15,
+          height: 20,
+          thickness: 0.7,
           color: Colors.black,
         ),
         Container(

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/sales/widgets/body_sales_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/sale_model.dart';
 import '../../../infra/providers/sale_providers.dart';
+import '../../sales/widgets/body_sales_page.dart';
 
 class BottomBtnSales extends StatefulHookConsumerWidget {
   const BottomBtnSales({Key? key}) : super(key: key);
@@ -69,6 +69,7 @@ class _BottomBtnSalesState extends ConsumerState<BottomBtnSales> {
               } else {
                 Navigator.of(context).pop();
               }
+              cleanController();
             },
             child: const Text(
               'Finalizar venda',
@@ -99,7 +100,7 @@ class _BottomBtnSalesState extends ConsumerState<BottomBtnSales> {
                       date: DateTime.now(),
                     );
                     await GearDatabase.instance.insert('sale', saleModel);
-                    
+
                     ref
                         .watch(saleNotifier.notifier)
                         .addSalesContainer(saleModel);

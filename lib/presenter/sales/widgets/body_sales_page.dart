@@ -20,8 +20,22 @@ class BodySalesPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final sales = ref.watch(saleNotifier);
-    final verifyDateSale = ref.watch(saleNotifier.notifier);
-    final products = ref.watch(saleNotifier.notifier).products;
+
+    bool verifyDate(SaleModel saleModel) {
+      DateTime dateTime = DateTime.now();
+      bool first = true;
+
+      if (first == true) {
+        first = !first;
+        return true;
+      }
+      if (DateFormat.yMd().format(saleModel.date) !=
+          DateFormat.yMd().format(dateTime)) {
+        dateTime = saleModel.date;
+        return true;
+      }
+      return false;
+    }
 
     return Column(
       children: [
@@ -38,32 +52,31 @@ class BodySalesPage extends HookConsumerWidget {
             return Column(
               children: [
                 Visibility(
-                  visible: verifyDateSale.verifyDate(sales[index]),
+                  visible: verifyDate(sales[index]),
                   child: Row(
                     children: <Widget>[
-                      Expanded(
-                        child: Container(
-                          margin: const EdgeInsets.only(
-                            left: 10.0,
-                            right: 20.0,
-                          ),
-                          child: const Divider(
-                            color: Colors.black,
-                            height: 36,
-                          ),
+                      const Expanded(
+                        child: Divider(
+                          indent: 10,
+                          endIndent: 20,
+                          color: Colors.black,
+                          height: 36,
+                          thickness: 0.7,
                         ),
                       ),
-                      Text(dividerDateFormat.format(sales[index].date)),
-                      Expanded(
-                        child: Container(
-                          margin: const EdgeInsets.only(
-                            left: 20.0,
-                            right: 10.0,
-                          ),
-                          child: const Divider(
-                            color: Colors.black,
-                            height: 36,
-                          ),
+                      Text(
+                        dividerDateFormat.format(sales[index].date),
+                        style: const TextStyle(
+                          fontSize: 15,
+                        ),
+                      ),
+                      const Expanded(
+                        child: Divider(
+                          indent: 20,
+                          endIndent: 10,
+                          color: Colors.black,
+                          height: 36,
+                          thickness: 0.7,
                         ),
                       ),
                     ],
@@ -71,7 +84,6 @@ class BodySalesPage extends HookConsumerWidget {
                 ),
                 SaleRegisterContainer(
                   saleModel: sales[index],
-                  productModel: products[index],
                 ),
               ],
             );

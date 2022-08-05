@@ -22,7 +22,7 @@ class GearDatabase {
   Future<Database> _initDB() async {
     var databasesPath = await getDatabasesPath();
 
-    String dbName = "oaskaosko.db";
+    String dbName = "jsiajsiaj.db";
 
     String path = '$databasesPath/$dbName';
     return await openDatabase(
@@ -109,6 +109,7 @@ class GearDatabase {
     final db = await instance.database;
     List<Map<String, dynamic>> list =
         await db.rawQuery('SELECT * FROM product WHERE id = $id');
+
     ProductModel productModel = ProductModel.fromMap(list[0]);
     return productModel;
   }
