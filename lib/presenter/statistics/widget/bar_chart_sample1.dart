@@ -2,7 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../core/app_assets.dart';
-import '../../login/login_providers.dart';
+import '../../../infra/providers/login_providers.dart';
 
 class BarChartSample1 extends StatefulHookConsumerWidget {
   const BarChartSample1({Key? key}) : super(key: key);

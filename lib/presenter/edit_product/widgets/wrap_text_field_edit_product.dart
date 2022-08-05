@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../infra/providers/product_providers.dart';
 import '../../../shared/widgets/text_field_app.dart';
-import '../../product/product_providers.dart';
 import 'focus_node_edit_product_page.dart';
 
 class WrapTextFieldEditProduct extends HookConsumerWidget {

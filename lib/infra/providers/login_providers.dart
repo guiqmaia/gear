@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../infra/models/user_model.dart';
+import '../models/user_model.dart';
 
 UserModel logedUser = UserModel(
     name: 'name',

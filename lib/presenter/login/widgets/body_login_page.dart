@@ -3,7 +3,7 @@ import 'package:gear/presenter/login/widgets/focus_node_login_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../shared/widgets/text_field_app.dart';
-import '../login_providers.dart';
+import '../../../infra/providers/login_providers.dart';
 import 'column_user_login_with.dart';
 import 'container_text.dart';
 import 'container_user_options.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../login/login_providers.dart';
+import '../../../infra/providers/login_providers.dart';
 import 'info_container_profile.dart';
 
 class ContainerInfoCompany extends HookConsumerWidget {

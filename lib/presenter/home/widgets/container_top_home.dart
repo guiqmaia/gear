@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/app_assets.dart';
-import '../../login/login_providers.dart';
+import '../../../infra/providers/login_providers.dart';
 
 class ContainerTopHome extends HookConsumerWidget {
   const ContainerTopHome({Key? key}) : super(key: key);

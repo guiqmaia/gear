@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../shared/widgets/text_field_app.dart';
 import '../../../../shared/widgets/text_field_app_formatted.dart';
-import '../../login/login_providers.dart';
+import '../../../infra/providers/login_providers.dart';
 
 class WrapTextFieldEditUser extends HookConsumerWidget {
   const WrapTextFieldEditUser({Key? key}) : super(key: key);

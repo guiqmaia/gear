@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../infra/models/category_model.dart';
-import '../../product/product_providers.dart';
+import '../../../infra/providers/product_providers.dart';
 import 'container_category_inventory.dart';
 
 final categoryNotifier =
