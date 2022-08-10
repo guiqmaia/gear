@@ -65,7 +65,7 @@ class _BottomBtnSalesState extends ConsumerState<BottomBtnSales> {
                 if (!mounted) return;
 
                 Navigator.of(context).pop();
-                ref.watch(saleNotifier.notifier).addSalesContainer(saleModel);
+                ref.read(saleNotifier.notifier).addSalesContainer(saleModel);
               } else {
                 Navigator.of(context).pop();
               }

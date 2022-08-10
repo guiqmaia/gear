@@ -3,7 +3,6 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gear/presenter/product_signup/Widgets/focus_node_product_signup.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -14,6 +13,7 @@ import '../../../infra/models/product_model.dart';
 import '../../../infra/providers/product_providers.dart';
 import '../../../shared/widgets/dropdown_input.dart';
 import '../../../shared/widgets/text_field_app.dart';
+import '../Widgets/focus_node_product_signup.dart';
 import 'default_image_container.dart';
 
 class ListViewSingupProduct extends StatefulHookConsumerWidget {
@@ -169,10 +169,12 @@ class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
 
               if (!mounted) return;
 
-              clearController();
+              // ref.read(productNotifier.notifier).addProduct(productModel);
 
               Navigator.of(context).pop();
               Navigator.of(context).pop();
+
+              clearController();
             },
             child: const Text(
               'Cadastrar',

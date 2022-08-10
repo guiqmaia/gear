@@ -28,7 +28,6 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
                 fit: BoxFit.none,
                 alignment: Alignment.topRight,
                 scale: 2.3,
-                //opacity: 0.7,
               ),
             ),
             margin: const EdgeInsets.symmetric(
@@ -44,17 +43,23 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Seu saldo'),
+                Text(
+                  'Seu saldo',
+                  style: TextStyle(
+                    color: Colors.grey.shade700,
+                    fontSize: 15,
+                  ),
+                ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.010),
                 Text(
                   isVisible ? 'R\$ 1500,00' : 'R\$ ••••••',
                   style: TextStyle(
                     color: Colors.grey.shade700,
-                    fontSize: 20,
+                    fontSize: 25,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.005),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                 InkWell(
                   onTap: () => setState(() => isVisible = !isVisible),
                   child: Icon(
@@ -71,7 +76,6 @@ class _WrapContainerHomeState extends State<WrapContainerHome> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
-              // color: const Color.fromRGBO(244, 144, 140, 1),
               color: blue,
             ),
             margin: const EdgeInsets.symmetric(
