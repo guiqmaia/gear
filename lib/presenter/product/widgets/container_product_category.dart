@@ -18,8 +18,7 @@ class ContainerProductCategory extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<ContainerProductCategory> createState() =>
-      _ContainerProductcategoriestate();
+  State<ContainerProductCategory> createState() => _ContainerProductcategoriestate();
 }
 
 class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
@@ -40,8 +39,10 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
           horizontal: 20,
           vertical: 8,
         ),
-        padding: const EdgeInsets.symmetric(
-          vertical: 11,
+        padding: const EdgeInsets.only(
+          left: 10,
+          top: 11,
+          bottom: 11,
         ),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -164,6 +165,7 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
               ),
             ),
             PopupMenuButton(
+              padding: const EdgeInsets.all(0),
               onSelected: (String selectedOption) {
                 selectedOption == 'Deletar'
                     ? deleteProduct()
