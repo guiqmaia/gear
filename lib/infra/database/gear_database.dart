@@ -22,7 +22,7 @@ class GearDatabase {
   Future<Database> _initDB() async {
     var databasesPath = await getDatabasesPath();
 
-    String dbName = "lapls.db";
+    String dbName = "testeGear.db";
 
     String path = '$databasesPath/$dbName';
     return await openDatabase(
@@ -156,10 +156,10 @@ class GearDatabase {
     );
   }
 
-  Future delete(table, int id) async {
+  Future delete(String table, int id) async {
     final db = await instance.database;
     await db.rawDelete(
-      'DELETE FROM product WHERE id = $id',
+      'DELETE FROM $table WHERE id = $id',
     );
   }
 

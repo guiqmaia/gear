@@ -3,7 +3,6 @@ import '../../../infra/models/category_model.dart';
 import '../../product/widgets/body_product_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-
 import '../../../core/app_assets.dart';
 import '../../product/product_page.dart';
 
