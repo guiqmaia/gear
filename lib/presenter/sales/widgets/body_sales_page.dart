@@ -20,17 +20,16 @@ class BodySalesPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final sales = ref.watch(saleNotifier);
+    bool first = true;
 
     bool verifyDate(SaleModel saleModel) {
       DateTime dateTime = DateTime.now();
-      bool first = true;
 
       if (first == true) {
         first = !first;
         return true;
       }
-      if (DateFormat.yMd().format(saleModel.date) !=
-          DateFormat.yMd().format(dateTime)) {
+      if (DateFormat.yMd().format(saleModel.date) != DateFormat.yMd().format(dateTime)) {
         dateTime = saleModel.date;
         return true;
       }

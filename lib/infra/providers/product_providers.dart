@@ -33,8 +33,9 @@ class ProductNotifier extends StateNotifier<List<ProductModel>> {
     return state;
   }
 
-  void addProduct(ProductModel product) {
-    state = [...state, product];
+  Future addProduct(ProductModel product) async {
+    state = await GearDatabase.instance.selectProductsByCategory(product.categoryId);
+    // state = [...state, product];
   }
 }
 

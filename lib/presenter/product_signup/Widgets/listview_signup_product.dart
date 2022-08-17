@@ -13,6 +13,7 @@ import '../../../infra/models/product_model.dart';
 import '../../../infra/providers/product_providers.dart';
 import '../../../shared/widgets/dropdown_input.dart';
 import '../../../shared/widgets/text_field_app.dart';
+import '../../product/widgets/body_product_page.dart';
 import '../Widgets/focus_node_product_signup.dart';
 import 'default_image_container.dart';
 
@@ -20,8 +21,7 @@ class ListViewSingupProduct extends StatefulHookConsumerWidget {
   const ListViewSingupProduct({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<ListViewSingupProduct> createState() =>
-      _ListViewSingupProductState();
+  ConsumerState<ListViewSingupProduct> createState() => _ListViewSingupProductState();
 }
 
 class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
@@ -67,8 +67,7 @@ class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
 
   @override
   Widget build(BuildContext context) {
-    final nameProductController =
-        ref.watch(nameProductControllerProvider.state);
+    final nameProductController = ref.watch(nameProductControllerProvider.state);
     final priceController = ref.watch(priceControllerProvider.state);
     final categoryController = ref.watch(categoryControllerProvider.state);
     final quantityController = ref.watch(quantityControllerProvider.state);
@@ -133,9 +132,7 @@ class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 30),
           width: MediaQuery.of(context).size.width,
-          child: image != null
-              ? Image.memory(photo!)
-              : const DefaulImageContainer(),
+          child: image != null ? Image.memory(photo!) : const DefaulImageContainer(),
         ),
         Container(
           decoration: BoxDecoration(
@@ -169,9 +166,8 @@ class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
 
               if (!mounted) return;
 
-              // ref.read(productNotifier.notifier).addProduct(productModel);
+              ref.read(productNotifier.notifier).addProduct(productModel);
 
-              Navigator.of(context).pop();
               Navigator.of(context).pop();
 
               clearController();
