@@ -15,7 +15,7 @@ final saleNotifier = StateNotifierProvider<SaleNotifier, List<SaleModel>>(
 class BodySalesPage extends HookConsumerWidget {
   BodySalesPage({Key? key}) : super(key: key);
 
-  DateFormat dividerDateFormat = DateFormat('dd/MM/yyyy');
+  final dividerDateFormat = DateFormat('dd/MM/yyyy');
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -7,20 +7,24 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/user_model.dart';
+import '../../../infra/providers/login_providers.dart';
 import '../../../shared/widgets/text_field_app.dart';
 import '../../../shared/widgets/text_field_app_formatted.dart';
-import '../../../infra/providers/login_providers.dart';
 
-class ListViewSignUp extends HookConsumerWidget {
-  const ListViewSignUp({Key? key}) : super(key: key);
+class ListviewSignup extends StatefulHookConsumerWidget {
+  const ListviewSignup({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ListviewSignup> createState() => _ListviewSignupState();
+}
+
+class _ListviewSignupState extends ConsumerState<ListviewSignup> {
+  @override
+  Widget build(BuildContext context) {
     final nameController = ref.watch(nameControllerProvider.state);
     final cpfController = ref.watch(cpfControllerProvider.state);
     final birthdayController = ref.watch(birthdayControllerProvider.state);
-    final businessNameController =
-        ref.watch(businessNameControllerProvider.state);
+    final businessNameController = ref.watch(businessNameControllerProvider.state);
     final cnpjController = ref.watch(cnpjControllerProvider.state);
     final telephoneController = ref.watch(telephoneControllerProvider.state);
     final mobileNumberController = ref.watch(mobileControllerProvider.state);
@@ -155,9 +159,11 @@ class ListViewSignUp extends HookConsumerWidget {
                 onPressed: () async {
                   if (formKey.currentState!.validate()) {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text('Cadastro realizado com sucesso', textAlign: TextAlign.center,),
+                      content: Text(
+                        'Cadastro realizado com sucesso',
+                        textAlign: TextAlign.center,
+                      ),
                     ));
-
 
                     UserModel user = UserModel(
                       name: nameController.state.text,
@@ -175,10 +181,6 @@ class ListViewSignUp extends HookConsumerWidget {
 
                     await GearDatabase.instance.insert('user', user);
 
-
-                    Navigator.of(context).pop(context);
-
-                    Navigator.of(context).pushReplacementNamed(LoginPage.route);
                     nameController.state.clear();
                     cpfController.state.clear();
                     birthdayController.state.clear();
@@ -190,6 +192,11 @@ class ListViewSignUp extends HookConsumerWidget {
                     adressController.state.clear();
                     loginController.state.clear();
                     passwordController.state.clear();
+
+                    if (mounted) {
+                      Navigator.of(context).pop(context);
+                      Navigator.of(context).pushReplacementNamed(LoginPage.route);
+                    }
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
@@ -199,7 +206,6 @@ class ListViewSignUp extends HookConsumerWidget {
                         ),
                       ),
                     );
-
                   }
                 },
                 child: const Text(

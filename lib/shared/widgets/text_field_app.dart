@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 class TextFieldApp extends StatelessWidget {
   final String labelItem;
   final dynamic typeController;
-  bool isObscured = true;
-  FocusNode focus;
-  FocusNode? nextFocus;
-  Function(String)? onChanged;
-  int? requiredLength;
+  final bool isObscured;
+  final FocusNode focus;
+  final FocusNode? nextFocus;
+  final Function(String)? onChanged;
+  final int? requiredLength;
 
-  TextFieldApp({
+  const TextFieldApp({
     Key? key,
     required this.labelItem,
     required this.typeController,
-    required this.isObscured,
+    this.isObscured = false,
     required this.focus,
     this.nextFocus,
     this.onChanged,
