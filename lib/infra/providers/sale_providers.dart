@@ -19,7 +19,7 @@ class SaleNotifier extends StateNotifier<List<SaleModel>> {
 
   Future<ProductModel> getProductById(SaleModel sale) async {
     return product =
-        await GearDatabase.instance.selectProductById(sale.productId);
+        await GearDatabase.instance.selectProductById(0);
   }
 
   Future addSalesContainer(SaleModel saleModel) async {

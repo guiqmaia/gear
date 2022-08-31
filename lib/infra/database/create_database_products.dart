@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 
 import '../../core/app_assets.dart';
 import '../models/category_model.dart';
-import '../models/product_model.dart';
 import 'gear_database.dart';
 
 class CreateDatabaseProducts {
@@ -104,113 +103,113 @@ class CreateDatabaseProducts {
     }
   }
 
-  Future<ProductModel> createProductModel(
-    String name,
-    double price,
-    int categoryId,
-    int quantity,
-    String? imgPath,
-  ) async {
-    await pickImageAsset(imgPath);
+//   Future<ProductModel> createProductModel(
+//     String name,
+//     double price,
+//     CategoryModel category,
+//     int quantity,
+//     String? imgPath,
+//   ) async {
+//     await pickImageAsset(imgPath);
 
-    ProductModel productModelProduct = ProductModel(
-      name: name,
-      price: price,
-      categoryId: categoryId,
-      quantity: quantity,
-      image: imgAsset!,
-    );
+//     ProductModel productModelProduct = ProductModel(
+//       name: name,
+//       price: price,
+//       category: category,
+//       quantity: quantity,
+//       image: imgAsset!,
+//     );
 
-    return productModelProduct;
-  }
+//     return productModelProduct;
+//   }
 
-  createSodas() async {
-    for (int i = 0; i < namesSodas.length; i++) {
-      await GearDatabase.instance.insert(
-        'product',
-        await createProductModel(
-          namesSodas[i],
-          priceSodas[i],
-          1,
-          quantitySodas[i],
-          listSodas[i],
-        ),
-      );
-    }
-  }
+//   createSodas() async {
+//     for (int i = 0; i < namesSodas.length; i++) {
+//       await GearDatabase.instance.insert(
+//         'product',
+//         await createProductModel(
+//           namesSodas[i],
+//           priceSodas[i],
+//           categoryModelProduct,
+//           quantitySodas[i],
+//           listSodas[i],
+//         ),
+//       );
+//     }
+//   }
 
-  createBeers() async {
-    for (int i = 0; i < namesBeers.length; i++) {
-      await GearDatabase.instance.insert(
-        'product',
-        await createProductModel(
-          namesBeers[i],
-          priceBeers[i],
-          2,
-          quantityBeers[i],
-          listBeers[i],
-        ),
-      );
-    }
-  }
+//   createBeers() async {
+//     for (int i = 0; i < namesBeers.length; i++) {
+//       await GearDatabase.instance.insert(
+//         'product',
+//         await createProductModel(
+//           namesBeers[i],
+//           priceBeers[i],
+//           2,
+//           quantityBeers[i],
+//           listBeers[i],
+//         ),
+//       );
+//     }
+//   }
 
-  createWines() async {
-    for (int i = 0; i < namesWines.length; i++) {
-      await GearDatabase.instance.insert(
-        'product',
-        await createProductModel(
-          namesWines[i],
-          priceWines[i],
-          3,
-          quantityWines[i],
-          listWines[i],
-        ),
-      );
-    }
-  }
+//   createWines() async {
+//     for (int i = 0; i < namesWines.length; i++) {
+//       await GearDatabase.instance.insert(
+//         'product',
+//         await createProductModel(
+//           namesWines[i],
+//           priceWines[i],
+//           3,
+//           quantityWines[i],
+//           listWines[i],
+//         ),
+//       );
+//     }
+//   }
 
-  createDistilled() async {
-    for (int i = 0; i < namesDistilled.length; i++) {
-      await GearDatabase.instance.insert(
-        'product',
-        await createProductModel(
-          namesDistilled[i],
-          priceDistilled[i],
-          4,
-          quantityDistilled[i],
-          listDistilled[i],
-        ),
-      );
-    }
-  }
+//   createDistilled() async {
+//     for (int i = 0; i < namesDistilled.length; i++) {
+//       await GearDatabase.instance.insert(
+//         'product',
+//         await createProductModel(
+//           namesDistilled[i],
+//           priceDistilled[i],
+//           4,
+//           quantityDistilled[i],
+//           listDistilled[i],
+//         ),
+//       );
+//     }
+//   }
 
-  createEnergyDrink() async {
-    for (int i = 0; i < namesEnergyDrink.length; i++) {
-      await GearDatabase.instance.insert(
-        'product',
-        await createProductModel(
-          namesEnergyDrink[i],
-          priceEnergyDrink[i],
-          5,
-          quantityEnergyDrink[i],
-          listEnergyDrink[i],
-        ),
-      );
-    }
-  }
+//   createEnergyDrink() async {
+//     for (int i = 0; i < namesEnergyDrink.length; i++) {
+//       await GearDatabase.instance.insert(
+//         'product',
+//         await createProductModel(
+//           namesEnergyDrink[i],
+//           priceEnergyDrink[i],
+//           5,
+//           quantityEnergyDrink[i],
+//           listEnergyDrink[i],
+//         ),
+//       );
+//     }
+//   }
 
-  createWater() async {
-    for (int i = 0; i < namesWater.length; i++) {
-      await GearDatabase.instance.insert(
-        'product',
-        await createProductModel(
-          namesWater[i],
-          priceWater[i],
-          6,
-          quantityWater[i],
-          listWater[i],
-        ),
-      );
-    }
-  }
+//   createWater() async {
+//     for (int i = 0; i < namesWater.length; i++) {
+//       await GearDatabase.instance.insert(
+//         'product',
+//         await createProductModel(
+//           namesWater[i],
+//           priceWater[i],
+//           6,
+//           quantityWater[i],
+//           listWater[i],
+//         ),
+//       );
+//     }
+//   }
 }

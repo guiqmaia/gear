@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gear/infra/dto/user_dto.dart';
+import 'package:gear/infra/repository/user_repository.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/app_assets.dart';
-import '../../../infra/database/create_database_products.dart';
-import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/user_model.dart';
 import '../../home/home_page.dart';
 import '../../../infra/providers/login_providers.dart';
@@ -16,32 +16,30 @@ class BtnLoginPage extends StatefulHookConsumerWidget {
 }
 
 class _BtnLoginPageState extends ConsumerState<BtnLoginPage> {
-  Future createDbData() async {
-    await CreateDatabaseProducts().createSodas();
-    await CreateDatabaseProducts().createBeers();
-    await CreateDatabaseProducts().createWines();
-    await CreateDatabaseProducts().createDistilled();
-    await CreateDatabaseProducts().createEnergyDrink();
-    await CreateDatabaseProducts().createWater();
-    await CreateDatabaseProducts().createCategories();
-  }
+  // Future createDbData() async {
+  //   await CreateDatabaseProducts().createSodas();
+  //   await CreateDatabaseProducts().createBeers();
+  //   await CreateDatabaseProducts().createWines();
+  //   await CreateDatabaseProducts().createDistilled();
+  //   await CreateDatabaseProducts().createEnergyDrink();
+  //   await CreateDatabaseProducts().createWater();
+  //   await CreateDatabaseProducts().createCategories();
+  // }
 
   Future<void> verifyLogin(
     TextEditingController loginControllerProvider,
     TextEditingController passwordControllerProvider,
   ) async {
-    await createDbData();
+    //await createDbData();
 
     final userModel = ref.watch(userModelProvider.state);
+    UserRepository userRepository = UserRepository();
+    UserDto dto = UserDto(email: loginControllerProvider.text, password: passwordControllerProvider.text);
 
-    UserModel user = await GearDatabase.instance.selectUser(
-      loginControllerProvider.text,
-      passwordControllerProvider.text,
-    );
-
+    UserModel user = await userRepository.logon(dto);
     setState(
       () {
-        if (user.email == loginControllerProvider.text) {
+        if (user.id != null) {
           Navigator.of(context).pushReplacementNamed(HomePage.route);
           userModel.state = user;
         }

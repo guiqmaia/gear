@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 
 import '../models/category_model.dart';
-import '../models/default_model.dart';
+import '../models/base_model.dart';
 import '../models/product_model.dart';
 import '../models/sale_model.dart';
 import '../models/user_model.dart';
@@ -22,7 +22,7 @@ class GearDatabase {
   Future<Database> _initDB() async {
     var databasesPath = await getDatabasesPath();
 
-    String dbName = "lapls.db";
+    String dbName = "lasoaks.db";
 
     String path = '$databasesPath/$dbName';
     return await openDatabase(
@@ -85,7 +85,7 @@ class GearDatabase {
               REFERENCES "$path.product (id)")''');
   }
 
-  Future<DefaultModel> insert(String table, DefaultModel model) async {
+  Future<BaseModel> insert(String table, BaseModel model) async {
     final db = await instance.database;
     db.insert(table, model.toMap());
     return model;

@@ -1,26 +1,54 @@
+import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:gear/infra/repository/user_repository.dart';
 import 'package:gear/presenter/login/login_page.dart';
 import 'package:gear/presenter/signup/widgets/focus_node_signup.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
-import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/user_model.dart';
 import '../../../shared/widgets/text_field_app.dart';
 import '../../../shared/widgets/text_field_app_formatted.dart';
 import '../../../infra/providers/login_providers.dart';
+import '../../product_signup/Widgets/default_image_container.dart';
 
-class ListViewSignUp extends HookConsumerWidget {
+class ListViewSignUp extends StatefulHookConsumerWidget {
   const ListViewSignUp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ListViewSignUp> createState() => _ListViewSignUpState();
+}
+
+class _ListViewSignUpState extends ConsumerState<ListViewSignUp> {
+  Uint8List? photo;
+  File? image;
+  Future pickImage() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+      final imageTemp = File(image.path);
+      setState(() {
+        this.image = imageTemp;
+        photo = imageTemp.readAsBytesSync();
+      });
+    } on PlatformException catch (e) {
+      // ignore: avoid_print
+      print('Failed to pick image: $e');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final nameController = ref.watch(nameControllerProvider.state);
     final cpfController = ref.watch(cpfControllerProvider.state);
     final birthdayController = ref.watch(birthdayControllerProvider.state);
-    final businessNameController =
-        ref.watch(businessNameControllerProvider.state);
+    final businessNameController = ref.watch(businessNameControllerProvider.state);
     final cnpjController = ref.watch(cnpjControllerProvider.state);
     final telephoneController = ref.watch(telephoneControllerProvider.state);
     final mobileNumberController = ref.watch(mobileControllerProvider.state);
@@ -111,6 +139,32 @@ class ListViewSignUp extends HookConsumerWidget {
               focus: focusAddressSignUp,
               nextFocus: focusEmailSignUp,
             ),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: greenNeon,
+              ),
+              margin: const EdgeInsets.symmetric(vertical: 15),
+              padding: const EdgeInsets.symmetric(
+                vertical: 3,
+              ),
+              width: MediaQuery.of(context).size.width * 0.93,
+              child: TextButton(
+                onPressed: (() => pickImage()),
+                child: const Text(
+                  'Selecionar Imagem',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20),
+              width: MediaQuery.of(context).size.width,
+              child: image != null ? Image.memory(photo!) : const DefaulImageContainer(),
+            ),
             const Padding(
               padding: EdgeInsets.only(
                 top: 20,
@@ -154,10 +208,14 @@ class ListViewSignUp extends HookConsumerWidget {
               child: TextButton(
                 onPressed: () async {
                   if (formKey.currentState!.validate()) {
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text('Cadastro realizado com sucesso', textAlign: TextAlign.center,),
-                    ));
-
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text(
+                          'Cadastro realizado com sucesso',
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    );
 
                     UserModel user = UserModel(
                       name: nameController.state.text,
@@ -167,14 +225,13 @@ class ListViewSignUp extends HookConsumerWidget {
                       cnpj: cnpjController.state.text,
                       telephone: telephoneController.state.text,
                       mobileNumber: mobileNumberController.state.text,
-                      cep: cepController.state.text,
-                      adress: adressController.state.text,
                       email: loginController.state.text,
                       password: passwordController.state.text,
+                      image: base64Encode(photo!.buffer.asUint8List()),
                     );
 
-                    await GearDatabase.instance.insert('user', user);
-
+                    UserRepository userRepository = UserRepository();
+                    userRepository.post('http://192.168.0.43:81/api/user', user);
 
                     Navigator.of(context).pop(context);
 
@@ -199,7 +256,6 @@ class ListViewSignUp extends HookConsumerWidget {
                         ),
                       ),
                     );
-
                   }
                 },
                 child: const Text(

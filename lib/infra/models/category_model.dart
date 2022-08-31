@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'default_model.dart';
+import 'base_model.dart';
 
-class CategoryModel implements DefaultModel {
+class CategoryModel implements BaseModel {
   @override
   int? id;
   String name;

@@ -27,7 +27,7 @@ class ContainerInfoUser extends HookConsumerWidget {
         ),
         InfoContainerProfile(
           titleInfo: "Data de Nascimento",
-          info: userModel.state.birthday,
+          info: userModel.state.company,
           iconInfo: Icons.date_range_rounded,
         ),
         InfoContainerProfile(

@@ -23,7 +23,7 @@ class NonEditableContainerList extends HookConsumerWidget {
         ),
         NonChangableContainer(
           param: 'Data de Nascimento',
-          info: userModel.state.birthday,
+          info: userModel.state.company,
         ),
         NonChangableContainer(
           param: 'Nome da Empresa',

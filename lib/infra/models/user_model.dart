@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'default_model.dart';
+import 'base_model.dart';
 
-class UserModel implements DefaultModel {
+class UserModel implements BaseModel {
   @override
   int? id;
   String name;
@@ -12,10 +12,9 @@ class UserModel implements DefaultModel {
   String cnpj;
   String telephone;
   String mobileNumber;
-  String cep;
-  String adress;
   String email;
   String password;
+  String image;
 
   UserModel({
     this.id,
@@ -26,49 +25,49 @@ class UserModel implements DefaultModel {
     required this.cnpj,
     required this.telephone,
     required this.mobileNumber,
-    required this.cep,
-    required this.adress,
     required this.email,
     required this.password,
+    required this.image,
   });
 
   @override
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'name': name,
-      'cpf': cpf,
-      'birthday': birthday,
-      'company': company,
-      'cnpj': cnpj,
-      'telephone': telephone,
-      'mobileNumber': mobileNumber,
-      'cep': cep,
-      'adress': adress,
-      'email': email,
-      'password': password,
-    };
+    final result = <String, dynamic>{};
+  
+    if(id != null){
+      result.addAll({'id': id});
+    }
+    result.addAll({'name': name});
+    result.addAll({'cpf': cpf});
+    result.addAll({'birthday': birthday});
+    result.addAll({'company': company});
+    result.addAll({'cnpj': cnpj});
+    result.addAll({'telephone': telephone});
+    result.addAll({'cellphone': mobileNumber});
+    result.addAll({'email': email});
+    result.addAll({'password': password});
+    result.addAll({'image': image});
+  
+    return result;
   }
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      id: map['id'] != null ? map['id'] as int : null,
-      name: map['name'] as String,
-      cpf: map['cpf'] as String,
-      birthday: map['birthday'] as String,
-      company: map['company'] as String,
-      cnpj: map['cnpj'] as String,
-      telephone: map['telephone'] as String,
-      mobileNumber: map['mobileNumber'] as String,
-      cep: map['cep'] as String,
-      adress: map['adress'] as String,
-      email: map['email'] as String,
-      password: map['password'] as String,
+      id: map['id']?.toInt(),
+      name: map['name'] ?? '',
+      cpf: map['cpf'] ?? '',
+      birthday: map['birthday'] ?? '',
+      company: map['company'] ?? '',
+      cnpj: map['cnpj'] ?? '',
+      telephone: map['telephone'] ?? '',
+      mobileNumber: map['cellphone'] ?? '',
+      email: map['email'] ?? '',
+      password: map['password'] ?? '',
+      image: map['image'] ?? '',
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory UserModel.fromJson(String source) =>
-      UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory UserModel.fromJson(String source) => UserModel.fromMap(json.decode(source));
 }

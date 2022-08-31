@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/app_assets.dart';
-import '../../../infra/database/gear_database.dart';
-import '../../../infra/models/sale_model.dart';
 import '../../../infra/providers/sale_providers.dart';
-import '../../sales/widgets/body_sales_page.dart';
 
 class BottomBtnSales extends StatefulHookConsumerWidget {
   const BottomBtnSales({Key? key}) : super(key: key);
@@ -53,19 +50,19 @@ class _BottomBtnSalesState extends ConsumerState<BottomBtnSales> {
           child: TextButton(
             onPressed: () async {
               if (codeController.state.text.isNotEmpty) {
-                SaleModel saleModel = SaleModel(
-                  productId: int.parse(codeController.state.text),
-                  price: double.parse(totalController.state.text),
-                  quantity: int.parse(quantityController.state.text),
-                  pay: paymentController.state.text,
-                  date: DateTime.now(),
-                );
-                await GearDatabase.instance.insert('sale', saleModel);
+                // SaleModel saleModel = SaleModel(
+                //   product: 0,
+                //   price: double.parse(totalController.state.text),
+                //   quantity: int.parse(quantityController.state.text),
+                //   pay: paymentController.state.text,
+                //   date: DateTime.now(),
+                // );
+                // await GearDatabase.instance.insert('sale', saleModel);
 
                 if (!mounted) return;
 
                 Navigator.of(context).pop();
-                ref.read(saleNotifier.notifier).addSalesContainer(saleModel);
+                //ref.read(saleNotifier.notifier).addSalesContainer(saleModel);
               } else {
                 Navigator.of(context).pop();
               }
@@ -92,18 +89,18 @@ class _BottomBtnSalesState extends ConsumerState<BottomBtnSales> {
                 child: IconButton(
                   tooltip: 'Adicione',
                   onPressed: () async {
-                    SaleModel saleModel = SaleModel(
-                      productId: int.parse(codeController.state.text),
-                      price: double.parse(totalController.state.text),
-                      quantity: int.parse(quantityController.state.text),
-                      pay: paymentController.state.text,
-                      date: DateTime.now(),
-                    );
-                    await GearDatabase.instance.insert('sale', saleModel);
+                    // SaleModel saleModel = SaleModel(
+                    //   product: ,
+                    //   price: double.parse(totalController.state.text),
+                    //   quantity: int.parse(quantityController.state.text),
+                    //   pay: paymentController.state.text,
+                    //   date: DateTime.now(),
+                    // );
+                    // await GearDatabase.instance.insert('sale', saleModel);
 
-                    ref
-                        .watch(saleNotifier.notifier)
-                        .addSalesContainer(saleModel);
+                    // ref
+                    //     .watch(saleNotifier.notifier)
+                    //     .addSalesContainer(saleModel);
 
                     if (!mounted) return;
 

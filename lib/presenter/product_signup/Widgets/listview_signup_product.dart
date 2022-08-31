@@ -9,7 +9,6 @@ import 'package:image_picker/image_picker.dart';
 import '../../../core/app_assets.dart';
 import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/category_model.dart';
-import '../../../infra/models/product_model.dart';
 import '../../../infra/providers/product_providers.dart';
 import '../../../shared/widgets/dropdown_input.dart';
 import '../../../shared/widgets/text_field_app.dart';
@@ -157,15 +156,15 @@ class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
                 return;
               }
 
-              ProductModel productModel = ProductModel(
-                name: nameProductController.state.text,
-                price: double.parse(priceController.state.text),
-                categoryId: int.parse(categoryController.state.text),
-                quantity: int.parse(quantityController.state.text),
-                image: photo!,
-              );
+              // ProductModel productModel = ProductModel(
+              //   name: nameProductController.state.text,
+              //   price: double.parse(priceController.state.text),
+              //   category: int.parse(categoryController.state.text),
+              //   quantity: int.parse(quantityController.state.text),
+              //   image: photo!,
+              // );
 
-              await GearDatabase.instance.insert('product', productModel);
+              // await GearDatabase.instance.insert('product', productModel);
 
               if (!mounted) return;
 

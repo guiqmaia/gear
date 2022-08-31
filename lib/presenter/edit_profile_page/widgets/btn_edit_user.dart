@@ -14,8 +14,7 @@ class BtnEditUser extends StatefulHookConsumerWidget {
 }
 
 class _BtnEditUserState extends ConsumerState<BtnEditUser> {
-  Future updateTelephoneUser(
-      TextEditingController telephoneControllerProvider) async {
+  Future updateTelephoneUser(TextEditingController telephoneControllerProvider) async {
     final userModel = ref.watch(userModelProvider.state);
 
     if (telephoneControllerProvider.text != '') {
@@ -32,8 +31,7 @@ class _BtnEditUserState extends ConsumerState<BtnEditUser> {
     }
   }
 
-  Future updateMobileNumberUser(
-      TextEditingController mobileControllerProvider) async {
+  Future updateMobileNumberUser(TextEditingController mobileControllerProvider) async {
     final userModel = ref.watch(userModelProvider.state);
 
     if (mobileControllerProvider.text != '') {
@@ -50,8 +48,7 @@ class _BtnEditUserState extends ConsumerState<BtnEditUser> {
     }
   }
 
-  Future updateAdressUser(
-      TextEditingController adressControllerProvider) async {
+  Future updateAdressUser(TextEditingController adressControllerProvider) async {
     final userModel = ref.watch(userModelProvider.state);
 
     if (adressControllerProvider.text != '') {
@@ -61,8 +58,9 @@ class _BtnEditUserState extends ConsumerState<BtnEditUser> {
         'adress',
         '"${adressControllerProvider.text}"',
       );
+      //TODO change info
       setState(() {
-        userModel.state.adress = adressControllerProvider.text;
+        userModel.state.company = adressControllerProvider.text;
         adressControllerProvider.clear();
       });
     }
@@ -78,8 +76,9 @@ class _BtnEditUserState extends ConsumerState<BtnEditUser> {
         'cep',
         '"${cepControllerProvider.text}"',
       );
+      //TODO change info
       setState(() {
-        userModel.state.cep = cepControllerProvider.text;
+        userModel.state.company = cepControllerProvider.text;
         cepControllerProvider.clear();
       });
     }

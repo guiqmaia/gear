@@ -1,4 +1,4 @@
-abstract class DefaultModel {
+abstract class BaseModel {
   int? id;
 
   Map<String, dynamic> toMap();
