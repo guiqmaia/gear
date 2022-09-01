@@ -33,10 +33,13 @@ class _BtnLoginPageState extends ConsumerState<BtnLoginPage> {
     //await createDbData();
 
     final userModel = ref.watch(userModelProvider.state);
+
     UserRepository userRepository = UserRepository();
+
     UserDto dto = UserDto(email: loginControllerProvider.text, password: passwordControllerProvider.text);
 
     UserModel user = await userRepository.logon(dto);
+    
     setState(
       () {
         if (user.id != null) {

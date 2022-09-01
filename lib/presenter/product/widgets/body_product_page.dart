@@ -43,7 +43,6 @@ class BodyProductPage extends HookConsumerWidget {
         ),
         Visibility(
           visible: products.isNotEmpty,
-          replacement: const CircularProgressIndicator(),
           child: ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,

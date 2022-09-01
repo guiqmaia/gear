@@ -5,6 +5,8 @@ import 'dart:typed_data';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gear/infra/models/adress_model.dart';
+import 'package:gear/infra/repository/address_repository.dart';
 import 'package:gear/infra/repository/user_repository.dart';
 import 'package:gear/presenter/login/login_page.dart';
 import 'package:gear/presenter/signup/widgets/focus_node_signup.dart';
@@ -26,17 +28,20 @@ class ListViewSignUp extends StatefulHookConsumerWidget {
 }
 
 class _ListViewSignUpState extends ConsumerState<ListViewSignUp> {
-  Uint8List? photo;
   File? image;
+  Uint8List? photo;
+
   Future pickImage() async {
     try {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image == null) return;
       final imageTemp = File(image.path);
-      setState(() {
-        this.image = imageTemp;
-        photo = imageTemp.readAsBytesSync();
-      });
+      setState(
+        () {
+          this.image = imageTemp;
+          photo = imageTemp.readAsBytesSync();
+        },
+      );
     } on PlatformException catch (e) {
       // ignore: avoid_print
       print('Failed to pick image: $e');
@@ -53,7 +58,10 @@ class _ListViewSignUpState extends ConsumerState<ListViewSignUp> {
     final telephoneController = ref.watch(telephoneControllerProvider.state);
     final mobileNumberController = ref.watch(mobileControllerProvider.state);
     final cepController = ref.watch(cepControllerProvider.state);
-    final adressController = ref.watch(adressControllerProvider.state);
+    final streetController = ref.watch(streetControllerProvider.state);
+    final numberController = ref.watch(numberControllerProvider.state);
+    final cityController = ref.watch(cityControllerProvider.state);
+    final stateController = ref.watch(stateControllerProvider.state);
     final loginController = ref.watch(loginControllerProvider.state);
     final passwordController = ref.watch(passwordControllerProvider.state);
 
@@ -130,13 +138,34 @@ class _ListViewSignUpState extends ConsumerState<ListViewSignUp> {
               textInputType: TextInputType.number,
               requiredLength: 8,
               focus: focusCepSignUp,
-              nextFocus: focusAddressSignUp,
+              nextFocus: focusStreetSignUp,
             ),
             TextFieldApp(
               labelItem: 'Endereço',
-              typeController: adressController.state,
+              typeController: streetController.state,
               isObscured: false,
-              focus: focusAddressSignUp,
+              focus: focusStreetSignUp,
+              nextFocus: focusNumberSignUp,
+            ),
+            TextFieldApp(
+              labelItem: 'Número',
+              typeController: numberController.state,
+              isObscured: false,
+              focus: focusNumberSignUp,
+              nextFocus: focusCitySignUp,
+            ),
+            TextFieldApp(
+              labelItem: 'Cidade',
+              typeController: cityController.state,
+              isObscured: false,
+              focus: focusCitySignUp,
+              nextFocus: focusStateSignUp,
+            ),
+            TextFieldApp(
+              labelItem: 'Estado',
+              typeController: stateController.state,
+              isObscured: false,
+              focus: focusStateSignUp,
               nextFocus: focusEmailSignUp,
             ),
             Container(
@@ -231,7 +260,22 @@ class _ListViewSignUpState extends ConsumerState<ListViewSignUp> {
                     );
 
                     UserRepository userRepository = UserRepository();
-                    userRepository.post('http://192.168.0.43:81/api/user', user);
+                    await userRepository.post('http://192.168.0.43:81/api/user', user);
+
+                    List<UserModel> users = await userRepository.get('http://192.168.0.43:81/api/user');
+                    user = users.last;
+
+                    AddressModel address = AddressModel(
+                      cep: cepController.state.text,
+                      street: streetController.state.text,
+                      number: int.parse(numberController.state.text),
+                      city: cityController.state.text,
+                      state: stateController.state.text,
+                      userId: user.id!,
+                    );
+
+                    AddressRepository addressRepository = AddressRepository();
+                    addressRepository.post('http://192.168.0.43:81/api/Address', address);
 
                     Navigator.of(context).pop(context);
 
@@ -244,7 +288,10 @@ class _ListViewSignUpState extends ConsumerState<ListViewSignUp> {
                     telephoneController.state.clear();
                     mobileNumberController.state.clear();
                     cepController.state.clear();
-                    adressController.state.clear();
+                    streetController.state.clear();
+                    numberController.state.clear();
+                    cityController.state.clear();
+                    stateController.state.clear();
                     loginController.state.clear();
                     passwordController.state.clear();
                   } else {

@@ -5,8 +5,7 @@ import '../../../infra/models/category_model.dart';
 import '../../../infra/providers/product_providers.dart';
 import 'container_category_inventory.dart';
 
-final categoryNotifier =
-    StateNotifierProvider<CategoryNotifier, List<CategoryModel>>(
+final categoryNotifier = StateNotifierProvider<CategoryNotifier, List<CategoryModel>>(
   (ref) => CategoryNotifier(),
 );
 
@@ -23,7 +22,6 @@ class WrapContainerCategory extends HookConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
       child: Visibility(
         visible: categories.isNotEmpty,
-        replacement: const CircularProgressIndicator(),
         child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,

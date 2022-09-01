@@ -1,7 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../core/app_assets.dart';
 import '../../../infra/providers/login_providers.dart';
 
 class ContainerTopHome extends HookConsumerWidget {
@@ -9,7 +10,7 @@ class ContainerTopHome extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userModel = ref.watch(userModelProvider.state);
+    final userModel = ref.watch(userModelProvider.state).state;
 
     return Container(
       width: MediaQuery.of(context).size.width * 0.9,
@@ -31,7 +32,7 @@ class ContainerTopHome extends HookConsumerWidget {
                 ),
               ),
               Text(
-                userModel.state.name,
+                userModel.name,
                 style: const TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
@@ -43,8 +44,8 @@ class ContainerTopHome extends HookConsumerWidget {
           CircleAvatar(
             radius: 34,
             backgroundColor: Colors.white,
-            backgroundImage: Image.asset(
-              iconUserAnon,
+            backgroundImage: Image.memory(
+              base64Decode(userModel.image),
               fit: BoxFit.cover,
             ).image,
           ),

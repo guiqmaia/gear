@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -18,8 +19,7 @@ class BodyCategorySignup extends StatefulHookConsumerWidget {
   const BodyCategorySignup({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<BodyCategorySignup> createState() =>
-      _BodyCategoriySignupState();
+  ConsumerState<BodyCategorySignup> createState() => _BodyCategoriySignupState();
 }
 
 class _BodyCategoriySignupState extends ConsumerState<BodyCategorySignup> {
@@ -29,16 +29,15 @@ class _BodyCategoriySignupState extends ConsumerState<BodyCategorySignup> {
 
   Future pickImage() async {
     try {
-      final fileImg =
-          await ImagePicker().pickImage(source: ImageSource.gallery);
+      final fileImg = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (fileImg == null) return;
       final imageTemp = File(fileImg.path);
-      // ignore: avoid_print
-      print(imageTemp.readAsBytesSync());
-      setState(() {
-        this.fileImg = imageTemp;
-        imgCategory = imageTemp.readAsBytesSync();
-      });
+      setState(
+        () {
+          this.fileImg = imageTemp;
+          imgCategory = imageTemp.readAsBytesSync();
+        },
+      );
     } on PlatformException catch (e) {
       // ignore: avoid_print
       print('Falha em baixar imagem: $e');
@@ -92,9 +91,7 @@ class _BodyCategoriySignupState extends ConsumerState<BodyCategorySignup> {
               vertical: 10,
             ),
             width: MediaQuery.of(context).size.width * 0.9,
-            child: fileImg != null
-                ? Image.memory(imgCategory!)
-                : const DefaulImageContainer(),
+            child: fileImg != null ? Image.memory(imgCategory!) : const DefaulImageContainer(),
           ),
           Container(
             decoration: BoxDecoration(
@@ -113,7 +110,7 @@ class _BodyCategoriySignupState extends ConsumerState<BodyCategorySignup> {
               onPressed: () async {
                 CategoryModel categoryModel = CategoryModel(
                   name: nameController.text,
-                  image: imgCategory!,
+                  image: base64Encode(imgCategory!),
                 );
 
                 ref.watch(categoryNotifier.notifier).addCategory(categoryModel);

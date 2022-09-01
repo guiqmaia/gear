@@ -1,17 +1,20 @@
 import 'dart:convert';
 
+import 'package:gear/infra/models/base_model.dart';
 
-class AddressModel {
-  final int id;
-  final String cep;
-  final String street;
-  final int number;
-  final String city;
-  final String state;
-  final int userId;
+
+class AddressModel implements BaseModel {
+  @override
+  int? id;
+  String cep;
+  String street;
+  int number;
+  String city;
+  String state;
+  int userId;
 
   AddressModel({
-    required this.id,
+    this.id,
     required this.cep,
     required this.street,
     required this.number,
@@ -20,10 +23,13 @@ class AddressModel {
     required this.userId,
   });
 
+  @override
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
   
-    result.addAll({'id': id});
+    if(id != null){
+      result.addAll({'id': id});
+    }
     result.addAll({'cep': cep});
     result.addAll({'street': street});
     result.addAll({'number': number});
@@ -36,7 +42,7 @@ class AddressModel {
 
   factory AddressModel.fromMap(Map<String, dynamic> map) {
     return AddressModel(
-      id: map['id']?.toInt() ?? 0,
+      id: map['id']?.toInt(),
       cep: map['cep'] ?? '',
       street: map['street'] ?? '',
       number: map['number']?.toInt() ?? 0,

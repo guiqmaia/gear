@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/cupertino.dart';
@@ -41,11 +42,15 @@ final mobileControllerProvider = StateProvider<TextEditingController>((ref) => T
 
 final cepControllerProvider = StateProvider<TextEditingController>((ref) => TextEditingController());
 
-final adressControllerProvider = StateProvider<TextEditingController>((ref) => TextEditingController());
+final streetControllerProvider = StateProvider<TextEditingController>((ref) => TextEditingController());
 
-// final imageProvider = StateProvider<Uint8List>(
-//   (ref) => ,
-// );
+final numberControllerProvider = StateProvider<TextEditingController>((ref) => TextEditingController());
+
+final cityControllerProvider = StateProvider<TextEditingController>((ref) => TextEditingController());
+
+final stateControllerProvider = StateProvider<TextEditingController>((ref) => TextEditingController());
+
+final photoProfileProvider = StateProvider<File>((ref) => File(''));
 
 ByteData? bytes;
 Uint8List? photo;

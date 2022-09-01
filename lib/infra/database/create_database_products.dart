@@ -2,9 +2,6 @@ import 'dart:typed_data';
 
 import 'package:flutter/services.dart';
 
-import '../../core/app_assets.dart';
-import '../models/category_model.dart';
-import 'gear_database.dart';
 
 class CreateDatabaseProducts {
   ByteData? bytes;
@@ -77,31 +74,31 @@ class CreateDatabaseProducts {
   List<int> quantityEnergyDrink = [30, 25, 25];
   List<int> quantityWater = [150, 70];
 
-  Future<CategoryModel> createCategoryModel(
-    String name,
-    String? imgPath,
-  ) async {
-    await pickImageAsset(imgPath);
+  // Future<CategoryModel> createCategoryModel(
+  //   String name,
+  //   String? imgPath,
+  // ) async {
+  //   await pickImageAsset(imgPath);
 
-    CategoryModel categoryModelProduct = CategoryModel(
-      name: name,
-      image: imgAsset!,
-    );
+  //   // CategoryModel categoryModelProduct = CategoryModel(
+  //   //   name: name,
+  //   //   image: imgAsset!,
+  //   // );
 
-    return categoryModelProduct;
-  }
+  //   // return categoryModelProduct;
+  // }
 
-  createCategories() async {
-    for (int i = 0; i < namescategories.length; i++) {
-      await GearDatabase.instance.insert(
-        'category',
-        await createCategoryModel(
-          namescategories[i],
-          listCategory[i],
-        ),
-      );
-    }
-  }
+  // createCategories() async {
+  //   for (int i = 0; i < namescategories.length; i++) {
+  //     await GearDatabase.instance.insert(
+  //       'category',
+  //       await createCategoryModel(
+  //         namescategories[i],
+  //         listCategory[i],
+  //       ),
+  //     );
+  //   }
+  // }
 
 //   Future<ProductModel> createProductModel(
 //     String name,

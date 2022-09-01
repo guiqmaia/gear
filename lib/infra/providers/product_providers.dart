@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:gear/infra/repository/category_repository.dart';
 import '../models/category_model.dart';
 import '../models/product_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-import '../database/gear_database.dart';
 
 class CategoryNotifier extends StateNotifier<List<CategoryModel>> {
   CategoryNotifier() : super([]) {
@@ -11,7 +10,8 @@ class CategoryNotifier extends StateNotifier<List<CategoryModel>> {
   }
 
   Future<List<CategoryModel>> getAllCategories() async {
-    state = await GearDatabase.instance.selectCategories();
+    CategoryRepository repository = CategoryRepository();
+    state = await repository.get('http://192.168.0.43:81/api/Category');
     return state;
   }
 
@@ -20,8 +20,9 @@ class CategoryNotifier extends StateNotifier<List<CategoryModel>> {
   }
 
   Future<void> addCategory(CategoryModel category) async {
-    await GearDatabase.instance.insert("category", category);
-    state = await GearDatabase.instance.selectCategories();
+    CategoryRepository repository = CategoryRepository();
+    await repository.post('http://192.168.0.43:81/api/Category', category);
+    state = await repository.get('http://192.168.0.43:81/api/Category');
   }
 }
 
@@ -29,7 +30,7 @@ class ProductNotifier extends StateNotifier<List<ProductModel>> {
   ProductNotifier() : super([]);
 
   Future<List<ProductModel>> getAllProducts(CategoryModel model) async {
-    state = await GearDatabase.instance.selectProductsByCategory(model.id!);
+    state = model.products!;
     return state;
   }
 
@@ -38,17 +39,12 @@ class ProductNotifier extends StateNotifier<List<ProductModel>> {
   }
 }
 
-final nameProductControllerProvider =
-    StateProvider<TextEditingController>((ref) => TextEditingController());
+final nameProductControllerProvider = StateProvider<TextEditingController>((ref) => TextEditingController());
 
-final priceControllerProvider =
-    StateProvider<TextEditingController>((ref) => TextEditingController());
+final priceControllerProvider = StateProvider<TextEditingController>((ref) => TextEditingController());
 
-final categoryControllerProvider =
-    StateProvider<TextEditingController>((ref) => TextEditingController());
+final categoryControllerProvider = StateProvider<TextEditingController>((ref) => TextEditingController());
 
-final quantityControllerProvider =
-    StateProvider<TextEditingController>((ref) => TextEditingController());
+final quantityControllerProvider = StateProvider<TextEditingController>((ref) => TextEditingController());
 
-final searchControllerProvider =
-    StateProvider<TextEditingController>((ref) => TextEditingController());
+final searchControllerProvider = StateProvider<TextEditingController>((ref) => TextEditingController());

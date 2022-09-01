@@ -14,8 +14,6 @@ import '../../../infra/providers/login_providers.dart';
 import '../../product_signup/widgets/default_image_container.dart';
 import 'focus_node_edit_profile_page.dart';
 
-//final imageControllerProvider = StateNotifierProvider<ImageProvider, Uint8List>((ref) => ImageProvider());
-
 class WrapTextFieldEditUser extends StatefulHookConsumerWidget {
   const WrapTextFieldEditUser({Key? key}) : super(key: key);
 
@@ -24,7 +22,7 @@ class WrapTextFieldEditUser extends StatefulHookConsumerWidget {
 }
 
 class _WrapTextFieldEditUserState extends ConsumerState<WrapTextFieldEditUser> {
-  File? image;
+  //File? image;
   Uint8List? photo;
 
   @override
@@ -32,7 +30,11 @@ class _WrapTextFieldEditUserState extends ConsumerState<WrapTextFieldEditUser> {
     final telephoneController = ref.watch(telephoneControllerProvider.state);
     final mobileNumberController = ref.watch(mobileControllerProvider.state);
     final cepController = ref.watch(cepControllerProvider.state);
-    final adressController = ref.watch(adressControllerProvider.state);
+    final streetController = ref.watch(streetControllerProvider.state);
+    final numberController = ref.watch(numberControllerProvider.state);
+    final cityController = ref.watch(cityControllerProvider.state);
+    final stateController = ref.watch(stateControllerProvider.state);
+    final photoProfile = ref.watch(photoProfileProvider.state);
 
     Future pickImage() async {
       try {
@@ -42,10 +44,12 @@ class _WrapTextFieldEditUserState extends ConsumerState<WrapTextFieldEditUser> {
 
         final imageTemp = File(image.path);
 
-        setState(() {
-          this.image = imageTemp;
-          photo = imageTemp.readAsBytesSync();
-        });
+        setState(
+          () {
+            photoProfile.state = imageTemp;
+            photo = imageTemp.readAsBytesSync();
+          },
+        );
       } on PlatformException catch (e) {
         debugPrint('Failed to pick image: $e');
       }
@@ -75,13 +79,34 @@ class _WrapTextFieldEditUserState extends ConsumerState<WrapTextFieldEditUser> {
           formater: CepInputFormatter(),
           textInputType: TextInputType.number,
           focus: focusCepEditProfilePage,
-          nextFocus: focusAddressEditeProfilePage,
+          nextFocus: focusStreetEditeProfilePage,
         ),
         TextFieldApp(
           labelItem: 'Endereço',
-          typeController: adressController.state,
+          typeController: streetController.state,
           isObscured: false,
-          focus: focusAddressEditeProfilePage,
+          focus: focusStreetEditeProfilePage,
+          nextFocus: focusNumberEditeProfilePage,
+        ),
+        TextFieldApp(
+          labelItem: 'Número',
+          typeController: numberController.state,
+          isObscured: false,
+          focus: focusNumberEditeProfilePage,
+          nextFocus: focusCityEditeProfilePage,
+        ),
+        TextFieldApp(
+          labelItem: 'Cidade',
+          typeController: cityController.state,
+          isObscured: false,
+          focus: focusCityEditeProfilePage,
+          nextFocus: focusStateEditeProfilePage,
+        ),
+        TextFieldApp(
+          labelItem: 'Estado',
+          typeController: stateController.state,
+          isObscured: false,
+          focus: focusStateEditeProfilePage,
         ),
         Center(
           child: Container(
@@ -109,7 +134,7 @@ class _WrapTextFieldEditUserState extends ConsumerState<WrapTextFieldEditUser> {
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 30),
           width: MediaQuery.of(context).size.width,
-          child: image != null ? Image.memory(photo!) : const DefaulImageContainer(),
+          child: photoProfile.state.path != '' ? Image.memory(photo!) : const DefaulImageContainer(),
         ),
       ],
     );

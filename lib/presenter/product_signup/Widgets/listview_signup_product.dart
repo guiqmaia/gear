@@ -19,8 +19,7 @@ class ListViewSingupProduct extends StatefulHookConsumerWidget {
   const ListViewSingupProduct({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<ListViewSingupProduct> createState() =>
-      _ListViewSingupProductState();
+  ConsumerState<ListViewSingupProduct> createState() => _ListViewSingupProductState();
 }
 
 class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
@@ -66,8 +65,7 @@ class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
 
   @override
   Widget build(BuildContext context) {
-    final nameProductController =
-        ref.watch(nameProductControllerProvider.state);
+    final nameProductController = ref.watch(nameProductControllerProvider.state);
     final priceController = ref.watch(priceControllerProvider.state);
     final categoryController = ref.watch(categoryControllerProvider.state);
     final quantityController = ref.watch(quantityControllerProvider.state);
@@ -132,9 +130,7 @@ class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 30),
           width: MediaQuery.of(context).size.width,
-          child: image != null
-              ? Image.memory(photo!)
-              : const DefaulImageContainer(),
+          child: image != null ? Image.memory(photo!) : const DefaulImageContainer(),
         ),
         Container(
           decoration: BoxDecoration(
@@ -159,9 +155,9 @@ class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
               // ProductModel productModel = ProductModel(
               //   name: nameProductController.state.text,
               //   price: double.parse(priceController.state.text),
-              //   category: int.parse(categoryController.state.text),
+              //   categoryId: ,
               //   quantity: int.parse(quantityController.state.text),
-              //   image: photo!,
+              //   image: base64Encode(photo!.buffer.asUint8List()),
               // );
 
               // await GearDatabase.instance.insert('product', productModel);

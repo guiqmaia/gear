@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import '../../../infra/models/category_model.dart';
 import '../../product/widgets/body_product_page.dart';
@@ -47,7 +49,7 @@ class ContainerCategoryInventory extends HookConsumerWidget {
           child: Column(
             children: [
               Image.memory(
-                categoryModel.image,
+                base64Decode(categoryModel.image),
                 height: MediaQuery.of(context).size.height * 0.15,
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),

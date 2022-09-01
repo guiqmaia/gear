@@ -45,7 +45,6 @@ class TextFieldAppFormatted extends StatelessWidget {
         requiredLength: requiredLength,
         focus: focus,
         nextFocus: nextFocus,
-
       ),
     );
   }

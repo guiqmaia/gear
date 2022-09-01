@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 import '../../../infra/models/category_model.dart';
@@ -62,7 +64,7 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Image.memory(
-                widget.productModel.image,
+                base64Decode(widget.productModel.image),
                 height: MediaQuery.of(context).size.height * 0.1,
                 fit: BoxFit.cover,
               ),

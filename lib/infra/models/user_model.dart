@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:gear/infra/models/adress_model.dart';
+
 import 'base_model.dart';
 
 class UserModel implements BaseModel {
@@ -15,6 +17,7 @@ class UserModel implements BaseModel {
   String email;
   String password;
   String image;
+  List<AddressModel>? addressModel;
 
   UserModel({
     this.id,
@@ -28,6 +31,7 @@ class UserModel implements BaseModel {
     required this.email,
     required this.password,
     required this.image,
+    this.addressModel,
   });
 
   @override
@@ -64,6 +68,7 @@ class UserModel implements BaseModel {
       email: map['email'] ?? '',
       password: map['password'] ?? '',
       image: map['image'] ?? '',
+      addressModel: map['address'] != null ? List<AddressModel>.from(map['address']?.map((x) => AddressModel.fromMap(x))) : null,
     );
   }
 

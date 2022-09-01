@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'base_model.dart';
 
@@ -10,7 +9,7 @@ class ProductModel implements BaseModel {
   double price;
   int categoryId;
   int quantity;
-  Uint8List image;
+  String image;
 
   ProductModel({
     this.id,
@@ -44,7 +43,7 @@ class ProductModel implements BaseModel {
       price: map['price']?.toDouble() ?? 0.0,
       categoryId: map['categoryId']?.toInt() ?? 0,
       quantity: map['quantity']?.toInt() ?? 0,
-      image: map['image'] as Uint8List,
+      image: map['image'] ?? '',
     );
   }
 

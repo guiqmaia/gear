@@ -8,7 +8,10 @@ FocusNode focusCnpjSignUp = FocusNode();
 FocusNode focusPhoneSignUp = FocusNode();
 FocusNode focusCellPhoneSignUp = FocusNode();
 FocusNode focusCepSignUp= FocusNode();
-FocusNode focusAddressSignUp= FocusNode();
+FocusNode focusStreetSignUp= FocusNode();
+FocusNode focusNumberSignUp= FocusNode();
+FocusNode focusCitySignUp= FocusNode();
+FocusNode focusStateSignUp= FocusNode();
 FocusNode focusEmailSignUp= FocusNode();
 FocusNode focusPasswordSignUp = FocusNode();
 
