@@ -42,7 +42,7 @@ Map<String, WidgetBuilder> appRoutes = {
 
     return EditProductPage(
       category: parametersEditProduct['category'],
-      productCode: parametersEditProduct['code'],
+      product: parametersEditProduct['product'],
     );
   }
 };

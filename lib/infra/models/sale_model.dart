@@ -1,8 +1,7 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'dart:convert';
 
 import 'base_model.dart';
+import 'product_model.dart';
 
 class SaleModel implements BaseModel {
   @override
@@ -11,7 +10,8 @@ class SaleModel implements BaseModel {
   double price;
   int quantity;
   String pay;
-  DateTime date;
+  String date;
+  ProductModel? product;
 
   SaleModel({
     this.id,
@@ -20,6 +20,7 @@ class SaleModel implements BaseModel {
     required this.quantity,
     required this.pay,
     required this.date,
+    this.product,
   });
 
   @override
@@ -33,7 +34,7 @@ class SaleModel implements BaseModel {
     result.addAll({'price': price});
     result.addAll({'quantity': quantity});
     result.addAll({'payment': pay});
-    result.addAll({'date': date.millisecondsSinceEpoch});
+    result.addAll({'date': date});
   
     return result;
   }
@@ -45,7 +46,8 @@ class SaleModel implements BaseModel {
       price: map['price']?.toDouble() ?? 0.0,
       quantity: map['quantity']?.toInt() ?? 0,
       pay: map['payment'] ?? '',
-      date: DateTime.fromMillisecondsSinceEpoch(map['date']),
+      date: map['date'] ?? '',
+      product: map['product'] != null ? ProductModel.fromMap(map['product']) : null,
     );
   }
 

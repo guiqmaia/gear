@@ -16,4 +16,25 @@ class ProductRepository extends BaseRepository<ProductModel> {
       ),
     );
   }
+
+  @override
+  Future<ProductModel> getById(String path, int id) async {
+    Dio dio = Dio();
+
+    final response = await dio.get('$path/$id');
+    return ProductModel.fromMap(response.data);
+  }
+
+  Future<List<ProductModel>> getProductByCategory(int id) async {
+    Dio dio = Dio();
+
+    final response = await dio.get('http://192.168.0.43:81/api/Product/GetByCategory/$id');
+
+    return List.from(
+      response.data.map(
+        (entity) => ProductModel.fromMap(entity),
+      ),
+    );
+  }
 }
+

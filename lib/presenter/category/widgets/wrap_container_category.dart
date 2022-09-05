@@ -18,24 +18,27 @@ class WrapContainerCategory extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final categories = ref.watch(categoryNotifier);
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15.0),
-      child: Visibility(
-        visible: categories.isNotEmpty,
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 15,
-          ),
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemCount: categories.length,
-          itemBuilder: (context, index) {
-            return ContainerCategoryInventory(
-              categoryModel: categories[index],
-            );
-          },
+    return Visibility(
+      visible: categories.isNotEmpty,
+      child: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          mainAxisSpacing: 15,
         ),
+        padding: const EdgeInsets.only(
+          bottom: 25,
+          top: 10,
+          left: 15,
+          right: 15,
+        ),
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return ContainerCategoryInventory(
+            categoryModel: categories[index],
+          );
+        },
       ),
     );
   }

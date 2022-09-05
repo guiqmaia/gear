@@ -16,6 +16,7 @@ class BodySalesPage extends HookConsumerWidget {
   BodySalesPage({Key? key}) : super(key: key);
 
   DateFormat dividerDateFormat = DateFormat('dd/MM/yyyy');
+  bool first = true;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,15 +24,14 @@ class BodySalesPage extends HookConsumerWidget {
 
     bool verifyDate(SaleModel saleModel) {
       DateTime dateTime = DateTime.now();
-      bool first = true;
-
+      
       if (first == true) {
         first = !first;
         return true;
       }
-      if (DateFormat.yMd().format(saleModel.date) !=
+      if (DateFormat.yMd().format(DateTime.parse(saleModel.date)) !=
           DateFormat.yMd().format(dateTime)) {
-        dateTime = saleModel.date;
+        dateTime = DateTime.parse(saleModel.date);
         return true;
       }
       return false;
@@ -65,7 +65,7 @@ class BodySalesPage extends HookConsumerWidget {
                         ),
                       ),
                       Text(
-                        dividerDateFormat.format(sales[index].date),
+                        dividerDateFormat.format(DateTime.parse(sales[index].date)),
                         style: const TextStyle(
                           fontSize: 15,
                         ),

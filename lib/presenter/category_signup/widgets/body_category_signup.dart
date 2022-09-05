@@ -116,6 +116,7 @@ class _BodyCategoriySignupState extends ConsumerState<BodyCategorySignup> {
                 ref.watch(categoryNotifier.notifier).addCategory(categoryModel);
 
                 if (!mounted) return;
+                
                 Navigator.of(context).pop();
               },
               child: const Text(

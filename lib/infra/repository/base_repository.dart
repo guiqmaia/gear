@@ -1,10 +1,8 @@
-
 import 'package:dio/dio.dart';
 
 import '../models/base_model.dart';
 
 class BaseRepository<T extends BaseModel> {
-
   Future post(String path, T model) async {
     Dio dio = Dio();
 
@@ -41,9 +39,6 @@ class BaseRepository<T extends BaseModel> {
   Future delete(String path, int id) async {
     Dio dio = Dio();
 
-    await dio.delete(
-      path,
-      data: id,
-    );
+    await dio.delete('$path?id=$id');
   }
 }

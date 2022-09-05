@@ -1,17 +1,20 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gear/infra/repository/category_repository.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
-import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/category_model.dart';
+import '../../../infra/models/product_model.dart';
 import '../../../infra/providers/product_providers.dart';
 import '../../../shared/widgets/dropdown_input.dart';
 import '../../../shared/widgets/text_field_app.dart';
+import '../../product/widgets/body_product_page.dart';
 import '../Widgets/focus_node_product_signup.dart';
 import 'default_image_container.dart';
 
@@ -34,7 +37,8 @@ class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
   }
 
   Future refreshCategories() async {
-    categories = await GearDatabase.instance.selectCategories();
+    CategoryRepository repository = CategoryRepository();
+    categories = await repository.get('http://192.168.0.43:81/api/Category');
     for (CategoryModel categoryModel in categories) {
       list.add(
         DropdownMenuItem(
@@ -69,7 +73,7 @@ class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
     final priceController = ref.watch(priceControllerProvider.state);
     final categoryController = ref.watch(categoryControllerProvider.state);
     final quantityController = ref.watch(quantityControllerProvider.state);
-
+    
     void clearController() {
       nameProductController.state.clear();
       priceController.state.clear();
@@ -152,21 +156,20 @@ class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
                 return;
               }
 
-              // ProductModel productModel = ProductModel(
-              //   name: nameProductController.state.text,
-              //   price: double.parse(priceController.state.text),
-              //   categoryId: ,
-              //   quantity: int.parse(quantityController.state.text),
-              //   image: base64Encode(photo!.buffer.asUint8List()),
-              // );
+              final categoryModel = ref.watch(categoryModelProvider.notifier).state;
 
-              // await GearDatabase.instance.insert('product', productModel);
+              ProductModel productModel = ProductModel(
+                name: nameProductController.state.text,
+                price: double.parse(priceController.state.text),
+                categoryId: categoryModel.id!,
+                quantity: int.parse(quantityController.state.text),
+                image: base64Encode(photo!.buffer.asUint8List()),
+              );
+
+              ref.watch(productNotifier.notifier).addProduct(productModel, categoryModel);
 
               if (!mounted) return;
 
-              // ref.read(productNotifier.notifier).addProduct(productModel);
-
-              Navigator.of(context).pop();
               Navigator.of(context).pop();
 
               clearController();
