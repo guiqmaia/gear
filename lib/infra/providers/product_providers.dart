@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:gear/infra/models/user_model.dart';
 import 'package:gear/infra/repository/product_repository.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -9,13 +10,13 @@ import '../models/product_model.dart';
 import '../repository/category_repository.dart';
 
 class CategoryNotifier extends StateNotifier<List<CategoryModel>> {
-  CategoryNotifier() : super([]) {
-    getAllCategories();
+  CategoryNotifier(UserModel userModel) : super([]) {
+    getAllCategories(userModel);
   }
 
-  Future<List<CategoryModel>> getAllCategories() async {
+  Future<List<CategoryModel>> getAllCategories(UserModel userModel) async {
     CategoryRepository repository = CategoryRepository();
-    state = await repository.get('http://192.168.0.43:81/api/Category');
+    state = await repository.get('http://192.168.0.43:81/api/Category/User/${userModel.id}');
     return state;
   }
 
@@ -27,7 +28,7 @@ class CategoryNotifier extends StateNotifier<List<CategoryModel>> {
   Future<void> addCategory(CategoryModel category) async {
     CategoryRepository repository = CategoryRepository();
     await repository.post('http://192.168.0.43:81/api/Category', category);
-    state = await repository.get('http://192.168.0.43:81/api/Category');
+    state = await repository.get('http://192.168.0.43:81/api/Category/User/${category.userId}');
   }
 }
 
@@ -60,6 +61,7 @@ final searchControllerProvider = StateProvider<TextEditingController>((ref) => T
 CategoryModel model = CategoryModel(
   name: 'string',
   image: 'string',
+  userId: 0,
 );
 
 final categoryModelProvider = StateProvider<CategoryModel>((ref) => model);

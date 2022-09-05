@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/infra/providers/login_providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../infra/models/category_model.dart';
@@ -6,7 +7,7 @@ import '../../../infra/providers/product_providers.dart';
 import 'container_category_inventory.dart';
 
 final categoryNotifier = StateNotifierProvider<CategoryNotifier, List<CategoryModel>>(
-  (ref) => CategoryNotifier(),
+  (ref) => CategoryNotifier(ref.watch(userModelProvider.state).state),
 );
 
 class WrapContainerCategory extends HookConsumerWidget {

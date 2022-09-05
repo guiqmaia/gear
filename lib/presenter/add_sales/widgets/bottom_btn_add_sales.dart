@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/infra/providers/login_providers.dart';
 import 'package:gear/presenter/sales/widgets/body_sales_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -53,6 +54,7 @@ class _BottomBtnSalesState extends ConsumerState<BottomBtnSales> {
             onPressed: () async {
               if (codeController.state.text.isNotEmpty) {
                 SaleModel saleModel = SaleModel(
+                  userId: logedUser.id!,
                   productId: int.parse(codeController.state.text),
                   price: double.parse(totalController.state.text),
                   quantity: int.parse(quantityController.state.text),
@@ -92,6 +94,7 @@ class _BottomBtnSalesState extends ConsumerState<BottomBtnSales> {
                   tooltip: 'Adicione',
                   onPressed: () async {
                     SaleModel saleModel = SaleModel(
+                      userId: logedUser.id!,
                       productId: int.parse(codeController.state.text),
                       price: double.parse(totalController.state.text),
                       quantity: int.parse(quantityController.state.text),

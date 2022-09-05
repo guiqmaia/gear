@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/infra/models/user_model.dart';
 import 'package:gear/infra/repository/product_repository.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -6,21 +7,23 @@ import '../models/product_model.dart';
 import '../models/sale_model.dart';
 import '../repository/sale_repository.dart';
 
+
 class SaleNotifier extends StateNotifier<List<SaleModel>> {
-  SaleNotifier() : super([]) {
-    refreshSales();
+
+  SaleNotifier(UserModel userModel) : super([]) {
+    refreshSales(userModel);
   }
 
-  Future<List<SaleModel>> refreshSales() async {
+  Future<List<SaleModel>> refreshSales(UserModel userModel) async {
     SaleRepository repository = SaleRepository();
-    state = await repository.get('http://192.168.0.43:81/api/Sale');
+    state = await repository.get('http://192.168.0.43:81/api/Sale/User/${userModel.id}');
     return state;
   }
 
   Future addSalesContainer(SaleModel saleModel) async {
     SaleRepository repository = SaleRepository();
     await repository.post('http://192.168.0.43:81/api/Sale', saleModel);
-    state = await repository.get('http://192.168.0.43:81/api/Sale');
+    state = await repository.get('http://192.168.0.43:81/api/Sale/User/${saleModel.userId}');
 
     ProductRepository productRepository = ProductRepository();
     ProductModel product = await productRepository.getById('http://192.168.0.43:81/api/Product', saleModel.productId);

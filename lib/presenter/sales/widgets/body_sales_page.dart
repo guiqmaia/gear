@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gear/infra/providers/login_providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
@@ -9,7 +10,7 @@ import 'recent_sales_container.dart';
 import 'sale_register_container.dart';
 
 final saleNotifier = StateNotifierProvider<SaleNotifier, List<SaleModel>>(
-  (ref) => SaleNotifier(),
+  (ref) => SaleNotifier(ref.watch(userModelProvider.state).state),
 );
 
 class BodySalesPage extends HookConsumerWidget {

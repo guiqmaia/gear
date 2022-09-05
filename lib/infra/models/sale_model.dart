@@ -11,6 +11,7 @@ class SaleModel implements BaseModel {
   int quantity;
   String pay;
   String date;
+  int userId;
   ProductModel? product;
 
   SaleModel({
@@ -20,6 +21,7 @@ class SaleModel implements BaseModel {
     required this.quantity,
     required this.pay,
     required this.date,
+    required this.userId,
     this.product,
   });
 
@@ -35,6 +37,7 @@ class SaleModel implements BaseModel {
     result.addAll({'quantity': quantity});
     result.addAll({'payment': pay});
     result.addAll({'date': date});
+    result.addAll({'userId': userId});
   
     return result;
   }
@@ -47,6 +50,7 @@ class SaleModel implements BaseModel {
       quantity: map['quantity']?.toInt() ?? 0,
       pay: map['payment'] ?? '',
       date: map['date'] ?? '',
+      userId: map['userId']?.toInt() ?? 0,
       product: map['product'] != null ? ProductModel.fromMap(map['product']) : null,
     );
   }
