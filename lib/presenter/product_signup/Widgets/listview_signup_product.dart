@@ -39,8 +39,7 @@ class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
         photo = imageTemp.readAsBytesSync();
       });
     } on PlatformException catch (e) {
-      // ignore: avoid_print
-      print('Failed to pick image: $e');
+      debugPrint('Failed to pick image: $e');
     }
   }
 
