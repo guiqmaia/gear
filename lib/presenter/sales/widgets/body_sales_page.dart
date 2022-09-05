@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gear/infra/providers/login_providers.dart';
+import '../../../infra/providers/login_providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 

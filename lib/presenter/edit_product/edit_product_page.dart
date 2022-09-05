@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:gear/infra/models/product_model.dart';
+import '../../infra/models/product_model.dart';
 
 import '../../core/app_assets.dart';
 import '../../infra/models/category_model.dart';

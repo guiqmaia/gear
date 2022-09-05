@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:gear/infra/models/product_model.dart';
+import 'product_model.dart';
 
 import 'base_model.dart';
 

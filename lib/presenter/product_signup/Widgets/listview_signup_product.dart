@@ -4,16 +4,15 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gear/infra/repository/category_repository.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
-import '../../../infra/models/category_model.dart';
 import '../../../infra/models/product_model.dart';
 import '../../../infra/providers/product_providers.dart';
 import '../../../shared/widgets/dropdown_input.dart';
 import '../../../shared/widgets/text_field_app.dart';
+import '../../category/widgets/wrap_container_category.dart';
 import '../../product/widgets/body_product_page.dart';
 import '../Widgets/focus_node_product_signup.dart';
 import 'default_image_container.dart';
@@ -27,28 +26,6 @@ class ListViewSingupProduct extends StatefulHookConsumerWidget {
 
 class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
   String? dropdownValue;
-  List<CategoryModel> categories = [];
-  List<DropdownMenuItem<String>> list = [];
-
-  @override
-  void initState() {
-    super.initState();
-    refreshCategories();
-  }
-
-  Future refreshCategories() async {
-    CategoryRepository repository = CategoryRepository();
-    categories = await repository.get('http://192.168.0.43:81/api/Category');
-    for (CategoryModel categoryModel in categories) {
-      list.add(
-        DropdownMenuItem(
-          value: categoryModel.id.toString(),
-          child: Text(categoryModel.name),
-        ),
-      );
-    }
-    setState(() {});
-  }
 
   Uint8List? photo;
   File? image;
@@ -73,7 +50,9 @@ class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
     final priceController = ref.watch(priceControllerProvider.state);
     final categoryController = ref.watch(categoryControllerProvider.state);
     final quantityController = ref.watch(quantityControllerProvider.state);
-    
+
+    final listCategories = ref.watch(categoryNotifier);
+
     void clearController() {
       nameProductController.state.clear();
       priceController.state.clear();
@@ -98,7 +77,14 @@ class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
           nextFocus: focusQuantityProductSignUpPage,
         ),
         DropDownInput(
-          dropdownList: list,
+          dropdownList: listCategories.map(
+            (category) {
+              return DropdownMenuItem<String>(
+                value: category.id.toString(),
+                child: Text(category.name),
+              );
+            },
+          ).toList(),
           labelDropdown: 'Escolha a Categoria',
           iconDropdown: Icons.tag,
           selectedValue: dropdownValue,

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:gear/infra/repository/product_repository.dart';
+import '../../../infra/repository/product_repository.dart';
 
 import '../../../infra/models/category_model.dart';
 

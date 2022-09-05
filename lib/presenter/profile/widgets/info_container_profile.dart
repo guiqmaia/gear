@@ -46,9 +46,7 @@ class InfoContainerProfile extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.01,
-          ),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.01),
           Row(
             children: [
               Icon(
@@ -57,16 +55,18 @@ class InfoContainerProfile extends StatelessWidget {
                 size: 15,
               ),
               SizedBox(width: MediaQuery.of(context).size.width * 0.025),
-              Text(
-                info,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                softWrap: false,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                  letterSpacing: 0.4,
+              Expanded(
+                child: Text(
+                  info,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: false,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                    letterSpacing: 0.4,
+                  ),
                 ),
               ),
             ],

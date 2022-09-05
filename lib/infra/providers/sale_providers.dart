@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gear/infra/models/user_model.dart';
-import 'package:gear/infra/repository/product_repository.dart';
+import '../models/user_model.dart';
+import '../repository/product_repository.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../models/product_model.dart';

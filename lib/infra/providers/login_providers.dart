@@ -1,8 +1,6 @@
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../models/user_model.dart';
@@ -52,14 +50,3 @@ final stateControllerProvider = StateProvider<TextEditingController>((ref) => Te
 
 final photoProfileProvider = StateProvider<File>((ref) => File(''));
 
-ByteData? bytes;
-Uint8List? photo;
-
-Future<void> pickImageAsset(path) async {
-  try {
-    bytes = await rootBundle.load(path);
-    photo = bytes!.buffer.asUint8List();
-  } catch (e) {
-    debugPrint('Falha em buscar a imagem: $e');
-  }
-}

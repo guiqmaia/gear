@@ -4,8 +4,8 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gear/infra/providers/login_providers.dart';
-import 'package:gear/presenter/category_signup/widgets/focus_node_category_signup_page.dart';
+import '../../../infra/providers/login_providers.dart';
+import 'focus_node_category_signup_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -47,6 +47,8 @@ class _BodyCategoriySignupState extends ConsumerState<BodyCategorySignup> {
 
   @override
   Widget build(BuildContext context) {
+    final userModel = ref.watch(userModelProvider.state);
+
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -112,7 +114,7 @@ class _BodyCategoriySignupState extends ConsumerState<BodyCategorySignup> {
                 CategoryModel categoryModel = CategoryModel(
                   name: nameController.text,
                   image: base64Encode(imgCategory!),
-                  userId: logedUser.id!
+                  userId: userModel.state.id!,
                 );
 
                 ref.watch(categoryNotifier.notifier).addCategory(categoryModel);

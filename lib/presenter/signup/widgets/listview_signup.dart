@@ -5,11 +5,11 @@ import 'dart:typed_data';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gear/infra/models/adress_model.dart';
-import 'package:gear/infra/repository/address_repository.dart';
-import 'package:gear/infra/repository/user_repository.dart';
-import 'package:gear/presenter/login/login_page.dart';
-import 'package:gear/presenter/signup/widgets/focus_node_signup.dart';
+import '../../../infra/models/adress_model.dart';
+import '../../../infra/repository/address_repository.dart';
+import '../../../infra/repository/user_repository.dart';
+import '../../login/login_page.dart';
+import 'focus_node_signup.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -277,8 +277,6 @@ class _ListViewSignUpState extends ConsumerState<ListViewSignUp> {
                     AddressRepository addressRepository = AddressRepository();
                     addressRepository.post('http://192.168.0.43:81/api/Address', address);
 
-                    Navigator.of(context).pop(context);
-
                     Navigator.of(context).pushReplacementNamed(LoginPage.route);
                     nameController.state.clear();
                     cpfController.state.clear();
@@ -296,7 +294,6 @@ class _ListViewSignUpState extends ConsumerState<ListViewSignUp> {
                     passwordController.state.clear();
 
                     if (mounted) {
-                      Navigator.of(context).pop(context);
                       Navigator.of(context).pushReplacementNamed(LoginPage.route);
                     }
                   } else {

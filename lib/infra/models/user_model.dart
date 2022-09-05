@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:gear/infra/models/adress_model.dart';
+import 'adress_model.dart';
 
 import 'base_model.dart';
 

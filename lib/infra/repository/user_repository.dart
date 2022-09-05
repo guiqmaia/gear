@@ -1,7 +1,7 @@
 
 import 'package:dio/dio.dart';
-import 'package:gear/infra/dto/user_dto.dart';
-import 'package:gear/infra/models/user_model.dart';
+import '../dto/user_dto.dart';
+import '../models/user_model.dart';
 
 import 'base_repository.dart';
 

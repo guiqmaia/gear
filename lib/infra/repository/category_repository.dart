@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:gear/infra/models/category_model.dart';
-import 'package:gear/infra/repository/base_repository.dart';
+import '../models/category_model.dart';
+import 'base_repository.dart';
 
 class CategoryRepository extends BaseRepository<CategoryModel> {
   @override

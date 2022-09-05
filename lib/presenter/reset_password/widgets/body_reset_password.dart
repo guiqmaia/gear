@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gear/presenter/reset_password/widgets/focus_node_reset_password.dart';
+import 'focus_node_reset_password.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../shared/widgets/btn_standard_app.dart';

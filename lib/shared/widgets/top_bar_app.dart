@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:gear/infra/providers/login_providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/app_assets.dart';
+import '../../infra/providers/login_providers.dart';
 import '../../presenter/profile/profile_page.dart';
 
 class TopBarApp extends HookConsumerWidget {

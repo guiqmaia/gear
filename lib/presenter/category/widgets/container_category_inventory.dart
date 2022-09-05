@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:gear/infra/providers/product_providers.dart';
+import '../../../infra/providers/product_providers.dart';
 import '../../../infra/models/category_model.dart';
 import '../../product/widgets/body_product_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

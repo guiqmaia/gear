@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gear/infra/providers/login_providers.dart';
-import 'package:gear/presenter/sales/widgets/body_sales_page.dart';
+import '../../../infra/providers/login_providers.dart';
+import '../../sales/widgets/body_sales_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/app_assets.dart';
@@ -23,6 +23,7 @@ class _BottomBtnSalesState extends ConsumerState<BottomBtnSales> {
     final priceController = ref.watch(priceControllerProvider.state);
     final discountController = ref.watch(discountControllerProvider.state);
     final totalController = ref.watch(totalControllerProvider.state);
+    final userModel = ref.watch(userModelProvider.state);
 
     void cleanController() {
       codeController.state.clear();
@@ -54,7 +55,7 @@ class _BottomBtnSalesState extends ConsumerState<BottomBtnSales> {
             onPressed: () async {
               if (codeController.state.text.isNotEmpty) {
                 SaleModel saleModel = SaleModel(
-                  userId: logedUser.id!,
+                  userId: userModel.state.id!,
                   productId: int.parse(codeController.state.text),
                   price: double.parse(totalController.state.text),
                   quantity: int.parse(quantityController.state.text),
@@ -94,7 +95,7 @@ class _BottomBtnSalesState extends ConsumerState<BottomBtnSales> {
                   tooltip: 'Adicione',
                   onPressed: () async {
                     SaleModel saleModel = SaleModel(
-                      userId: logedUser.id!,
+                      userId:  userModel.state.id!,
                       productId: int.parse(codeController.state.text),
                       price: double.parse(totalController.state.text),
                       quantity: int.parse(quantityController.state.text),

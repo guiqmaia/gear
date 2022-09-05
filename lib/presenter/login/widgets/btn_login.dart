@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gear/infra/dto/user_dto.dart';
-import 'package:gear/infra/repository/user_repository.dart';
+import '../../../infra/dto/user_dto.dart';
+import '../../../infra/repository/user_repository.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/app_assets.dart';

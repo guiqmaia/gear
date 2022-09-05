@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,7 +7,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
-import '../../../infra/providers/login_providers.dart';
 import '../../../infra/providers/product_providers.dart';
 import '../../../shared/widgets/text_field_app.dart';
 import '../../product_signup/Widgets/default_image_container.dart';
@@ -20,6 +20,8 @@ class WrapTextFieldEditProduct extends StatefulHookConsumerWidget {
 }
 
 class _WrapTextFieldEditProductState extends ConsumerState<WrapTextFieldEditProduct> {
+  Uint8List? photo;
+  
   @override
   Widget build(BuildContext context) {
     final newNameController = ref.watch(nameProductControllerProvider.state);

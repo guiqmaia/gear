@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
-import 'package:gear/infra/models/user_model.dart';
-import 'package:gear/infra/repository/product_repository.dart';
+import '../models/user_model.dart';
+import '../repository/product_repository.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../models/category_model.dart';

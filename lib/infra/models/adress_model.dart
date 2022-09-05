@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:gear/infra/models/base_model.dart';
+import 'base_model.dart';
 
 
 class AddressModel implements BaseModel {
