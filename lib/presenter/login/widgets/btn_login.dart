@@ -16,22 +16,11 @@ class BtnLoginPage extends StatefulHookConsumerWidget {
 }
 
 class _BtnLoginPageState extends ConsumerState<BtnLoginPage> {
-  // Future createDbData() async {
-  //   await CreateDatabaseProducts().createSodas();
-  //   await CreateDatabaseProducts().createBeers();
-  //   await CreateDatabaseProducts().createWines();
-  //   await CreateDatabaseProducts().createDistilled();
-  //   await CreateDatabaseProducts().createEnergyDrink();
-  //   await CreateDatabaseProducts().createWater();
-  //   await CreateDatabaseProducts().createCategories();
-  // }
 
   Future<void> verifyLogin(
     TextEditingController loginControllerProvider,
     TextEditingController passwordControllerProvider,
   ) async {
-    //await createDbData();
-
     final userModel = ref.watch(userModelProvider.state);
 
     UserRepository userRepository = UserRepository();
