@@ -1,16 +1,15 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
-import 'default_model.dart';
+import 'base_model.dart';
 
-class ProductModel implements DefaultModel {
+class ProductModel implements BaseModel {
   @override
   int? id;
   String name;
   double price;
   int categoryId;
   int quantity;
-  Uint8List image;
+  String image;
 
   ProductModel({
     this.id,
@@ -23,29 +22,32 @@ class ProductModel implements DefaultModel {
 
   @override
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'name': name,
-      'price': price,
-      'categoryId': categoryId,
-      'quantity': quantity,
-      'image': image,
-    };
+    final result = <String, dynamic>{};
+  
+    if(id != null){
+      result.addAll({'id': id});
+    }
+    result.addAll({'name': name});
+    result.addAll({'price': price});
+    result.addAll({'categoryId': categoryId});
+    result.addAll({'quantity': quantity});
+    result.addAll({'image': image});
+  
+    return result;
   }
 
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
-      id: map['id'] as int,
-      name: map['name'] as String,
-      price: map['price'] as double,
-      categoryId: map['categoryId'] as int,
-      quantity: map['quantity'] as int,
-      image: map['image'] as Uint8List,
+      id: map['id']?.toInt(),
+      name: map['name'] ?? '',
+      price: map['price']?.toDouble() ?? 0.0,
+      categoryId: map['categoryId']?.toInt() ?? 0,
+      quantity: map['quantity']?.toInt() ?? 0,
+      image: map['image'] ?? '',
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory ProductModel.fromJson(String source) =>
-      ProductModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ProductModel.fromJson(String source) => ProductModel.fromMap(json.decode(source));
 }

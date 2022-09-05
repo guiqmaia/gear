@@ -18,7 +18,7 @@ class BodySignUp extends StatelessWidget {
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.85,
-            child: const ListviewSignup(),
+            child: const ListViewSignUp(),
           ),
         ],
       ),

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -25,8 +27,8 @@ class NamePhotoProfile extends HookConsumerWidget {
                 child: CircleAvatar(
                   radius: 65,
                   backgroundColor: backgroundGrey,
-                  backgroundImage: Image.asset(
-                    imgUser,
+                  backgroundImage: Image.memory(
+                    base64Decode(userModel.state.image),
                     fit: BoxFit.cover,
                   ).image,
                 ),

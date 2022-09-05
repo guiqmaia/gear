@@ -1,38 +1,58 @@
 import 'dart:convert';
 
-class AdressModel {
-  String street;
-  String district;
-  String city;
-  String cep;
+import 'package:gear/infra/models/base_model.dart';
 
-  AdressModel({
-    required this.street,
-    required this.district,
-    required this.city,
+
+class AddressModel implements BaseModel {
+  @override
+  int? id;
+  String cep;
+  String street;
+  int number;
+  String city;
+  String state;
+  int userId;
+
+  AddressModel({
+    this.id,
     required this.cep,
+    required this.street,
+    required this.number,
+    required this.city,
+    required this.state,
+    required this.userId,
   });
 
+  @override
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'street': street,
-      'district': district,
-      'city': city,
-      'cep': cep,
-    };
+    final result = <String, dynamic>{};
+  
+    if(id != null){
+      result.addAll({'id': id});
+    }
+    result.addAll({'cep': cep});
+    result.addAll({'street': street});
+    result.addAll({'number': number});
+    result.addAll({'city': city});
+    result.addAll({'state': state});
+    result.addAll({'userId': userId});
+  
+    return result;
   }
 
-  factory AdressModel.fromMap(Map<String, dynamic> map) {
-    return AdressModel(
-      street: map['street'] as String,
-      district: map['district'] as String,
-      city: map['city'] as String,
-      cep: map['cep'] as String,
+  factory AddressModel.fromMap(Map<String, dynamic> map) {
+    return AddressModel(
+      id: map['id']?.toInt(),
+      cep: map['cep'] ?? '',
+      street: map['street'] ?? '',
+      number: map['number']?.toInt() ?? 0,
+      city: map['city'] ?? '',
+      state: map['state'] ?? '',
+      userId: map['userId']?.toInt() ?? 0,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory AdressModel.fromJson(String source) =>
-      AdressModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory AddressModel.fromJson(String source) => AddressModel.fromMap(json.decode(source));
 }

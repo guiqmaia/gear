@@ -1,24 +1,53 @@
+import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:gear/infra/models/adress_model.dart';
+import 'package:gear/infra/repository/address_repository.dart';
+import 'package:gear/infra/repository/user_repository.dart';
 import 'package:gear/presenter/login/login_page.dart';
 import 'package:gear/presenter/signup/widgets/focus_node_signup.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
-import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/user_model.dart';
 import '../../../infra/providers/login_providers.dart';
 import '../../../shared/widgets/text_field_app.dart';
 import '../../../shared/widgets/text_field_app_formatted.dart';
+import '../../product_signup/Widgets/default_image_container.dart';
 
-class ListviewSignup extends StatefulHookConsumerWidget {
-  const ListviewSignup({Key? key}) : super(key: key);
+class ListViewSignUp extends StatefulHookConsumerWidget {
+  const ListViewSignUp({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<ListviewSignup> createState() => _ListviewSignupState();
+  ConsumerState<ListViewSignUp> createState() => _ListViewSignUpState();
 }
 
-class _ListviewSignupState extends ConsumerState<ListviewSignup> {
+class _ListViewSignUpState extends ConsumerState<ListViewSignUp> {
+  File? image;
+  Uint8List? photo;
+
+  Future pickImage() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+      final imageTemp = File(image.path);
+      setState(
+        () {
+          this.image = imageTemp;
+          photo = imageTemp.readAsBytesSync();
+        },
+      );
+    } on PlatformException catch (e) {
+      // ignore: avoid_print
+      print('Failed to pick image: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final nameController = ref.watch(nameControllerProvider.state);
@@ -29,7 +58,10 @@ class _ListviewSignupState extends ConsumerState<ListviewSignup> {
     final telephoneController = ref.watch(telephoneControllerProvider.state);
     final mobileNumberController = ref.watch(mobileControllerProvider.state);
     final cepController = ref.watch(cepControllerProvider.state);
-    final adressController = ref.watch(adressControllerProvider.state);
+    final streetController = ref.watch(streetControllerProvider.state);
+    final numberController = ref.watch(numberControllerProvider.state);
+    final cityController = ref.watch(cityControllerProvider.state);
+    final stateController = ref.watch(stateControllerProvider.state);
     final loginController = ref.watch(loginControllerProvider.state);
     final passwordController = ref.watch(passwordControllerProvider.state);
 
@@ -106,14 +138,61 @@ class _ListviewSignupState extends ConsumerState<ListviewSignup> {
               textInputType: TextInputType.number,
               requiredLength: 8,
               focus: focusCepSignUp,
-              nextFocus: focusAddressSignUp,
+              nextFocus: focusStreetSignUp,
             ),
             TextFieldApp(
               labelItem: 'Endereço',
-              typeController: adressController.state,
+              typeController: streetController.state,
               isObscured: false,
-              focus: focusAddressSignUp,
+              focus: focusStreetSignUp,
+              nextFocus: focusNumberSignUp,
+            ),
+            TextFieldApp(
+              labelItem: 'Número',
+              typeController: numberController.state,
+              isObscured: false,
+              focus: focusNumberSignUp,
+              nextFocus: focusCitySignUp,
+            ),
+            TextFieldApp(
+              labelItem: 'Cidade',
+              typeController: cityController.state,
+              isObscured: false,
+              focus: focusCitySignUp,
+              nextFocus: focusStateSignUp,
+            ),
+            TextFieldApp(
+              labelItem: 'Estado',
+              typeController: stateController.state,
+              isObscured: false,
+              focus: focusStateSignUp,
               nextFocus: focusEmailSignUp,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: greenNeon,
+              ),
+              margin: const EdgeInsets.symmetric(vertical: 15),
+              padding: const EdgeInsets.symmetric(
+                vertical: 3,
+              ),
+              width: MediaQuery.of(context).size.width * 0.93,
+              child: TextButton(
+                onPressed: (() => pickImage()),
+                child: const Text(
+                  'Selecionar Imagem',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20),
+              width: MediaQuery.of(context).size.width,
+              child: image != null ? Image.memory(photo!) : const DefaulImageContainer(),
             ),
             const Padding(
               padding: EdgeInsets.only(
@@ -158,12 +237,14 @@ class _ListviewSignupState extends ConsumerState<ListviewSignup> {
               child: TextButton(
                 onPressed: () async {
                   if (formKey.currentState!.validate()) {
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text(
-                        'Cadastro realizado com sucesso',
-                        textAlign: TextAlign.center,
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text(
+                          'Cadastro realizado com sucesso',
+                          textAlign: TextAlign.center,
+                        ),
                       ),
-                    ));
+                    );
 
                     UserModel user = UserModel(
                       name: nameController.state.text,
@@ -173,14 +254,32 @@ class _ListviewSignupState extends ConsumerState<ListviewSignup> {
                       cnpj: cnpjController.state.text,
                       telephone: telephoneController.state.text,
                       mobileNumber: mobileNumberController.state.text,
-                      cep: cepController.state.text,
-                      adress: adressController.state.text,
                       email: loginController.state.text,
                       password: passwordController.state.text,
+                      image: base64Encode(photo!.buffer.asUint8List()),
                     );
 
-                    await GearDatabase.instance.insert('user', user);
+                    UserRepository userRepository = UserRepository();
+                    await userRepository.post('http://192.168.0.43:81/api/user', user);
 
+                    List<UserModel> users = await userRepository.get('http://192.168.0.43:81/api/user');
+                    user = users.last;
+
+                    AddressModel address = AddressModel(
+                      cep: cepController.state.text,
+                      street: streetController.state.text,
+                      number: int.parse(numberController.state.text),
+                      city: cityController.state.text,
+                      state: stateController.state.text,
+                      userId: user.id!,
+                    );
+
+                    AddressRepository addressRepository = AddressRepository();
+                    addressRepository.post('http://192.168.0.43:81/api/Address', address);
+
+                    Navigator.of(context).pop(context);
+
+                    Navigator.of(context).pushReplacementNamed(LoginPage.route);
                     nameController.state.clear();
                     cpfController.state.clear();
                     birthdayController.state.clear();
@@ -189,7 +288,10 @@ class _ListviewSignupState extends ConsumerState<ListviewSignup> {
                     telephoneController.state.clear();
                     mobileNumberController.state.clear();
                     cepController.state.clear();
-                    adressController.state.clear();
+                    streetController.state.clear();
+                    numberController.state.clear();
+                    cityController.state.clear();
+                    stateController.state.clear();
                     loginController.state.clear();
                     passwordController.state.clear();
 

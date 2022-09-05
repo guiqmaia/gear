@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../infra/database/gear_database.dart';
 import '../../../infra/models/product_model.dart';
 import '../../../infra/providers/sale_providers.dart';
+import '../../../infra/repository/product_repository.dart';
 import '../../../shared/widgets/dropdown_input.dart';
 import '../../../shared/widgets/text_field_app.dart';
 import '../../category/widgets/wrap_container_category.dart';
@@ -21,7 +21,8 @@ class _WrapTextFieldSaleState extends ConsumerState<WrapTextFieldSale> {
   double? total;
 
   Future<List<ProductModel>> refreshProducts(int id) async {
-    listProducts = await GearDatabase.instance.selectProductsByCategory(id);
+    ProductRepository repository = ProductRepository();
+    listProducts = await repository.getProductByCategory(id);
     setState(() {});
     return listProducts;
   }

@@ -10,7 +10,7 @@ class ContainerInfoCompany extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userModel = ref.watch(userModelProvider.state);
-
+    
     return Wrap(
       children: [
         InfoContainerProfile(
@@ -20,12 +20,12 @@ class ContainerInfoCompany extends HookConsumerWidget {
         ),
         InfoContainerProfile(
           titleInfo: "CEP",
-          info: userModel.state.cep,
+          info: userModel.state.company,
           iconInfo: Icons.location_searching,
         ),
         InfoContainerProfile(
           titleInfo: "Endereço",
-          info: userModel.state.adress,
+          info: '${userModel.state.addressModel![0].street}, ${userModel.state.addressModel![0].number} - ${userModel.state.addressModel![0].city} (${userModel.state.addressModel![0].state})',
           iconInfo: Icons.location_on_outlined,
         ),
         InfoContainerProfile(

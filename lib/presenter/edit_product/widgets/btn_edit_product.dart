@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import '../../product/widgets/body_product_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../infra/models/category_model.dart';
+import 'package:gear/infra/repository/product_repository.dart';
 
 import '../../../core/app_assets.dart';
-import '../../../infra/database/gear_database.dart';
+import '../../../infra/models/category_model.dart';
+import '../../../infra/models/product_model.dart';
 import '../../../infra/providers/product_providers.dart';
 
 class BtnEditProduct extends HookConsumerWidget {
+  final ProductModel product;
+  final CategoryModel category;
+  
   const BtnEditProduct({
     Key? key,
-    required this.productCode,
+    required this.product,
     required this.category,
   }) : super(key: key);
-
-  final int productCode;
-  final CategoryModel category;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,42 +24,21 @@ class BtnEditProduct extends HookConsumerWidget {
     final newPriceController = ref.watch(priceControllerProvider.state);
     final newQuantityController = ref.watch(quantityControllerProvider.state);
 
-    Future updateNameProduct() async {
+    Future updateProduct() async {
       if (newNameController.state.text != '') {
-        await GearDatabase.instance.update(
-          'product',
-          productCode,
-          'name',
-          '"${newNameController.state.text}"',
-        );
+        product.name = newNameController.state.text;
+        newNameController.state.clear();
       }
-      newNameController.state.clear();
-    }
-
-    Future updatePriceProduct() async {
       if (newPriceController.state.text != '') {
-        await GearDatabase.instance.update(
-          'product',
-          productCode,
-          'price',
-          double.parse(newPriceController.state.text),
-        );
+        product.price = double.parse(newPriceController.state.text);
+        newPriceController.state.clear();
       }
-      newPriceController.state.clear();
-    }
-
-    Future updateQuantityProduct() async {
       if (newQuantityController.state.text != '') {
-        await GearDatabase.instance.update(
-          'product',
-          productCode,
-          'quantity',
-          int.parse(newQuantityController.state.text),
-        );
+        product.quantity = int.parse(newQuantityController.state.text);
+        newQuantityController.state.clear();
       }
-      newQuantityController.state.clear();
     }
-
+      
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -72,12 +51,11 @@ class BtnEditProduct extends HookConsumerWidget {
       ),
       child: TextButton(
         onPressed: () {
-          updateNameProduct();
-          updatePriceProduct();
-          updateQuantityProduct();
+          updateProduct();
+          ProductRepository repository = ProductRepository();
+          repository.put('http://192.168.0.43:81/api/Product', product);
 
           Navigator.of(context).pop();
-          ref.watch(productNotifier.notifier).getAllProducts(category);
         },
         child: const Text(
           'Editar',

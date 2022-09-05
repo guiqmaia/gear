@@ -1,13 +1,17 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:gear/infra/providers/login_providers.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/app_assets.dart';
 import '../../presenter/profile/profile_page.dart';
 
-class TopBarApp extends StatelessWidget {
+class TopBarApp extends HookConsumerWidget {
   final String title;
   final bool isProfile;
   final bool hasBack;
-  
+
   const TopBarApp({
     Key? key,
     required this.title,
@@ -16,7 +20,9 @@ class TopBarApp extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final userModel = ref.watch(userModelProvider.state).state;
+
     return Container(
       width: double.maxFinite,
       padding: const EdgeInsets.only(
@@ -66,7 +72,9 @@ class TopBarApp extends StatelessWidget {
                   child: CircleAvatar(
                     radius: 26,
                     backgroundColor: Colors.white,
-                    backgroundImage: Image.asset(iconUserAnon).image,
+                    backgroundImage: Image.memory(
+                      base64Decode(userModel.image),
+                    ).image,
                   ),
                 ),
         ],

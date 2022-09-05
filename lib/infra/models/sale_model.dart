@@ -1,16 +1,17 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'default_model.dart';
+import 'base_model.dart';
+import 'product_model.dart';
 
-class SaleModel implements DefaultModel {
+class SaleModel implements BaseModel {
   @override
   int? id;
   int productId;
   double price;
   int quantity;
   String pay;
-  DateTime date;
+  String date;
+  ProductModel? product;
 
   SaleModel({
     this.id,
@@ -19,33 +20,38 @@ class SaleModel implements DefaultModel {
     required this.quantity,
     required this.pay,
     required this.date,
+    this.product,
   });
 
   @override
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'productId': productId,
-      'price': price,
-      'quantity': quantity,
-      'pay': pay,
-      'date': date.millisecondsSinceEpoch,
-    };
+    final result = <String, dynamic>{};
+  
+    if(id != null){
+      result.addAll({'id': id});
+    }
+    result.addAll({'productId': productId});
+    result.addAll({'price': price});
+    result.addAll({'quantity': quantity});
+    result.addAll({'payment': pay});
+    result.addAll({'date': date});
+  
+    return result;
   }
 
   factory SaleModel.fromMap(Map<String, dynamic> map) {
     return SaleModel(
-      id: map['id'] != null ? map['id'] as int : null,
-      productId: map['productId'] as int,
-      price: map['price'] as double,
-      quantity: map['quantity'] as int,
-      pay: map['pay'] as String,
-      date: DateTime.fromMillisecondsSinceEpoch(map['date'] as int),
+      id: map['id']?.toInt(),
+      productId: map['productId']?.toInt() ?? 0,
+      price: map['price']?.toDouble() ?? 0.0,
+      quantity: map['quantity']?.toInt() ?? 0,
+      pay: map['payment'] ?? '',
+      date: map['date'] ?? '',
+      product: map['product'] != null ? ProductModel.fromMap(map['product']) : null,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory SaleModel.fromJson(String source) =>
-      SaleModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory SaleModel.fromJson(String source) => SaleModel.fromMap(json.decode(source));
 }

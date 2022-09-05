@@ -7,7 +7,7 @@ class CompanyModel {
   String name;
   String cnpj;
   UserModel boss;
-  AdressModel adress;
+  AddressModel adress;
 
   CompanyModel({
     required this.name,
@@ -30,7 +30,7 @@ class CompanyModel {
       name: map['name'] as String,
       cnpj: map['cnpj'] as String,
       boss: UserModel.fromMap(map['boss'] as Map<String, dynamic>),
-      adress: AdressModel.fromMap(map['adress'] as Map<String, dynamic>),
+      adress: AddressModel.fromMap(map['adress'] as Map<String, dynamic>),
     );
   }
 
