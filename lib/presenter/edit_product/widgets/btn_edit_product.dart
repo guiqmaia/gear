@@ -1,17 +1,20 @@
-import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'dart:convert';
+import 'dart:io';
 
-import 'package:gear/infra/repository/product_repository.dart';
+import 'package:flutter/material.dart';
+import 'package:gear/presenter/product/product_page.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../infra/models/category_model.dart';
 import '../../../infra/models/product_model.dart';
 import '../../../infra/providers/product_providers.dart';
+import '../../../infra/repository/product_repository.dart';
 
 class BtnEditProduct extends HookConsumerWidget {
   final ProductModel product;
   final CategoryModel category;
-  
+
   const BtnEditProduct({
     Key? key,
     required this.product,
@@ -23,6 +26,7 @@ class BtnEditProduct extends HookConsumerWidget {
     final newNameController = ref.watch(nameProductControllerProvider.state);
     final newPriceController = ref.watch(priceControllerProvider.state);
     final newQuantityController = ref.watch(quantityControllerProvider.state);
+    final newPhotoProduct = ref.watch(photoProductProvider.state);
 
     Future updateProduct() async {
       if (newNameController.state.text != '') {
@@ -37,8 +41,12 @@ class BtnEditProduct extends HookConsumerWidget {
         product.quantity = int.parse(newQuantityController.state.text);
         newQuantityController.state.clear();
       }
+      if (newPhotoProduct.state.path != '') {
+        product.image = base64Encode(newPhotoProduct.state.readAsBytesSync());
+        newPhotoProduct.state = File('');
+      }
     }
-      
+
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -55,7 +63,10 @@ class BtnEditProduct extends HookConsumerWidget {
           ProductRepository repository = ProductRepository();
           repository.put('http://192.168.0.43:81/api/Product', product);
 
-          Navigator.of(context).pop();
+          Navigator.of(context).pushReplacementNamed(
+            ProductPage.route,
+            arguments: category,
+          );
         },
         child: const Text(
           'Editar',

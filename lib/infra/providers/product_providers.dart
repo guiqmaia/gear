@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:gear/infra/repository/product_repository.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -61,3 +63,5 @@ CategoryModel model = CategoryModel(
 );
 
 final categoryModelProvider = StateProvider<CategoryModel>((ref) => model);
+
+final photoProductProvider = StateProvider<File>((ref) => File(''));
