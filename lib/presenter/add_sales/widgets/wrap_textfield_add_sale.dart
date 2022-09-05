@@ -33,7 +33,7 @@ class _WrapTextFieldSaleState extends ConsumerState<WrapTextFieldSale> {
     TextEditingController priceController,
     TextEditingController totalController,
   ) {
-    if (discController.text == '' || discController.text == 0) {
+    if (discController.text == '' || double.parse(discController.text) == 0) {
       total =
           (double.parse(priceController.text) * int.parse(qntController.text));
     } else {

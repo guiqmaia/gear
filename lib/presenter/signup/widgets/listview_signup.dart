@@ -15,9 +15,9 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../infra/models/user_model.dart';
+import '../../../infra/providers/login_providers.dart';
 import '../../../shared/widgets/text_field_app.dart';
 import '../../../shared/widgets/text_field_app_formatted.dart';
-import '../../../infra/providers/login_providers.dart';
 import '../../product_signup/Widgets/default_image_container.dart';
 
 class ListViewSignUp extends StatefulHookConsumerWidget {
@@ -294,6 +294,11 @@ class _ListViewSignUpState extends ConsumerState<ListViewSignUp> {
                     stateController.state.clear();
                     loginController.state.clear();
                     passwordController.state.clear();
+
+                    if (mounted) {
+                      Navigator.of(context).pop(context);
+                      Navigator.of(context).pushReplacementNamed(LoginPage.route);
+                    }
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(

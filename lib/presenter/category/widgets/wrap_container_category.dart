@@ -12,7 +12,7 @@ final categoryNotifier = StateNotifierProvider<CategoryNotifier, List<CategoryMo
 class WrapContainerCategory extends HookConsumerWidget {
   WrapContainerCategory({Key? key}) : super(key: key);
 
-  TextEditingController searchController = TextEditingController();
+  final searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

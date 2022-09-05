@@ -21,6 +21,7 @@ class BodySalesPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final sales = ref.watch(saleNotifier);
+    bool first = true;
 
     bool verifyDate(SaleModel saleModel) {
       DateTime dateTime = DateTime.now();

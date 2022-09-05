@@ -6,14 +6,14 @@ import 'row_formatters_text_field.dart';
 class TextFieldAppFormatted extends StatelessWidget {
   final String labelItem;
   final dynamic typeController;
-  TextInputFormatter? formater;
-  TextInputType textInputType;
-  bool? isEnabled;
-  int? requiredLength;
-  FocusNode focus;
-  FocusNode? nextFocus;
+  final TextInputFormatter? formater;
+  final TextInputType textInputType;
+  final bool? isEnabled;
+  final int? requiredLength;
+  final FocusNode focus;
+  final FocusNode? nextFocus;
 
-  TextFieldAppFormatted({
+  const TextFieldAppFormatted({
     Key? key,
     required this.labelItem,
     required this.typeController,

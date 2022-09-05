@@ -4,14 +4,14 @@ import 'package:flutter/services.dart';
 class RowFormatters extends StatelessWidget {
   final String label;
   final TextInputFormatter? formatter;
-  TextEditingController controller;
-  TextInputType keyboardType;
-  bool? isEnabled;
-  int? requiredLength;
-  FocusNode focus;
-  FocusNode? nextFocus;
+  final TextEditingController controller;
+  final TextInputType keyboardType;
+  final bool? isEnabled;
+  final int? requiredLength;
+  final FocusNode focus;
+  final FocusNode? nextFocus;
 
-  RowFormatters({
+  const RowFormatters({
     Key? key,
     required this.label,
     this.formatter,
