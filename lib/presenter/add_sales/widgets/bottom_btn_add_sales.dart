@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../../infra/providers/login_providers.dart';
-import '../../sales/widgets/body_sales_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../infra/models/sale_model.dart';
+import '../../../infra/providers/login_providers.dart';
 import '../../../infra/providers/sale_providers.dart';
+import '../../sales/widgets/body_sales_page.dart';
 
 class BottomBtnSales extends StatefulHookConsumerWidget {
   const BottomBtnSales({Key? key}) : super(key: key);

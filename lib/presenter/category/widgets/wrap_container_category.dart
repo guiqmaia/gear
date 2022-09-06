@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../infra/providers/login_providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../infra/models/category_model.dart';
+import '../../../infra/providers/login_providers.dart';
 import '../../../infra/providers/product_providers.dart';
 import 'container_category_inventory.dart';
 

@@ -78,7 +78,7 @@ class _BtnEditUserState extends ConsumerState<BtnEditUser> {
         onPressed: () {
           updateUser();
           UserRepository userRepository = UserRepository();
-          userRepository.put('http://192.168.0.43:81/api/User', userModel);
+          userRepository.put('http://zuplae.vps-kinghost.net:8083:81/api/User', userModel);
 
           Navigator.of(context).pushNamed(HomePage.route);
         },

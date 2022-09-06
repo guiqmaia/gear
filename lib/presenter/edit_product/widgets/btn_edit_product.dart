@@ -61,12 +61,13 @@ class BtnEditProduct extends HookConsumerWidget {
         onPressed: () {
           updateProduct();
           ProductRepository repository = ProductRepository();
-          repository.put('http://192.168.0.43:81/api/Product', product);
+          repository.put('http://zuplae.vps-kinghost.net:8083:81/api/Product', product);
 
           Navigator.of(context).pushReplacementNamed(
             ProductPage.route,
             arguments: category,
           );
+          Navigator.of(context).pop();
         },
         child: const Text(
           'Editar',

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../infra/providers/login_providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../../infra/models/sale_model.dart';
+import '../../../infra/providers/login_providers.dart';
 import '../../../infra/providers/sale_providers.dart';
 import '../../../shared/widgets/top_bar_app.dart';
 import 'recent_sales_container.dart';

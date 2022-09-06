@@ -1,8 +1,7 @@
 import 'dart:convert';
 
-import 'product_model.dart';
-
 import 'base_model.dart';
+import 'product_model.dart';
 
 class CategoryModel implements BaseModel {
   @override

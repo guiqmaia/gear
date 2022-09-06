@@ -1,12 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import '../../../infra/repository/product_repository.dart';
-
-import '../../../infra/models/category_model.dart';
 
 import '../../../core/app_assets.dart';
+import '../../../infra/models/category_model.dart';
 import '../../../infra/models/product_model.dart';
+import '../../../infra/repository/product_repository.dart';
 import '../../edit_product/edit_product_page.dart';
 
 class ContainerProductCategory extends StatefulWidget {
@@ -28,7 +27,7 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
 
   deleteProduct() async {
     ProductRepository repository = ProductRepository();
-    await repository.delete('http://192.168.0.43:81/api/Product', widget.productModel.id!);
+    await repository.delete('http://zuplae.vps-kinghost.net:8083:81/api/Product', widget.productModel.id!);
     setState(() => isLoading = true);
   }
 

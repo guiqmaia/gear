@@ -15,19 +15,19 @@ class SaleNotifier extends StateNotifier<List<SaleModel>> {
 
   Future<List<SaleModel>> refreshSales(UserModel userModel) async {
     SaleRepository repository = SaleRepository();
-    state = await repository.get('http://192.168.0.43:81/api/Sale/User/${userModel.id}');
+    state = await repository.get('http://zuplae.vps-kinghost.net:8083:81/api/Sale/User/${userModel.id}');
     return state;
   }
 
   Future addSalesContainer(SaleModel saleModel) async {
     SaleRepository repository = SaleRepository();
-    await repository.post('http://192.168.0.43:81/api/Sale', saleModel);
-    state = await repository.get('http://192.168.0.43:81/api/Sale/User/${saleModel.userId}');
+    await repository.post('http://zuplae.vps-kinghost.net:8083:81/api/Sale', saleModel);
+    state = await repository.get('http://zuplae.vps-kinghost.net:8083:81/api/Sale/User/${saleModel.userId}');
 
     ProductRepository productRepository = ProductRepository();
-    ProductModel product = await productRepository.getById('http://192.168.0.43:81/api/Product', saleModel.productId);
+    ProductModel product = await productRepository.getById('http://zuplae.vps-kinghost.net:8083:81/api/Product', saleModel.productId);
     product.quantity -= saleModel.quantity;
-    await productRepository.put('http://192.168.0.43:81/api/Product', product);
+    await productRepository.put('http://zuplae.vps-kinghost.net:8083:81/api/Product', product);
   }
 }
 

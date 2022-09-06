@@ -5,20 +5,20 @@ import 'dart:typed_data';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../../infra/models/adress_model.dart';
-import '../../../infra/repository/address_repository.dart';
-import '../../../infra/repository/user_repository.dart';
-import '../../login/login_page.dart';
-import 'focus_node_signup.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
+import '../../../infra/models/adress_model.dart';
 import '../../../infra/models/user_model.dart';
 import '../../../infra/providers/login_providers.dart';
+import '../../../infra/repository/address_repository.dart';
+import '../../../infra/repository/user_repository.dart';
 import '../../../shared/widgets/text_field_app.dart';
 import '../../../shared/widgets/text_field_app_formatted.dart';
+import '../../login/login_page.dart';
 import '../../product_signup/Widgets/default_image_container.dart';
+import 'focus_node_signup.dart';
 
 class ListViewSignUp extends StatefulHookConsumerWidget {
   const ListViewSignUp({Key? key}) : super(key: key);
@@ -260,9 +260,9 @@ class _ListViewSignUpState extends ConsumerState<ListViewSignUp> {
                     );
 
                     UserRepository userRepository = UserRepository();
-                    await userRepository.post('http://192.168.0.43:81/api/user', user);
+                    await userRepository.post('http://zuplae.vps-kinghost.net:8083:81/api/user', user);
 
-                    List<UserModel> users = await userRepository.get('http://192.168.0.43:81/api/user');
+                    List<UserModel> users = await userRepository.get('http://zuplae.vps-kinghost.net:8083:81/api/user');
                     user = users.last;
 
                     AddressModel address = AddressModel(
@@ -275,7 +275,7 @@ class _ListViewSignUpState extends ConsumerState<ListViewSignUp> {
                     );
 
                     AddressRepository addressRepository = AddressRepository();
-                    addressRepository.post('http://192.168.0.43:81/api/Address', address);
+                    addressRepository.post('http://zuplae.vps-kinghost.net:8083:81/api/Address', address);
 
                     Navigator.of(context).pushReplacementNamed(LoginPage.route);
                     nameController.state.clear();

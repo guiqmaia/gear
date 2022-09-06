@@ -16,19 +16,19 @@ class CategoryNotifier extends StateNotifier<List<CategoryModel>> {
 
   Future<List<CategoryModel>> getAllCategories(UserModel userModel) async {
     CategoryRepository repository = CategoryRepository();
-    state = await repository.get('http://192.168.0.43:81/api/Category/User/${userModel.id}');
+    state = await repository.get('http://zuplae.vps-kinghost.net:8083:81/api/Category/User/${userModel.id}');
     return state;
   }
 
   Future<void> getByIdCategory(CategoryModel category) async {
     CategoryRepository repository = CategoryRepository();
-    await repository.getById('http://192.168.0.43:81/api/Category', category.id!);
+    await repository.getById('http://zuplae.vps-kinghost.net:8083:81/api/Category', category.id!);
   }
 
   Future<void> addCategory(CategoryModel category) async {
     CategoryRepository repository = CategoryRepository();
-    await repository.post('http://192.168.0.43:81/api/Category', category);
-    state = await repository.get('http://192.168.0.43:81/api/Category/User/${category.userId}');
+    await repository.post('http://zuplae.vps-kinghost.net:8083:81/api/Category', category);
+    state = await repository.get('http://zuplae.vps-kinghost.net:8083:81/api/Category/User/${category.userId}');
   }
 }
 
@@ -43,7 +43,7 @@ class ProductNotifier extends StateNotifier<List<ProductModel>> {
 
   Future<void> addProduct(ProductModel product, CategoryModel model) async {
     ProductRepository repository = ProductRepository();
-    await repository.post('http://192.168.0.43:81/api/Product', product);
+    await repository.post('http://zuplae.vps-kinghost.net:8083:81/api/Product', product);
     state = await repository.getProductByCategory(model.id!);
   }
 }
