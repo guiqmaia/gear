@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import '../../../infra/providers/product_providers.dart';
-import '../../../infra/models/category_model.dart';
-import '../../product/widgets/body_product_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/app_assets.dart';
+import '../../../infra/models/category_model.dart';
+import '../../../infra/providers/product_providers.dart';
 import '../../product/product_page.dart';
+import '../../product/widgets/body_product_page.dart';
 
 class ContainerCategoryInventory extends HookConsumerWidget {
   final CategoryModel categoryModel;
@@ -27,17 +27,14 @@ class ContainerCategoryInventory extends HookConsumerWidget {
         ref.watch(productNotifier.notifier).getAllProducts(categoryModel);
 
         categoryModelController.state = categoryModel;
-        
+
         Navigator.of(context).pushNamed(
           ProductPage.route,
           arguments: categoryModel,
         );
       },
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 12),
-        padding: const EdgeInsets.symmetric(
-          vertical: 18,
-        ),
+        margin: const EdgeInsets.symmetric(horizontal: 8),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
@@ -51,16 +48,17 @@ class ContainerCategoryInventory extends HookConsumerWidget {
           ],
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.memory(
               base64Decode(categoryModel.image),
-              height: MediaQuery.of(context).size.height * 0.15,
+              height: MediaQuery.of(context).size.height * 0.13,
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             Container(
               padding: const EdgeInsets.symmetric(
                 horizontal: 20,
-                vertical: 8,
+                vertical: 3,
               ),
               decoration: BoxDecoration(
                 color: Colors.black,

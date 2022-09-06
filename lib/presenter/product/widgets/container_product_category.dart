@@ -41,10 +41,8 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
           horizontal: 20,
           vertical: 8,
         ),
-        padding: const EdgeInsets.only(
-          left: 10,
-          top: 11,
-          bottom: 11,
+        padding: const EdgeInsets.symmetric(
+          vertical: 10,
         ),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -120,18 +118,11 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          Container(
-                            padding: const EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              color: pink.withOpacity(0.3),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Text(
-                              '${widget.productModel.id}',
-                              style: TextStyle(
-                                color: pink,
-                                fontWeight: FontWeight.bold,
-                              ),
+                          Text(
+                            '${widget.productModel.id}',
+                            style: TextStyle(
+                              color: pink,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ],
@@ -145,18 +136,11 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          Container(
-                            padding: const EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              color: Colors.red.withOpacity(0.2),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Text(
-                              '${widget.productModel.quantity}',
-                              style: const TextStyle(
-                                color: Colors.red,
-                                fontWeight: FontWeight.w500,
-                              ),
+                          Text(
+                            '${widget.productModel.quantity}',
+                            style: const TextStyle(
+                              color: Colors.red,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                         ],
