@@ -14,26 +14,23 @@ final saleNotifier = StateNotifierProvider<SaleNotifier, List<SaleModel>>(
 );
 
 class BodySalesPage extends HookConsumerWidget {
-  BodySalesPage({Key? key}) : super(key: key);
-
-  DateFormat dividerDateFormat = DateFormat('dd/MM/yyyy');
-  bool first = true;
+  const BodySalesPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final sales = ref.watch(saleNotifier);
+    List<SaleModel> salesReversed = sales.reversed.toList();
+    DateFormat dividerDateFormat = DateFormat('dd/MM/yyyy');
+    DateTime dateTime = DateTime.parse(salesReversed.first.date);
     bool first = true;
 
-    bool verifyDate(SaleModel saleModel) {
-      DateTime dateTime = DateTime.now();
-      
-      if (first == true) {
+    bool verifyDate(SaleModel model) {
+      if (first) {
         first = !first;
         return true;
       }
-      if (DateFormat.yMd().format(DateTime.parse(saleModel.date)) !=
-          DateFormat.yMd().format(dateTime)) {
-        dateTime = DateTime.parse(saleModel.date);
+      if (DateUtils.dateOnly(DateTime.parse(model.date)) != DateUtils.dateOnly(dateTime)) {
+        dateTime = DateTime.parse(model.date);
         return true;
       }
       return false;
@@ -49,12 +46,12 @@ class BodySalesPage extends HookConsumerWidget {
         ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          itemCount: sales.length,
+          itemCount: salesReversed.length,
           itemBuilder: (context, index) {
             return Column(
               children: [
                 Visibility(
-                  visible: verifyDate(sales[index]),
+                  visible: verifyDate(salesReversed[index]),
                   child: Row(
                     children: <Widget>[
                       const Expanded(
@@ -67,7 +64,7 @@ class BodySalesPage extends HookConsumerWidget {
                         ),
                       ),
                       Text(
-                        dividerDateFormat.format(DateTime.parse(sales[index].date)),
+                        dividerDateFormat.format(DateTime.parse(salesReversed[index].date)),
                         style: const TextStyle(
                           fontSize: 15,
                         ),
@@ -85,7 +82,7 @@ class BodySalesPage extends HookConsumerWidget {
                   ),
                 ),
                 SaleRegisterContainer(
-                  saleModel: sales[index],
+                  saleModel: salesReversed[index],
                 ),
               ],
             );

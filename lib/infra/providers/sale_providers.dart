@@ -9,7 +9,6 @@ import '../repository/sale_repository.dart';
 
 
 class SaleNotifier extends StateNotifier<List<SaleModel>> {
-
   SaleNotifier(UserModel userModel) : super([]) {
     refreshSales(userModel);
   }
