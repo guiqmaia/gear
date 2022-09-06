@@ -146,7 +146,7 @@ class _ListViewSingupProductState extends ConsumerState<ListViewSingupProduct> {
               ProductModel productModel = ProductModel(
                 name: nameProductController.state.text,
                 price: double.parse(priceController.state.text),
-                categoryId: categoryModel.id!,
+                categoryId: int.parse(categoryController.state.value.text),
                 quantity: int.parse(quantityController.state.text),
                 image: base64Encode(photo!.buffer.asUint8List()),
               );
