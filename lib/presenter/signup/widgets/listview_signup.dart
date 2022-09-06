@@ -260,9 +260,9 @@ class _ListViewSignUpState extends ConsumerState<ListViewSignUp> {
                     );
 
                     UserRepository userRepository = UserRepository();
-                    await userRepository.post('http://zuplae.vps-kinghost.net:8083:81/api/user', user);
+                    await userRepository.post('http://zuplae.vps-kinghost.net:8083/api/user', user);
 
-                    List<UserModel> users = await userRepository.get('http://zuplae.vps-kinghost.net:8083:81/api/user');
+                    List<UserModel> users = await userRepository.get('http://zuplae.vps-kinghost.net:8083/api/user');
                     user = users.last;
 
                     AddressModel address = AddressModel(
@@ -275,7 +275,7 @@ class _ListViewSignUpState extends ConsumerState<ListViewSignUp> {
                     );
 
                     AddressRepository addressRepository = AddressRepository();
-                    addressRepository.post('http://zuplae.vps-kinghost.net:8083:81/api/Address', address);
+                    addressRepository.post('http://zuplae.vps-kinghost.net:8083/api/Address', address);
 
                     Navigator.of(context).pushReplacementNamed(LoginPage.route);
                     nameController.state.clear();

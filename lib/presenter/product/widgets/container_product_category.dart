@@ -27,7 +27,7 @@ class _ContainerProductcategoriestate extends State<ContainerProductCategory> {
 
   deleteProduct() async {
     ProductRepository repository = ProductRepository();
-    await repository.delete('http://zuplae.vps-kinghost.net:8083:81/api/Product', widget.productModel.id!);
+    await repository.delete('http://zuplae.vps-kinghost.net:8083/api/Product', widget.productModel.id!);
     setState(() => isLoading = true);
   }
 

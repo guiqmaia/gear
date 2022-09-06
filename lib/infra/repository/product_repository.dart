@@ -28,7 +28,7 @@ class ProductRepository extends BaseRepository<ProductModel> {
   Future<List<ProductModel>> getProductByCategory(int id) async {
     Dio dio = Dio();
 
-    final response = await dio.get('http://zuplae.vps-kinghost.net:8083:81/api/Product/GetByCategory/$id');
+    final response = await dio.get('http://zuplae.vps-kinghost.net:8083/api/Product/GetByCategory/$id');
 
     return List.from(
       response.data.map(

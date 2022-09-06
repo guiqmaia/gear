@@ -9,7 +9,7 @@ class UserRepository extends BaseRepository<UserModel> {
   Future<UserModel> logon(UserDto dto) async {
     Dio dio = Dio();
 
-    final response = await dio.post('http://zuplae.vps-kinghost.net:8083:81/api/Access/Logon', data: dto.toJson());
+    final response = await dio.post('http://zuplae.vps-kinghost.net:8083/api/Access/Logon', data: dto.toJson());
 
     return UserModel.fromMap(response.data);
   }
