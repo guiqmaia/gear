@@ -34,12 +34,9 @@ class _WrapTextFieldSaleState extends ConsumerState<WrapTextFieldSale> {
     TextEditingController totalController,
   ) {
     if (discController.text == '' || double.parse(discController.text) == 0) {
-      total =
-          (double.parse(priceController.text) * int.parse(qntController.text));
+      total = (double.parse(priceController.text) * int.parse(qntController.text));
     } else {
-      total =
-          (double.parse(priceController.text) * int.parse(qntController.text)) *
-              (1 - (double.parse(discController.text) / 100));
+      total = (double.parse(priceController.text) * int.parse(qntController.text)) * (1 - (double.parse(discController.text) / 100));
     }
     totalController.text = total.toString();
     setState(() {});
@@ -61,9 +58,8 @@ class _WrapTextFieldSaleState extends ConsumerState<WrapTextFieldSale> {
     return Wrap(
       alignment: WrapAlignment.center,
       children: [
-        Visibility(
-          visible: listCategories.isNotEmpty,
-          replacement: const CircularProgressIndicator(),
+        IgnorePointer(
+          ignoring: !listCategories.isNotEmpty,
           child: Container(
             width: double.maxFinite,
             margin: const EdgeInsets.symmetric(vertical: 10),

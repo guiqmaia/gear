@@ -21,11 +21,12 @@ class BodySalesPage extends HookConsumerWidget {
     final sales = ref.watch(saleNotifier);
     List<SaleModel> salesReversed = sales.reversed.toList();
     DateFormat dividerDateFormat = DateFormat('dd/MM/yyyy');
-    DateTime dateTime = DateTime.parse(salesReversed.first.date);
+    DateTime dateTime = DateTime.now();
     bool first = true;
 
     bool verifyDate(SaleModel model) {
       if (first) {
+        dateTime = DateTime.parse(model.date);
         first = !first;
         return true;
       }

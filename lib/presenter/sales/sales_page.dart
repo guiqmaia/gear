@@ -14,7 +14,7 @@ class SalesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundGrey,
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: BodySalesPage(),
       ),
       bottomNavigationBar: BtnStandardApp(

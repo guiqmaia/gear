@@ -17,8 +17,8 @@ class IconsBtnLogin extends StatelessWidget {
           ),
           onTap: _launchUrlGoogle,
           child: CircleAvatar(
-            backgroundColor: Colors.white,
-            radius: 30,
+            backgroundColor: backgroundGrey,
+            radius: 29,
             child: Image.asset(
               iconGoogle,
               fit: BoxFit.cover,
@@ -31,7 +31,7 @@ class IconsBtnLogin extends StatelessWidget {
           ),
           onTap: _launchUrlFacebook,
           child: CircleAvatar(
-            backgroundColor: Colors.white,
+            backgroundColor: backgroundGrey,
             radius: 30,
             child: Image.asset(
               iconFacebook,
@@ -47,7 +47,7 @@ class IconsBtnLogin extends StatelessWidget {
 final Uri _urlGoogle = Uri.parse('https://www.google.com.br/');
 
 Future<void> _launchUrlGoogle() async {
-  if (!await launchUrl(_urlGoogle)){
+  if (!await launchUrl(_urlGoogle)) {
     throw 'Could not launch $_urlGoogle';
   }
 }
@@ -56,5 +56,5 @@ final Uri _urlFacebook = Uri.parse('https://pt-br.facebook.com/');
 Future<void> _launchUrlFacebook() async {
   if (!await launchUrl(_urlFacebook)) {
     throw 'Could not launch $_urlFacebook';
-  }}
-
+  }
+}
